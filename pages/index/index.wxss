@@ -1,3 +1,6 @@
+page{
+  background: #f2f2f2;
+}
 .title{
   font-weight: 500;
 }
@@ -52,9 +55,11 @@
   height: 32rpx;
 }
 .like-group{
+  padding: 10rpx 16rpx;
   background-color: white;
   display: flex;
   align-items: center;
+  border-radius: 26rpx;
 }
 .like{
   width: 32rpx;
