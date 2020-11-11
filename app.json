@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/hotlist/hotlist",
     "pages/index/index",
     "pages/logs/logs"
   ],
