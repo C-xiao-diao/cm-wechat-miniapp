@@ -7,13 +7,9 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    //---------start ----------
+    list: [1,1,1,1,1,1,1,1,,1,1,1,1]
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
@@ -50,5 +46,9 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  }
+  },
+
+  // ---------------------- start ------------------------------
+
+  // ----------------------  end --------------------------------
 })

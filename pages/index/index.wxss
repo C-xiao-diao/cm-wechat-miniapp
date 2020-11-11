@@ -1,21 +1,90 @@
-/**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.title{
+  font-weight: 500;
 }
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
+.list{
+  margin-top: 68rpx;
+}
+.list-item{
+  margin-top: 35rpx;
+  width: 100%;
+  padding-left: 50rpx;
+  padding-right: 50rpx;
+  padding-bottom: 35rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ccc;
+}
+.top{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.avatar{
+  width: 120rpx;
+  height: 120rpx;
   border-radius: 50%;
 }
-
-.userinfo-nickname {
-  color: #aaa;
+.userinfo-left{
+  display: flex;
+  align-items: center;
+}
+.userinfo{
+  margin-left: 20rpx;
+}
+.username{
+  font-size: 30rpx;
+}
+.userinfo-bottom{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10rpx;
+}
+.userinfo-bottom text{
+  font-size: 24rpx;
+  color: #666;
+  margin-left: 5rpx;
 }
 
-.usermotto {
-  margin-top: 200px;
+.gender{
+  width: 32rpx;
+  height: 32rpx;
+}
+.like-group{
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+.like{
+  width: 32rpx;
+  height: 30rpx;
+}
+.like-num{
+  margin-left: 10rpx;
+}
+.like-num{
+  color: #666;
+  font-size: 24rpx;
+}
+
+.middle{
+  margin-top: 35rpx;
+}
+.middle text{
+  font-size: 24rpx;
+  color: #333;
+  line-height: 42rpx;
+}
+.bottom{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30rpx;
+}
+
+.bottom image{
+  width: 200rpx;
+  height: 175rpx;
 }
