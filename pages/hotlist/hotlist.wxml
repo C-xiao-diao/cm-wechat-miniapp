@@ -4,7 +4,7 @@
       <text bindtap="changeTab" class="tab {{currentTab === 0 ? 'active' : ''}}" data-item="{{0}}">嗨C</text>
       <text bindtap="changeTab" class="tab {{currentTab === 1 ? 'active' : ''}}" data-item="{{1}}">即兴</text>
     </view>
-    <view class="top-right">
+    <view class="top-right" wx:if="{{currentTab === 1}}">
       <image class="gender" src="/imgs/hotlist/freestyle.png" alt=""></image>
       <text>freestyle</text>
     </view>
@@ -16,7 +16,7 @@
       <text class="hotlist-item-title">王者荣耀 | 新赛季新版本，推荐给你本赛季。。。</text>
     </view>
   </view>
-  <view class="rising-tone">
+  <view class="rising-tone" wx:if="{{currentTab === 1}}">
     <text>起个调 ~ </text>
   </view>
 </view>

@@ -23,7 +23,7 @@ page{
 }
 .tabs>text.active{
   color: #000;
-  border-bottom: 2rpx solid #000;
+  border-bottom: 5rpx solid #000;
 }
 .top-right{
   display: flex;

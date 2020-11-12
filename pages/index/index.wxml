@@ -14,7 +14,7 @@
             </view>
           </view>
         </view>
-        <view class="like-group">
+        <view class="like-group" bindtap="like">
           <image class="like" src="/imgs/index/like.png" alt=""></image>
           <text class="like-num">赞 299</text>
         </view>
@@ -28,5 +28,9 @@
         <image class="bottom-photo" src="/imgs/index/game.jpg" alt=""></image>
       </view>
     </view>
+  </view>
+  <!-- 跟个调 -->
+  <view class="follow">
+    <text>跟调 ~ </text>
   </view>
 </view>
