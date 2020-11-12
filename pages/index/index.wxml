@@ -30,7 +30,7 @@
     </view>
   </view>
   <!-- 跟个调 -->
-  <view class="follow">
+  <view class="follow" bindtap="navToFollow">
     <text>跟调 ~ </text>
   </view>
 </view>

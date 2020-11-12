@@ -58,6 +58,12 @@ Page({
   // 点赞
   like: function(){
     
+  },
+  //跟调
+  navToFollow: function(){
+    wx.navigateTo({
+      url: '/pages/follow/follow',
+    })
   }
   // ----------------------  end --------------------------------
 })
