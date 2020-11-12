@@ -1,87 +1,101 @@
-page{
+page {
   background: #f2f2f2;
 }
-.hotlist-view{
+
+.hotlist-view {
   padding: 0 50rpx;
   box-sizing: border-box;
 }
-.top{
+
+.top {
   display: flex;
   justify-content: space-between;
 }
-.tabs{
+
+.tabs {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
 }
-.tab{
+
+.tab {
   font-size: 34rpx;
   color: #666;
   padding: 30rpx 15rpx;
   box-sizing: border-box;
 }
-.tabs>text.active{
+
+.tabs>text.active {
   color: #000;
   border-bottom: 5rpx solid #000;
 }
-.top-right{
+
+.top-right {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.top-right>image{
+
+.top-right>image {
   width: 50rpx;
   height: 50rpx;
 }
-.top-right>text{
+
+.top-right>text {
   margin-left: 12rpx;
 }
+
 /* 热榜内容 */
-.hotlist-content{
+.hotlist-content {
   margin-top: 35rpx;
   padding: 20rpx 20rpx;
   box-sizing: border-box;
-  box-shadow: 0 0 13rpx rgba(0,0,0,0.3);
+  box-shadow: 0 0 13rpx rgba(0, 0, 0, 0.3);
   border-radius: 10rpx;
 }
 
-.hotlist-item{
+.hotlist-item {
   display: flex;
   flex-direction: row;
   /* margin-bottom: 48rpx; */
 }
-.hotlist-item text{
+
+.hotlist-item text {
   font-size: 28rpx;
   line-height: 78rpx;
 }
 
-.hotlist-item-sortnum{
+.hotlist-item-sortnum {
   color: #666;
 }
-.sortnum0{
+
+.sortnum0 {
   color: #eb444d;
 }
-.sortnum1{
+
+.sortnum1 {
   color: #ee6f2d;
 }
-.sortnum2{
+
+.sortnum2 {
   color: #eeb14c;
 }
-.hotlist-item > text.hotlist-item-title{
+
+.hotlist-item>text.hotlist-item-title {
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow:hidden;
+  overflow: hidden;
 }
 
-.rising-tone{
+.rising-tone {
   width: 100%;
   display: flex;
   justify-content: center;
   margin-top: 80rpx;
 }
 
-.rising-tone text{
+.rising-tone text {
   background: white;
   font-size: 28rpx;
   color: #666;
@@ -89,5 +103,45 @@ page{
   padding: 10rpx 24rpx;
   box-sizing: border-box;
   border-radius: 5rpx;
-  box-shadow: 0 0 8rpx rgba(0,0,0,0.3);
+  box-shadow: 0 0 8rpx rgba(0, 0, 0, 0.3);
+}
+
+/* 输入弹框 */
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-group {
+  padding: 20rpx;
+  width: 630rpx;
+  height: 350rpx;
+  background: white;
+}
+
+.input-group text {
+  font-size: 24rpx;
+  color: #333;
+  font-weight: 700;
+}
+.input-group textarea{
+  border: 1rpx solid #999;
+  height: 180rpx;
+  margin-top: 30rpx;
+}
+.button-group{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.group{
+  width: 30%;
+  margin-top: 30rpx;
 }

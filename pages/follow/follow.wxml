@@ -1,0 +1,12 @@
+<view class="follow-view">
+  <view class="options">
+    <text class="cancel" bindtap="goBack">取消</text>
+    <text class="button" bindtap="follow">跟调</text>
+  </view>
+  <view>
+    <input type="text" placeholder="follow..." bindinput="addContent"/>
+  </view>
+  <view class="add-photo" bindtap="addPhoto">
+    <image class="photo" src="/imgs/follow/add.jpg" alt=""></image>
+  </view>
+</view>

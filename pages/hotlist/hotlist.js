@@ -10,6 +10,7 @@ Page({
   data: {
     currentTab: 0,
     list:['哆','来','咪','发','唆','拉','西'],
+    isShowTextareaModal: false,
   },
   onLoad: function () {
 
@@ -29,6 +30,21 @@ Page({
     wx.navigateTo({
       url: '/pages/index/index',
     })
-  }
+  },
+  showTextareaModal: function(){
+    this.setData({isShowTextareaModal:true})
+  },
+  changeText: function(){
+
+  },
+  stopCancelModal: function(){
+
+  },
+  cancelModal: function(){
+    this.setData({isShowTextareaModal:false})
+  },
+  risingTone: function(){
+
+  },
   //-----------------end -------------------
 })  

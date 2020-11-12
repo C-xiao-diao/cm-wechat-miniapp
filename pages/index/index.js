@@ -52,6 +52,9 @@ Page({
   onShareAppMessage: function (e) {
 
   },
+  onReachBottom:function(e){
+    console.log(11111111111111111111111111111111111);
+  },
   // 点赞
   like: function(){
     

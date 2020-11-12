@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/hotlist/hotlist",
+    "pages/follow/follow",
     "pages/index/index",
     "pages/logs/logs"
   ],
