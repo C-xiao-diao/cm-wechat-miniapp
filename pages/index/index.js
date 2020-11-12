@@ -8,8 +8,9 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    loading: true,
     //---------start ----------
-    list: [1, 1, 1, 1, 1, 1, 1, 1, , 1, 1, 1, 1]
+    list: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
@@ -38,6 +39,8 @@ Page({
         }
       })
     }
+    //获取界面数据
+    this.setData({ list: [1, 1, 1, 1, 1, 1, 1, 1, , 1, 1, 1, 2], loading: false })
   },
   getUserInfo: function (e) {
     console.log(e)

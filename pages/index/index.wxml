@@ -1,4 +1,7 @@
 <!--index.wxml-->
+<import src="index.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{loading}}" data="{{list}}"/>
+
 <view class="container">
   <text class="title">LOL手游 | 有人一起开黑吗?</text>
   <view class="list">
@@ -29,7 +32,6 @@
       </view>
     </view>
   </view>
-  <!-- 跟个调 -->
   <view class="follow" bindtap="navToFollow">
     <text>跟调 ~ </text>
   </view>
