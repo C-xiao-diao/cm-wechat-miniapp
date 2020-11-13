@@ -3,7 +3,7 @@
 <template is="skeleton" wx-if="{{loading}}" />
 <!-- 真实界面 -->
 <view class="container">
-  <text class="title">LOL手游 | 有人一起开黑吗?</text>
+  <text class="title">LOL手游 丨 有人一起开黑吗?</text>
   <view class="list">
     <view class="list-item" wx:for="{{list}}" wx:key="index">
       <view class="top">
@@ -32,7 +32,7 @@
       </view>
     </view>
   </view>
-  <view class="follow" bindtap="navToFollow">
+  <view class="follow" bindtap="navToFollow" wx:if="{{ list && list.length >0 }}">
     <text>跟调 ~ </text>
   </view>
 </view>
