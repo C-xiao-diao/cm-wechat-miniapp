@@ -12,11 +12,10 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     currentTab: 0,
-    list:['哆','来','咪','发','唆','拉','西'],
+    list: ['哆', '来', '咪', '发', '唆', '拉', '西'],
     isShowTextareaModal: false,
   },
   onLoad: function () {
-    console.log(app,1111111111111111111111111)
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -26,7 +25,6 @@ Page({
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
-        console.log(res,22222222222222)
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
@@ -36,7 +34,6 @@ Page({
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
-          console.log(res,22222222222222222222222222222)
           app.globalData.userInfo = res.userInfo
           this.setData({
             userInfo: res.userInfo,
@@ -54,35 +51,71 @@ Page({
       hasUserInfo: true
     })
   },
-  onShareAppMessage: function(e){
+  onShareAppMessage: function (e) {
 
   },
   //-----------------start------------------
-  changeTab: function(e){
+  changeTab: function (e) {
     const { currentTab } = this.data;
     let item = e.currentTarget.dataset.item;
-    if(item !== currentTab){
-        this.setData({ currentTab: item });
+    if (item !== currentTab) {
+      this.setData({ currentTab: item });
     }
   },
-  navToDetail: function(){
+  navToDetail: function (e) {
+    let index = e.currentTarget.dataset.index;
+    //播放音频
+    const innerAudioContext = wx.createInnerAudioContext();
+    // innerAudioContext.autoplay = true;
+    switch (index) {
+      case 0:
+        innerAudioContext.src = '/audios/duo.m4a';
+        break;
+      case 1:
+        innerAudioContext.src = '/audios/rai.m4a';
+        break;
+      case 2:
+        innerAudioContext.src = '/audios/mi.m4a';
+        break;
+      case 3:
+        innerAudioContext.src = '/audios/fa.m4a';
+        break;
+      case 4:
+        innerAudioContext.src = '/audios/suo.m4a';
+        break;
+      case 5:
+        innerAudioContext.src = '/audios/la.m4a';
+        break;
+      case 6:
+        innerAudioContext.src = '/audios/xi.m4a';
+        break;
+    }
+    innerAudioContext.play();
+    innerAudioContext.onPlay(() => {
+      console.log('开始播放')
+    })
+    innerAudioContext.onError((res) => {
+      console.log(res.errMsg)
+      console.log(res.errCode)
+    })
+    //跳转界面
     wx.navigateTo({
       url: '/pages/forumList/forumList',
     })
   },
-  showTextareaModal: function(){
-    this.setData({isShowTextareaModal:true})
+  showTextareaModal: function () {
+    this.setData({ isShowTextareaModal: true })
   },
-  changeText: function(){
+  changeText: function () {
 
   },
-  stopCancelModal: function(){
+  stopCancelModal: function () {
 
   },
-  cancelModal: function(){
-    this.setData({isShowTextareaModal:false})
+  cancelModal: function () {
+    this.setData({ isShowTextareaModal: false })
   },
-  risingTone: function(){
+  risingTone: function () {
 
   },
   //-----------------end -------------------
