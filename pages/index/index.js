@@ -1,16 +1,19 @@
-//index.js
+//hotlist.js
+import "./../../utils/fix";
+import _ from "./../../utils/lodash"
+
+
 //获取应用实例
 const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    loading: true,
-    //---------start ----------
-    list: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    currentTab: 0,
+    list:['哆','来','咪','发','唆','拉','西'],
+    isShowTextareaModal: false,
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
@@ -22,6 +25,7 @@ Page({
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
+        console.log(res,111111111111111111111111111111111)
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
@@ -31,6 +35,7 @@ Page({
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
+          console.log(res,22222222222222222222222222222)
           app.globalData.userInfo = res.userInfo
           this.setData({
             userInfo: res.userInfo,
@@ -39,8 +44,6 @@ Page({
         }
       })
     }
-    //获取界面数据
-    this.setData({ list: [1, 1, 1, 1, 1, 1, 1, 1, , 1, 1, 1, 2], loading: false })
   },
   getUserInfo: function (e) {
     console.log(e)
@@ -50,23 +53,36 @@ Page({
       hasUserInfo: true
     })
   },
-
-  // ---------------------- start ------------------------------
-  onShareAppMessage: function (e) {
+  onShareAppMessage: function(e){
 
   },
-  onReachBottom:function(e){
-    console.log(11111111111111111111111111111111111);
+  //-----------------start------------------
+  changeTab: function(e){
+    const { currentTab } = this.data;
+    let item = e.currentTarget.dataset.item;
+    if(item !== currentTab){
+        this.setData({ currentTab: item });
+    }
   },
-  // 点赞
-  like: function(){
-    
-  },
-  //跟调
-  navToFollow: function(){
+  navToDetail: function(){
     wx.navigateTo({
-      url: '/pages/follow/follow',
+      url: '/pages/forumList/forumList',
     })
-  }
-  // ----------------------  end --------------------------------
-})
+  },
+  showTextareaModal: function(){
+    this.setData({isShowTextareaModal:true})
+  },
+  changeText: function(){
+
+  },
+  stopCancelModal: function(){
+
+  },
+  cancelModal: function(){
+    this.setData({isShowTextareaModal:false})
+  },
+  risingTone: function(){
+
+  },
+  //-----------------end -------------------
+})  
