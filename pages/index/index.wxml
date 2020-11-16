@@ -4,16 +4,17 @@
       <text bindtap="changeTab" class="tab {{currentTab === 0 ? 'active' : ''}}" data-item="{{0}}">嗨C</text>
       <text bindtap="changeTab" class="tab {{currentTab === 1 ? 'active' : ''}}" data-item="{{1}}">即兴</text>
     </view>
-    <view class="top-right" wx:if="{{currentTab === 1}}">
+    <view class="top-right" wx:if="{{currentTab === 1}}" bindtap="freestyleHandle">
       <image class="gender" src="/imgs/hotlist/freestyle.png" alt=""></image>
       <text>freestyle</text>
     </view>
   </view>
   <view class="hotlist-content">
-    <view class="hotlist-item" wx:for="{{list}}" data-index="{{index}}" wx:key="index" bindtap="navToDetail">
+    <view class="hotlist-item" wx:for="{{ currentTab === 0 ? listHot : listRandom }}" data-index="{{index}}" wx:key="index" bindtap="navToDetail" data-themeId="{{item.id}}">
       <text wx:if="{{currentTab === 0}}"
         class="hotlist-item-sortnum sortnum{{index}}">{{index === 0 ? '哆' :  index === 1 ?'来': index === 2 ?'咪' : index === 3 ?'发': index === 4 ? '唆': index === 5 ?'拉': '西'}}、</text>
-      <text class="hotlist-item-title">王者荣耀 | 新赛季新版本，推荐给你本赛季。。。</text>
+      <!-- <text class="hotlist-item-title">王者荣耀 | 新赛季新版本，推荐给你本赛季。。。</text> -->
+      <text class="hotlist-item-title">{{item.theme}}</text>
     </view>
   </view>
   <view class="rising-tone" wx:if="{{currentTab === 1}}" bindtap="showTextareaModal">
@@ -35,3 +36,5 @@
     </view>
   </view>
 </view>
+
+<button wx:if="{{isShowUserInfoBtn}}" class="getUserInfoBtn" open-type="getUserInfo" bindgetuserinfo="userInfoHandler"> 获取用户信息</button>

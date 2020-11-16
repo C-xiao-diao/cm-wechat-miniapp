@@ -1,4 +1,3 @@
-@import "./forumList.skeleton.wxss";
 page{
   background: #f2f2f2;
 }

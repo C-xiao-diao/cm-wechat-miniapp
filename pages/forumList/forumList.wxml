@@ -1,6 +1,4 @@
 <!--index.wxml-->
-<import src="forumList.skeleton.wxml"/>
-<template is="skeleton" wx-if="{{loading}}" />
 <!-- 真实界面 -->
 <view class="container">
   <text class="title">LOL手游 丨 有人一起开黑吗?</text>
