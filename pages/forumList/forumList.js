@@ -27,13 +27,14 @@ Page({
     //获取界面数据
     const { themeId  } = this.data;
     let option  = { themeId };
+    console.log(themeId,'gggggggggggggggggggggggggggggggsssssssssssssssssssss');
     this.getForumList(option, false)
   },
   // ---------------------- start ------------------------------
   getForumList: function(option, isLoadMore){
     const timestamp = Date.parse(new Date());
     let { limit, list, page} = this.data;
-    let newPage = isLoadMore ? page + 1 : page;
+    let newPage = isLoadMore ? page + 1 : 0;
     let cmd = "/auth/essay/list";
     let data = {
       themeId: option.themeId,
@@ -47,7 +48,13 @@ Page({
       data,
       success: res =>{
         if(_.get(res, 'data.code') ===200){
-          let newList = _.uniqBy(_.concat(list, _.get(res, 'data.data.list')), 'id');
+          let newList = [];
+          if(isLoadMore){
+            newList = _.uniqBy(_.concat(list, _.get(res, 'data.data.list')), 'id');
+          } else {
+            newList = _.get(res, 'data.data.list');
+          }
+          
           this.setData({list: newList, page: newPage});
         }
       }
