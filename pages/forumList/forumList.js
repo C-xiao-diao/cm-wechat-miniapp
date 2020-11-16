@@ -1,5 +1,7 @@
 //forumList.js
 import { http } from "./../../utils/util";
+import "./../../utils/fix";
+import _ from "./../../utils/lodash"
 
 //获取应用实例
 const app = getApp()
@@ -20,7 +22,7 @@ Page({
     this.setData({ themeId: option.themeId })
     console.log(option, '[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[');
     //获取界面数据
-    setTimeout(() =>{this.setData({ list: [1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 2], loading: false })}, 1000)
+    // setTimeout(() =>{this.setData({ list: [1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 2], loading: false })}, 1000)
     this.getForumList(option)
   },
   // ---------------------- start ------------------------------
@@ -37,7 +39,10 @@ Page({
       cmd,
       data,
       success: res =>{
-        console.log(res,'fffffffffffffffffffffffffffffffffffff');
+        if(_.get(res, 'data.code') ===200){
+          let list = _.get(res, 'data.data.list');
+          this.setData({list});
+        }
       }
     })
   },
@@ -49,7 +54,18 @@ Page({
   },
   // 点赞
   like: function(){
-    
+    let cmd = "/auth/essay/pointPraise";
+    let data ={
+      studentId: app.globalData.studentId,
+      themeId: this.data.themeId,
+    }
+    http.get({
+      cmd,
+      data,
+      sucess: res=>{
+        console.log(res,'vvvvvvvvvvvvvvvvvvvvrrrrrrrrrrrrrrrrr');
+      }
+    })
   },
   //跟调
   navToFollow: function(){

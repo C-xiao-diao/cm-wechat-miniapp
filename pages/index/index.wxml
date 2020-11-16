@@ -5,7 +5,7 @@
       <text bindtap="changeTab" class="tab {{currentTab === 1 ? 'active' : ''}}" data-item="{{1}}">即兴</text>
     </view>
     <view class="top-right" wx:if="{{currentTab === 1}}" bindtap="freestyleHandle">
-      <image class="gender" src="/imgs/hotlist/freestyle.png" alt=""></image>
+      <image class="gender" src="/imgs/index/freestyle.png" alt=""></image>
       <text>freestyle</text>
     </view>
   </view>

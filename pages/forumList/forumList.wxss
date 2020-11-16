@@ -1,3 +1,4 @@
+
 page{
   background: #f2f2f2;
 }
@@ -6,6 +7,7 @@ page{
 }
 .list{
   margin-top: 68rpx;
+  width: 100%;
 }
 .list-item{
   margin-top: 35rpx;

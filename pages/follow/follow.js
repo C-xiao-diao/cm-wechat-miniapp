@@ -26,6 +26,7 @@ Page({
   },
   // 选择图片
   addPhoto: function () {
+    const _this = this;
     //获取图片
     wx.chooseImage({
       count: 1,
@@ -47,14 +48,16 @@ Page({
             'theme': 'photo'
           },
           success(res) {
-            const data = res.data
-            if(_.get(res, 'data.code') ===200){
-              let fileName = _.get(res, 'data.data.fileName');
+            let json = res.data;
+            let resData = JSON.parse(json)
+            if(_.get(resData, 'code') ===200){
+              console.log(resData ,'resDataresDataresDataresData')
+              let fileName = _.get(resData, 'data.fileName');
               let file = fileName[0];
-              let picture = this.data.picture;
+              let picture = _this.data.picture;
               let pics = _.uniq(_.concat(picture, fileName));
               console.log(pics, 'mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm')
-              this.setData({picture: pics});
+              _this.setData({picture: pics});
             } else {
 
             }
