@@ -67,6 +67,7 @@ App({
     isIpx: false,   //适配IPhoneX
     statusBarHeight: 20,
     isConnected: true,
-    pixelRatio: 1
+    pixelRatio: 1,
+    currentThemeId: '',
   }
 })

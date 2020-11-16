@@ -22,7 +22,6 @@ Page({
     theme: "",
   },
   onLoad: function () {
-    console.log(app, 'app.globalDataapp.globalDataapp.globalData',this.data.canIUse)
     // if (app.globalData.userInfo) {
     //   this.setData({
     //     userInfo: app.globalData.userInfo,
@@ -261,6 +260,7 @@ Page({
       console.log(res.errCode)
     })
     //跳转界面
+    app.globalData.currentThemeId = themeId;
     wx.navigateTo({
       url: '/pages/forumList/forumList?themeId=' + themeId,
     })

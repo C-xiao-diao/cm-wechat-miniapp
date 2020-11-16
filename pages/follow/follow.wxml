@@ -6,7 +6,12 @@
   <view>
     <input type="text" placeholder="follow..." bindinput="addContent"/>
   </view>
-  <view class="add-photo" bindtap="addPhoto">
-    <image class="photo" src="/imgs/follow/add.jpg" alt=""></image>
+  <view class="photo-group">
+    <view class="add-photo" wx:for="{{picture}}" wx:key="index">
+      <image class="photo" src="{{item}}" alt=""></image>
+    </view>
+    <view class="add-photo" bindtap="addPhoto">
+      <image class="photo" src="/imgs/follow/add.jpg" alt=""></image>
+    </view>
   </view>
 </view>

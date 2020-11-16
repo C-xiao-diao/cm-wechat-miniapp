@@ -74,6 +74,9 @@ page{
   color: #666;
   font-size: 24rpx;
 }
+.like-num-active{
+  color: #d81e06;
+}
 
 .middle{
   margin-top: 35rpx;

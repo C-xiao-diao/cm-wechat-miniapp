@@ -17,20 +17,20 @@
             </view>
           </view>
         </view>
-        <view class="like-group" bindtap="like">
+        <view class="like-group" bindtap="like" data-id="{{item.id}}">
           <image class="like" src="{{ item.pointPraiseNumber > 0 ? '/imgs/forumList/like_active.png' : '/imgs/forumList/like.png'}}" alt=""></image>
-          <text class="like-num">赞 {{item.pointPraiseNumber || 0}}</text>
+          <text class="like-num {{item.pointPraiseNumber > 0 ? 'like-num-active' : ''}}">赞 {{item.pointPraiseNumber || 0}}</text>
         </view>
       </view>
       <view class="middle">
         <!-- <text>君泽：不瞒你说，昨天我直接啥疯了[doge]昨天我像个神一样[赞]昨天我们去玩密室，小虎GALA小龙堡三个人打不过我一个，直接被我杀疯[doge]\n 墨子：你还挺骄傲的？这有啥可骄傲的[疑问]在密室里面不敢出去，就杀自己队友[二哈]</text> -->
         <text>{{item.content}}</text>
       </view>
-      <view class="bottom" wx:for-item="{{item.picture}}" wx:for-item="pictureItem">
+      <view class="bottom" wx:for="{{item.picture}}" wx:for-item="newItem" wx:key="index">
         <!-- <image class="bottom-photo" src="/imgs/forumList/game.jpg" alt=""></image>
         <image class="bottom-photo" src="/imgs/forumList/game.jpg" alt=""></image>
         <image class="bottom-photo" src="/imgs/forumList/game.jpg" alt=""></image> -->
-        <image class="bottom-photo" src="{{pictureItem}}" alt=""></image>
+        <image class="bottom-photo" src="{{newItem}}" alt=""></image>
       </view>
     </view>
   </view>

@@ -103,6 +103,9 @@ Page({
               wx.navigateBack({
                 delta: 0,
               })
+              // wx.reLaunch({
+              //   url: '/pages/forumList/forumList?themeId=' + themeId
+              // })
             },         
           })
         }

@@ -28,12 +28,19 @@ input{
   margin-top: 40rpx;
   margin-left: 40rpx;
 }
+.photo-group{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
 .add-photo{
   width: 200rpx;
   height: 200rpx;
   background: #f7f7f7;
   margin-top: 100rpx;
-  margin-left: 40rpx;
+  margin-left: 30rpx;
   display: flex;
   justify-content: center;
   align-items: center;

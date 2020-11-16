@@ -1,8 +1,8 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/forumList/forumList",
     "pages/follow/follow",
+    "pages/forumList/forumList",
     "pages/logs/logs"
   ],
   "window":{

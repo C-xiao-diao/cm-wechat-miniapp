@@ -20,28 +20,35 @@ Page({
   },
   onLoad: function (option) {
     this.setData({ themeId: option.themeId })
-    console.log(option, '[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[');
     //获取界面数据
-    // setTimeout(() =>{this.setData({ list: [1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 2], loading: false })}, 1000)
-    this.getForumList(option)
+    // this.getForumList(option)
+  },
+  onShow: function(){
+    //获取界面数据
+    const { themeId  } = this.data;
+    let option  = { themeId };
+    this.getForumList(option, false)
   },
   // ---------------------- start ------------------------------
-  getForumList: function(option){
-    const { limit, page } = this.data;
+  getForumList: function(option, isLoadMore){
+    const timestamp = Date.parse(new Date());
+    let { limit, list, page} = this.data;
+    let newPage = isLoadMore ? page + 1 : page;
     let cmd = "/auth/essay/list";
     let data = {
       themeId: option.themeId,
       studentId: app.globalData.studentId,
-      page,
+      page: newPage,
       limit,
+      timestamp,
     }
     http.get({
       cmd,
       data,
       success: res =>{
         if(_.get(res, 'data.code') ===200){
-          let list = _.get(res, 'data.data.list');
-          this.setData({list});
+          let newList = _.uniqBy(_.concat(list, _.get(res, 'data.data.list')), 'id');
+          this.setData({list: newList, page: newPage});
         }
       }
     })
@@ -50,20 +57,40 @@ Page({
 
   },
   onReachBottom:function(e){
-    console.log(11111111111111111111111111111111111);
+    const { themeId , page } = this.data;
+    let option  = { themeId };
+    this.getForumList(option, true);
   },
   // 点赞
-  like: function(){
+  like: function(e){
+    console.log(e,'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')
+    let essayId = e.currentTarget.dataset.id;
     let cmd = "/auth/essay/pointPraise";
     let data ={
       studentId: app.globalData.studentId,
       themeId: this.data.themeId,
+      essayId,
     }
     http.get({
       cmd,
       data,
-      sucess: res=>{
-        console.log(res,'vvvvvvvvvvvvvvvvvvvvrrrrrrrrrrrrrrrrr');
+      success: res=>{
+        if(_.get(res,'data.code') === 200){
+          wx.showToast({ title: '点赞成功' });
+          let list = this.data.list;
+          let newList = [];
+          for (let i=0;i<list.length;i++){
+            let item = {};
+            item = list[i];
+            if(list[i].id == essayId){
+              item.pointPraiseNumber = list[i].pointPraiseNumber  + 1; 
+            }
+            newList.push(list[i]);
+          }
+          this.setData({list: newList});
+        } else {
+
+        }
       }
     })
   },
