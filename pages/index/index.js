@@ -172,6 +172,7 @@ Page({
   //-----------------start------------------
   // 获取首页列表数据
   getIndexList: function(tab, isRandom){
+    wx.showLoading({ title: '正在加载'})
     const timestamp = Date.parse(new Date());
     let currentTab = tab;
     let cmd = "";
