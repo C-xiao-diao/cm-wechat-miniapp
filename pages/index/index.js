@@ -8,13 +8,14 @@ const app = getApp()
 
 Page({
   data: {
+    //骨架
+    loading: true,
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     currentTab: 0,
     // listHot: ['哆', '来', '咪', '发', '唆', '拉', '西'],
-    listHot: [],
-    listRandom: [],
+    list: [],
     isShowTextareaModal: false,
     // 是否显示用户信息授权按钮
     isShowUserInfoBtn: true,
@@ -54,7 +55,8 @@ Page({
     //app.js登录后需要执行的 callback 写在此处
     app.loginCallback = resData =>{
       if(_.get(resData, 'code') === 200){
-        this.getIndexList(this.data.currentTab, false);
+        setTimeout(() =>{ this.getIndexList(this.data.currentTab, false);}, 10000)
+        // this.getIndexList(this.data.currentTab, false);
       } else {
         //没有拿到wx.login的回调
       }
@@ -180,7 +182,7 @@ Page({
       cmd = "/auth/theme/listRandom";
     }
     if(isRandom){
-      let listRandom = this.data.listRandom;
+      let listRandom = this.data.list;
       let ids = [];
       for(let i=0;i<listRandom.length;i++){
         ids.push(listRandom[i].id);
@@ -193,12 +195,12 @@ Page({
       success: res =>{
         if(_.get(res, 'data.code') === 200){
           let list = _.get(res, 'data.data.list');
-          if(currentTab === 0){
-            this.setData({listHot: list, currentTab })
-          } else {
-            this.setData({listRandom: list, currentTab })
-          }
-         
+          this.setData({list, currentTab,loading: false})
+          // if(currentTab === 0){
+          //   this.setData({listHot: list, currentTab,loading: false })
+          // } else {
+          //   this.setData({listRandom: list, currentTab,loading: false  })
+          // }
         } else {
           wx.showToast({
             title: '请求异常',
@@ -210,10 +212,8 @@ Page({
   //切换tab页（嗨C、即兴）
   changeTab: function (e) {
     const { currentTab } = this.data;
-    console.log(e, 'fffffffffffffffffffffffffffffffffff', currentTab);
     let item = e.currentTarget.dataset.item;
     if (item !== currentTab) {
-      // this.setData({ currentTab: item });
       this.getIndexList(item, false)
     }
   },
@@ -310,7 +310,6 @@ Page({
             title: '操作异常，请联系客服',
           })
         }
-        console.log(res, "=============================");
       }
     })
   },

@@ -1,3 +1,7 @@
+<!-- 骨架模板 -->
+<import src="index.skeleton.wxml" />
+<template is="skeleton" wx-if="{{loading}}" />
+<!-- 真实界面 -->
 <view class="hotlist-view">
   <view class="top">
     <view class="tabs">
@@ -9,8 +13,9 @@
       <text>freestyle</text>
     </view>
   </view>
-  <view class="hotlist-content">
-    <view class="hotlist-item" wx:for="{{ currentTab === 0 ? listHot : listRandom }}" data-index="{{index}}" wx:key="index" bindtap="navToDetail" data-themeId="{{item.id}}">
+  <view class="hotlist-content" wx:if="{{list.length > 0}}">
+    <view class="hotlist-item" wx:for="{{ list }}" data-index="{{index}}" wx:key="index" bindtap="navToDetail"
+      data-themeId="{{item.id}}">
       <text wx:if="{{currentTab === 0}}"
         class="hotlist-item-sortnum sortnum{{index}}">{{index === 0 ? '哆' :  index === 1 ?'来': index === 2 ?'咪' : index === 3 ?'发': index === 4 ? '唆': index === 5 ?'拉': '西'}}、</text>
       <!-- <text class="hotlist-item-title">王者荣耀 | 新赛季新版本，推荐给你本赛季。。。</text> -->
@@ -24,7 +29,7 @@
   <view class="mask" wx:if="{{isShowTextareaModal}}" bindtap="cancelModal">
     <view class="input-group" catchtap="stopCancelModal">
       <text>有什么新鲜事告诉大家</text>
-      <textarea placeholder="" name="textarea" bindinput="changeText"/>
+      <textarea placeholder="" name="textarea" bindinput="changeText" />
       <view class="button-group">
         <view class="rising-tone group" catchtap="cancelModal">
           <text>取消 ~ </text>
