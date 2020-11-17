@@ -55,8 +55,7 @@ Page({
     //app.js登录后需要执行的 callback 写在此处
     app.loginCallback = resData =>{
       if(_.get(resData, 'code') === 200){
-        setTimeout(() =>{ this.getIndexList(this.data.currentTab, false);}, 10000)
-        // this.getIndexList(this.data.currentTab, false);
+        this.getIndexList(this.data.currentTab, false);
       } else {
         //没有拿到wx.login的回调
       }
@@ -173,9 +172,10 @@ Page({
   //-----------------start------------------
   // 获取首页列表数据
   getIndexList: function(tab, isRandom){
+    const timestamp = Date.parse(new Date());
     let currentTab = tab;
     let cmd = "";
-    let data = {};
+    let data = { timestamp };
     if(currentTab === 0){
       cmd = "/auth/theme/listHot";
     } else {
@@ -187,13 +187,14 @@ Page({
       for(let i=0;i<listRandom.length;i++){
         ids.push(listRandom[i].id);
       }
-      data ={ ids };
+      data ={ ids, timestamp };
     }
     http.get({
       cmd,
       data, 
       success: res =>{
         if(_.get(res, 'data.code') === 200){
+          console.log(res, 'mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm');
           let list = _.get(res, 'data.data.list');
           this.setData({list, currentTab,loading: false})
           // if(currentTab === 0){

@@ -1,6 +1,6 @@
 <!-- 骨架模板 -->
-<import src="index.skeleton.wxml" />
-<template is="skeleton" wx-if="{{loading}}" />
+<!-- <import src="index.skeleton.wxml" />
+<template is="skeleton" wx-if="{{loading}}" /> -->
 <!-- 真实界面 -->
 <view class="hotlist-view">
   <view class="top">
