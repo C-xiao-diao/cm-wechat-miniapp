@@ -10,7 +10,7 @@ App({
     wx.setStorageSync('logs', logs)
 
     // 登录
-    this._login();
+    // this._login();
     // 获取用户信息
     // wx.getSetting({
     //   success: res => {
@@ -33,13 +33,18 @@ App({
     // })
   },
   onShow: function () {
+    console.log(this.globalData.userId)
     console.log("执行了onShow操作")
+    this._login();
   },
   // 登录方法
   _login: function () {
+    const _this = this;
     // 登录
     wx.login({
       success: res => {
+        console.log("执行了app.js的login操作,并已拿到回调")
+        _this.globalData.code = res.code;
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         if (res.code) {
           let cmd = "/api/cWeChat/appletsGetOpenid";
@@ -47,6 +52,7 @@ App({
             cmd,
             data: { code: res.code },
             success: res => {
+              console.log("已从服务器拿到userId")
               if (res.data.code == 200) {
                 var resData = res.data;
                 this.globalData.userId = resData.data.weChatUserId;
@@ -78,5 +84,6 @@ App({
     isConnected: true,
     pixelRatio: 1,
     currentThemeId: '',
+    code: '',
   }
 })

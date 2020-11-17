@@ -63,12 +63,14 @@ Page({
     }
   },
   onShow: function () {
+    console.log("执行了首页的onShow操作",app.globalData.code)
     //注意，主页 onLoad可能提前于 小程序 onLaunch 执行完， 
     // 用户id 在onLaunch 的login里获取，所以 首页加载数据，要么 写在 onShow里，要么写在onLoad的 callback回调里
     let _this = this;
     wx.getSetting({
       withSubscriptions: true,
       success: function (res) {
+        console.log(res,'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb');
         if (res.authSetting['scope.userInfo']) {
           _this.setData({ isShowUserInfoBtn: false });
         }
