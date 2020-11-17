@@ -54,6 +54,7 @@ Page({
     
     //app.js登录后需要执行的 callback 写在此处
     app.loginCallback = resData =>{
+      console.log("执行了loginCallback回调")
       if(_.get(resData, 'code') === 200){
         this.getIndexList(this.data.currentTab, false);
       } else {

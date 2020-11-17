@@ -3,40 +3,14 @@ import { http } from "utils/util";
 
 App({
   onLaunch: function () {
+    console.log("执行了onLaunch操作~~")
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
     // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        if (res.code) {
-          let cmd = "/api/cWeChat/appletsGetOpenid";
-          http.get({
-            cmd,
-            data: { code: res.code },
-            success: res => {
-              if (res.data.code == 200) {
-                var resData = res.data;
-                this.globalData.userId = resData.data.weChatUserId;
-                this.globalData.openId = resData.data.openid;
-                this.globalData.unionid = resData.data.unionid;
-                this.globalData.isVip = resData.data.isVip;
-                this.globalData.studentId = resData.data.studentId;
-                if(this.loginCallback){
-                  this.loginCallback(resData)
-                }
-              }
-            }
-          })
-        } else {
-          // console.log('登录失败'+res.errMsg);
-          wx.showToast({ title: '登录失败!' });
-        }
-      }
-    })
+    this._login();
     // 获取用户信息
     // wx.getSetting({
     //   success: res => {
@@ -57,6 +31,41 @@ App({
     //     }
     //   }
     // })
+  },
+  onShow: function () {
+    console.log("执行了onShow操作")
+  },
+  // 登录方法
+  _login: function () {
+    // 登录
+    wx.login({
+      success: res => {
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        if (res.code) {
+          let cmd = "/api/cWeChat/appletsGetOpenid";
+          http.get({
+            cmd,
+            data: { code: res.code },
+            success: res => {
+              if (res.data.code == 200) {
+                var resData = res.data;
+                this.globalData.userId = resData.data.weChatUserId;
+                this.globalData.openId = resData.data.openid;
+                this.globalData.unionid = resData.data.unionid;
+                this.globalData.isVip = resData.data.isVip;
+                this.globalData.studentId = resData.data.studentId;
+                if (this.loginCallback) {
+                  this.loginCallback(resData)
+                }
+              }
+            }
+          })
+        } else {
+          // console.log('登录失败'+res.errMsg);
+          wx.showToast({ title: '登录失败!' });
+        }
+      }
+    })
   },
   globalData: {
     userInfo: null,
