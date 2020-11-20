@@ -2,12 +2,96 @@
 page {
   background: #f2f2f2;
 }
-
 .hotlist-view {
-  padding: 0 50rpx;
+  /* padding: 0 50rpx; */
   box-sizing: border-box;
 }
+.userInfo{
+  padding: 50rpx 50rpx;
+  background: #fff;
+}
+.userInfo-group{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+.userInfo-group-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.userInfo-group-left .school{
+  font-size: 34rpx;
+  font-weight: 500;
+}
+.userInfo-group-left .funnel{
+  width: 28rpx;
+  height: 28rpx;
+  margin: 0 5rpx;
+}
+.userInfo-group-left .city{
+  font-size: 18rpx;
+}
+.userInfo-group-right{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.userInfo-group-right .userInfo-detail{
+  margin-left: 30rpx;
+}
+.userInfo-group-right .avatar{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
 
+.userInfo-group-right .like{
+  width: 32rpx;
+  height: 30rpx;
+}
+.userInfo-group-right .name-tags text:first-child{
+  font-size: 24rpx;
+}
+.userInfo-group-right .name-tags text:last-child{
+  font-size: 22rpx;
+  color: #fff;
+  background: red;
+  border-radius: 10rpx;
+  padding: 2rpx 10rpx;
+  box-sizing: border-box;
+  margin-left: 20rpx;
+}
+.userInfo-group-right .gender-school{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10rpx;
+}
+.userInfo-group-right .gender-school .my-school{
+  font-size: 24rpx;
+  margin-left: 10rpx;
+}
+
+.userInfo-hot{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.note_active{
+  width: 35rpx;
+  height: 35rpx;
+}
+.hot-num{
+  font-size: 28rpx;
+  margin-left:20rpx;
+}
+
+.content{
+  padding: 0 50rpx;
+}
 .top {
   display: flex;
   justify-content: space-between;
@@ -55,11 +139,14 @@ page {
   box-shadow: 0 0 13rpx rgba(0, 0, 0, 0.3);
   border-radius: 10rpx;
 }
-
+.hotlist-content-item{
+  border-bottom: 1rpx solid #ccc;
+  padding-bottom: 20rpx;
+  box-sizing: border-box;
+}
 .hotlist-item {
   display: flex;
   flex-direction: row;
-  /* margin-bottom: 48rpx; */
 }
 
 .hotlist-item text {
@@ -88,12 +175,22 @@ page {
   white-space: nowrap;
   overflow: hidden;
 }
+.add-view{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 50rpx;
+}
+.add{
+  width: 100rpx;
+  height: 100rpx;
+}
 
 .rising-tone {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 80rpx;
+  margin: 80rpx 0;
 }
 
 .rising-tone text {

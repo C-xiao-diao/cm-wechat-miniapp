@@ -3,34 +3,72 @@
 <template is="skeleton" wx-if="{{loading}}" /> -->
 <!-- 真实界面 -->
 <view class="hotlist-view">
-  <view class="top">
-    <view class="tabs">
-      <text bindtap="changeTab" class="tab {{currentTab === 0 ? 'active' : ''}}" data-item="{{0}}">嗨C</text>
-      <text bindtap="changeTab" class="tab {{currentTab === 1 ? 'active' : ''}}" data-item="{{1}}">即兴</text>
+  <view class="userInfo">
+    <view class="userInfo-group">
+      <view class="userInfo-group-left">
+        <text class="school">长郡中学</text>
+        <image class="funnel" src="/imgs/icons/funnel.png" alt=""></image>
+        <text class="city">长沙市</text>
+      </view>
+      <view class="userInfo-group-right">
+        <image class="avatar" src="/imgs/forumList/avatar.jpg" alt=""></image>
+        <view class="userInfo-detail">
+          <view class="name-tags">
+            <text>一天天的</text>
+            <text class="tags">吃货达人</text>
+          </view>
+          <view class="gender-school">
+            <image class="like" src="/imgs/forumList/female.png" alt=""></image>
+            <text class="my-school">长沙市雅礼中学</text>
+          </view>
+        </view>
+      </view>
     </view>
-    <view class="top-right" wx:if="{{currentTab === 1}}" bindtap="freestyleHandle">
-      <image class="gender" src="/imgs/index/freestyle.png" alt=""></image>
-      <text>freestyle</text>
+    <view class="userInfo-hot">
+      <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
+      <text class="hot-num">999</text>
     </view>
   </view>
-  <view class="hotlist-content" wx:if="{{list.length > 0}}">
-    <view class="hotlist-item" wx:for="{{ list }}" data-index="{{index}}" wx:key="index" bindtap="navToDetail"
-      data-themeId="{{item.id}}">
-      <text wx:if="{{currentTab === 0}}"
-        class="hotlist-item-sortnum sortnum{{index}}">{{index === 0 ? '哆' :  index === 1 ?'来': index === 2 ?'咪' : index === 3 ?'发': index === 4 ? '唆': index === 5 ?'拉': '西'}}、</text>
-      <!-- <text class="hotlist-item-title">王者荣耀 | 新赛季新版本，推荐给你本赛季。。。</text> -->
-      <text class="hotlist-item-title">{{item.theme}}</text>
+  <view class="content">
+    <view class="top">
+      <view class="tabs">
+        <text bindtap="changeTab" class="tab {{currentTab === 0 ? 'active' : ''}}" data-item="{{0}}">嗨C</text>
+        <text bindtap="changeTab" class="tab {{currentTab === 1 ? 'active' : ''}}" data-item="{{1}}">风流人物榜</text>
+        <text bindtap="changeTab" class="tab {{currentTab === 2 ? 'active' : ''}}" data-item="{{2}}">即兴</text>
+      </view>
+      <view class="top-right" wx:if="{{currentTab === 2}}" bindtap="freestyleHandle">
+        <image class="gender" src="/imgs/index/freestyle.png" alt=""></image>
+        <text>freestyle</text>
+      </view>
     </view>
-  </view>
-  <view class="rising-tone" wx:if="{{currentTab === 1}}" bindtap="showTextareaModal">
-    <text>起个调 ~ </text>
-  </view>
-  <!-- 起个调输入框 -->
-  <view class="mask" wx:if="{{isShowTextareaModal}}" bindtap="cancelModal">
-    <view class="input-group" catchtap="stopCancelModal">
-      <text>有什么新鲜事告诉大家</text>
-      <textarea placeholder="" name="textarea" bindinput="changeText" />
-      <view class="button-group">
+    <view class="hotlist-content" wx:if="{{list.length > 0}}">
+      <view class="hotlist-content-item"  wx:for="{{ list }}" data-index="{{index}}" wx:key="index" bindtap="navToDetail">
+        <view class="hotlist-item"
+          data-themeId="{{item.id}}">
+          <text wx:if="{{currentTab === 0}}"
+            class="hotlist-item-sortnum sortnum{{index}}">{{index === 0 ? '哆' :  index === 1 ?'来': index === 2 ?'咪' : index === 3 ?'发': index === 4 ? '唆': index === 5 ?'拉': '西'}}、</text>
+          <!-- <text class="hotlist-item-title">王者荣耀 | 新赛季新版本，推荐给你本赛季。。。</text> -->
+          <text class="hotlist-item-title">{{item.theme}}</text>
+        </view>
+        <view class="userInfo-hot">
+          <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
+          <text class="hot-num">999</text>
+        </view>
+      </view>
+
+      <view class="add-view">
+        <image class="add" src="/imgs/icons/add.png" alt=""></image>
+      </view>
+    </view>
+    <view class="rising-tone" wx:if="{{currentTab === 2}}" bindtap="showTextareaModal">
+      <text>起个调 ~ </text>
+    </view>
+    <!-- 起个调输入框 -->
+    <view class="mask" wx:if="{{isShowTextareaModal}}" bindtap="cancelModal">
+      <view class="input-group" catchtap="stopCancelModal">
+        <text>有什么新鲜事告诉大家</text>
+        <textarea placeholder="" name="textarea" bindinput="changeText" />
+        <view class="button-group">
         <view class="rising-tone group" catchtap="cancelModal">
           <text>取消 ~ </text>
         </view>
@@ -39,7 +77,9 @@
         </view>
       </view> 
     </view>
+    </view>
   </view>
+  
 </view>
 
 <button wx:if="{{isShowUserInfoBtn}}" class="getUserInfoBtn" open-type="getUserInfo" bindgetuserinfo="userInfoHandler"> 获取用户信息</button>

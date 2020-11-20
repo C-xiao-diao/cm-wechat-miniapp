@@ -39,12 +39,10 @@ App({
   },
   // 登录方法
   _login: function () {
-    const _this = this;
     // 登录
     wx.login({
       success: res => {
         console.log("执行了app.js的login操作,并已拿到回调")
-        _this.globalData.code = res.code;
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         if (res.code) {
           let cmd = "/api/cWeChat/appletsGetOpenid";
@@ -84,6 +82,5 @@ App({
     isConnected: true,
     pixelRatio: 1,
     currentThemeId: '',
-    code: '',
   }
 })
