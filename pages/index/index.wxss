@@ -2,60 +2,72 @@
 page {
   background: #f2f2f2;
 }
+
 .hotlist-view {
   /* padding: 0 50rpx; */
   box-sizing: border-box;
 }
-.userInfo{
+
+.userInfo {
   padding: 50rpx 50rpx;
   background: #fff;
 }
-.userInfo-group{
+
+.userInfo-group {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
 }
+
 .userInfo-group-left {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.userInfo-group-left .school{
+
+.userInfo-group-left .school {
   font-size: 34rpx;
   font-weight: 500;
 }
-.userInfo-group-left .funnel{
+
+.userInfo-group-left .funnel {
   width: 28rpx;
   height: 28rpx;
   margin: 0 5rpx;
 }
-.userInfo-group-left .city{
+
+.userInfo-group-left .city {
   font-size: 18rpx;
 }
-.userInfo-group-right{
+
+.userInfo-group-right {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.userInfo-group-right .userInfo-detail{
+
+.userInfo-group-right .userInfo-detail {
   margin-left: 30rpx;
 }
-.userInfo-group-right .avatar{
+
+.userInfo-group-right .avatar {
   width: 120rpx;
   height: 120rpx;
   border-radius: 50%;
 }
 
-.userInfo-group-right .like{
+.userInfo-group-right .gender {
   width: 32rpx;
   height: 30rpx;
 }
-.userInfo-group-right .name-tags text:first-child{
+
+.name-tags text:first-child {
   font-size: 24rpx;
 }
-.userInfo-group-right .name-tags text:last-child{
+
+.name-tags text:last-child {
   font-size: 22rpx;
   color: #fff;
   background: red;
@@ -64,34 +76,40 @@ page {
   box-sizing: border-box;
   margin-left: 20rpx;
 }
-.userInfo-group-right .gender-school{
+
+.gender-school {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-top: 10rpx;
 }
-.userInfo-group-right .gender-school .my-school{
+
+.gender-school .my-school {
   font-size: 24rpx;
   margin-left: 10rpx;
+  margin-right: 10rpx;
 }
 
-.userInfo-hot{
+.userInfo-hot {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
 }
-.note_active{
+
+.note_active {
   width: 35rpx;
   height: 35rpx;
 }
-.hot-num{
-  font-size: 28rpx;
-  margin-left:20rpx;
+
+.hot-num {
+  font-size: 24rpx;
+  margin-left: 10rpx;
 }
 
-.content{
+.content {
   padding: 0 50rpx;
 }
+
 .top {
   display: flex;
   justify-content: space-between;
@@ -138,12 +156,16 @@ page {
   box-sizing: border-box;
   box-shadow: 0 0 13rpx rgba(0, 0, 0, 0.3);
   border-radius: 10rpx;
+  background: white;
 }
-.hotlist-content-item{
+
+.hotlist-content-item {
   border-bottom: 1rpx solid #ccc;
   padding-bottom: 20rpx;
+  padding-top: 20rpx;
   box-sizing: border-box;
 }
+
 .hotlist-item {
   display: flex;
   flex-direction: row;
@@ -175,13 +197,111 @@ page {
   white-space: nowrap;
   overflow: hidden;
 }
-.add-view{
+
+/* 风云人物 */
+.famous-people {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.famous-people-num {
+  font-size: 48rpx;
+}
+.famous-people .famous-people-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin: 0 30rpx;
+}
+.gender-school .famous-people-gender {
+  width: 32rpx;
+  height: 30rpx;
+}
+/* 即兴 */
+.impromptu{
+  margin-bottom: 50rpx;
+}
+.impromptu-view1,
+.impromptu-view2,
+.impromptu-view3 {
+  box-shadow: 0 0 13rpx rgba(0, 0, 0, 0.3);
+  margin-top: 35rpx;
+}
+.impromptu-view3 {
+  padding: 50rpx;
+  background: white;
+}
+.impromptu-view3-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.impromptu-view3-top-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-right: 35rpx;
+}
+.impromptu-view3-title{
+  margin-top: 35rpx;
+}
+.impromptu-view3-title text{
+  font-weight: 500;
+}
+.impromptu-view3-content {
+  font-size: 24rpx;
+  color: #333;
+  line-height: 42rpx;
+}
+.impromptu-view3-images {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30rpx;
+  flex-wrap: wrap;
+}
+.impromptu-view3-photo {
+  width: 160rpx;
+  height: 115rpx;
+  margin-bottom: 20rpx;
+}
+.impromptu-view3-options{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30rpx;
+}
+.impromptu-view3-options > view:first-child{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.impromptu-view3-options > view:first-child image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.impromptu-view3-options > view:last-child{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.impromptu-view3-options > view:last-child image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.add-view {
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin-top: 50rpx;
 }
-.add{
+
+.add {
   width: 100rpx;
   height: 100rpx;
 }
@@ -229,17 +349,20 @@ page {
   color: #333;
   font-weight: 700;
 }
-.input-group textarea{
+
+.input-group textarea {
   border: 1rpx solid #999;
   height: 180rpx;
   margin-top: 30rpx;
 }
-.button-group{
+
+.button-group {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-.group{
+
+.group {
   width: 30%;
   margin-top: 30rpx;
 }

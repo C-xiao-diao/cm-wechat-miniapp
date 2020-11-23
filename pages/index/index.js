@@ -13,7 +13,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    currentTab: 0,
+    currentTab: 2,
     // listHot: ['哆', '来', '咪', '发', '唆', '拉', '西'],
     list: [],
     isShowTextareaModal: false,

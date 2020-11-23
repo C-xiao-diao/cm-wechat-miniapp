@@ -18,7 +18,7 @@
             <text class="tags">吃货达人</text>
           </view>
           <view class="gender-school">
-            <image class="like" src="/imgs/forumList/female.png" alt=""></image>
+            <image class="gender" src="/imgs/forumList/female.png" alt=""></image>
             <text class="my-school">长沙市雅礼中学</text>
           </view>
         </view>
@@ -41,18 +41,36 @@
         <text>freestyle</text>
       </view>
     </view>
-    <view class="hotlist-content" wx:if="{{list.length > 0}}">
-      <view class="hotlist-content-item"  wx:for="{{ list }}" data-index="{{index}}" wx:key="index" bindtap="navToDetail">
-        <view class="hotlist-item"
-          data-themeId="{{item.id}}">
-          <text wx:if="{{currentTab === 0}}"
+    <view class="hotlist-content" wx:if="{{list.length > 0 && (currentTab === 0 || currentTab === 1)}}">
+      <view class="hotlist-content-item" wx:for="{{ list }}" data-index="{{index}}" wx:key="index"
+        bindtap="navToDetail">
+        <!-- 嗨C -->
+        <view class="hotlist-item" data-themeId="{{item.id}}" wx:if="{{currentTab === 0}}">
+          <text
             class="hotlist-item-sortnum sortnum{{index}}">{{index === 0 ? '哆' :  index === 1 ?'来': index === 2 ?'咪' : index === 3 ?'发': index === 4 ? '唆': index === 5 ?'拉': '西'}}、</text>
-          <!-- <text class="hotlist-item-title">王者荣耀 | 新赛季新版本，推荐给你本赛季。。。</text> -->
           <text class="hotlist-item-title">{{item.theme}}</text>
         </view>
-        <view class="userInfo-hot">
+        <view class="userInfo-hot" wx:if="{{currentTab === 0}}">
           <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
           <text class="hot-num">999</text>
+        </view>
+        <!-- 风云人物榜 -->
+        <view class="famous-people" wx:if="{{currentTab === 1}}">
+          <text
+            class="famous-people-num">{{index === 0 ? '1' : index === 1 ?'2': index === 2 ?'3' : index === 3 ?'4': index === 4 ? '5': index === 5 ?'6': '7'}}</text>
+          <image class="famous-people-avatar" src="/imgs/forumList/avatar.jpg" alt=""></image>
+          <view>
+            <view class="name-tags">
+              <text>一天天的</text>
+              <text class="tags">吃货达人</text>
+            </view>
+            <view class="gender-school">
+              <image class="famous-people-gender" src="/imgs/forumList/female.png" alt=""></image>
+              <text class="my-school">长沙市雅礼中学</text>
+              <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
+              <text class="hot-num">999</text>
+            </view>
+          </view>
         </view>
       </view>
 
@@ -60,9 +78,56 @@
         <image class="add" src="/imgs/icons/add.png" alt=""></image>
       </view>
     </view>
-    <view class="rising-tone" wx:if="{{currentTab === 2}}" bindtap="showTextareaModal">
-      <text>起个调 ~ </text>
+    <!-- 即兴 -->
+    <view class="impromptu" wx:if="{{currentTab === 2}}">
+      <view class=impromptu-view1"></view>
+      <view class=impromptu-view2"></view>
+      <view class=impromptu-view3">
+        <view class="impromptu-view3-top">
+          <image class="impromptu-view3-top-avatar" src="/imgs/forumList/avatar.jpg" alt=""></image>
+          <view>
+            <view class="name-tags">
+              <text>一天天的</text>
+              <text class="tags">吃货达人</text>
+            </view>
+            <view class="gender-school">
+              <image class="famous-people-gender" src="/imgs/forumList/female.png" alt=""></image>
+              <text class="my-school">长沙市雅礼中学</text>
+              <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
+              <text class="hot-num">999</text>
+            </view>
+          </view>
+        </view>
+        <view class="impromptu-view3-title">
+          <text>LOL手游 | 有人一起开黑吗</text>
+        </view>
+        <text class="impromptu-view3-content">君泽：不瞒你说，昨天我直接啥疯了[doge]昨天我像个神一样[赞]昨天我们去玩密室，小虎GALA小龙堡三个人打不过我一个，直接被我杀疯[doge]\n 墨子：你还挺骄傲的？这有啥可骄傲的[疑问]在密室里面不敢出去，就杀自己队友[二哈]</text>
+        <view class="impromptu-view3-images">
+          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
+          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
+          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
+          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
+          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
+          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
+          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
+          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
+          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
+        </view>
+        <view class="impromptu-view3-options">
+          <view>
+            <image class="impromptu-view3-photo" src="./../../imgs/icons/no_like.png" alt=""></image>
+            <text>不感兴趣</text>
+          </view>
+          <view>
+            <image class="impromptu-view3-photo" src="./../../imgs/icons/edit.png" alt=""></image>
+            <text>跟调</text>
+          </view>
+        </view>
+      </view>
     </view>
+    <!-- <view class="rising-tone" wx:if="{{currentTab === 2}}" bindtap="showTextareaModal">
+      <text>起个调 ~ </text>
+    </view> -->
     <!-- 起个调输入框 -->
     <view class="mask" wx:if="{{isShowTextareaModal}}" bindtap="cancelModal">
       <view class="input-group" catchtap="stopCancelModal">
