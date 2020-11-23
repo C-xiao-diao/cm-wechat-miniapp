@@ -1,0 +1,22 @@
+Page{
+  background: #f2f2f2;
+}
+.registerTwo-view{
+  height: 100%;
+  width: 750rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+.registerOneSubmit{
+  margin-top: 100rpx;
+}
+.description{
+  color: #ccc;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  text-align: center;
+}
