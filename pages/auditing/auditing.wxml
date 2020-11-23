@@ -1,0 +1,8 @@
+<!--auditing.wxml-->
+
+<view class="container">
+    <view>
+        <text>正在审核中...</text>
+        <text>请耐心等待...</text>
+    </view>
+</view>

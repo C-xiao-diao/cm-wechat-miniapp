@@ -3,6 +3,7 @@
     "pages/index/index",
     "pages/follow/follow",
     "pages/forumList/forumList",
+    "pages/auditing/auditing",
     "pages/logs/logs"
   ],
   "window":{
