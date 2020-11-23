@@ -1,0 +1,21 @@
+<view class="follow-view">
+  <view class="options">
+    <text class="cancel" bindtap="goBack">取消</text>
+    <text class="button" bindtap="follow">跟调</text>
+  </view>
+  <view>
+    <input class="title" type="text" placeholder="输入你想讨论的问题或话题" bindinput="addContent"/>
+    <textarea class="addContent" bindinput="addContent" name="" id="" cols="30" rows="10" placeholder="对话题进行额外的补充（最多160个字）"></textarea>
+  </view>
+  <view class="photo-group">
+    <view class="add-photo" wx:for="{{picture}}" wx:key="index">
+      <image class="photo" src="{{item}}" alt=""></image>
+    </view>
+    <view class="add-photo" bindtap="addPhoto">
+      <image class="photo" src="/imgs/follow/add.jpg" alt=""></image>
+    </view>
+  </view>
+  <view class="tips">
+    <text >小贴士：当提问超过20音符的赞同之后，将无法个人删除</text>
+  </view>
+</view>

@@ -1,9 +1,10 @@
 {
   "pages":[
+    "pages/startTune/startTune",
+    "pages/follow/follow",
     "pages/registerTwo/registerTwo",
     "pages/registerOne/registerOne",
     "pages/index/index",
-    "pages/follow/follow",
     "pages/forumList/forumList",
     "pages/auditing/auditing",
     "pages/logs/logs"

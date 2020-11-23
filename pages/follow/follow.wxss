@@ -1,5 +1,4 @@
 .follow-view{
-  padding: 0 30rpx;
   box-sizing: border-box;
 }
 
@@ -9,6 +8,7 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 20rpx;
+  padding: 0 30rpx;
 }
 .options .cancel{
   font-size: 30rpx;
@@ -24,9 +24,19 @@
   line-height: 68rpx;
   text-align: center;
 }
-input{
+input, .title{
+  width: 100%;
   margin-top: 40rpx;
-  margin-left: 40rpx;
+  border-top: 1rpx solid #ccc;
+  border-bottom: 1rpx solid #ccc;
+  height: 100rpx;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+}
+.addContent{
+  padding-left: 30rpx;
+  padding-top: 30rpx;
+  box-sizing: border-box;
 }
 .photo-group{
   display: flex;
@@ -48,4 +58,14 @@ input{
 image.photo{
   width: 200rpx;
   height: 200rpx;
+}
+.tips{
+  position: absolute;
+  left: 10%;
+  bottom: 50rpx;
+  font-size: 22rpx;
+  color:#666;
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }
