@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/registerOne/registerOne",
     "pages/index/index",
     "pages/follow/follow",
     "pages/forumList/forumList",
