@@ -1,0 +1,67 @@
+<view class="container">
+    <view class="header">
+        <view class="avatar-erea">
+            <image class="avatar" bindtap="headimage" src='{{avatar}}'></image>
+            <image class="camera" mode="aspecFill" src="/imgs/icons/camera.png" bindtap="headimage"></image>
+        </view>
+        <view class="nickname">
+            <text>一天天的</text><image class="edit-nickname" src="/imgs/icons/pen.png"></image>
+        </view>
+        <view class="membership">
+            <view class="point">我的音符 <image src="/imgs/icons/note_active.png"></image> 999</view>
+            <text class="my-tag">吃货达人</text>
+        </view>
+    </view>
+
+    <view class="swiper-tab">
+        <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">起个调吧</view>
+        <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">跟调</view>
+    </view>
+
+    <view class="swiper-box" wx:if="{{currentTab==0}}">
+        <view class="article-area" bind:tap="{{closeList}}">
+            <view class="article-title">
+                <text>LOL手游 | 有人一起开黑吗？有人一起开黑吗？有人一起开黑吗？</text>
+                <more-button></more-button>
+            </view>
+            <text class="article-content">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</text>
+            <!-- <view class="article-images">
+                <image class="" src=""></image>
+                <image class="" src=""></image>
+                <image class="" src=""></image>
+                <image class="" src=""></image>
+                <image class="" src=""></image>
+                <image class="" src=""></image>
+                <image class="" src=""></image>
+                <image class="" src=""></image>
+                <image class="" src=""></image>
+            </view> -->
+            <view class="article-hot">
+                <view>
+                    <image src="/imgs/icons/note_active.png"></image>
+                    <text>999</text>
+                </view>
+            </view>
+        </view>
+        <view class="article-area">
+            <view class="article-title">
+                <text>LOL手游 | 有人一起开黑吗？有人一起开黑吗？有人一起开黑吗？</text>
+                <more-button></more-button>
+            </view>
+            <text class="article-content">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</text>
+            <view class="article-hot">
+                <view>
+                    <image src="/imgs/icons/note_active.png"></image>
+                    <text>999</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="swiper-box" wx:if="{{currentTab==1}}">
+        <view>跟调</view>
+    </view>
+
+    <view class="toTop">
+        <image class="" src="/imgs/icons/top.png"></image>
+    </view>
+</view>

@@ -4,6 +4,7 @@
     "pages/follow/follow",
     "pages/forumList/forumList",
     "pages/auditing/auditing",
+    "pages/memberCenter/memberCenter",
     "pages/logs/logs"
   ],
   "window":{

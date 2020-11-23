@@ -1,0 +1,8 @@
+<view class="more-button">
+    <image src="/imgs/icons/more.png" bind:tap="showListOrNot"></image>
+    <view class="list" wx:if="{{showList}}">
+        <text>编辑</text>
+        <text>删除</text>
+        <text>转发</text>
+    </view>
+</view>

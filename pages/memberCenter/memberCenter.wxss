@@ -1,0 +1,216 @@
+
+/* 头部样式 */
+Page {
+    background: #f2f2f2;
+}
+
+.header{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background: #fff;
+    padding-bottom: 50rpx;
+}
+
+.avatar-erea {
+    margin: 30rpx 0;
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 50%;
+    background: #eee;
+    position: relative;
+}
+
+.avatar-erea image.avatar {
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 50%;
+}
+
+.camera {
+    position: absolute;
+    right: -20rpx;
+    bottom: -5rpx;
+    width: 80rpx;
+    height: 80rpx;
+}
+
+.text {
+    line-height: 50rpx; 
+    color:  lightgray; 
+    font-size: 35rpx; 
+}
+
+.nickname {
+    display: flex;
+}
+
+.nickname text {
+    font-size: 36rpx;
+}
+
+.nickname image {
+    width: 40rpx;
+    height: 40rpx;
+    margin-left: 10rpx;
+}
+
+.membership {
+    width: 30%;
+    position: absolute;
+    right: 0;
+    bottom: 30rpx;
+    font-size: 30rpx;
+}
+
+.membership .point {
+    margin-bottom: 10rpx;
+    padding-left: 10rpx;
+}
+
+.membership image {
+    float: left;
+    margin: 5rpx 5rpx 0 0;
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.membership .my-tag {
+    float: right;
+    background: #fe0000;
+    color: #fff;
+    border-radius: 10rpx;
+    padding: 0 10rpx;
+    margin-right: 10rpx;
+}
+
+/* 头部样式END */
+
+/* tab切换 */
+.swiper-tab {
+    width: 100%;
+    display: flex;
+}
+
+.swiper-tab-list {
+    width: 50%;
+    background: #fff;
+    text-align: center;
+    line-height: 100rpx;
+    border-top: 2rpx solid #e5e5e5;
+}
+
+.swiper-tab-list.on {
+    background: #898989;
+    color: #fff;
+}
+/* tab切换END */
+
+
+/* acticle样式 */
+.swiper-box {
+    width: 100%;
+}
+
+swiper-item {
+    margin: 30rpx 0;
+}
+
+.article-area {
+    width: 90%;
+    margin: 20rpx auto 50rpx;
+}
+
+.article-title {
+    display: flex;
+}
+
+.article-title text {
+    display: block;
+    flex: 1;
+    height: 50rpx;
+    font-size: 36rpx;
+    line-height: 50rpx;
+    margin-bottom: 10rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+more-button {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.article-content {
+    width: 100%;
+    line-height: 40rpx;
+    font-size: 32rpx;
+}
+
+.article-images {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.article-images image {
+    display: block;
+    width: 200rpx;
+    height: 160rpx;
+    margin: 13rpx;
+    background: #666;
+}
+
+.article-hot {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 20rpx;
+}
+
+.article-hot view {
+    display: flex;
+    width: 120rpx;
+    background: #fff;
+    border-radius: 25rpx;
+    padding: 5rpx 10rpx;
+}
+
+.article-hot image {
+    float: left;
+    margin: 8rpx 10rpx 0 10rpx;
+    width: 36rpx;
+    height: 36rpx;
+    line-height: 50rpx;
+    vertical-align: middle;
+}
+
+.article-hot text {
+    font-size: 32rpx;
+    line-height: 50rpx;
+    color: #d81501;
+}
+/* acticle样式END */
+
+/* 回到顶部样式 */
+
+.toTop {
+    position: fixed;
+    bottom: 5%;
+    right: 10rpx;
+}
+
+.toTop image {
+    width: 100rpx;
+    height: 100rpx;
+}
+
+
+
+/* 回到顶部样式END */
