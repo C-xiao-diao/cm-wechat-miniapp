@@ -366,3 +366,30 @@ page {
   width: 30%;
   margin-top: 30rpx;
 }
+/* 切换学校弹框 */
+.school-group{
+  background: white;
+  width: 90%;
+  padding: 50rpx;
+  box-sizing: border-box;
+}
+.input-school-group{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.input-school-group input{
+  padding: 20rpx 30rpx;
+}
+.button-school-group{
+  display: flex;
+  justify-content: center;
+  margin-top: 50rpx;
+}
+.address-input,.school-input{
+  border: 1rpx solid #ccc;
+}
+.address-input{
+  width: 150rpx;
+  margin-right: 30rpx;
+}

@@ -13,14 +13,18 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    currentTab: 2,
+    currentTab: 0,
     // listHot: ['哆', '来', '咪', '发', '唆', '拉', '西'],
     list: [],
     isShowTextareaModal: false,
     // 是否显示用户信息授权按钮
     isShowUserInfoBtn: true,
+    //是否现实切换学校的弹框
+    isShowSchoolChangeModal: false,
     //起个调的主题
     theme: "",
+    address: "全国",
+    schoolName: "长郡中学"
   },
   onLoad: function () {
     // if (app.globalData.userInfo) {
@@ -173,6 +177,10 @@ Page({
 
   },
   //-----------------start------------------
+  //切换学校
+  changeSchool: function(){
+    this.setData({isShowSchoolChangeModal: true})
+  },
   // 获取首页列表数据
   getIndexList: function(tab, isRandom){
     wx.showLoading({ title: '正在加载'})
@@ -287,7 +295,7 @@ Page({
   },
   // 隐藏模态输入框
   cancelModal: function () {
-    this.setData({ isShowTextareaModal: false })
+    this.setData({ isShowTextareaModal: false, isShowSchoolChangeModal: false })
   },
   // 起个调
   risingTone: function () {

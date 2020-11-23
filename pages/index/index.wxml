@@ -5,7 +5,7 @@
 <view class="hotlist-view">
   <view class="userInfo">
     <view class="userInfo-group">
-      <view class="userInfo-group-left">
+      <view class="userInfo-group-left" bindtap="changeSchool">
         <text class="school">长郡中学</text>
         <image class="funnel" src="/imgs/icons/funnel.png" alt=""></image>
         <text class="city">长沙市</text>
@@ -101,7 +101,9 @@
         <view class="impromptu-view3-title">
           <text>LOL手游 | 有人一起开黑吗</text>
         </view>
-        <text class="impromptu-view3-content">君泽：不瞒你说，昨天我直接啥疯了[doge]昨天我像个神一样[赞]昨天我们去玩密室，小虎GALA小龙堡三个人打不过我一个，直接被我杀疯[doge]\n 墨子：你还挺骄傲的？这有啥可骄傲的[疑问]在密室里面不敢出去，就杀自己队友[二哈]</text>
+        <text
+          class="impromptu-view3-content">君泽：不瞒你说，昨天我直接啥疯了[doge]昨天我像个神一样[赞]昨天我们去玩密室，小虎GALA小龙堡三个人打不过我一个，直接被我杀疯[doge]\n
+          墨子：你还挺骄傲的？这有啥可骄傲的[疑问]在密室里面不敢出去，就杀自己队友[二哈]</text>
         <view class="impromptu-view3-images">
           <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
           <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
@@ -142,9 +144,25 @@
         </view>
       </view> 
     </view>
+    
     </view>
   </view>
   
 </view>
 
+
+<!-- 切换地址学校模态框 -->
+<view class="mask" wx:if="{{isShowSchoolChangeModal}}" bindtap="cancelModal">
+  <view class="school-group"  catchtap="stopCancelModal">
+    <view class="input-school-group">
+      <input class="address-input" value="{{address}}" type="text" disabled="true"/>
+      <input class="school-input" value="{{schoolName}}" type="text" disabled="true"/>
+    </view>
+    <view class="button-school-group">
+      <button class="mini-btn" type="primary" size="mini">确认</button>
+      <button class="mini-btn" type="default" size="mini">取消</button>
+    </view>
+  </view>
+</view>
+<!-- end -->
 <button wx:if="{{isShowUserInfoBtn}}" class="getUserInfoBtn" open-type="getUserInfo" bindgetuserinfo="userInfoHandler"> 获取用户信息</button>
