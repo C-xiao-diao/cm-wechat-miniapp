@@ -4,11 +4,8 @@
     <text class="button" bindtap="follow">跟调</text>
   </view>
   <view>
-    <input class="title" disabled="true" type="text" placeholder="LOL手游 | 有人一起开黑吗？" bindinput="addContent"/>
-    <!-- <text class="title">
-      LOL手游 | 有人一起开黑吗？
-    </text> -->
-    <textarea class="addContent" bindinput="addContent" name="" id="" cols="30" rows="10" placeholder="填写评论（最多300个字）"></textarea>
+    <input class="title" type="text" placeholder="输入你想讨论的问题或话题" bindinput="addContent"/>
+    <textarea class="addContent" bindinput="addContent" name="" id="" cols="30" rows="10" placeholder="对话题进行额外的补充（最多160个字）"></textarea>
   </view>
   <view class="photo-group">
     <view class="add-photo" wx:for="{{picture}}" wx:key="index">
