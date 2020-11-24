@@ -8,6 +8,7 @@
     "pages/forumList/forumList",
     "pages/auditing/auditing",
     "pages/memberCenter/memberCenter",
+    "pages/invite/invite",
     "pages/logs/logs"
   ],
   "window":{

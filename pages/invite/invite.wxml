@@ -1,0 +1,25 @@
+
+<view class="container">
+    <view class="header">
+        <text>邀请好友抢音符上不封顶</text>    
+        <view class="rules">音符规则</view>
+    </view>
+    <view class="main">
+        <image class="avatar" src="/imgs/forumList/avatar.jpg"></image>
+        <text class="description">每邀请一名好友注册成功</text>
+        <text class="description">双方各得200音符，上不封顶</text>
+        <button open-type='share'>邀请好友领音符</button>
+        <text class="description">已邀请：8人</text>
+        <text class="description">音符奖励：1600</text>
+        <view class="avatar-list">
+            <image src="/imgs/forumList/avatar.jpg"></image>
+            <image src="/imgs/forumList/avatar.jpg"></image>
+            <image src="/imgs/forumList/avatar.jpg"></image>
+            <image src="/imgs/forumList/avatar.jpg"></image>
+            <image src="/imgs/forumList/avatar.jpg"></image>
+            <image src="/imgs/forumList/avatar.jpg"></image>
+            <image src="/imgs/forumList/avatar.jpg"></image>
+            <image src="/imgs/forumList/avatar.jpg"></image>
+        </view>
+    </view>
+</view>
