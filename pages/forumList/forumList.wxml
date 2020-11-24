@@ -9,7 +9,7 @@
       <image src="/imgs/icons/note_active.png" alt=""></image>
       <text>999</text>
       <image src="/imgs/icons/edit.png" alt=""></image>
-      <text>跟调</text>
+      <text bindtap="navToFollow">跟调</text>
     </view>
   </view>
   <view class="list">
@@ -43,8 +43,5 @@
         <image class="bottom-photo" src="{{newItem}}" alt=""></image>
       </view>
     </view>
-  </view>
-  <view class="follow" bindtap="navToFollow" wx:if="{{ list && list.length >0 }}">
-    <text>跟调 ~ </text>
   </view>
 </view>
