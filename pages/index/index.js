@@ -10,6 +10,7 @@ Page({
   data: {
     //骨架
     loading: true,
+    userStatus: 2,       //0   1   2   3
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -177,9 +178,21 @@ Page({
 
   },
   //-----------------start------------------
-  //切换学校
+  //切换学校弹框显示
   changeSchool: function(){
     this.setData({isShowSchoolChangeModal: true})
+  },
+  //选择地址底部框显示
+  bindPickerChange: function(e){
+    console.log(e,'gggggggggggggggggggggggg')
+    const value = e.detail.value;
+    this.setData({ address: value[2]});
+  },
+  //前往注册界面
+  navToRegister: function(){
+    wx.navigateTo({
+      url: '/pages/registerOne/registerOne',
+    })
   },
   // 获取首页列表数据
   getIndexList: function(tab, isRandom){

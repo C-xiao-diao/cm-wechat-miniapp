@@ -5,6 +5,11 @@
 <view class="hotlist-view">
   <view class="userInfo">
     <view class="userInfo-group">
+      <!-- <picker bindchange="bindPickerChange" mode="region">
+        <view class="picker">
+          当前选择：
+        </view>
+      </picker> -->
       <view class="userInfo-group-left" bindtap="changeSchool">
         <text class="school">长郡中学</text>
         <image class="funnel" src="/imgs/icons/funnel.png" alt=""></image>
@@ -12,7 +17,7 @@
       </view>
       <view class="userInfo-group-right">
         <image class="avatar" src="/imgs/forumList/avatar.jpg" alt=""></image>
-        <view class="userInfo-detail">
+        <view class="userInfo-detail" wx:if="{{userStatus === 0}}">
           <view class="name-tags">
             <text>一天天的</text>
             <text class="tags">吃货达人</text>
@@ -21,12 +26,20 @@
             <image class="gender" src="/imgs/forumList/female.png" alt=""></image>
             <text class="my-school">长沙市雅礼中学</text>
           </view>
+          <view class="userInfo-hot ">
+            <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
+            <text class="hot-num">999</text>
+          </view>
+        </view>
+        <view class="userStatus" wx:if="{{userStatus === 1}}">
+          <text>一天天的</text>
+          <text>未登录</text>
+        </view>
+        <view class="userStatus" wx:if="{{userStatus === 2}}">
+          <text>一天天的</text>
+          <text bindtap="navToRegister">未注册</text>
         </view>
       </view>
-    </view>
-    <view class="userInfo-hot">
-      <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
-      <text class="hot-num">999</text>
     </view>
   </view>
   <view class="content">
@@ -155,7 +168,12 @@
 <view class="mask" wx:if="{{isShowSchoolChangeModal}}" bindtap="cancelModal">
   <view class="school-group" catchtap="stopCancelModal">
     <view class="input-school-group">
-      <input class="address-input" value="{{address}}" type="text" disabled="true"/>
+      <!-- <input class="address-input" bindtap="changeAddress" value="{{address}}" type="text" disabled="true"/> -->
+      <picker class="address-input" bindchange="bindPickerChange" mode="region">
+        <view class="picker">
+          {{address}}
+        </view>
+      </picker>
       <input class="school-input" value="{{schoolName}}" type="text" disabled="true"/>
     </view>
     <view class="button-school-group">
