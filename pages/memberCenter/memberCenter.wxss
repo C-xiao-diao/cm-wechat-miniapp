@@ -220,3 +220,77 @@ more-button {
 
 
 /* 回到顶部样式END */
+
+/* 编辑昵称对话框样式 */
+.editModal {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 25%;
+}
+
+.editModal .wrap {
+    width: 70%;
+    height: auto;
+    margin: 0 auto;
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 15rpx;
+    box-shadow: 0 0 10rpx rgba(0,0,0,0.2);
+}
+
+.editModal .title {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 32rpx;
+    padding: 30rpx 0 20rpx;
+    border-bottom: 2rpx solid #eee;
+}
+
+.editModal .title .span {
+    font-size: 28rpx;
+    color: #666;
+}
+
+.editModal .content {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    padding: 20rpx;
+    border-bottom: 2rpx solid #eee;
+}
+
+.editModal .content input {
+    width: 100%;
+    font-size: 34rpx;
+    line-height: 50rpx;
+    height: 50rpx;
+    box-sizing: border-box;
+    padding: 0 20rpx;
+}
+
+.editModal .btns {
+    display: flex;
+    width: 100%;
+}
+
+.editModal .btns text {
+    display: block;
+    width: 50%;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    font-size: 30rpx;
+}
+
+.cancel {
+    color: #666;
+    border-right: 2rpx solid #eee;
+}
+
+.confirm {
+    color: #000;
+}
+
+/* 编辑昵称对话框样式END */

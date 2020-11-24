@@ -1,7 +1,7 @@
 <view class="container">
     <view class="header">
         <view class="avatar-erea">
-            <image class="avatar" bindtap="headimage" src='{{avatar}}'></image>
+            <image class="avatar" bindtap="previewImage" src='{{avatar}}'></image>
             <image class="camera" mode="aspecFill" src="/imgs/icons/camera.png" bindtap="headimage"></image>
         </view>
         <view class="nickname">
@@ -22,11 +22,11 @@
         <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">跟调</view>
     </view>
 
-    <view class="swiper-box" wx:if="{{currentTab==0}}">
-        <view class="article-area" bind:tap="{{closeList}}">
+    <view class="swiper-box" wx:if="{{currentTab==0}}" bind:tap="closeList">
+        <view class="article-area">
             <view class="article-title">
                 <text>LOL手游 | 有人一起开黑吗？有人一起开黑吗？有人一起开黑吗？</text>
-                <more-button></more-button>
+                <more-button id="moreBtn"></more-button>
             </view>
             <text class="article-content">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</text>
             <!-- <view class="article-images">
@@ -49,8 +49,8 @@
         </view>
         <view class="article-area">
             <view class="article-title">
-                <text>LOL手游 | 有人一起开黑吗？有人一起开黑吗？有人一起开黑吗？</text>
-                <more-button></more-button>
+                <text>LOL手游 | 有人一起开黑吗？有人一起开黑吗？</text>
+                <more-button class="moreBtn"></more-button>
             </view>
             <text class="article-content">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</text>
             <view class="article-hot">
@@ -64,6 +64,21 @@
     <view class="swiper-box" wx:if="{{currentTab==1}}">
         <view>跟调</view>
     </view>
+
+    <!-- 编辑昵称对话框 -->
+    <view class="editModal" wx:if="{{showEditModal}}">
+        <view class="wrap">
+            <text class="title">修改昵称 <text class="span">(只能修改一次)</text></text>
+            <view class="content">
+                <input type="text" focus="{{true}}" value="{{nickname}}" />
+            </view>
+            <view class="btns">
+                <text class="cancel" bind:tap="editCancel">取消</text>
+                <text class="confirm" bind:tap="editConfirm">确认</text>
+            </view>
+        </view>
+    </view>
+    <!-- 编辑昵称对话框END -->
 
     <view class="toTop">
         <image class="" src="/imgs/icons/top.png"></image>
