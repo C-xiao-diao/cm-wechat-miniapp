@@ -25,4 +25,10 @@ Page({
     let realName = e.detail.value;
     this.setData({ realName });
   },
+  //下一步
+  registerTwoSubmit: function(){
+    wx.navigateTo({
+      url: '/pages/auditing/auditing',
+    })
+  }
 })
