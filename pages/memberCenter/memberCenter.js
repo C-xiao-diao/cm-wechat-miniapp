@@ -2,8 +2,16 @@ Page({
     data: {
         avatar: '/imgs/forumList/avatar.jpg',
         showModal: false,
-        currentTab: 0
+        currentTab: 0,
+        nickname: '一天一天'
     },
+    //跳转音符规则页面
+    toInvite: function(){
+        wx.navigateTo({
+            url: '../invite/invite'
+        });
+    },
+    //修改图片
     headimage: function () {
         var  _this = this;
         wx.chooseImage({
@@ -30,7 +38,8 @@ Page({
             })
         }
     },
-    closeList: function(){
+    //编辑昵称
+    editNickname: function(){
         
     }
 })
