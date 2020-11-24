@@ -184,7 +184,6 @@ Page({
   },
   //选择地址底部框显示
   bindPickerChange: function(e){
-    console.log(e,'gggggggggggggggggggggggg')
     const value = e.detail.value;
     this.setData({ address: value[2]});
   },

@@ -119,3 +119,56 @@ page{
   width: 200rpx;
   height: 175rpx;
 }
+
+/* 输入弹框 */
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.ensemble-group{
+  width:100%;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 30rpx 0;
+  box-sizing: border-box;
+  align-items: center;
+}
+.ensemble-picker{
+  border: 1rpx solid #ccc;
+  border-radius: 100rpx;
+  height: 75rpx;
+  width: 400rpx;
+}
+.ensemble-button{
+  font-weight: 500;
+  background-color: red;
+  color: white;
+  border-radius: 100rpx;
+  padding: 20rpx 50rpx;
+  box-sizing: border-box;
+}
+.picker{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 400rpx;
+  position: absolute;
+  bottom: 120rpx;
+  left: 40rpx;
+  border-radius: 10rpx;
+  box-shadow: 0 0 8rpx rgba(0, 0, 0, 0.3);
+}
+.picker > text{
+  padding: 10rpx 0;
+  box-sizing: border-box;
+  text-align: center;
+}

@@ -45,3 +45,13 @@
     </view>
   </view>
 </view>
+<!-- 合拍弹框 -->
+<view class="mask" wx:if="{{isShowEnsembleModal}}" bindtap="cancelModal">
+  <view class="picker" wx:if="{{isShowEnsemblePicker}}" catchtap="stopCancelModal">
+    <text wx:for="{{pickerList}}" wx:key="index" data-value="{{item}}">{{item}}</text>
+  </view>
+  <view class="ensemble-group" catchtap="stopCancelModal">
+    <input class="ensemble-picker" disabled="true" bindtap="showEnsembleModal" type="text" />
+    <text class="ensemble-button">合拍</text>
+  </view>
+</view>

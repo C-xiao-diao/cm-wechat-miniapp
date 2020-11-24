@@ -1,8 +1,13 @@
 <view class="registerTwo-view">
-  <input class="input-normal" type="text" placeholder-class="input-placeholder" placeholder="请选择所在城市" />
-  <input class="input-normal" type="text" placeholder-class="input-placeholder" placeholder="请填写在读学校" />
-  <input class="input-normal" type="text" placeholder-class="input-placeholder" placeholder="填入本人身份证号" />
-  <input class="input-normal" type="text" placeholder-class="input-placeholder" placeholder="填入本人真实姓名" />
+  <!-- <input class="input-normal" type="text" placeholder-class="input-placeholder" placeholder="请选择所在城市" /> -->
+  <picker class="input-normal" bindchange="bindPickerChange" placeholder-class="input-placeholder" mode="region">
+    <view class="picker">
+      {{address}}
+    </view>
+  </picker>
+  <input class="input-normal" bindinput="bindSchoolHandle" type="text" placeholder-class="input-placeholder" placeholder="请填写在读学校" />
+  <input class="input-normal" bindinput="bindIdCardHandle" type="text" placeholder-class="input-placeholder" placeholder="填入本人身份证号" />
+  <input class="input-normal" bindinput="bindRealNameHandle" type="text" placeholder-class="input-placeholder" placeholder="填入本人真实姓名" />
   <button class="registerOneSubmit" type="primary">下一步</button>
   <text class="description">
     18岁以下在校学生的专属平台
