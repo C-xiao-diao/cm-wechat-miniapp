@@ -121,7 +121,14 @@ Page({
   stopCancelModal: function(){
 
   },
-  //跟调
+  //前往邀请界面
+  navToInvite: function(){
+    const { themeId } = this.data;
+    wx.navigateTo({
+      url: '/pages/invite/invite?themeId=' + themeId,
+    })
+  },
+  //前往跟调界面
   navToFollow: function(){
     const { themeId } = this.data;
     wx.navigateTo({
