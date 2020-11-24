@@ -2,7 +2,7 @@
 <view class="container">
     <view class="header">
         <text>邀请好友抢音符上不封顶</text>    
-        <view class="rules">音符规则</view>
+        <view class="rules" bind:tap="toRules">音符规则</view>
     </view>
     <view class="main">
         <image class="avatar" src="/imgs/forumList/avatar.jpg"></image>
