@@ -405,8 +405,6 @@ page {
 }
 .input-school-group input{
   padding: 20rpx 30rpx;
-  /* border-radius: 5rpx;
-  box-sizing: border-box; */
 }
 .button-school-group{
   display: flex;

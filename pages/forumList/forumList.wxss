@@ -5,6 +5,27 @@ page{
 .title{
   font-weight: 500;
 }
+.theme-content{
+  padding: 0 50rpx;
+  box-sizing: border-box;
+  margin-top: 30rpx;
+}
+.theme-content-options{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+.theme-content-options>image{
+  width: 30rpx;
+  height: 30rpx;
+  margin: 0 20rpx;
+}
+.theme-content text{
+  font-size: 24rpx;
+  color: #333;
+  line-height: 42rpx;
+}
 .list{
   margin-top: 68rpx;
   width: 100%;

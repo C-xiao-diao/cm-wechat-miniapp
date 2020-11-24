@@ -55,10 +55,10 @@
       </view>
     </view>
     <view class="hotlist-content" wx:if="{{list.length > 0 && (currentTab === 0 || currentTab === 1)}}">
-      <view class="hotlist-content-item" wx:for="{{ list }}" data-index="{{index}}" wx:key="index"
+      <view class="hotlist-content-item" wx:for="{{ list }}" data-themeId="{{item.id}}" data-index="{{index}}" wx:key="index"
         bindtap="navToDetail">
         <!-- 嗨C -->
-        <view class="hotlist-item" data-themeId="{{item.id}}" wx:if="{{currentTab === 0}}">
+        <view class="hotlist-item" wx:if="{{currentTab === 0}}">
           <text
             class="hotlist-item-sortnum sortnum{{index}}">{{index === 0 ? '哆' :  index === 1 ?'来': index === 2 ?'咪' : index === 3 ?'发': index === 4 ? '唆': index === 5 ?'拉': '西'}}、</text>
           <text class="hotlist-item-title">{{item.theme}}</text>
