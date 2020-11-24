@@ -247,6 +247,13 @@ Page({
   freestyleHandle: function(){
     this.getIndexList(1, true);
   },
+  //跟调
+  navToFollow: function(){
+    const { themeId } = this.data;
+    wx.navigateTo({
+      url: '/pages/follow/follow?themeId=' + themeId,
+    })
+  },
   // 跳转详情
   navToDetail: function (e) {
     let index = e.currentTarget.dataset.index;

@@ -28,7 +28,7 @@
           </view>
         </view>
         <view class="like-group" bindtap="like" data-id="{{item.id}}">
-          <image class="like" src="{{ item.pointPraiseNumber > 0 ? '/imgs/forumList/like_active.png' : '/imgs/forumList/like.png'}}" alt=""></image>
+          <image class="like" src="{{ item.pointPraiseNumber > 0 ? '/imgs/icons/note_active.png' : '/imgs/icons/note.png'}}" alt=""></image>
           <text class="like-num {{item.pointPraiseNumber > 0 ? 'like-num-active' : ''}}">赞 {{item.pointPraiseNumber || 0}}</text>
         </view>
       </view>
