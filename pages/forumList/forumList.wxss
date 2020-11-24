@@ -5,6 +5,27 @@ page{
 .title{
   font-weight: 500;
 }
+.theme-content{
+  padding: 0 50rpx;
+  box-sizing: border-box;
+  margin-top: 30rpx;
+}
+.theme-content-options{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+.theme-content-options>image{
+  width: 30rpx;
+  height: 30rpx;
+  margin: 0 20rpx;
+}
+.theme-content text{
+  font-size: 24rpx;
+  color: #333;
+  line-height: 42rpx;
+}
 .list{
   margin-top: 68rpx;
   width: 100%;
@@ -97,25 +118,4 @@ page{
 .bottom image{
   width: 200rpx;
   height: 175rpx;
-}
-.follow{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 80rpx;
-  position: fixed;
-  bottom: 0rpx;
-  padding: 50rpx;
-  background-color: #f2f2f2;
-}
-
-.follow text{
-  background: white;
-  font-size: 28rpx;
-  color: #666;
-  text-align: center;
-  padding: 10rpx 24rpx;
-  box-sizing: border-box;
-  border-radius: 5rpx;
-  box-shadow: 0 0 8rpx rgba(0,0,0,0.3);
 }

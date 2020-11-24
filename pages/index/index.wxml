@@ -5,6 +5,11 @@
 <view class="hotlist-view">
   <view class="userInfo">
     <view class="userInfo-group">
+      <!-- <picker bindchange="bindPickerChange" mode="region">
+        <view class="picker">
+          当前选择：
+        </view>
+      </picker> -->
       <view class="userInfo-group-left" bindtap="changeSchool">
         <text class="school">长郡中学</text>
         <image class="funnel" src="/imgs/icons/funnel.png" alt=""></image>
@@ -12,7 +17,7 @@
       </view>
       <view class="userInfo-group-right">
         <image class="avatar" src="/imgs/forumList/avatar.jpg" alt=""></image>
-        <view class="userInfo-detail">
+        <view class="userInfo-detail" wx:if="{{userStatus === 0}}">
           <view class="name-tags">
             <text>一天天的</text>
             <text class="tags">吃货达人</text>
@@ -21,12 +26,20 @@
             <image class="gender" src="/imgs/forumList/female.png" alt=""></image>
             <text class="my-school">长沙市雅礼中学</text>
           </view>
+          <view class="userInfo-hot ">
+            <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
+            <text class="hot-num">999</text>
+          </view>
+        </view>
+        <view class="userStatus" wx:if="{{userStatus === 1}}">
+          <text>一天天的</text>
+          <text>未登录</text>
+        </view>
+        <view class="userStatus" wx:if="{{userStatus === 2}}">
+          <text>一天天的</text>
+          <text bindtap="navToRegister">未注册</text>
         </view>
       </view>
-    </view>
-    <view class="userInfo-hot">
-      <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
-      <text class="hot-num">999</text>
     </view>
   </view>
   <view class="content">
@@ -42,10 +55,10 @@
       </view>
     </view>
     <view class="hotlist-content" wx:if="{{list.length > 0 && (currentTab === 0 || currentTab === 1)}}">
-      <view class="hotlist-content-item" wx:for="{{ list }}" data-index="{{index}}" wx:key="index"
+      <view class="hotlist-content-item" wx:for="{{ list }}" data-themeId="{{item.id}}" data-index="{{index}}" wx:key="index"
         bindtap="navToDetail">
         <!-- 嗨C -->
-        <view class="hotlist-item" data-themeId="{{item.id}}" wx:if="{{currentTab === 0}}">
+        <view class="hotlist-item" wx:if="{{currentTab === 0}}">
           <text
             class="hotlist-item-sortnum sortnum{{index}}">{{index === 0 ? '哆' :  index === 1 ?'来': index === 2 ?'咪' : index === 3 ?'发': index === 4 ? '唆': index === 5 ?'拉': '西'}}、</text>
           <text class="hotlist-item-title">{{item.theme}}</text>
@@ -102,8 +115,7 @@
           <text>LOL手游 | 有人一起开黑吗</text>
         </view>
         <text
-          class="impromptu-view3-content">君泽：不瞒你说，昨天我直接啥疯了[doge]昨天我像个神一样[赞]昨天我们去玩密室，小虎GALA小龙堡三个人打不过我一个，直接被我杀疯[doge]\n
-          墨子：你还挺骄傲的？这有啥可骄傲的[疑问]在密室里面不敢出去，就杀自己队友[二哈]</text>
+          class="impromptu-view3-content">君泽：不瞒你说，昨天我直接啥疯了[doge]昨天我像个神一样[赞]昨天我们去玩密室，小虎GALA小龙堡三个人打不过我一个，直接被我杀疯[doge]\n墨子：你还挺骄傲的？这有啥可骄傲的[疑问]在密室里面不敢出去，就杀自己队友[二哈]</text>
         <view class="impromptu-view3-images">
           <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
           <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
@@ -120,7 +132,7 @@
             <image class="impromptu-view3-photo" src="./../../imgs/icons/no_like.png" alt=""></image>
             <text>不感兴趣</text>
           </view>
-          <view>
+          <view bindtap="navToFollow">
             <image class="impromptu-view3-photo" src="./../../imgs/icons/edit.png" alt=""></image>
             <text>跟调</text>
           </view>
@@ -155,7 +167,12 @@
 <view class="mask" wx:if="{{isShowSchoolChangeModal}}" bindtap="cancelModal">
   <view class="school-group" catchtap="stopCancelModal">
     <view class="input-school-group">
-      <input class="address-input" value="{{address}}" type="text" disabled="true"/>
+      <!-- <input class="address-input" bindtap="changeAddress" value="{{address}}" type="text" disabled="true"/> -->
+      <picker class="address-input" bindchange="bindPickerChange" mode="region">
+        <view class="picker">
+          {{address}}
+        </view>
+      </picker>
       <input class="school-input" value="{{schoolName}}" type="text" disabled="true"/>
     </view>
     <view class="button-school-group">

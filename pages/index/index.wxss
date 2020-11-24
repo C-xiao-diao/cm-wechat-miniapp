@@ -89,7 +89,17 @@ page {
   margin-left: 10rpx;
   margin-right: 10rpx;
 }
-
+.userInfo-detail >.userInfo-hot{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10rpx;
+}
+.userInfo-detail >.userInfo-hot>.note_active{
+  width: 28rpx;
+  height: 28rpx;
+}
 .userInfo-hot {
   display: flex;
   flex-direction: row;
@@ -104,6 +114,21 @@ page {
 .hot-num {
   font-size: 24rpx;
   margin-left: 10rpx;
+}
+/* 未登录/未授权 */
+.userStatus{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.userStatus text{
+  font-size: 24rpx;
+}
+.userStatus text:first-child{
+  margin-left: 20rpx;
+}
+.userStatus text:last-child{
+  margin-left: 20rpx;
 }
 
 .content {
@@ -392,4 +417,7 @@ page {
 .address-input{
   width: 150rpx;
   margin-right: 30rpx;
+}
+.picker{
+  padding: 20rpx 30rpx;
 }

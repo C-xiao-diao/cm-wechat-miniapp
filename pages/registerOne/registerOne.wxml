@@ -1,8 +1,8 @@
 <view class="container">
-  <view  class="registerOne-top">
+  <view  class="registerOne-top" bindtap="_chooseImage">
     <image class="registerOne-avatar" src="/imgs/forumList/avatar.jpg" alt=""></image>
     <image class="registerOne-camera" src="/imgs/icons/camera.png" alt=""></image>
   </view>
-  <input class="nickname" type="text" placeholder="请输入昵称" />
-  <button class="registerOneSubmit" type="primary">下一步</button>
+  <input class="nickname" type="text" placeholder="请输入昵称" bindinput="bindinput" />
+  <button class="registerOneSubmit" type="primary" bindtap="navToNextStep">下一步</button>
 </view>
