@@ -20,3 +20,8 @@ Page{
   font-size: 24rpx;
   text-align: center;
 }
+.picker{
+  margin-top: 30rpx;
+  text-align: left;
+  padding-left: 20rpx;
+}

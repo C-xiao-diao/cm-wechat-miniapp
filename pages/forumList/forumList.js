@@ -16,7 +16,10 @@ Page({
     // 每页数据
     limit: 10,
     // 页码
-    page: 0
+    page: 0,
+    isShowEnsembleModal: false,
+    isShowEnsemblePicker: false,
+    pickerList: [1000,500,200,100,50,10,5]
   },
   onLoad: function (option) {
     this.setData({ themeId: option.themeId })
@@ -68,38 +71,55 @@ Page({
     let option  = { themeId };
     this.getForumList(option, true);
   },
-  // 点赞
+  // 点赞(现在改为合拍)
   like: function(e){
-    console.log(e,'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')
-    let essayId = e.currentTarget.dataset.id;
-    let cmd = "/auth/essay/pointPraise";
-    let data ={
-      studentId: app.globalData.studentId,
-      themeId: this.data.themeId,
-      essayId,
-    }
-    http.get({
-      cmd,
-      data,
-      success: res=>{
-        if(_.get(res,'data.code') === 200){
-          wx.showToast({ title: '点赞成功' });
-          let list = this.data.list;
-          let newList = [];
-          for (let i=0;i<list.length;i++){
-            let item = {};
-            item = list[i];
-            if(list[i].id == essayId){
-              item.pointPraiseNumber = list[i].pointPraiseNumber  + 1; 
-            }
-            newList.push(list[i]);
-          }
-          this.setData({list: newList});
-        } else {
+    this.setData({isShowEnsembleModal: true})
+    // let essayId = e.currentTarget.dataset.id;
+    // let cmd = "/auth/essay/pointPraise";
+    // let data ={
+    //   studentId: app.globalData.studentId,
+    //   themeId: this.data.themeId,
+    //   essayId,
+    // }
+    // http.get({
+    //   cmd,
+    //   data,
+    //   success: res=>{
+    //     if(_.get(res,'data.code') === 200){
+    //       wx.showToast({ title: '点赞成功' });
+    //       let list = this.data.list;
+    //       let newList = [];
+    //       for (let i=0;i<list.length;i++){
+    //         let item = {};
+    //         item = list[i];
+    //         if(list[i].id == essayId){
+    //           item.pointPraiseNumber = list[i].pointPraiseNumber  + 1; 
+    //         }
+    //         newList.push(list[i]);
+    //       }
+    //       this.setData({list: newList});
+    //     } else {
 
-        }
-      }
-    })
+    //     }
+    //   }
+    // })
+  },
+  //点击合拍按钮提交
+  ensembleHandle: function(){
+    
+  },
+  //显示合拍弹框
+  showEnsembleModal: function(){
+    let isShowEnsemblePicker = this.data.isShowEnsemblePicker
+    this.setData({isShowEnsemblePicker: !isShowEnsemblePicker});
+  },
+  //点击遮罩层隐藏弹框
+  cancelModal: function(){
+    this.setData({isShowEnsemblePicker: false, isShowEnsembleModal: false});
+  },
+  // 阻止页面事件传递至父元素
+  stopCancelModal: function(){
+
   },
   //跟调
   navToFollow: function(){
