@@ -19,7 +19,9 @@
   background: #49c266;
   border-radius: 10rpx;
   color: white;
-  width: 100rpx;
+  /* width: 100rpx; */
+  padding: 0 20rpx;
+  box-sizing: border-box;
   height: 68rpx;
   line-height: 68rpx;
   text-align: center;

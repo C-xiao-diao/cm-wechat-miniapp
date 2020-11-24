@@ -74,7 +74,7 @@
         </view>
       </view>
 
-      <view class="add-view">
+      <view class="add-view" bindtap="navToStartTune">
         <image class="add" src="/imgs/icons/add.png" alt=""></image>
       </view>
     </view>
@@ -153,7 +153,7 @@
 
 <!-- 切换地址学校模态框 -->
 <view class="mask" wx:if="{{isShowSchoolChangeModal}}" bindtap="cancelModal">
-  <view class="school-group"  catchtap="stopCancelModal">
+  <view class="school-group" catchtap="stopCancelModal">
     <view class="input-school-group">
       <input class="address-input" value="{{address}}" type="text" disabled="true"/>
       <input class="school-input" value="{{schoolName}}" type="text" disabled="true"/>
