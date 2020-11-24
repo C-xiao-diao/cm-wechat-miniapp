@@ -9,6 +9,7 @@
     "pages/auditing/auditing",
     "pages/memberCenter/memberCenter",
     "pages/invite/invite",
+    "pages/rules/rules",
     "pages/logs/logs"
   ],
   "window":{

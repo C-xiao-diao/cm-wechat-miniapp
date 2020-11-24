@@ -1,0 +1,38 @@
+<view class="container">
+    <text class="title">音符规则</text>
+    <text class="h1">一、音符</text>
+    <text class="article">
+        <text>C小调通用货币</text>
+    </text>
+
+    <text class="h1">二、花音符</text>
+    <text class="h2">● 起调</text>
+    <text class="article">
+        <text>每日前五次“起调”免费</text>
+        <text>除每日限免“起调”，每次“起调”花费50音符</text>
+    </text>
+
+    <text class="h1">三、赚音符</text>
+    <text class="h2">● 官方任务</text>
+    <text class="article">
+        <text>每日登陆C小调，+10音符</text>
+        <text>每日前五次“跟调”，每次+10音符</text>
+    </text>
+    <text class="h2">● 奖励</text>
+    <text class="article">
+        <text>起调人，获得“起调”的5%音符收益（实时）</text>
+        <text>跟调人，获得“跟调”的80%音符收益（实时）</text>
+    </text>
+    <text class="h2">● “嗨C榜”上榜奖励</text>
+    <text class="article">
+        <text class="subtitle">“起调人”音符奖励（每日23:59结算）：</text>
+        <text>全校榜第一，音符+100</text>
+        <text>全校榜前十，音符+50</text>
+        <text>全区榜第一，音符+200</text>
+        <text>全区榜前十，音符+100</text>
+        <text class="subtitle">每个“跟调”下排名第一的“起调”奖励（提问后48小时结算）：</text>
+        <text>全校榜前十，最佳评论+50</text>
+        <text>全区榜前十，最佳评论+100</text>
+    </text>
+
+</view>
