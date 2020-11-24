@@ -297,6 +297,13 @@ Page({
   cancelModal: function () {
     this.setData({ isShowTextareaModal: false, isShowSchoolChangeModal: false })
   },
+  //跳转至起个调界面
+  navToStartTune:function(){
+    //跳转至新页面
+    wx.navigateTo({
+      url: '/pages/startTune/startTune',
+    })
+  },
   // 起个调
   risingTone: function () {
     const { studentId } = app.globalData;

@@ -1,7 +1,7 @@
 <view class="follow-view">
   <view class="options">
     <text class="cancel" bindtap="goBack">取消</text>
-    <text class="button" bindtap="follow">跟调</text>
+    <text class="button" bindtap="follow">起个调吧</text>
   </view>
   <view>
     <input class="title" type="text" placeholder="输入你想讨论的问题或话题" bindinput="addContent"/>
