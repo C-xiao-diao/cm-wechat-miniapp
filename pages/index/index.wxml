@@ -16,8 +16,8 @@
         <text class="city">长沙市</text>
       </view>
       <view class="userInfo-group-right">
-        <image class="avatar" src="/imgs/forumList/avatar.jpg" alt=""></image>
-        <view class="userInfo-detail" wx:if="{{userStatus === 0}}">
+        <image class="avatar" src="{{ userInfo.headimgUrl ? userInfo.headimgUrl : '/imgs/forumList/avatar.jpg'}}" alt=""></image>
+        <view class="userInfo-detail" wx:if="{{reviewStatus === 1}}">
           <view class="name-tags">
             <text>一天天的</text>
             <text class="tags">吃货达人</text>
@@ -31,11 +31,11 @@
             <text class="hot-num">999</text>
           </view>
         </view>
-        <view class="userStatus" wx:if="{{userStatus === 1}}">
-          <text>一天天的</text>
+        <view class="userStatus" wx:if="{{reviewStatus === 2}}">
+          <text>游客</text>
           <text>未登录</text>
         </view>
-        <view class="userStatus" wx:if="{{userStatus === 2}}">
+        <view class="userStatus" wx:if="{{reviewStatus === 0}}">
           <text>一天天的</text>
           <text bindtap="navToRegister">未注册</text>
         </view>

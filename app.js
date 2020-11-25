@@ -58,6 +58,10 @@ App({
                 this.globalData.unionid = resData.data.unionid;
                 this.globalData.isVip = resData.data.isVip;
                 this.globalData.studentId = resData.data.studentId;
+                this.globalData.reviewStatus = resData.data.reviewStatus;
+                let userInfo ={};
+                userInfo.headimgUrl = resData.data.headimgUrl;
+                this.globalData.userInfo = userInfo;
                 if (this.loginCallback) {
                   this.loginCallback(resData)
                 }

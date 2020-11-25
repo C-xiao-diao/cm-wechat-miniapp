@@ -10,7 +10,8 @@ Page({
   data: {
     //骨架
     loading: true,
-    userStatus: 2,       //0   1   2   3
+    //0未注册，1已注册  2 未登录  （其中 0 1 状态后端返回，2状态是用户拒绝授权）
+    reviewStatus: app.globalData.reviewStatus || 2,
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -59,8 +60,9 @@ Page({
     
     //app.js登录后需要执行的 callback 写在此处
     app.loginCallback = resData =>{
-      console.log("执行了loginCallback回调")
+      console.log("执行了loginCallback回调", )
       if(_.get(resData, 'code') === 200){
+        this.setData({reviewStatus: resData.data.reviewStatus, userInfo: app.globalData.userInfo })
         this.getIndexList(this.data.currentTab, false);
       } else {
         //没有拿到wx.login的回调

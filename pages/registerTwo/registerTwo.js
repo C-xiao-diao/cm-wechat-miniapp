@@ -1,13 +1,40 @@
 //registerTwo.js
+import { http } from "./../../utils/util";
+import "./../../utils/fix";
+import _ from "./../../utils/lodash"
+
 Page({
   data: {
     address: '长沙市',
+    idCardNumber: '',
+    name: '',
+    schoolId: '',
     schoolName: '',
-    IDcard: '',
-    realName: ''
+    schoolList: [],
+    isShowSchoolListModal: false
   },
   onLoad: function () {
-
+    //查询学校列表
+    this.getSchoolList();
+    let cmd = "/auth/school/listBy";
+  },
+  //获取学校列表
+  getSchoolList: function (schoolAlias) {
+    let cmd = "/auth/school/listBy";
+    let data = {};
+    if (schoolAlias !== undefined && schoolAlias !== null) {
+      data.schoolAlias = schoolAlias;
+    }
+    http.get({
+      cmd,
+      data,
+      success: res => {
+        if (_.get(res, 'data.code') === 200) {
+          this.setData({ schoolList: _.get(res, 'data.data.list') })
+        }
+        console.log(res, 1111111111112222222222222222222222222222222222);
+      }
+    })
   },
   bindPickerChange: function (e) {
     const value = e.detail.value;
@@ -16,6 +43,19 @@ Page({
   bindSchoolHandle: function (e) {
     let schoolName = e.detail.value;
     this.setData({ schoolName });
+  },
+  showAllSchoolList: function () {
+    this.setData({ isShowSchoolListModal: true })
+  },
+  hideAllSchoolList: function () {
+    this.setData({ isShowSchoolListModal: false })
+  },
+  //选择学校
+  selectSchool: function (e) {
+    const id = e.currentTarget.dataset.id;
+    const name = e.currentTarget.dataset.name;
+    this.setData({ schoolName: name, schoolId: id });
+    console.log(e, 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
   },
   bindIdCardHandle: function (e) {
     let IDcard = e.detail.value;
@@ -28,13 +68,17 @@ Page({
   //下一步
   registerTwoSubmit: function () {
     const _this = this;
+    const { schoolId, schoolName, idCardNumber, name, address } = this.data;
     //提前发起授权
     wx.authorize({
       scope: 'scope.camera',
       success(res) {
         //跳转界面
         wx.navigateTo({
-          url: '/pages/auditing/auditing',
+          url: '/pages/auditing/auditing?schoolId=' + schoolId 
+          + "&schoolName" + schoolName 
+          + "&idCardNumber" + idCardNumber
+          + "&name" + name
         })
       },
       fail(res) {

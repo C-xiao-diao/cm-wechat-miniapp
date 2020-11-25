@@ -5,7 +5,10 @@
       {{address}}
     </view>
   </picker>
-  <input class="input-normal" bindinput="bindSchoolHandle" type="text" placeholder-class="input-placeholder" placeholder="请填写在读学校" />
+  <input class="input-normal" bindblur="hideAllSchoolList" bindfocus="showAllSchoolList" value="{{schoolName}}" bindinput="bindSchoolHandle" type="text" placeholder-class="input-placeholder" placeholder="请填写在读学校" />
+  <view class="schoolList" wx:if="{{isShowSchoolListModal}}">
+    <text wx:for="{{schoolList}}" bindtap="selectSchool" wx:key="index" data-id="{{item.id}}" data-name="{{item.schoolName}}">{{item.schoolName}}</text>
+  </view>
   <input class="input-normal" bindinput="bindIdCardHandle" type="text" placeholder-class="input-placeholder" placeholder="填入本人身份证号" />
   <input class="input-normal" bindinput="bindRealNameHandle" type="text" placeholder-class="input-placeholder" placeholder="填入本人真实姓名" />
   <button class="registerOneSubmit" type="primary" bindtap="registerTwoSubmit">下一步</button>
