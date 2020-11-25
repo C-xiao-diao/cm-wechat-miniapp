@@ -204,7 +204,13 @@ Page({
     let data = { timestamp };
     if(currentTab === 0){
       cmd = "/auth/theme/listHot";
-    } else {
+    } else if(currentTab === 1){
+      let schoolId = _.get(app, 'globalData.userInfo.schoolId');
+      if(schoolId){
+        data.schoolId = schoolId;
+      }
+      cmd = "/auth/student/characterList";
+    }else {
       cmd = "/auth/theme/listRandom";
     }
     if(isRandom){

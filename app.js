@@ -60,6 +60,7 @@ App({
                 this.globalData.studentId = resData.data.studentId;
                 this.globalData.reviewStatus = resData.data.reviewStatus;
                 let userInfo ={};
+                userInfo.schoolId = resData.data.schoolId;
                 userInfo.headimgUrl = resData.data.headimgUrl;
                 this.globalData.userInfo = userInfo;
                 if (this.loginCallback) {
