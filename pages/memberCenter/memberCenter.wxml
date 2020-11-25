@@ -23,10 +23,10 @@
     </view>
 
     <view class="swiper-box" wx:if="{{currentTab==0}}" bind:tap="closeList">
-        <view class="article-area">
+        <view class="article-area" wx:for="{{myThemeList}}" wx:key="id" for-index="{{index}}">
             <view class="article-title">
                 <text>LOL手游 | 有人一起开黑吗？有人一起开黑吗？有人一起开黑吗？</text>
-                <more-button id="moreBtn"></more-button>
+                <more-button id="{{'moreBtn'+index}}"></more-button>
             </view>
             <text class="article-content">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</text>
             <!-- <view class="article-images">
@@ -40,19 +40,6 @@
                 <image class="" src=""></image>
                 <image class="" src=""></image>
             </view> -->
-            <view class="article-hot">
-                <view>
-                    <image src="/imgs/icons/note_active.png"></image>
-                    <text>999</text>
-                </view>
-            </view>
-        </view>
-        <view class="article-area">
-            <view class="article-title">
-                <text>LOL手游 | 有人一起开黑吗？有人一起开黑吗？</text>
-                <more-button class="moreBtn"></more-button>
-            </view>
-            <text class="article-content">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</text>
             <view class="article-hot">
                 <view>
                     <image src="/imgs/icons/note_active.png"></image>
@@ -80,7 +67,7 @@
     </view>
     <!-- 编辑昵称对话框END -->
 
-    <view class="toTop">
+    <view class="toTop" hidden="{{!floorstatus}}" bindtap="goTop">
         <image class="" src="/imgs/icons/top.png"></image>
     </view>
 </view>

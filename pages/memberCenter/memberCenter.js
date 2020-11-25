@@ -1,3 +1,10 @@
+import "./../../utils/fix";
+import _ from "./../../utils/lodash"
+import { http } from "./../../utils/util";
+
+//获取应用实例
+const app = getApp()
+
 Page({
     data: {
         avatar: '/imgs/forumList/avatar.jpg',
@@ -6,16 +13,51 @@ Page({
         showEditModal: false,
         currentTab: 0,
         nickname: '一天一天',
-        showBtn: true
+        showBtn: true,
+        themePage: 0,
+        floorstatus: false,
+        myThemeList: [{},{},{}]
     },
     onReady: function(){
-        this.moreBtn = this.selectComponent('#moreBtn');
+        this.getMoreBtns();
+    },
+    onLoad: function(){
+        this.getMyTheme();
+    },
+    //获取"更多"按钮
+    getMoreBtns: function(){
+        const { myThemeList } =  this.data;
+        for( let i = 0 ;i < myThemeList.length; i++){
+            let str = 'moreBtn' + i;
+            this[str] = this.selectComponent('#'+str);
+        }
+    },
+    //获取 我的起调 列表
+    getMyTheme: function(){
+        const { themePage } = this.data;
+        let cmd = "/auth/theme/myTheme";
+        let data = {
+            studentId: 2,
+            limit: 5,
+            page: themePage
+        }
+        http.get({
+            cmd,
+            data:data,
+            success: res => {
+              if (_.get(res, 'data.code') === 200 && !_.isEmpty(_.get(res, 'data.data'))) {
+                console.log(1111111)
+              }
+            }
+        })
+    },
+    //页面上拉触底事件
+    onReachBottom: function(){
+        this.getMyTheme();
     },
     //跳转音符规则页面
     toInvite: function(){
-        wx.navigateTo({
-            url: '../invite/invite'
-        });
+        wx.navigateTo({ url: '../invite/invite' });
     },
     //修改图片
     headimage: function () {
@@ -40,7 +82,7 @@ Page({
             current: avatar, // 当前显示图片的http链接
             urls: [avatar], // 需要预览的图片http链接列表
             success: function(){
-                console.log('预览成功');
+                // console.log('预览成功');
             }
         })
     },
@@ -69,6 +111,29 @@ Page({
     },
     //关闭选项列表
     closeList: function(){
-        this.moreBtn.showListOrNot();
+        const { myThemeList } =  this.data;
+        for( let i = 0 ;i < myThemeList.length; i++){
+            let str = 'moreBtn' + i;
+            this[str].showListFn(true);
+        }
+    },
+     // 获取滚动条当前位置
+    onPageScroll: function (e) {
+        if (e.scrollTop > 100) {
+            this.setData({ floorstatus: true });
+        } else {
+            this.setData({ floorstatus: false });
+        }
+    },
+    //回到顶部
+    goTop: function (e) {  // 一键回到顶部
+        if (wx.pageScrollTo) {
+            wx.pageScrollTo({ scrollTop: 0 })
+        } else {
+            wx.showModal({
+                title: '提示',
+                content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
+            })
+        }
     }
 })

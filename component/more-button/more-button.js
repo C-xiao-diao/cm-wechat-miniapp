@@ -1,25 +1,33 @@
 Component({
-    properties: {
-        showBtn: {
-            type: Boolean,
-            value: false
-        }
-    },
     data: {
         showList: false
     },
     lifetimes: {
         // 在组件实例进入页面节点树时执行
         attached: function() {
-            let showBtn = this.properties.showBtn;
-            console.log(showBtn,9999999999)
-            this.setData({ showList: showBtn }) 
+            
         }
     },
     methods: {
         showListOrNot: function(){
-            let showList = !this.data.showList;
+            this.showListFn(false);
+        },
+        showListFn: function(fromParent){
+            let showList;
+            fromParent ? showList = false : showList = !this.data.showList;
             this.setData({showList});
+        },
+        //编辑
+        editFn: function(){
+
+        },
+        //删除
+        deleteFn: function(){
+
+        },
+        //转发
+        shareFn: function(){
+
         }
     }
 })

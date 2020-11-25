@@ -1,8 +1,8 @@
 <view class="more-button">
-    <image src="/imgs/icons/more.png" catchtap="showListOrNot"></image>
-    <view class="list" wx:if="{{showList}}">
-        <text>编辑</text>
-        <text>删除</text>
-        <text>转发</text>
+    <image class="img" src="/imgs/icons/more.png" catchtap="showListOrNot"></image>
+    <view class="more-li" wx:if="{{showList}}">
+        <text class="edit" catchtap="editFn">编辑</text>
+        <text class="delete" catchtap="deleteFn">删除</text>
+        <button class="share" open-type='share' catchtap="shareFn">转发</button>
     </view>
 </view>
