@@ -72,6 +72,7 @@ Page {
 
 .membership .point text {
     float: left;
+    font-size: 28rpx;
 }
 
 .membership image {
@@ -85,6 +86,7 @@ Page {
     float: right;
     background: #fe0000;
     color: #fff;
+    font-size: 28rpx;
     border-radius: 10rpx;
     padding: 0 10rpx;
     margin: 10rpx 10rpx 0 0;

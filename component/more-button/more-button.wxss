@@ -3,12 +3,12 @@
     position: relative;
 }
 
-.more-button image {
+.more-button .img {
     width: 50rpx;
     height: 50rpx;
 }
 
-.more-button .list {
+.more-button .more-li {
     width: 80rpx;
     text-align: center;
     background: #fff;
@@ -22,6 +22,6 @@
     box-shadow: 0 0 10rpx rgba(0,0,0,0.2);
 }
 
-.more-button .list text {
+.edit ,.delete, .share {
     font-size: 32rpx;
 }
