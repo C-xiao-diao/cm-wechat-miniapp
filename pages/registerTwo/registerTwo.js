@@ -58,12 +58,12 @@ Page({
     console.log(e, 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
   },
   bindIdCardHandle: function (e) {
-    let IDcard = e.detail.value;
-    this.setData({ IDcard });
+    let idCardNumber = e.detail.value;
+    this.setData({ idCardNumber });
   },
   bindRealNameHandle: function (e) {
-    let realName = e.detail.value;
-    this.setData({ realName });
+    let name = e.detail.value;
+    this.setData({ name });
   },
   //下一步
   registerTwoSubmit: function () {
@@ -76,9 +76,9 @@ Page({
         //跳转界面
         wx.navigateTo({
           url: '/pages/auditing/auditing?schoolId=' + schoolId 
-          + "&schoolName" + schoolName 
-          + "&idCardNumber" + idCardNumber
-          + "&name" + name
+          + "&schoolName=" + schoolName 
+          + "&idCardNumber=" + idCardNumber
+          + "&name=" + name
         })
       },
       fail(res) {
