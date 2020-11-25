@@ -147,6 +147,8 @@ page{
   border-radius: 100rpx;
   height: 75rpx;
   width: 400rpx;
+  padding-left: 20rpx;
+  box-sizing: border-box;
 }
 .ensemble-button{
   font-weight: 500;

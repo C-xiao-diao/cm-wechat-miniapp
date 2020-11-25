@@ -27,9 +27,9 @@
             </view>
           </view>
         </view>
-        <view class="like-group" bindtap="like" data-id="{{item.id}}">
+        <view class="like-group" bindtap="like" data-id="{{item.id}}" data-themeId="{{item.themeId}}">
           <image class="like" src="{{ item.pointPraiseNumber > 0 ? '/imgs/icons/note_active.png' : '/imgs/icons/note.png'}}" alt=""></image>
-          <text class="like-num {{item.pointPraiseNumber > 0 ? 'like-num-active' : ''}}">赞 {{item.pointPraiseNumber || 0}}</text>
+          <text class="like-num {{item.pointPraiseNumber > 0 ? 'like-num-active' : ''}}">{{item.pointPraiseNumber || 0}}</text>
         </view>
       </view>
       <view class="middle">
@@ -48,10 +48,10 @@
 <!-- 合拍弹框 -->
 <view class="mask" wx:if="{{isShowEnsembleModal}}" bindtap="cancelModal">
   <view class="picker" wx:if="{{isShowEnsemblePicker}}" catchtap="stopCancelModal">
-    <text wx:for="{{pickerList}}" wx:key="index" data-value="{{item}}">{{item}}</text>
+    <text wx:for="{{pickerList}}" wx:key="index" data-value="{{item}}" bindtap="selectEnsembleNum">{{item}}</text>
   </view>
   <view class="ensemble-group" catchtap="stopCancelModal">
-    <input class="ensemble-picker" disabled="true" bindtap="showEnsembleModal" type="text" />
-    <text class="ensemble-button">合拍</text>
+    <input class="ensemble-picker" disabled="true" value="{{number}}" bindtap="showEnsembleModal" type="text" />
+    <text class="ensemble-button" catchtap="ensembleHandle">合拍</text>
   </view>
 </view>

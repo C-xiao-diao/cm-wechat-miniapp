@@ -12,6 +12,7 @@ Page({
     //---------start ----------
     // 主题id
     themeId:"",
+    essayId: '',
     list: [],
     // 每页数据
     limit: 10,
@@ -19,7 +20,9 @@ Page({
     page: 0,
     isShowEnsembleModal: false,
     isShowEnsemblePicker: false,
-    pickerList: [1000,500,200,100,50,10,5]
+    pickerList: [1000,500,200,100,50,10,5],
+    //音符数量
+    number: 0
   },
   onLoad: function (option) {
     this.setData({ themeId: option.themeId })
@@ -73,7 +76,8 @@ Page({
   },
   // 点赞(现在改为合拍)
   like: function(e){
-    this.setData({isShowEnsembleModal: true})
+    let essayId = e.currentTarget.dataset.id;
+    this.setData({isShowEnsembleModal: true, essayId})
     // let essayId = e.currentTarget.dataset.id;
     // let cmd = "/auth/essay/pointPraise";
     // let data ={
@@ -104,9 +108,31 @@ Page({
     //   }
     // })
   },
+  //点击音符数量
+  selectEnsembleNum: function(e){
+    let number = e.currentTarget.dataset.value;
+    this.setData({number, isShowEnsemblePicker:false})
+    console.log(e,',,,,,,,,,,,,,,,,,,,,,,,,,,');
+  },
   //点击合拍按钮提交
   ensembleHandle: function(){
-    
+    let studentId = app.globalData.studentId;
+    const { number,themeId,essayId, } = this.data;
+    let cmd = "/auth/essay/pointPraise";
+    let data ={ studentId, themeId, essayId, number};
+    http.get({
+      cmd,
+      data,
+      success: res =>{
+        if(_.get(res, 'data.code') === 200){
+          wx.showToast({
+            title: '合拍成功',
+          })
+          this.setData({isShowEnsembleModal: false})
+        }
+        console.log(res, 'ggggggggggggggggggggggggggggggg');
+      }
+    })
   },
   //显示合拍弹框
   showEnsembleModal: function(){
