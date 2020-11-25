@@ -16,6 +16,18 @@ Component({
             let showList;
             fromParent ? showList = false : showList = !this.data.showList;
             this.setData({showList});
+        },
+        //编辑
+        editFn: function(){
+
+        },
+        //删除
+        deleteFn: function(){
+
+        },
+        //转发
+        shareFn: function(){
+
         }
     }
 })

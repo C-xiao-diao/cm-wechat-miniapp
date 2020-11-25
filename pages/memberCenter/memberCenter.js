@@ -53,13 +53,11 @@ Page({
     },
     //页面上拉触底事件
     onReachBottom: function(){
-
+        this.getMyTheme();
     },
     //跳转音符规则页面
     toInvite: function(){
-        wx.navigateTo({
-            url: '../invite/invite'
-        });
+        wx.navigateTo({ url: '../invite/invite' });
     },
     //修改图片
     headimage: function () {
