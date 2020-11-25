@@ -9,8 +9,9 @@ const app = getApp()
 Page({
   data: {
     themeId: '',
+    theme:"",
     content: '',
-    picture: [],
+    picture: "",
     video: [],
   },
   onLoad(option) {
@@ -18,6 +19,11 @@ Page({
   },
   goBack: function () {
     wx.navigateBack();
+  },
+  //添加主题
+  addTheme:function(e){
+    let theme = e.detail.value;
+    this.setData({ theme });
   },
   // 添加内容
   addContent: function (e) {
@@ -45,7 +51,7 @@ Page({
           }, 
           name: 'files',
           formData: {
-            'theme': 'photo'
+            'page': 'startTune'
           },
           success(res) {
             let json = res.data;
@@ -53,9 +59,9 @@ Page({
             if(_.get(resData, 'code') ===200){
               let fileName = _.get(resData, 'data.fileName');
               let file = fileName[0];
-              let picture = _this.data.picture;
-              let pics = _.uniq(_.concat(picture, fileName));
-              _this.setData({picture: pics});
+              // let picture = _this.data.picture;
+              // let pics = _.uniq(_.concat(picture, fileName));
+              _this.setData({picture: file});
             } else {
 
             }
@@ -67,7 +73,7 @@ Page({
       }
     })
   },
-  // 跟调（也就是提交）
+  // 起个调（也就是提交）
   follow: function () {
     const { themeId, content, picture } = this.data;
     let studentId = app.globalData.studentId;
@@ -83,11 +89,11 @@ Page({
       })
       return;
     }
-    let cmd = "/auth/essay/addEssay";
+    let cmd = "/auth/theme/addTheme";
     let data = {
       studentId,
       themeId,
-      content,
+      supplementaryContent: content,
       picture
     }
     http.post({
@@ -96,12 +102,11 @@ Page({
       success: res => {
         if(_.get(res, 'data.code')=== 200){
           wx.showToast({
-            title: '跟调成功',
+            title: '起调成功',
             success: res =>{
               wx.navigateBack({
                 delta: 0,
-              })
-          
+              })      
             },         
           })
         }
