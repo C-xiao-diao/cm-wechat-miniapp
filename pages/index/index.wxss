@@ -274,10 +274,25 @@ page {
 .impromptu-view3-title text{
   font-weight: 500;
 }
+.impromptu-view3-content-view{
+  display: inline-flexbox;
+  flex-direction: row;
+}
 .impromptu-view3-content {
   font-size: 24rpx;
   color: #333;
   line-height: 42rpx;
+  display: -webkit-inline-box;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  overflow: hidden;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2;
+}
+.see-details{
+  font-size: 24rpx;
+  color: blue;
 }
 .impromptu-view3-images {
   display: flex;
