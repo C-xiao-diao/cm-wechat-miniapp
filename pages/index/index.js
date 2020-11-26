@@ -18,7 +18,6 @@ Page({
     currentTab: 0,
     // listHot: ['哆', '来', '咪', '发', '唆', '拉', '西'],
     list: [],
-    isShowTextareaModal: false,
     // 是否显示用户信息授权按钮
     isShowUserInfoBtn: true,
     //是否现实切换学校的弹框
@@ -363,59 +362,19 @@ Page({
         + '&picture=' + picture,
     })
   },
-  //显示模态输入框
-  showTextareaModal: function () {
-    this.setData({ isShowTextareaModal: true })
-  },
-  // 获取输入框的文字
-  changeText: function (e) {
-    let theme = e.detail.value;
-    if (theme) {
-      this.setData({ theme });
-    }
-  },
   // 阻止页面事件传递至父元素
   stopCancelModal: function () {
 
   },
   // 隐藏模态输入框
   cancelModal: function () {
-    this.setData({ isShowTextareaModal: false, isShowSchoolChangeModal: false })
+    this.setData({ isShowSchoolChangeModal: false })
   },
   //跳转至起个调界面
   navToStartTune: function () {
     //跳转至新页面
     wx.navigateTo({
       url: '/pages/startTune/startTune',
-    })
-  },
-  // 起个调
-  risingTone: function () {
-    const { studentId } = app.globalData;
-    const { theme } = this.data;
-    if (!theme) {
-      wx.showToast({
-        title: '请先输入内容',
-      })
-      return;
-    }
-    let cmd = "/auth/theme/addTheme";
-    let data = { publisher: studentId, theme };
-    http.post({
-      cmd,
-      data,
-      success: res => {
-        if (_.get(res, 'data.code') === 200) {
-          wx.showToast({
-            title: '操作成功',
-          })
-          this.setData({ isShowTextareaModal: false })
-        } else {
-          wx.showToast({
-            title: '操作异常，请联系客服',
-          })
-        }
-      }
     })
   },
   //-----------------end -------------------
