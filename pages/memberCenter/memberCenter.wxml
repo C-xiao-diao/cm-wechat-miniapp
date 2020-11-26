@@ -26,7 +26,7 @@
         <view class="article-area" wx:for="{{myThemeList}}" wx:key="id" for-index="{{index}}">
             <view class="article-title">
                 <text>LOL手游 | 有人一起开黑吗？有人一起开黑吗？有人一起开黑吗？</text>
-                <more-button id="{{'moreBtn'+index}}"></more-button>
+                <more-button prop-count="{{item.count}}" id="{{'moreBtn'+index}}"></more-button>
             </view>
             <text class="article-content">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</text>
             <!-- <view class="article-images">
@@ -43,7 +43,7 @@
             <view class="article-hot">
                 <view>
                     <image src="/imgs/icons/note_active.png"></image>
-                    <text>999</text>
+                    <text>{{item.count}}</text>
                 </view>
             </view>
         </view>
@@ -57,7 +57,7 @@
         <view class="wrap">
             <text class="title">修改昵称 <text class="span">(只能修改一次)</text></text>
             <view class="content">
-                <input type="text" focus="{{true}}" value="{{nickname}}" />
+                <input type="text" focus="{{true}}" value="{{nickname}}" bindinput="getNewNickname" />
             </view>
             <view class="btns">
                 <text class="cancel" bind:tap="editCancel">取消</text>

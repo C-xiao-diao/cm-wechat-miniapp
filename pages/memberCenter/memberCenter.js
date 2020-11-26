@@ -16,7 +16,7 @@ Page({
         showBtn: true,
         themePage: 0,
         floorstatus: false,
-        myThemeList: [{},{},{}]
+        myThemeList: [{count:12},{count:22},{count:1}]
     },
     onReady: function(){
         this.getMoreBtns();
@@ -100,6 +100,15 @@ Page({
     //打开编辑昵称
     editNickname: function(){
         this.setData({showEditModal: true});
+    },
+    //获取用户输入修改后的昵称
+    getNewNickname: function(e){
+        let newNickname = e.detail.value;
+        if(_.isEmpty(newNickname)){
+            wx.showToast({ title: '昵称修改不能为空！' });
+            return;
+        }
+        console.log(newNickname,999999)
     },
     //取消编辑昵称
     editCancel: function(){
