@@ -184,10 +184,10 @@ more-button {
 
 .article-hot view {
     display: flex;
-    width: 120rpx;
+    /* width: 120rpx; */
     background: #fff;
     border-radius: 25rpx;
-    padding: 5rpx 10rpx;
+    padding: 5rpx 20rpx 5rpx 10rpx;
 }
 
 .article-hot image {
