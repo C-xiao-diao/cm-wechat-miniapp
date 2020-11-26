@@ -21,7 +21,7 @@
       <view class="top">
         <view class="userinfo-left">
           <!-- <image class="avatar" src="/imgs/forumList/avatar.jpg" alt=""></image> -->
-          <image class="avatar" src="{{item.headimgUrl}}" alt=""></image>
+          <image class="avatar" src="{{item.headimgUrl ? item.headimgUrl : '/imgs/icons/no_avatar.png'}}" alt=""></image>
           <view class="userinfo">
             <!-- <text class="username">一天天的</text> -->
             <text class="username">{{item.nickname}}</text>
