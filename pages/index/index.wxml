@@ -20,16 +20,19 @@
           alt=""></image>
         <view class="userInfo-detail" wx:if="{{reviewStatus === 1}}">
           <view class="name-tags">
-            <text>一天天的</text>
+            <!-- <text>一天天的</text> -->
+            <text>{{userInfo.nickName}}</text>
             <text class="tags">吃货达人</text>
           </view>
           <view class="gender-school">
-            <image class="gender" src="/imgs/forumList/female.png" alt=""></image>
-            <text class="my-school">长沙市雅礼中学</text>
+            <image class="gender" src="{{userInfo.sex ==1 ?  '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}" alt=""></image>
+            <!-- <text class="my-school">长沙市雅礼中学</text> -->
+            <text class="my-school">{{userInfo.schoolName}}</text>
           </view>
           <view class="userInfo-hot ">
             <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
-            <text class="hot-num">999</text>
+            <!-- <text class="hot-num">999</text> -->
+            <text class="hot-num">{{userInfo.noteNumber}}</text>
           </view>
         </view>
         <view class="userStatus" wx:if="{{reviewStatus === 2}}">
