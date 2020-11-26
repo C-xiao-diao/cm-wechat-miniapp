@@ -30,6 +30,8 @@ Page({
     //学校列表
     schoolList: [],
     isShowSchoolListModal: false,
+    //即兴的最新一条主题
+    currentListItem: {},
   },
   onLoad: function () {
     // if (app.globalData.userInfo) {

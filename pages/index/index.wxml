@@ -59,7 +59,7 @@
         <text>freestyle</text>
       </view>
     </view>
-    <view class="hotlist-content" wx:if="{{list.length > 0 && (currentTab === 0 || currentTab === 1)}}">
+    <view class="hotlist-content" wx:if="{{currentTab === 0 || currentTab === 1}}">
       <view class="hotlist-content-item" wx:for="{{ list }}" wx:key="index">
         <!-- 嗨C -->
         <view  bindtap="navToDetail" data-themeId="{{item.id}}" data-index="{{index}}"
@@ -102,9 +102,9 @@
     </view>
     <!-- 即兴 -->
     <view class="impromptu" wx:if="{{currentTab === 2}}">
-      <view class=impromptu-view1"></view>
-      <view class=impromptu-view2"></view>
-      <view class=impromptu-view3">
+      <view class="impromptu-view1"></view>
+      <view class="impromptu-view2"></view>
+      <view class="impromptu-view3">
         <view class="impromptu-view3-top">
           <image class="impromptu-view3-top-avatar" src="/imgs/forumList/avatar.jpg" alt=""></image>
           <view>
@@ -116,17 +116,17 @@
               <image class="famous-people-gender" src="/imgs/forumList/female.png" alt=""></image>
               <text class="my-school">长沙市雅礼中学</text>
               <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
-              <text class="hot-num">999</text>
+              <text class="hot-num">{{list[0].pointPraiseNumber}}</text>
             </view>
           </view>
         </view>
         <view class="impromptu-view3-title">
-          <text>LOL手游 | 有人一起开黑吗</text>
+          <text>{{list[0].theme}}</text>
         </view>
         <view style="impromptu-view3-content-view">
-          <text
-            class="impromptu-view3-content">君泽：不瞒你说，昨天我直接啥疯了[doge]昨天我像个神一样[赞]昨天我们去玩密室，小虎GALA小龙堡三个人打不过我一个，直接被我杀疯[doge]\n墨子：你还挺骄傲的？这有啥可骄傲的[疑问]在密室里面不敢出去，就杀自己队友[二哈]</text><text
-            class="see-details" bindtap="navToDetail">查看全文</text>
+          <!-- <text class="impromptu-view3-content">君泽：不瞒你说，昨天我直接啥疯了[doge]昨天我像个神一样[赞]昨天我们去玩密室，小虎GALA小龙堡三个人打不过我一个，直接被我杀疯[doge]\n墨子：你还挺骄傲的？这有啥可骄傲的[疑问]在密室里面不敢出去，就杀自己队友[二哈]</text> -->
+          <text class="impromptu-view3-content">{{list[0].supplementaryContent}}</text>
+          <text class="see-details" bindtap="navToDetail">查看全文</text>
         </view>
         <view class="impromptu-view3-images">
           <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
