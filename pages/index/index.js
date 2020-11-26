@@ -26,7 +26,11 @@ Page({
     //起个调的主题
     theme: "",
     address: "全国",
-    schoolName: "长郡中学"
+    schoolName: "长郡中学",
+    schoolId: '',
+    //学校列表
+    schoolList: [], 
+    isShowSchoolListModal: false,
   },
   onLoad: function () {
     // if (app.globalData.userInfo) {
@@ -187,7 +191,35 @@ Page({
   //选择地址底部框显示
   bindPickerChange: function (e) {
     const value = e.detail.value;
-    this.setData({ address: value[2] });
+    this.setData({ address: value[2], isShowSchoolListModal: true});
+    this.getSchoolList(null, value[2]);
+  },
+  //获取学校列表
+  getSchoolList: function (schoolAlias, district) {
+    let cmd = "/auth/school/listBy";
+    let data = {};
+    if (schoolAlias !== undefined && schoolAlias !== null) {
+      data.schoolAlias = schoolAlias;
+    }
+    if(district !== undefined && district !== null) {
+      data.district = district;
+    }
+    http.get({
+      cmd,
+      data,
+      success: res => {
+        if (_.get(res, 'data.code') === 200) {
+          this.setData({ schoolList: _.get(res, 'data.data.list') })
+        }
+        console.log(res, 1111111111112222222222222222222222222222222222);
+      }
+    })
+  },
+  //选择学校
+  selectSchool:function(e){
+    const id = e.currentTarget.dataset.id;
+    const name = e.currentTarget.dataset.name;
+    this.setData({ schoolName: name, schoolId: id,isShowSchoolListModal: false });
   },
   //前往注册界面
   navToRegister: function () {
