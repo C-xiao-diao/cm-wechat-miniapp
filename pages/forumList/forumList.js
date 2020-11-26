@@ -11,7 +11,11 @@ Page({
     loading: true,
     //---------start ----------
     // 主题id
-    themeId:"",
+    themeId: "",
+    theme:'',
+    content: '',
+    number: 0,
+    picture: [],
     essayId: '',
     list: [],
     // 每页数据
@@ -20,26 +24,26 @@ Page({
     page: 0,
     isShowEnsembleModal: false,
     isShowEnsemblePicker: false,
-    pickerList: [1000,500,200,100,50,10,5],
+    pickerList: [1000, 500, 200, 100, 50, 10, 5],
     //音符数量
     number: 0
   },
   onLoad: function (option) {
-    this.setData({ themeId: option.themeId })
+    this.setData({ themeId: option.themeId, theme: option.theme, content: option.content, number: option.number, picture: option.picture })
     //获取界面数据
     // this.getForumList(option)
   },
-  onShow: function(){
+  onShow: function () {
     //获取界面数据
-    const { themeId  } = this.data;
-    let option  = { themeId };
-    console.log(themeId,'gggggggggggggggggggggggggggggggsssssssssssssssssssss');
+    const { themeId } = this.data;
+    let option = { themeId };
+    console.log(themeId, 'gggggggggggggggggggggggggggggggsssssssssssssssssssss');
     this.getForumList(option, false)
   },
   // ---------------------- start ------------------------------
-  getForumList: function(option, isLoadMore){
+  getForumList: function (option, isLoadMore) {
     const timestamp = Date.parse(new Date());
-    let { limit, list, page} = this.data;
+    let { limit, list, page } = this.data;
     let newPage = isLoadMore ? page + 1 : 0;
     let cmd = "/auth/essay/list";
     let data = {
@@ -52,16 +56,16 @@ Page({
     http.get({
       cmd,
       data,
-      success: res =>{
-        if(_.get(res, 'data.code') ===200){
+      success: res => {
+        if (_.get(res, 'data.code') === 200) {
           let newList = [];
-          if(isLoadMore){
+          if (isLoadMore) {
             newList = _.uniqBy(_.concat(list, _.get(res, 'data.data.list')), 'id');
           } else {
             newList = _.get(res, 'data.data.list');
           }
-          
-          this.setData({list: newList, page: newPage});
+
+          this.setData({ list: newList, page: newPage });
         }
       }
     })
@@ -69,15 +73,15 @@ Page({
   onShareAppMessage: function (e) {
 
   },
-  onReachBottom:function(e){
-    const { themeId , page } = this.data;
-    let option  = { themeId };
+  onReachBottom: function (e) {
+    const { themeId, page } = this.data;
+    let option = { themeId };
     this.getForumList(option, true);
   },
   // 点赞(现在改为合拍)
-  like: function(e){
+  like: function (e) {
     let essayId = e.currentTarget.dataset.id;
-    this.setData({isShowEnsembleModal: true, essayId})
+    this.setData({ isShowEnsembleModal: true, essayId })
     // let essayId = e.currentTarget.dataset.id;
     // let cmd = "/auth/essay/pointPraise";
     // let data ={
@@ -109,53 +113,54 @@ Page({
     // })
   },
   //点击音符数量
-  selectEnsembleNum: function(e){
+  selectEnsembleNum: function (e) {
     let number = e.currentTarget.dataset.value;
-    this.setData({number, isShowEnsemblePicker:false})
-    console.log(e,',,,,,,,,,,,,,,,,,,,,,,,,,,');
+    this.setData({ number, isShowEnsemblePicker: false })
+    console.log(e, ',,,,,,,,,,,,,,,,,,,,,,,,,,');
   },
   //点击合拍按钮提交
-  ensembleHandle: function(){
+  ensembleHandle: function () {
     let studentId = app.globalData.studentId;
-    const { number,themeId,essayId, } = this.data;
+    const { number, themeId, essayId, } = this.data;
     let cmd = "/auth/essay/pointPraise";
-    let data ={ studentId, themeId, essayId, number};
+    //ps 此接口 themeId, essayId 只用传一个
+    let data = { studentId, essayId, number };
     http.get({
       cmd,
       data,
-      success: res =>{
-        if(_.get(res, 'data.code') === 200){
+      success: res => {
+        if (_.get(res, 'data.code') === 200) {
           wx.showToast({
             title: '合拍成功',
           })
-          this.setData({isShowEnsembleModal: false})
+          this.setData({ isShowEnsembleModal: false })
         }
         console.log(res, 'ggggggggggggggggggggggggggggggg');
       }
     })
   },
   //显示合拍弹框
-  showEnsembleModal: function(){
+  showEnsembleModal: function () {
     let isShowEnsemblePicker = this.data.isShowEnsemblePicker
-    this.setData({isShowEnsemblePicker: !isShowEnsemblePicker});
+    this.setData({ isShowEnsemblePicker: !isShowEnsemblePicker });
   },
   //点击遮罩层隐藏弹框
-  cancelModal: function(){
-    this.setData({isShowEnsemblePicker: false, isShowEnsembleModal: false});
+  cancelModal: function () {
+    this.setData({ isShowEnsemblePicker: false, isShowEnsembleModal: false });
   },
   // 阻止页面事件传递至父元素
-  stopCancelModal: function(){
+  stopCancelModal: function () {
 
   },
   //前往邀请界面
-  navToInvite: function(){
+  navToInvite: function () {
     const { themeId } = this.data;
     wx.navigateTo({
       url: '/pages/invite/invite?themeId=' + themeId,
     })
   },
   //前往跟调界面
-  navToFollow: function(){
+  navToFollow: function () {
     const { themeId } = this.data;
     wx.navigateTo({
       url: '/pages/follow/follow?themeId=' + themeId,

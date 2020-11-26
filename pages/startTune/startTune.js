@@ -11,7 +11,7 @@ Page({
     themeId: '',
     theme:"",
     content: '',
-    picture: "",
+    picture: [],
     video: [],
   },
   onLoad(option) {
@@ -59,9 +59,10 @@ Page({
             if(_.get(resData, 'code') ===200){
               let fileName = _.get(resData, 'data.fileName');
               let file = fileName[0];
-              // let picture = _this.data.picture;
-              // let pics = _.uniq(_.concat(picture, fileName));
-              _this.setData({picture: file});
+              let picture = _this.data.picture;
+              let pics = _.uniq(_.concat(picture, fileName));
+              console.log(file,'filefilefilefilefilefilefilefilefilefile');
+              _this.setData({picture: pics});
             } else {
 
             }
@@ -74,12 +75,19 @@ Page({
     })
   },
   // 起个调（也就是提交）
-  follow: function () {
-    const { themeId, content, picture } = this.data;
+  startTune: function () {
+    const { theme, content, picture } = this.data;
+    console.log(picture,'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')
     let studentId = app.globalData.studentId;
+    if(_.isEmpty(theme)){
+      wx.showToast({
+        title: '起调标题不能为空',
+      })
+      return;
+    }
     if(_.isEmpty(content)){
       wx.showToast({
-        title: '跟调内容不能为空',
+        title: '起调内容不能为空',
       })
       return;
     }
@@ -91,8 +99,8 @@ Page({
     }
     let cmd = "/auth/theme/addTheme";
     let data = {
-      studentId,
-      themeId,
+      publisher: studentId,
+      theme,
       supplementaryContent: content,
       picture
     }

@@ -57,12 +57,12 @@ Page({
     //     }
     //   })
     // }
-    
+
     //app.js登录后需要执行的 callback 写在此处
-    app.loginCallback = resData =>{
-      console.log("执行了loginCallback回调", )
-      if(_.get(resData, 'code') === 200){
-        this.setData({reviewStatus: resData.data.reviewStatus, userInfo: app.globalData.userInfo })
+    app.loginCallback = resData => {
+      console.log("执行了loginCallback回调",)
+      if (_.get(resData, 'code') === 200) {
+        this.setData({ reviewStatus: resData.data.reviewStatus, userInfo: app.globalData.userInfo })
         this.getIndexList(this.data.currentTab, false);
       } else {
         //没有拿到wx.login的回调
@@ -70,14 +70,14 @@ Page({
     }
   },
   onShow: function () {
-    console.log("执行了首页的onShow操作",app.globalData.code)
+    console.log("执行了首页的onShow操作", app.globalData.code)
     //注意，主页 onLoad可能提前于 小程序 onLaunch 执行完， 
     // 用户id 在onLaunch 的login里获取，所以 首页加载数据，要么 写在 onShow里，要么写在onLoad的 callback回调里
     let _this = this;
     wx.getSetting({
       withSubscriptions: true,
       success: function (res) {
-        console.log(res,'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb');
+        console.log(res, 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb');
         if (res.authSetting['scope.userInfo']) {
           _this.setData({ isShowUserInfoBtn: false });
         }
@@ -96,34 +96,34 @@ Page({
 
   //登录接口
   userInfoHandler: function (e) {
-    if(!_.isEmpty(e.detail.userInfo)){
+    if (!_.isEmpty(e.detail.userInfo)) {
       app.globalData.userInfo = e.detail.userInfo;
       this.setData({
         userInfo: e.detail.userInfo,
         hasUserInfo: true,
         isShowUserInfoBtn: false
       })
-      if(app.globalData.userId){
+      if (app.globalData.userId) {
         this.updateUserInfoTosServer(e.detail.userInfo, e.detail.iv, e.detail.encryptedData)
       } else {
         //根据微信文档，app.js里的 wx.login 的返回不一定在首页 index.js 生命周期前返回，这里做一个容错，如果拿不到、//userId，则再去登录一遍
         this._login(e.detail.userInfo, e.detail.iv, e.detail.encryptedData);
       }
     } else {
-      
+
     }
   },
   //登录
 
-  _login:function(userInfo, iv, encryptedData){
+  _login: function (userInfo, iv, encryptedData) {
     var that = this;
     wx.login({
-      success (res) {
+      success(res) {
         if (res.code) {
           let cmd = "/api/cWeChat/appletsGetOpenid";
           http.get({
             cmd,
-            data:{code: res.code},
+            data: { code: res.code },
             success: res => {
               if (_.get(res, 'data.code') === 200 && !_.isEmpty(_.get(res, 'data.data'))) {
                 var resData = res.data;
@@ -136,9 +136,9 @@ Page({
               }
             }
           })
-        }else {
+        } else {
           // console.log('登录失败'+res.errMsg);
-          wx.showToast({title: '登录失败!'});
+          wx.showToast({ title: '登录失败!' });
         }
       }
     })
@@ -181,54 +181,54 @@ Page({
   },
   //-----------------start------------------
   //切换学校弹框显示
-  changeSchool: function(){
-    this.setData({isShowSchoolChangeModal: true})
+  changeSchool: function () {
+    this.setData({ isShowSchoolChangeModal: true })
   },
   //选择地址底部框显示
-  bindPickerChange: function(e){
+  bindPickerChange: function (e) {
     const value = e.detail.value;
-    this.setData({ address: value[2]});
+    this.setData({ address: value[2] });
   },
   //前往注册界面
-  navToRegister: function(){
+  navToRegister: function () {
     wx.navigateTo({
       url: '/pages/registerOne/registerOne',
     })
   },
   // 获取首页列表数据
-  getIndexList: function(tab, isRandom){
-    wx.showLoading({ title: '正在加载'})
+  getIndexList: function (tab, isRandom) {
+    wx.showLoading({ title: '正在加载' })
     const timestamp = Date.parse(new Date());
     let currentTab = tab;
     let cmd = "";
     let data = { timestamp };
-    if(currentTab === 0){
+    if (currentTab === 0) {
       cmd = "/auth/theme/listHot";
-    } else if(currentTab === 1){
+    } else if (currentTab === 1) {
       let schoolId = _.get(app, 'globalData.userInfo.schoolId');
-      if(schoolId){
+      if (schoolId) {
         data.schoolId = schoolId;
       }
       cmd = "/auth/student/characterList";
-    }else {
+    } else {
       cmd = "/auth/theme/listRandom";
     }
-    if(isRandom){
+    if (isRandom) {
       let listRandom = this.data.list;
       let ids = [];
-      for(let i=0;i<listRandom.length;i++){
+      for (let i = 0; i < listRandom.length; i++) {
         ids.push(listRandom[i].id);
       }
-      data ={ ids, timestamp };
+      data = { ids, timestamp };
     }
     http.get({
       cmd,
-      data, 
-      success: res =>{
-        if(_.get(res, 'data.code') === 200){
+      data,
+      success: res => {
+        if (_.get(res, 'data.code') === 200) {
           console.log(res, 'mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm');
           let list = _.get(res, 'data.data.list');
-          this.setData({list, currentTab,loading: false})
+          this.setData({ list, currentTab, loading: false })
           // if(currentTab === 0){
           //   this.setData({listHot: list, currentTab,loading: false })
           // } else {
@@ -251,11 +251,11 @@ Page({
     }
   },
   //随机刷新 即兴列表
-  freestyleHandle: function(){
+  freestyleHandle: function () {
     this.getIndexList(1, true);
   },
   //跟调
-  navToFollow: function(){
+  navToFollow: function () {
     const { themeId } = this.data;
     wx.navigateTo({
       url: '/pages/follow/follow?themeId=' + themeId,
@@ -265,6 +265,11 @@ Page({
   navToDetail: function (e) {
     let index = e.currentTarget.dataset.index;
     let themeId = e.currentTarget.dataset.themeid;
+    let theme = e.currentTarget.dataset.theme;
+    let content = e.currentTarget.dataset.content;
+    let number = e.currentTarget.dataset.number;
+    let picture = e.currentTarget.dataset.picture;
+    console.log(theme, content, number, picture, 'cccccccccccccccccccccccccc');
     //播放音频
     const innerAudioContext = wx.createInnerAudioContext();
     // innerAudioContext.autoplay = true;
@@ -302,7 +307,11 @@ Page({
     //跳转界面
     app.globalData.currentThemeId = themeId;
     wx.navigateTo({
-      url: '/pages/forumList/forumList?themeId=' + themeId,
+      url: '/pages/forumList/forumList?themeId=' + themeId
+        + '&theme=' + theme
+        + '&content=' + content
+        + '&number=' + number
+        + '&picture=' + picture,
     })
   },
   //显示模态输入框
@@ -312,8 +321,8 @@ Page({
   // 获取输入框的文字
   changeText: function (e) {
     let theme = e.detail.value;
-    if(theme){
-      this.setData({theme});
+    if (theme) {
+      this.setData({ theme });
     }
   },
   // 阻止页面事件传递至父元素
@@ -325,7 +334,7 @@ Page({
     this.setData({ isShowTextareaModal: false, isShowSchoolChangeModal: false })
   },
   //跳转至起个调界面
-  navToStartTune:function(){
+  navToStartTune: function () {
     //跳转至新页面
     wx.navigateTo({
       url: '/pages/startTune/startTune',
@@ -335,7 +344,7 @@ Page({
   risingTone: function () {
     const { studentId } = app.globalData;
     const { theme } = this.data;
-    if(!theme){
+    if (!theme) {
       wx.showToast({
         title: '请先输入内容',
       })
@@ -346,13 +355,13 @@ Page({
     http.post({
       cmd,
       data,
-      success: res =>{
-        if(_.get(res, 'data.code') === 200){
+      success: res => {
+        if (_.get(res, 'data.code') === 200) {
           wx.showToast({
             title: '操作成功',
           })
           this.setData({ isShowTextareaModal: false })
-        }else {
+        } else {
           wx.showToast({
             title: '操作异常，请联系客服',
           })

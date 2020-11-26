@@ -36,7 +36,7 @@ input, .title{
   box-sizing: border-box;
 }
 .addContent{
-  padding-left: 30rpx;
+  padding-left: 20rpx;
   padding-top: 30rpx;
   box-sizing: border-box;
 }
