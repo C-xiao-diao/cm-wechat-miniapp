@@ -219,7 +219,14 @@ Page({
   selectSchool:function(e){
     const id = e.currentTarget.dataset.id;
     const name = e.currentTarget.dataset.name;
-    this.setData({ schoolName: name, schoolId: id,isShowSchoolListModal: false });
+    this.setData({ schoolName: name, schoolId: id, isShowSchoolListModal: false});
+  },
+  comfirmSchool: function(e){
+    this.getIndexList(this.data.currentTab, false);
+    this.setData({ isShowSchoolChangeModal: false});
+  },
+  cancelSchool:function(){
+    this.setData({ isShowSchoolListModal: false, isShowSchoolChangeModal: false});
   },
   //前往注册界面
   navToRegister: function () {
@@ -227,13 +234,23 @@ Page({
       url: '/pages/registerOne/registerOne',
     })
   },
+  //前往个人中心界面
+  navToMemberCenter: function () {
+    wx.navigateTo({
+      url: '/pages/memberCenter/memberCenter',
+    })
+  },
   // 获取首页列表数据
   getIndexList: function (tab, isRandom) {
+    const { schoolId } = this.data;
     wx.showLoading({ title: '正在加载' })
     const timestamp = Date.parse(new Date());
     let currentTab = tab;
     let cmd = "";
     let data = { timestamp };
+    if(schoolId){
+      data.schoolId = schoolId;
+    }
     if (currentTab === 0) {
       cmd = "/auth/theme/listHot";
     } else if (currentTab === 1) {

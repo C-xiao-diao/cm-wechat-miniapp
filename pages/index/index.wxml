@@ -19,7 +19,7 @@
       <view class="userInfo-group-right">
         <image class="avatar" src="{{ (userInfo.headimgUrl &&  userInfo.headimgUrl != 'undefined') ? userInfo.headimgUrl : '/imgs/icons/no_avatar.png'}}"
           alt=""></image>
-        <view class="userInfo-detail" wx:if="{{reviewStatus === 1}}">
+        <view class="userInfo-detail" wx:if="{{reviewStatus === 1}}" bindtap="navToMemberCenter">
           <view class="name-tags">
             <!-- <text>一天天的</text> -->
             <text>{{userInfo.nickName}}</text>
@@ -177,7 +177,7 @@
 
 <!-- 切换地址学校模态框 -->
 <view class="mask" wx:if="{{isShowSchoolChangeModal}}" bindtap="cancelModal">
-  <view class="schoolList" wx:if="{{isShowSchoolListModal}}">
+  <view class="schoolList" wx:if="{{isShowSchoolListModal}}" catchtap="stopCancelModal">
     <text wx:for="{{schoolList}}" bindtap="selectSchool" wx:key="index" data-id="{{item.id}}" data-name="{{item.schoolName}}">{{item.schoolName}}</text>
   </view>
   <view class="school-group" catchtap="stopCancelModal">
@@ -191,8 +191,8 @@
       <input class="school-input" value="{{schoolName}}" type="text" disabled="true"/>
     </view>
     <view class="button-school-group">
-      <button class="mini-btn" type="primary" size="mini">确认</button>
-      <button class="mini-btn" type="default" size="mini">取消</button>
+      <button class="mini-btn" type="primary" size="mini" bindtap="comfirmSchool">确认</button>
+      <button class="mini-btn" type="default" size="mini" bindtap="cancelSchool">取消</button>
     </view>
   </view>
 </view>

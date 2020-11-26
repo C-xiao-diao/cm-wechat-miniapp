@@ -30,6 +30,7 @@ page {
 .userInfo-group-left .school {
   font-size: 34rpx;
   font-weight: 500;
+  max-width: 200rpx;
 }
 
 .userInfo-group-left .funnel {

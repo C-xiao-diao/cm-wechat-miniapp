@@ -64,32 +64,39 @@ Page({
     })
   },
   navToNextStep: function () {
-    // const { headimgUrl, nickname } = this.data;
-    // let cmd = "/auth/student/editStudent";
-    // let studentId = app.globalData.studentId;
-    // let data = {
-    //   studentId,
-    //   headimgUrl,
-    //   nickname,
-    // }
-    // http.get({
-    //   cmd,
-    //   data,
-    //   success: res => {
-    //     if (_.get(res, 'data.code') === 200) {
-    //       wx.showToast({
-    //         title: '操作成功',
-    //       })
-    //       wx.navigateTo({
-    //         url: '/pages/registerTwo/registerTwo',
-    //       })
-    //     }
-    //   }
-    // })
-
-    // 测试用
-    wx.navigateTo({
-      url: '/pages/registerTwo/registerTwo',
+    const { headimgUrl, nickname } = this.data;
+    if(!headimgUrl){
+      wx.showToast({
+        title: '请选择头像',
+      })
+      return;
+    }
+    if(!nickname){
+      wx.showToast({
+        title: '请输入昵称',
+      })
+      return;
+    }
+    let cmd = "/auth/student/editStudent";
+    let studentId = app.globalData.studentId;
+    let data = {
+      studentId,
+      headimgUrl,
+      nickname,
+    }
+    http.get({
+      cmd,
+      data,
+      success: res => {
+        if (_.get(res, 'data.code') === 200) {
+          wx.showToast({
+            title: '操作成功',
+          })
+          wx.navigateTo({
+            url: '/pages/registerTwo/registerTwo',
+          })
+        }
+      }
     })
   }
 })
