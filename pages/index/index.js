@@ -236,7 +236,7 @@ Page({
   //前往个人中心界面
   navToMemberCenter: function () {
     wx.navigateTo({
-      url: '/pages/memberCenter/memberCenter',
+      url: '/pages/memberCenter/memberCenter?studentId' + app.globalData.studentId
     })
   },
   // 获取首页列表数据
