@@ -5,9 +5,12 @@ import { http } from "./../../utils/util";
 
 //获取应用实例
 const app = getApp()
+let pageX = 0;
+let moveX = 0
 
 Page({
   data: {
+    testList: [1,2,3],
     //骨架
     loading: true,
     //0未注册，1已注册  2 未登录  （其中 0 1 状态后端返回，2状态是用户拒绝授权）
@@ -15,7 +18,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    currentTab: 0,
+    currentTab: 2,
     // listHot: ['哆', '来', '咪', '发', '唆', '拉', '西'],
     list: [],
     // 是否显示用户信息授权按钮
@@ -32,6 +35,11 @@ Page({
     isShowSchoolListModal: false,
     //即兴的最新一条主题
     currentListItem: {},
+    isShowListItem: true,
+    //滑动的x坐标
+    pageX: 0,
+    //滑块的x坐标
+    x: 20,
   },
   onLoad: function () {
     // if (app.globalData.userInfo) {
@@ -397,6 +405,32 @@ Page({
     wx.navigateTo({
       url: '/pages/startTune/startTune',
     })
+  },
+  //滑动即兴卡片
+  cardMoveHandle: function(e){
+    let x = e.detail.x;
+    if(moveX >= x){
+      // this.setData({isShowListItem: false})
+      return;
+    } else {
+      console.log(moveX, 'pageXpageXpageXpageXpageX',x)
+      // this.setData({x: 20})
+    }
+    moveX = x;
+    // console.log(e,'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',moveX)
+  },
+  bindtouchstart: function(e){
+    pageX = e.changedTouches[0].pageX;
+    console.log(e,'88888888888888888888888888888888888')
+  },
+  bindtouchend: function(e){
+    let endPageX = e.changedTouches[0].pageX;
+    if(endPageX - pageX > 100){
+      this.setData({isShowListItem: false})
+    } else {
+      this.setData({x: 20})
+    }
+    console.log(e,'99999999999999999999999999999999')
   },
   //-----------------end -------------------
 })  
