@@ -254,8 +254,16 @@ page {
   box-shadow: 0 0 13rpx rgba(0, 0, 0, 0.3);
   margin-top: 35rpx;
 }
+/* .impromptu-view1{
+  height: 1000rpx;
+  margin-left: -20rpx;
+  margin-top: -20rpx;
+} */
 .impromptu-view3 {
+  height: 1000rpx;
   padding: 50rpx;
+  border: 2rpx solid blue;
+  box-sizing: border-box;
   background: white;
 }
 .impromptu-view3-top {
@@ -280,6 +288,7 @@ page {
   flex-direction: row;
 }
 .impromptu-view3-content {
+  min-height: 70rpx;
   font-size: 24rpx;
   color: #333;
   line-height: 42rpx;
@@ -296,6 +305,7 @@ page {
   color: blue;
 }
 .impromptu-view3-images {
+  min-height: 420rpx;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

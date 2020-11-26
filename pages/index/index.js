@@ -11,7 +11,7 @@ Page({
     //骨架
     loading: true,
     //0未注册，1已注册  2 未登录  （其中 0 1 状态后端返回，2状态是用户拒绝授权）
-    reviewStatus: app.globalData.reviewStatus || 2,
+    reviewStatus: app.globalData.reviewStatus || 0,
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
