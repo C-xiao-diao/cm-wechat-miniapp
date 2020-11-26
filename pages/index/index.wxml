@@ -151,27 +151,7 @@
         </view>
       </view>
     </view>
-    <!-- <view class="rising-tone" wx:if="{{currentTab === 2}}" bindtap="showTextareaModal">
-      <text>起个调 ~ </text>
-    </view> -->
-    <!-- 起个调输入框 -->
-    <view class="mask" wx:if="{{isShowTextareaModal}}" bindtap="cancelModal">
-      <view class="input-group" catchtap="stopCancelModal">
-        <text>有什么新鲜事告诉大家</text>
-        <textarea placeholder="" name="textarea" bindinput="changeText" />
-        <view class="button-group">
-        <view class="rising-tone group" catchtap="cancelModal">
-          <text>取消 ~ </text>
-        </view>
-        <view class="rising-tone group" catchtap="risingTone">
-          <text>起个调 ~ </text>
-        </view>
-      </view> 
-    </view>
-    
-    </view>
   </view>
-  
 </view>
 
 

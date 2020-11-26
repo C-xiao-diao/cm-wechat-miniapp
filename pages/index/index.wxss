@@ -365,7 +365,7 @@ page {
   box-shadow: 0 0 8rpx rgba(0, 0, 0, 0.3);
 }
 
-/* 输入弹框 */
+/* 切换学校弹框 */
 .mask {
   position: fixed;
   top: 0;
@@ -378,36 +378,6 @@ page {
   align-items: center;
 }
 
-.input-group {
-  padding: 20rpx;
-  width: 630rpx;
-  height: 350rpx;
-  background: white;
-}
-
-.input-group text {
-  font-size: 24rpx;
-  color: #333;
-  font-weight: 700;
-}
-
-.input-group textarea {
-  border: 1rpx solid #999;
-  height: 180rpx;
-  margin-top: 30rpx;
-}
-
-.button-group {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.group {
-  width: 30%;
-  margin-top: 30rpx;
-}
-/* 切换学校弹框 */
 .school-group{
   background: white;
   width: 90%;
