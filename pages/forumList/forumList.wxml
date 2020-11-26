@@ -6,7 +6,7 @@
   <!-- 主题内容 -->
   <view class="theme-content">
     <!-- <text>君泽：不瞒你说，昨天我直接啥疯了[doge]昨天我像个神一样[赞]昨天我们去玩密室，小虎GALA小龙堡三个人打不过我一个，直接被我杀疯[doge]\n 墨子：你还挺骄傲的？这有啥可骄傲的[疑问]在密室里面不敢出去，就杀自己队友[二哈]</text> -->
-    <text>{{content||""}}</text>
+    <text>{{content || ""}}</text>
     <view class="theme-content-options">
       <!-- <image bindtap="navToInvite" src="/imgs/icons/note_active.png" alt=""></image> -->
       <image bindtap="navToInvite" src="/imgs/icons/note_active.png" alt=""></image>
