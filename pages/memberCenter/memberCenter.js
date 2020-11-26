@@ -21,7 +21,8 @@ Page({
     onReady: function(){
         this.getMoreBtns();
     },
-    onLoad: function(){
+    onLoad: function(option){
+        console.log(option,9999999)
         this.getMyTheme();
     },
     //获取"更多"按钮
