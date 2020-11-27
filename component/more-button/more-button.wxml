@@ -2,7 +2,7 @@
     <image class="img" src="/imgs/icons/more.png" catchtap="showListOrNot"></image>
     <view class="more-li" wx:if="{{showList}}">
         <text class="edit" catchtap="editFn">编辑</text>
-        <text class="delete {{propCount > 20 ? 'not-optional': ''}}" catchtap="deleteFn">删除</text>
+        <text class="delete {{propCount > 20 ? 'not-optional': ''}}" catchtap="deleteConfirm">删除</text>
         <button class="share" open-type='share' catchtap="shareFn">转发</button>
     </view>
 </view>

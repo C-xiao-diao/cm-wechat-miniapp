@@ -1,8 +1,20 @@
+import "./../../utils/fix";
+import _ from "./../../utils/lodash"
+import { http } from "./../../utils/util";
+
 Component({
     properties: {
         propCount: {
           type: Number,
           default: 0
+        },
+        articleId: {
+            type: String,
+            default: ''
+        },
+        deleteType: {
+            type: String,
+            default: ''
         }
     },
     data: {
@@ -11,7 +23,7 @@ Component({
     lifetimes: {
         // 在组件实例进入页面节点树时执行
         attached: function() {
-            let v = this.properties.propCount;
+            
         }
     },
     methods: {
@@ -25,13 +37,62 @@ Component({
         },
         //编辑
         editFn: function(){
+            
+        },
+        //确认删除
+        deleteConfirm: function(){
+            let deleteType = this.properties.deleteType;
+            let str = '';
+            let that = this;
+            deleteType == 'theme' ? str = '起调' : str = '跟调';
 
+            if(this.properties.propCount > 20) {
+                wx.showToast({
+                    title: '此条'+ str + '不可以删除哦~',
+                    duration: 1500,
+                });
+                return;
+            }
+
+            wx.showModal({
+                title: '提示',
+                content: '确定删除这条' + str + '吗？',
+                showCancel: true,
+                cancelText: '取消',
+                cancelColor: '#000000',
+                confirmText: '确定',
+                confirmColor: '#3CC51F',
+                success: (result) => {
+                    if(result.confirm){
+                        that.deleteFn();
+                    }
+                },
+                fail: ()=>{},
+                complete: ()=>{}
+            });
         },
         //删除
         deleteFn: function(){
-            if(this.properties.propCount > 20) {
-                return;
-            }
+            let articleId = this.properties.articleId;
+            let deleteType = this.properties.deleteType;
+            let cmd = '';
+            
+            deleteType == 'theme' ? cmd = "/auth/theme/delete" : cmd = "/auth/essay/delete";
+            let data = { [deleteType+'Id']: articleId};
+            http.get({
+                cmd,
+                data:data,
+                success: res => {
+                    wx.hideLoading();
+                    if (_.get(res, 'data.code') === 200) {
+                        wx.showToast({
+                            title: '删除成功！',
+                            duration: 1500
+                        });
+                        this.triggerEvent('refresh');
+                    }
+                }
+            })
         },
         //转发
         shareFn: function(){
