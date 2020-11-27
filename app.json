@@ -10,6 +10,7 @@
     "pages/memberCenter/memberCenter",
     "pages/invite/invite",
     "pages/rules/rules",
+    "pages/edit/edit",
     "pages/logs/logs"
   ],
   "window":{

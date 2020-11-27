@@ -36,9 +36,8 @@ Component({
         },
         //编辑
         editFn: function(){
-            let articleType = this.properties.articleType;
-            let str = articleType == 'theme' ? '../startTune/startTune' : '../follow/follow';
-            wx.navigateTo({ url: str });
+            let articleId = this.properties.articleId;
+            wx.navigateTo({ url: '../edit/edit?articleId' + articleId });
         },
         //确认删除
         deleteConfirm: function(){

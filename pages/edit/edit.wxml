@@ -1,0 +1,18 @@
+<view class="edit-view">
+    <view class="options">
+        <text class="cancel" bindtap="goBack">取消</text>
+        <text class="button" bindtap="follow">保存</text>
+    </view>
+    <view>
+        <text class="title"> LOL手游 | 有人一起开黑吗？ </text>
+        <textarea class="addContent" bindinput="addContent" name="" id="" maxlength="800" cols="30" rows="10" placeholder="填写评论（最多300个字）"></textarea>
+    </view>
+    <view class="photo-group">
+        <view class="add-photo" wx:for="{{picture}}" wx:key="index">
+            <image class="photo" src="{{item}}" alt=""></image>
+        </view>
+        <view class="add-photo" bindtap="addPhoto">
+            <image class="photo" src="/imgs/follow/add.jpg" alt=""></image>
+        </view>
+    </view>
+</view>
