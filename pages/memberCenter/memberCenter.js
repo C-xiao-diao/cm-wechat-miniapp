@@ -1,5 +1,6 @@
 import "./../../utils/fix";
-import _ from "./../../utils/lodash"
+import _ from "./../../utils/lodash";
+import config from "./../../configs/config"
 import { http } from "./../../utils/util";
 
 //获取应用实例
@@ -8,12 +9,10 @@ const app = getApp()
 Page({
     data: {
         avatarList: [],
-        studentId: '',
         userInfo: {},
         showModal: false,
         showEditModal: false,
         currentTab: 0,
-        nickname: '一天一天',
         showBtn: true,
         // 起调
         themeCount: 0,
@@ -33,15 +32,15 @@ Page({
         
         this.getMoreBtns();
     },
-    onLoad: function(option){
+    onLoad: function(){
         let userInfo = app.globalData.userInfo;
+        let studentId = app.globalData.studentId;
         if(userInfo){
             this.setData({userInfo});
         }
-        if(option){
-            this.getMyTheme(option.studentId, this.data.themePage);
-            this.getMyFollow(option.studentId, this.data.followPage);
-            this.setData({studentId: option.studentId});
+        if(studentId){
+            this.getMyTheme(app.globalData.studentId, this.data.themePage);
+            this.getMyFollow(app.globalData.studentId, this.data.followPage);
         }
     },
     //获取"更多"按钮
@@ -54,17 +53,17 @@ Page({
     },
     //刷新我的起调列表
     refreshMyTheme: function(){
-        const { studentId, themePage } = this.data;
-        this.getMyTheme(studentId, themePage);
+        const { themePage } = this.data;
+        this.getMyTheme(app.globalData.studentId, themePage);
     },
     //刷新我的跟调列表
     refreshMyFollow: function(){
-        const { studentId, followPage } = this.data;
-        this.getMyFollow(studentId, followPage);
+        const { followPage } = this.data;
+        this.getMyFollow(app.globalData.studentId, followPage);
     },
     //获取 我的起调 列表
     getMyTheme: function(studentId, page){
-        const { themePageLimit, myThemeList } = this.data;
+        const { themePageLimit, myThemeList, followPage } = this.data;
         let cmd = "/auth/theme/myTheme";
         let data = {
             studentId: studentId,
@@ -119,20 +118,20 @@ Page({
     },
     //页面上拉触底事件
     onReachBottom: function(){
-        const { studentId, currentTab, themeCount, themePageLimit, themePage, followCount, followPageLimit, followPage } = this.data;
+        const { currentTab, themeCount, themePageLimit, themePage, followCount, followPageLimit, followPage } = this.data;
         if(currentTab==0){//起调页面
             let pages = Math.ceil(themeCount/themePageLimit) - 1;
             if(themePage < pages){
                 wx.showLoading({ title: '加载中...'});
                 let curFollowPage = themePage + 1;
-                this.getMyTheme(studentId, curFollowPage);
+                this.getMyTheme(app.globalData.studentId, curFollowPage);
             }
         }else if(currentTab==1){//跟调页面
             let pages = Math.ceil(followCount/followPageLimit) - 1;
             if(followPage < pages){
                 wx.showLoading({ title: '加载中...'});
                 let curFollowPage = followPage + 1;
-                this.getMyFollow(studentId, curFollowPage);
+                this.getMyFollow(app.globalData.studentId, curFollowPage);
             }
         }
     },
@@ -142,18 +141,70 @@ Page({
     },
     //修改图片
     headimage: function () {
-        var  _this = this;
+        const _this = this;
+        //获取图片
         wx.chooseImage({
-           count: 1, // 默认9     
-           sizeType: ['original', 'compressed'],
-          // 指定是原图还是压缩图，默认两个都有     
-           sourceType: ['album', 'camera'],
-          // 指定来源是相册还是相机，默认两个都有   
-           success: function (res) {   
-             _this.setData({
-                avatar: res.tempFilePaths
-            })
-          }
+            count: 1,
+            sizeType: ['original', 'compressed'],
+            sourceType: ['album', 'camera'],
+            success(res) {
+                // tempFilePath可以作为img标签的src属性显示图片
+                const tempFilePaths = res.tempFilePaths;
+                //上传至服务器
+                wx.showLoading({ title: '正在上传...' });
+                wx.uploadFile({
+                    url: config.uploadUrl,
+                    filePath: tempFilePaths[0],
+                    header: {
+                        'content-type': 'multipart/form-data'
+                    },
+                    name: 'files',
+                    formData: {
+                        'theme': 'photo'
+                    },
+                    success(res) {
+                        console.log(res, 'fffffffffffffffffffffffffffffffffffffffffff')
+                        let json = res.data;
+                        let resData = JSON.parse(json)
+                        if (_.get(resData, 'code') === 200) {
+                            let fileName = _.get(resData, 'data.fileName');
+                            let file = fileName[0];
+                            _this.setData({ 
+                                'userInfo.headimgUrl': file,
+                             });
+                             app.globalData.userInfo.headimgUrl = file;
+                             _this.editAvatar(file)
+                        } else {
+
+                        }
+                    },
+                    complete: function () {
+                        wx.hideLoading();
+                    }
+                })
+            }
+        })
+    },
+    //修改用户头像
+    editAvatar: function(headimgUrl){
+        const { userInfo } = this.data;
+        let cmd = "/auth/student/editStudent";
+        let studentId = app.globalData.studentId;
+        let data = {
+            studentId,
+            headimgUrl,
+            nickname: userInfo.nickname,
+        }
+        http.get({
+            cmd,
+            data,
+            success: res => {
+                if (_.get(res, 'data.code') === 200) {
+                    wx.showToast({
+                        title: '操作成功',
+                    })
+                }
+            }
         })
     },
     //预览照片

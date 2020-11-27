@@ -5,7 +5,8 @@
             <image class="camera" mode="aspecFill" src="/imgs/icons/camera.png" bindtap="headimage"></image>
         </view>
         <view class="nickname">
-            <text>{{userInfo.nickName}}</text><image class="edit-nickname" bind:tap="editNickname" src="/imgs/icons/pen.png"></image>
+            <text>{{userInfo.nickName}}</text>
+            <!-- <image class="edit-nickname" bind:tap="editNickname" src="/imgs/icons/pen.png"></image> -->
         </view>
         <view class="membership">
             <view class="point" bind:tap="toInvite">
