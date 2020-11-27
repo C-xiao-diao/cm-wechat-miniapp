@@ -1,7 +1,7 @@
 <view class="edit-view">
     <view class="options">
         <text class="cancel" bindtap="goBack">取消</text>
-        <text class="button" bindtap="follow">保存</text>
+        <text class="button" bindtap="saveEdit">保存</text>
     </view>
     <view>
         <text class="title"> LOL手游 | 有人一起开黑吗？ </text>

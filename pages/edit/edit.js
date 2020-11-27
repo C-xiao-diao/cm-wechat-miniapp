@@ -13,6 +13,9 @@ Page({
     onLoad: function(){
 
     },
+    goBack: function () {
+        wx.navigateBack();
+    },
     // 添加内容
     addContent: function (e) {
         let content = e.detail.value;
@@ -61,4 +64,36 @@ Page({
             }
         })
     },
+    //保存编辑
+    saveEdit: function(){
+        const { themeId, content, picture } = this.data;
+        let studentId = app.globalData.studentId;
+        if(_.isEmpty(content)){
+            wx.showToast({
+              title: '新增内容不能为空~',
+            })
+            return;
+        }
+        let cmd = "/auth/essay/addEssay";
+        let data = {
+            studentId,
+            themeId,
+            content,
+            picture
+        }
+        http.post({
+            cmd,
+            data,
+            success: res => {
+                if(_.get(res, 'data.code')=== 200){
+                    wx.showToast({
+                        title: '编辑成功',
+                        success: res =>{
+                            wx.navigateBack({delta: 0})
+                        }       
+                    })
+                }
+            }
+        })
+    }
 })
