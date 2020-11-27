@@ -114,7 +114,7 @@ Page({
             success: res =>{
               wx.navigateBack({
                 delta: 0,
-              })      
+              })    
             },         
           })
         }

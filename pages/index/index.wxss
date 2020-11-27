@@ -6,6 +6,8 @@ page {
 .hotlist-view {
   /* padding: 0 50rpx; */
   box-sizing: border-box;
+  width: 750rpx;
+  overflow: hidden;
 }
 
 .userInfo {
@@ -246,25 +248,70 @@ page {
 }
 /* 即兴 */
 .impromptu{
-  margin-bottom: 50rpx;
+  margin-top: 80rpx;
+  position: relative;
+  width: 150%;
+  height: 1030rpx;
 }
 .impromptu-view1,
 .impromptu-view2,
 .impromptu-view3 {
-  box-shadow: 0 0 13rpx rgba(0, 0, 0, 0.3);
   margin-top: 35rpx;
 }
-/* .impromptu-view1{
+.impromptu-view1{
+  /* width: 100%; */
+  width: 650rpx;
   height: 1000rpx;
-  margin-left: -20rpx;
-  margin-top: -20rpx;
-} */
-.impromptu-view3 {
+  background: white;
+  position: absolute;
+  top: -80rpx;
+  left: -20rpx;
+  z-index: -1;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  box-shadow: 0 0 13rpx rgba(0, 0, 0, 0.3);
+}
+.impromptu-view2{
+  /* width: 100%; */
+  width: 650rpx;
+  height: 1000rpx;
+  background: white;
+  position: absolute;
+  top: -60rpx;
+  left: 0rpx;
+  z-index: 1;
+  border-radius: 10rpx;
+  padding: 50rpx;
+  box-sizing: border-box;
+  box-shadow: 0 0 13rpx rgba(0, 0, 0, 0.3);
+}
+/* .impromptu-view3{
+  width: 100%;
   height: 1000rpx;
   padding: 50rpx;
-  border: 2rpx solid blue;
   box-sizing: border-box;
   background: white;
+  position: absolute;
+  top: -40rpx;
+  left: 20rpx;
+  margin-left: 20rpx;
+  z-index: 2;
+  border-radius: 10rpx;
+  box-shadow: 0 0 13rpx rgba(0, 0, 0, 0.3);
+} */
+
+.impromptu-view3 {
+  /* width: 100%; */
+  width: 650rpx;
+  height: 1000rpx;
+  padding: 50rpx;
+  margin-top: -20rpx;
+  margin-left: -20rpx;
+  z-index: 999999;
+  box-sizing: border-box;
+  background: white;
+  border-radius: 10rpx;
+  box-shadow: 0 0 13rpx rgba(0, 0, 0, 0.3);
 }
 .impromptu-view3-top {
   display: flex;
@@ -284,8 +331,8 @@ page {
   font-weight: 500;
 }
 .impromptu-view3-content-view{
-  display: inline-flexbox;
-  flex-direction: row;
+  /* display: inline-flexbox; */
+  flex-direction: column;
 }
 .impromptu-view3-content {
   min-height: 70rpx;
@@ -303,6 +350,8 @@ page {
 .see-details{
   font-size: 24rpx;
   color: blue;
+  display: flex;
+  
 }
 .impromptu-view3-images {
   min-height: 420rpx;

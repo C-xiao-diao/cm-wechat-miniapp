@@ -17,7 +17,8 @@
         <text class="city">长沙市</text>
       </view>
       <view class="userInfo-group-right">
-        <image class="avatar" src="{{ (userInfo.headimgUrl &&  userInfo.headimgUrl != 'undefined') ? userInfo.headimgUrl : '/imgs/icons/no_avatar.png'}}"
+        <image class="avatar"
+          src="{{ (userInfo.headimgUrl &&  userInfo.headimgUrl != 'undefined') ? userInfo.headimgUrl : '/imgs/icons/no_avatar.png'}}"
           alt=""></image>
         <view class="userInfo-detail" wx:if="{{reviewStatus === 1}}" bindtap="navToMemberCenter">
           <view class="name-tags">
@@ -26,7 +27,8 @@
             <text class="tags">吃货达人</text>
           </view>
           <view class="gender-school">
-            <image class="gender" src="{{userInfo.sex ==1 ?  '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}" alt=""></image>
+            <image class="gender"
+              src="{{userInfo.sex ==1 ?  '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}" alt=""></image>
             <!-- <text class="my-school">长沙市雅礼中学</text> -->
             <text class="my-school">{{userInfo.schoolName}}</text>
           </view>
@@ -59,12 +61,12 @@
         <text>freestyle</text>
       </view>
     </view>
-    <view class="hotlist-content" wx:if="{{list.length > 0 && (currentTab === 0 || currentTab === 1)}}">
+    <view class="hotlist-content" wx:if="{{currentTab === 0 || currentTab === 1}}">
       <view class="hotlist-content-item" wx:for="{{ list }}" wx:key="index">
         <!-- 嗨C -->
-        <view  bindtap="navToDetail" data-themeId="{{item.id}}" data-index="{{index}}"
-          data-theme="{{item.theme}}" data-number="{{item.pointPraiseNumber}}"
-          data-picture="{{item.picture}}" data-content="{{item.supplementaryContent}}">
+        <view bindtap="navToDetail" data-themeId="{{item.id}}" data-index="{{index}}" data-theme="{{item.theme}}"
+          data-number="{{item.pointPraiseNumber}}" data-picture="{{item.picture}}"
+          data-content="{{item.supplementaryContent}}">
           <view class="hotlist-item" wx:if="{{currentTab === 0}}">
             <text
               class="hotlist-item-sortnum sortnum{{index}}">{{index === 0 ? '哆' :  index === 1 ?'来': index === 2 ?'咪' : index === 3 ?'发': index === 4 ? '唆': index === 5 ?'拉': '西'}}、</text>
@@ -80,14 +82,16 @@
         <view class="famous-people" wx:if="{{currentTab === 1}}">
           <text
             class="famous-people-num sortpeople{{index}}">{{index === 0 ? '1' : index === 1 ?'2': index === 2 ?'3' : index === 3 ?'4': index === 4 ? '5': index === 5 ?'6': '7'}}</text>
-          <image class="famous-people-avatar" src="{{item.headimgUrl != 'undefined' ? item.headimgUrl : '/imgs/icons/no_avatar.png'}}" alt=""></image>
+          <image class="famous-people-avatar"
+            src="{{item.headimgUrl != 'undefined' ? item.headimgUrl : '/imgs/icons/no_avatar.png'}}" alt=""></image>
           <view>
             <view class="name-tags">
               <text>{{item.studentName}}</text>
               <text class="tags">吃货达人</text>
             </view>
             <view class="gender-school">
-              <image class="famous-people-gender" src="{{item.sex == 1 ? '/imgs/forumList/female.png' : '/imgs/forumList/female.png'}}" alt=""></image>
+              <image class="famous-people-gender"
+                src="{{item.sex == 1 ? '/imgs/forumList/female.png' : '/imgs/forumList/female.png'}}" alt=""></image>
               <text class="my-school">{{item.school ? item.school.schoolName : "暂无学校"}}</text>
               <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
               <text class="hot-num">{{item.noteNumber || 0}}</text>
@@ -101,10 +105,9 @@
       </view>
     </view>
     <!-- 即兴 -->
-    <view class="impromptu" wx:if="{{currentTab === 2}}">
-      <view class=impromptu-view1"></view>
-      <view class=impromptu-view2"></view>
-      <view class=impromptu-view3">
+    <movable-area class="impromptu" wx:if="{{currentTab === 2}}">
+      <view class="impromptu-view1"></view>
+      <view class="impromptu-view2">
         <view class="impromptu-view3-top">
           <image class="impromptu-view3-top-avatar" src="/imgs/forumList/avatar.jpg" alt=""></image>
           <view>
@@ -116,17 +119,16 @@
               <image class="famous-people-gender" src="/imgs/forumList/female.png" alt=""></image>
               <text class="my-school">长沙市雅礼中学</text>
               <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
-              <text class="hot-num">999</text>
+              <text class="hot-num">{{list[0].pointPraiseNumber}}</text>
             </view>
           </view>
         </view>
         <view class="impromptu-view3-title">
-          <text>LOL手游 | 有人一起开黑吗</text>
+          <text>{{list[0].theme}}</text>
         </view>
         <view style="impromptu-view3-content-view">
-          <text
-            class="impromptu-view3-content">君泽：不瞒你说，昨天我直接啥疯了[doge]昨天我像个神一样[赞]昨天我们去玩密室，小虎GALA小龙堡三个人打不过我一个，直接被我杀疯[doge]\n墨子：你还挺骄傲的？这有啥可骄傲的[疑问]在密室里面不敢出去，就杀自己队友[二哈]</text><text
-            class="see-details" bindtap="navToDetail">查看全文</text>
+          <text class="impromptu-view3-content">{{list[0].supplementaryContent}}</text>
+          <text class="see-details" bindtap="navToDetail">查看全文</text>
         </view>
         <view class="impromptu-view3-images">
           <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
@@ -150,7 +152,54 @@
           </view>
         </view>
       </view>
-    </view>
+
+      <movable-view class="impromptu-view3" bindchange="cardMoveHandle" bindtouchstart="bindtouchstart"
+        bindtouchend="bindtouchend" x="{{x}}" direction="horizontal" out-of-bounds wx:if="{{isShowListItem}}">
+        <view class="impromptu-view3-top">
+          <image class="impromptu-view3-top-avatar" src="/imgs/forumList/avatar.jpg" alt=""></image>
+          <view>
+            <view class="name-tags">
+              <text>一天天的</text>
+              <text class="tags">吃货达人</text>
+            </view>
+            <view class="gender-school">
+              <image class="famous-people-gender" src="/imgs/forumList/female.png" alt=""></image>
+              <text class="my-school">长沙市雅礼中学</text>
+              <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
+              <text class="hot-num">{{list[0].pointPraiseNumber}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="impromptu-view3-title">
+          <text>{{list[0].theme}}</text>
+        </view>
+        <view style="impromptu-view3-content-view">
+          <text class="impromptu-view3-content">{{list[0].supplementaryContent}}</text>
+          <text class="see-details" bindtap="navToDetail">查看全文</text>
+        </view>
+        <view class="impromptu-view3-images">
+          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
+          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
+          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
+          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
+          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
+          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
+          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
+          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
+          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
+        </view>
+        <view class="impromptu-view3-options">
+          <view>
+            <image class="impromptu-view3-photo" src="./../../imgs/icons/no_like.png" alt=""></image>
+            <text>不感兴趣</text>
+          </view>
+          <view bindtap="navToFollow">
+            <image class="impromptu-view3-photo" src="./../../imgs/icons/edit.png" alt=""></image>
+            <text>跟调</text>
+          </view>
+        </view>
+      </movable-view>
+    </movable-area>
   </view>
 </view>
 
@@ -158,7 +207,8 @@
 <!-- 切换地址学校模态框 -->
 <view class="mask" wx:if="{{isShowSchoolChangeModal}}" bindtap="cancelModal">
   <view class="schoolList" wx:if="{{isShowSchoolListModal}}" catchtap="stopCancelModal">
-    <text wx:for="{{schoolList}}" bindtap="selectSchool" wx:key="index" data-id="{{item.id}}" data-name="{{item.schoolName}}">{{item.schoolName}}</text>
+    <text wx:for="{{schoolList}}" bindtap="selectSchool" wx:key="index" data-id="{{item.id}}"
+      data-name="{{item.schoolName}}">{{item.schoolName}}</text>
   </view>
   <view class="school-group" catchtap="stopCancelModal">
     <view class="input-school-group">
@@ -168,7 +218,7 @@
           {{address}}
         </view>
       </picker>
-      <input class="school-input" value="{{schoolName}}" type="text" disabled="true"/>
+      <input class="school-input" value="{{schoolName}}" type="text" disabled="true" />
     </view>
     <view class="button-school-group">
       <button class="mini-btn" type="primary" size="mini" bindtap="comfirmSchool">确认</button>
@@ -177,4 +227,5 @@
   </view>
 </view>
 <!-- end -->
-<button wx:if="{{isShowUserInfoBtn}}" class="getUserInfoBtn" open-type="getUserInfo" bindgetuserinfo="userInfoHandler"> 获取用户信息</button>
+<button wx:if="{{isShowUserInfoBtn}}" class="getUserInfoBtn" open-type="getUserInfo" bindgetuserinfo="userInfoHandler">
+  获取用户信息</button>

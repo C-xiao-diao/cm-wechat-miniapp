@@ -5,9 +5,12 @@ import { http } from "./../../utils/util";
 
 //获取应用实例
 const app = getApp()
+let pageX = 0;
+let moveX = 0
 
 Page({
   data: {
+    testList: [1,2,3],
     //骨架
     loading: true,
     //0未注册，1已注册  2 未登录  （其中 0 1 状态后端返回，2状态是用户拒绝授权）
@@ -15,7 +18,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    currentTab: 0,
+    currentTab: 2,
     // listHot: ['哆', '来', '咪', '发', '唆', '拉', '西'],
     list: [],
     // 是否显示用户信息授权按钮
@@ -28,8 +31,15 @@ Page({
     schoolName: "长郡中学",
     schoolId: '',
     //学校列表
-    schoolList: [], 
+    schoolList: [],
     isShowSchoolListModal: false,
+    //即兴的最新一条主题
+    currentListItem: {},
+    isShowListItem: true,
+    //滑动的x坐标
+    pageX: 0,
+    //滑块的x坐标
+    x: 20,
   },
   onLoad: function () {
     // if (app.globalData.userInfo) {
@@ -62,30 +72,49 @@ Page({
     // }
 
     //app.js登录后需要执行的 callback 写在此处
-    app.loginCallback = resData => {
-      console.log("执行了loginCallback回调",)
-      if (_.get(resData, 'code') === 200) {
-        this.setData({ reviewStatus: resData.data.reviewStatus, userInfo: app.globalData.userInfo })
-        this.getIndexList(this.data.currentTab, false);
-      } else {
-        //没有拿到wx.login的回调
-      }
-    }
+    // app.loginCallback = resData => {
+    //   console.log("执行了loginCallback回调",)
+    //   if (_.get(resData, 'code') === 200) {
+    //     this.setData({ reviewStatus: resData.data.reviewStatus, userInfo: app.globalData.userInfo })
+    //     this.getIndexList(this.data.currentTab, false);
+    //   } else {
+    //     //没有拿到wx.login的回调
+    //   }
+    // }
   },
   onShow: function () {
-    console.log("执行了首页的onShow操作", app.globalData.code)
+    console.log("执行了首页的onShow操作", app.globalData.userId)
     //注意，主页 onLoad可能提前于 小程序 onLaunch 执行完， 
     // 用户id 在onLaunch 的login里获取，所以 首页加载数据，要么 写在 onShow里，要么写在onLoad的 callback回调里
     let _this = this;
     wx.getSetting({
       withSubscriptions: true,
       success: function (res) {
-        console.log(res, 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb');
         if (res.authSetting['scope.userInfo']) {
           _this.setData({ isShowUserInfoBtn: false });
         }
       }
     })
+
+    if (!app.globalData.userId) {
+      app.loginCallback = resData => {
+        console.log("执行了loginCallback回调--------------------------",)
+        if (_.get(resData, 'code') === 200) {
+          this.setData({ reviewStatus: resData.data.reviewStatus, userInfo: app.globalData.userInfo })
+          this.getIndexList(this.data.currentTab, false);
+        } else {
+          //没有拿到wx.login的回调
+        }
+      }
+    } else {
+      this.setData({ reviewStatus: app.globalData.reviewStatus, userInfo: app.globalData.userInfo })
+      this.getIndexList(this.data.currentTab, false);
+    }
+
+    //每次进入界面，都需要刷新列表数据
+    // if(app.globalData.userId){
+    //   this.getIndexList(this.data.currentTab, false);
+    // }
   },
 
   getUserInfo: function (e) {
@@ -190,7 +219,7 @@ Page({
   //选择地址底部框显示
   bindPickerChange: function (e) {
     const value = e.detail.value;
-    this.setData({ address: value[2], isShowSchoolListModal: true});
+    this.setData({ address: value[2], isShowSchoolListModal: true });
     this.getSchoolList(null, value[2]);
   },
   //获取学校列表
@@ -200,7 +229,7 @@ Page({
     if (schoolAlias !== undefined && schoolAlias !== null) {
       data.schoolAlias = schoolAlias;
     }
-    if(district !== undefined && district !== null) {
+    if (district !== undefined && district !== null) {
       data.district = district;
     }
     http.get({
@@ -215,17 +244,17 @@ Page({
     })
   },
   //选择学校
-  selectSchool:function(e){
+  selectSchool: function (e) {
     const id = e.currentTarget.dataset.id;
     const name = e.currentTarget.dataset.name;
-    this.setData({ schoolName: name, schoolId: id, isShowSchoolListModal: false});
+    this.setData({ schoolName: name, schoolId: id, isShowSchoolListModal: false });
   },
-  comfirmSchool: function(e){
+  comfirmSchool: function (e) {
     this.getIndexList(this.data.currentTab, false);
-    this.setData({ isShowSchoolChangeModal: false});
+    this.setData({ isShowSchoolChangeModal: false });
   },
-  cancelSchool:function(){
-    this.setData({ isShowSchoolListModal: false, isShowSchoolChangeModal: false});
+  cancelSchool: function () {
+    this.setData({ isShowSchoolListModal: false, isShowSchoolChangeModal: false });
   },
   //前往注册界面
   navToRegister: function () {
@@ -247,7 +276,7 @@ Page({
     let currentTab = tab;
     let cmd = "";
     let data = { timestamp };
-    if(schoolId){
+    if (schoolId) {
       data.schoolId = schoolId;
     }
     if (currentTab === 0) {
@@ -376,6 +405,32 @@ Page({
     wx.navigateTo({
       url: '/pages/startTune/startTune',
     })
+  },
+  //滑动即兴卡片
+  cardMoveHandle: function(e){
+    let x = e.detail.x;
+    if(moveX >= x){
+      // this.setData({isShowListItem: false})
+      return;
+    } else {
+      console.log(moveX, 'pageXpageXpageXpageXpageX',x)
+      // this.setData({x: 20})
+    }
+    moveX = x;
+    // console.log(e,'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',moveX)
+  },
+  bindtouchstart: function(e){
+    pageX = e.changedTouches[0].pageX;
+    console.log(e,'88888888888888888888888888888888888')
+  },
+  bindtouchend: function(e){
+    let endPageX = e.changedTouches[0].pageX;
+    if(endPageX - pageX > 100){
+      this.setData({isShowListItem: false})
+    } else {
+      this.setData({x: 20})
+    }
+    console.log(e,'99999999999999999999999999999999')
   },
   //-----------------end -------------------
 })  
