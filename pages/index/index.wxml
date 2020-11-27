@@ -109,15 +109,16 @@
       <view class="impromptu-view1"></view>
       <view class="impromptu-view2">
         <view class="impromptu-view3-top">
-          <image class="impromptu-view3-top-avatar" src="/imgs/forumList/avatar.jpg" alt=""></image>
+          <image class="impromptu-view3-top-avatar" src="{{list[0].studentInformation.headimgUrl ? list[0].studentInformation.headimgUrl : '/imgs/icons/no_avatar.png'}}" alt=""></image>
           <view>
             <view class="name-tags">
               <text>一天天的</text>
               <text class="tags">吃货达人</text>
             </view>
             <view class="gender-school">
-              <image class="famous-people-gender" src="/imgs/forumList/female.png" alt=""></image>
-              <text class="my-school">长沙市雅礼中学</text>
+              <image class="famous-people-gender" src="{{list[0].studentInformation.sex == 1 ? '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}" alt=""></image>
+              <!-- <text class="my-school">长沙市雅礼中学</text> -->
+              <text class="my-school">{{list[0].school.schoolName}}</text>
               <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
               <text class="hot-num">{{list[0].pointPraiseNumber}}</text>
             </view>
@@ -156,15 +157,16 @@
       <movable-view class="impromptu-view3" bindchange="cardMoveHandle" bindtouchstart="bindtouchstart"
         bindtouchend="bindtouchend" x="{{x}}" direction="horizontal" out-of-bounds wx:if="{{isShowListItem}}">
         <view class="impromptu-view3-top">
-          <image class="impromptu-view3-top-avatar" src="/imgs/forumList/avatar.jpg" alt=""></image>
+          <image class="impromptu-view3-top-avatar" src="{{list[0].studentInformation.headimgUrl ? list[0].studentInformation.headimgUrl : '/imgs/icons/no_avatar.png'}}" alt=""></image>
           <view>
             <view class="name-tags">
               <text>一天天的</text>
               <text class="tags">吃货达人</text>
             </view>
             <view class="gender-school">
-              <image class="famous-people-gender" src="/imgs/forumList/female.png" alt=""></image>
-              <text class="my-school">长沙市雅礼中学</text>
+              <image class="famous-people-gender" src="{{list[0].studentInformation.sex == 1 ? '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}" alt=""></image>
+              <!-- <text class="my-school">长沙市雅礼中学</text> -->
+              <text class="my-school">{{list[0].school.schoolName}}</text>
               <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
               <text class="hot-num">{{list[0].pointPraiseNumber}}</text>
             </view>
@@ -189,7 +191,7 @@
           <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
         </view>
         <view class="impromptu-view3-options">
-          <view>
+          <view bindtap="noInterested">
             <image class="impromptu-view3-photo" src="./../../imgs/icons/no_like.png" alt=""></image>
             <text>不感兴趣</text>
           </view>

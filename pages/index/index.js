@@ -303,14 +303,8 @@ Page({
       data,
       success: res => {
         if (_.get(res, 'data.code') === 200) {
-          console.log(res, 'mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm');
           let list = _.get(res, 'data.data.list');
-          this.setData({ list, currentTab, loading: false })
-          // if(currentTab === 0){
-          //   this.setData({listHot: list, currentTab,loading: false })
-          // } else {
-          //   this.setData({listRandom: list, currentTab,loading: false  })
-          // }
+          this.setData({ list, currentTab, loading: false,isShowListItem: true })
         } else {
           wx.showToast({
             title: '请求异常',
@@ -424,13 +418,20 @@ Page({
     console.log(e,'88888888888888888888888888888888888')
   },
   bindtouchend: function(e){
+    const _this = this;
     let endPageX = e.changedTouches[0].pageX;
     if(endPageX - pageX > 100){
-      this.setData({isShowListItem: false})
+      this.setData({isShowListItem: false},()=>{
+        this.getIndexList(this.data.currentTab, true)
+      })
     } else {
       this.setData({x: 20})
     }
     console.log(e,'99999999999999999999999999999999')
   },
+  // 不感兴趣
+  noInterested: function(){
+    this.getIndexList(this.data.currentTab, true)
+  }
   //-----------------end -------------------
 })  
