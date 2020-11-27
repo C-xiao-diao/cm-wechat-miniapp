@@ -18,7 +18,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    currentTab: 2,
+    currentTab: 0,
     // listHot: ['哆', '来', '咪', '发', '唆', '拉', '西'],
     list: [],
     // 是否显示用户信息授权按钮
@@ -258,9 +258,16 @@ Page({
   },
   //前往注册界面
   navToRegister: function () {
-    wx.navigateTo({
-      url: '/pages/registerOne/registerOne',
-    })
+    let step = app.globalData.step;
+    if(step === 0){
+      //注册已完成，实际上不会看到注册按钮
+    } else if(step === 1){
+      wx.navigateTo({ url: '/pages/registerOne/registerOne'})
+    } else if(step === 2){
+      wx.navigateTo({ url: '/pages/registerTwo/registerTwo'})
+    } else {
+      wx.navigateTo({ url: '/pages/registerOne/registerOne'})
+    }
   },
   //前往个人中心界面
   navToMemberCenter: function () {
@@ -303,14 +310,8 @@ Page({
       data,
       success: res => {
         if (_.get(res, 'data.code') === 200) {
-          console.log(res, 'mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm');
           let list = _.get(res, 'data.data.list');
-          this.setData({ list, currentTab, loading: false })
-          // if(currentTab === 0){
-          //   this.setData({listHot: list, currentTab,loading: false })
-          // } else {
-          //   this.setData({listRandom: list, currentTab,loading: false  })
-          // }
+          this.setData({ list, currentTab, loading: false,isShowListItem: true })
         } else {
           wx.showToast({
             title: '请求异常',
@@ -424,13 +425,20 @@ Page({
     console.log(e,'88888888888888888888888888888888888')
   },
   bindtouchend: function(e){
+    const _this = this;
     let endPageX = e.changedTouches[0].pageX;
     if(endPageX - pageX > 100){
-      this.setData({isShowListItem: false})
+      this.setData({isShowListItem: false},()=>{
+        this.getIndexList(this.data.currentTab, true)
+      })
     } else {
       this.setData({x: 20})
     }
     console.log(e,'99999999999999999999999999999999')
   },
+  // 不感兴趣
+  noInterested: function(){
+    this.getIndexList(this.data.currentTab, true)
+  }
   //-----------------end -------------------
 })  
