@@ -177,7 +177,7 @@
         </view>
         <view style="impromptu-view3-content-view">
           <text class="impromptu-view3-content">{{list[0].supplementaryContent}}</text>
-          <text class="see-details" bindtap="navToDetail">查看全文</text>
+          <text class="see-details" bindtap="navToDetail" data-themeId="{{list[0].id}}" data-index="{{index}}" data-theme="{{list[0].theme}}" data-number="{{list[0].studentInformation.noteNumber || 0}}" data-picture="{{list[0].picture}}" data-content="{{list[0].supplementaryContent}}">查看全文</text>
         </view>
         <view class="impromptu-view3-images">
           <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>

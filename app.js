@@ -59,6 +59,7 @@ App({
                 this.globalData.isVip = resData.data.isVip;
                 this.globalData.studentId = resData.data.studentId;
                 this.globalData.reviewStatus = resData.data.reviewStatus;
+                this.globalData.step = resData.data.step;
                 let userInfo ={};
                 userInfo.nickName = resData.data.nickName;
                 userInfo.sex = resData.data.sex;

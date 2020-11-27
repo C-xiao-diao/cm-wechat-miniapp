@@ -18,7 +18,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    currentTab: 2,
+    currentTab: 0,
     // listHot: ['哆', '来', '咪', '发', '唆', '拉', '西'],
     list: [],
     // 是否显示用户信息授权按钮
