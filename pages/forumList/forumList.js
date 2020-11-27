@@ -31,7 +31,8 @@ Page({
     number: 0
   },
   onLoad: function (option) {
-    this.setData({ themeId: option.themeId, theme: option.theme, content: option.content, number: option.number, picture: option.picture })
+    console.log(option.picture, 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')
+    this.setData({ themeId: option.themeId, theme: option.theme, content: option.content, number: option.number, picture: JSON.parse(option.picture) })
     //获取界面数据
     // this.getForumList(option)
   },

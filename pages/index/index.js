@@ -389,7 +389,7 @@ Page({
         + '&theme=' + theme
         + '&content=' + content
         + '&number=' + number
-        + '&picture=' + picture,
+        + '&picture=' + JSON.stringify(picture),
     })
   },
   // 阻止页面事件传递至父元素
