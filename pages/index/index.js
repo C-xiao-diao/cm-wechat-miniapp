@@ -258,9 +258,16 @@ Page({
   },
   //前往注册界面
   navToRegister: function () {
-    wx.navigateTo({
-      url: '/pages/registerOne/registerOne',
-    })
+    let step = app.globalData.step;
+    if(step === 0){
+      //注册已完成，实际上不会看到注册按钮
+    } else if(step === 1){
+      wx.navigateTo({ url: '/pages/registerOne/registerOne'})
+    } else if(step === 2){
+      wx.navigateTo({ url: '/pages/registerTwo/registerTwo'})
+    } else {
+      wx.navigateTo({ url: '/pages/registerOne/registerOne'})
+    }
   },
   //前往个人中心界面
   navToMemberCenter: function () {
