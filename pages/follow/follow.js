@@ -77,12 +77,12 @@ Page({
       })
       return;
     }
-    if(_.isEmpty(picture)){
-      wx.showToast({
-        title: '图片不能为空',
-      })
-      return;
-    }
+    // if(_.isEmpty(picture)){
+    //   wx.showToast({
+    //     title: '图片不能为空',
+    //   })
+    //   return;
+    // }
     let cmd = "/auth/essay/addEssay";
     let data = {
       studentId,
