@@ -1,6 +1,5 @@
 import "./../../utils/fix";
 import _ from "./../../utils/lodash";
-import config from "./../../configs/config"
 import { http } from "./../../utils/util";
 
 //获取应用实例

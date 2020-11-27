@@ -12,7 +12,7 @@ Component({
             type: String,
             default: ''
         },
-        deleteType: {
+        articleType: {
             type: String,
             default: ''
         }
@@ -31,20 +31,20 @@ Component({
             this.showListFn(false);
         },
         showListFn: function(fromParent){
-            let showList;
-            fromParent ? showList = false : showList = !this.data.showList;
+            let showList = fromParent ? false : !this.data.showList;
             this.setData({showList});
         },
         //编辑
         editFn: function(){
-            
+            let articleType = this.properties.articleType;
+            let str = articleType == 'theme' ? '../startTune/startTune' : '../follow/follow';
+            wx.navigateTo({ url: str });
         },
         //确认删除
         deleteConfirm: function(){
-            let deleteType = this.properties.deleteType;
-            let str = '';
+            let articleType = this.properties.articleType;
+            let str = articleType == 'theme' ? '起调' : '跟调';
             let that = this;
-            deleteType == 'theme' ? str = '起调' : str = '跟调';
 
             if(this.properties.propCount > 20) {
                 wx.showToast({
@@ -74,11 +74,11 @@ Component({
         //删除
         deleteFn: function(){
             let articleId = this.properties.articleId;
-            let deleteType = this.properties.deleteType;
+            let articleType = this.properties.articleType;
             let cmd = '';
             
-            deleteType == 'theme' ? cmd = "/auth/theme/delete" : cmd = "/auth/essay/delete";
-            let data = { [deleteType+'Id']: articleId};
+            articleType == 'theme' ? cmd = "/auth/theme/delete" : cmd = "/auth/essay/delete";
+            let data = { [articleType+'Id']: articleId};
             http.get({
                 cmd,
                 data:data,
