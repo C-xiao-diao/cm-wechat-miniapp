@@ -56,10 +56,10 @@
         <text bindtap="changeTab" class="tab {{currentTab === 1 ? 'active' : ''}}" data-item="{{1}}">风流人物榜</text>
         <text bindtap="changeTab" class="tab {{currentTab === 2 ? 'active' : ''}}" data-item="{{2}}">即兴</text>
       </view>
-      <view class="top-right" wx:if="{{currentTab === 2}}" bindtap="freestyleHandle">
+      <!-- <view class="top-right" wx:if="{{currentTab === 2}}" bindtap="freestyleHandle">
         <image class="gender" src="/imgs/index/freestyle.png" alt=""></image>
         <text>freestyle</text>
-      </view>
+      </view> -->
     </view>
     <view class="hotlist-content" wx:if="{{currentTab === 0 || currentTab === 1}}">
       <view class="hotlist-content-item" wx:for="{{ list }}" wx:key="index">
@@ -181,15 +181,6 @@
         </view>
         <view class="impromptu-view3-images">
           <image class="impromptu-view3-photo" src="{{item}}" wx:for="{{list[0].picture}}" wx:key="index" alt=""></image>
-          <!-- <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
-          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
-          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
-          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
-          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
-          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
-          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
-          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image>
-          <image class="impromptu-view3-photo" src="./../../imgs/forumList/game.jpg" alt=""></image> -->
         </view>
         <view class="impromptu-view3-options">
           <view bindtap="noInterested">
