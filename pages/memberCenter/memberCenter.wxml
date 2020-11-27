@@ -1,17 +1,17 @@
 <view class="container">
     <view class="header">
         <view class="avatar-erea">
-            <image class="avatar" bindtap="previewImage" src='{{avatar}}'></image>
+            <image class="avatar" bindtap="previewImage" src="{{userInfo.headimgUrl}}"></image>
             <image class="camera" mode="aspecFill" src="/imgs/icons/camera.png" bindtap="headimage"></image>
         </view>
         <view class="nickname">
-            <text>{{nickname}}</text><image class="edit-nickname" bind:tap="editNickname" src="/imgs/icons/pen.png"></image>
+            <text>{{userInfo.nickName}}</text><image class="edit-nickname" bind:tap="editNickname" src="/imgs/icons/pen.png"></image>
         </view>
         <view class="membership">
             <view class="point" bind:tap="toInvite">
                 <text>我的音符</text>
                 <image src="/imgs/icons/note_active.png"></image>
-                <text>999</text>
+                <text>{{userInfo.noteNumber}}</text>
             </view>
             <text class="my-tag">吃货达人</text>
         </view>
@@ -28,7 +28,7 @@
         <view class="article-area" wx:for="{{myThemeList}}" wx:key="id" for-index="{{index}}">
             <view class="article-title">
                 <text>{{item.theme}}</text>
-                <more-button prop-count="{{item.pointPraiseNumber}}" id="{{'moreBtn'+index}}"></more-button>
+                <more-button bind:refresh="refreshMyTheme" prop-count="{{item.pointPraiseNumber}}" article-id="{{item.id}}" delete-type="theme" id="{{'moreBtn'+index}}"></more-button>
             </view>
             <text class="article-content">{{item.supplementaryContent}}</text>
             <view class="article-images">
@@ -42,8 +42,26 @@
             </view>
         </view>
     </view>
+
+    <!-- 跟调 -->
     <view class="swiper-box" wx:if="{{currentTab==1}}">
-        <view>跟调</view>
+        <text class="no-data" wx:if="{{myFollowList.length == 0}}">{{noteMsg}}</text>
+        <view class="article-area" wx:for="{{myFollowList}}" wx:key="id" for-index="{{index}}">
+            <view class="article-title">
+                <text>{{item.theme.theme}}</text>
+                <more-button bind:refresh="refreshMyFollow" prop-count="{{item.pointPraiseNumber}}" article-id="{{item.id}}" delete-type="essay" id="{{'moreBtn'+index}}"></more-button>
+            </view>
+            <text class="article-content">{{item.content}}</text>
+            <view class="article-images">
+                <image src="{{obj}}" wx:key="index" wx:for-item="obj" wx:for="{{item.picture}}"></image>
+            </view>
+            <view class="article-hot">
+                <view>
+                    <image src="/imgs/icons/note_active.png"></image>
+                    <text>{{item.pointPraiseNumber}}</text>
+                </view>
+            </view>
+        </view>
     </view>
 
     <!-- 编辑昵称对话框 -->

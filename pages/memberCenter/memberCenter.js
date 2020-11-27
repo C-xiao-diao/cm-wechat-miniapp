@@ -7,31 +7,42 @@ const app = getApp()
 
 Page({
     data: {
-        avatar: '/imgs/forumList/avatar.jpg',
         avatarList: [],
         studentId: '',
+        userInfo: {},
         showModal: false,
         showEditModal: false,
         currentTab: 0,
         nickname: '一天一天',
         showBtn: true,
+        // 起调
         themeCount: 0,
         themePage: 0,
         themePageLimit: 5,
+        myThemeList: [],
+        //跟调
+        followCount: 0,
+        followPage: 0,
+        followPageLimit: 5,
+        myFollowList: [],
         floorstatus: false,
         noteMsg: '',
-        myThemeList: [],//{count:12},{count:22},{count:1}
+        
     },
     onReady: function(){
+        
         this.getMoreBtns();
     },
     onLoad: function(option){
-        if(option.studentId){
-            this.setData({studentId: option.studentId});
-            this.getMyTheme(option.studentId);
+        let userInfo = app.globalData.userInfo;
+        if(userInfo){
+            this.setData({userInfo});
         }
-        console.log(option,9999999)
-        
+        if(option){
+            this.getMyTheme(option.studentId, this.data.themePage);
+            this.getMyFollow(option.studentId, this.data.followPage);
+            this.setData({studentId: option.studentId});
+        }
     },
     //获取"更多"按钮
     getMoreBtns: function(){
@@ -41,14 +52,24 @@ Page({
             this[str] = this.selectComponent('#'+str);
         }
     },
+    //刷新我的起调列表
+    refreshMyTheme: function(){
+        const { studentId, themePage } = this.data;
+        this.getMyTheme(studentId, themePage);
+    },
+    //刷新我的跟调列表
+    refreshMyFollow: function(){
+        const { studentId, followPage } = this.data;
+        this.getMyFollow(studentId, followPage);
+    },
     //获取 我的起调 列表
-    getMyTheme: function(studentId){
-        const { themePage, themePageLimit } = this.data;
+    getMyTheme: function(studentId, page){
+        const { themePageLimit, myThemeList } = this.data;
         let cmd = "/auth/theme/myTheme";
         let data = {
             studentId: studentId,
             limit: themePageLimit,
-            page: themePage
+            page: page
         }
         http.get({
             cmd,
@@ -56,9 +77,40 @@ Page({
             success: res => {
                 if (_.get(res, 'data.code') === 200 && !_.isEmpty(_.get(res, 'data.data'))) {
                     let resData = _.get(res, 'data.data');
-                    let myThemeList = resData.list;
+                    let list = page > followPage ? list = myThemeList : [];
+                    for(var i = 0; i < resData.list.length; i++){
+                        list.push(resData.list[i]);
+                    }
                     let themeCount = resData.count;
-                    this.setData({ myThemeList, themeCount });
+                    this.setData({ myThemeList: list, themeCount, themePage:page });
+                }else if(_.get(res, 'data.code') === 107){
+                    this.setData({ noteMsg: _.get(res, 'data.msg') || '暂无数据' })
+                }
+            }
+        })
+    },
+    //跟调
+    getMyFollow: function(studentId, page){
+        const { followPageLimit, myFollowList, followPage } = this.data;
+        let cmd = "/auth/essay/myEssay";
+        let data = {
+            studentId: studentId,
+            limit: followPageLimit,
+            page: page
+        }
+        http.get({
+            cmd,
+            data:data,
+            success: res => {
+                wx.hideLoading();
+                if (_.get(res, 'data.code') === 200 && !_.isEmpty(_.get(res, 'data.data'))) {
+                    let resData = _.get(res, 'data.data');
+                    let list = page > followPage ? list = myFollowList : [];
+                    for(var i = 0; i < resData.list.length; i++){
+                        list.push(resData.list[i]);
+                    }
+                    let followCount = resData.count;
+                    this.setData({ myFollowList: list, followCount, followPage:page });
                 }else if(_.get(res, 'data.code') === 107){
                     this.setData({ noteMsg: _.get(res, 'data.msg') || '暂无数据' })
                 }
@@ -67,16 +119,22 @@ Page({
     },
     //页面上拉触底事件
     onReachBottom: function(){
-        const { currentTab , themeCount, themePageLimit, themePage } = this.data;
+        const { studentId, currentTab, themeCount, themePageLimit, themePage, followCount, followPageLimit, followPage } = this.data;
         if(currentTab==0){//起调页面
-            let pages = Math.cell(themeCount/themePageLimit)
-            if(pages > 1 && themePage < pages){
-                this.getMyTheme();
+            let pages = Math.ceil(themeCount/themePageLimit) - 1;
+            if(themePage < pages){
+                wx.showLoading({ title: '加载中...'});
+                let curFollowPage = themePage + 1;
+                this.getMyTheme(studentId, curFollowPage);
             }
         }else if(currentTab==1){//跟调页面
-            
+            let pages = Math.ceil(followCount/followPageLimit) - 1;
+            if(followPage < pages){
+                wx.showLoading({ title: '加载中...'});
+                let curFollowPage = followPage + 1;
+                this.getMyFollow(studentId, curFollowPage);
+            }
         }
-        
     },
     //跳转音符规则页面
     toInvite: function(){
@@ -149,7 +207,7 @@ Page({
             this[str].showListFn(true);
         }
     },
-     // 获取滚动条当前位置
+    //获取滚动条当前位置
     onPageScroll: function (e) {
         if (e.scrollTop > 100) {
             this.setData({ floorstatus: true });
