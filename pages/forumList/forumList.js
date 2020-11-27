@@ -16,6 +16,8 @@ Page({
     content: '',
     number: 0,
     picture: [],
+    //是否显示顶部主题图片组
+    isShowTopThemeImages: false,
     essayId: '',
     list: [],
     // 每页数据
@@ -37,10 +39,15 @@ Page({
     //获取界面数据
     const { themeId } = this.data;
     let option = { themeId };
-    console.log(themeId, 'gggggggggggggggggggggggggggggggsssssssssssssssssssss');
     this.getForumList(option, false)
   },
   // ---------------------- start ------------------------------
+  //展开图片列表
+  showAllDetail: function(){
+    let isShow = this.data.isShowTopThemeImages;
+    this.setData({isShowTopThemeImages: !isShow});
+  },
+  //获取数据列表
   getForumList: function (option, isLoadMore) {
     const timestamp = Date.parse(new Date());
     let { limit, list, page } = this.data;

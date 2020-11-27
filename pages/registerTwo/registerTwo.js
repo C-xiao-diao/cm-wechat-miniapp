@@ -69,6 +69,24 @@ Page({
   registerTwoSubmit: function () {
     const _this = this;
     const { schoolId, schoolName, idCardNumber, name, address } = this.data;
+    if(!schoolName){
+      wx.showToast({
+        title: '请选择学校',
+      })
+      return;
+    }
+    if(!idCardNumber){
+      wx.showToast({
+        title: '请输入身份证号',
+      })
+      return;
+    }
+    if(!name){
+      wx.showToast({
+        title: '请输入真实姓名',
+      })
+      return;
+    }
     //提前发起授权
     wx.authorize({
       scope: 'scope.camera',

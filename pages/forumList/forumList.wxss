@@ -27,6 +27,24 @@ page{
   -webkit-box-orient: vertical;
   -webkit-line-clamp:3;
 }
+.showAllDetail{
+  color: blue !important;
+  width: 100%;
+  display: flex;
+}
+.theme-content-images{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30rpx;
+}
+.theme-content-images>image{
+  width: 200rpx;
+  height: 175rpx;
+  margin-bottom: 20rpx;
+}
 .theme-content-options{
   width: 100%;
   display: flex;
