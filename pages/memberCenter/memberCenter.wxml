@@ -22,28 +22,22 @@
         <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">跟调</view>
     </view>
 
+    <!-- 起个调 -->
     <view class="swiper-box" wx:if="{{currentTab==0}}" bind:tap="closeList">
+        <text class="no-data" wx:if="{{myThemeList.length == 0}}">{{noteMsg}}</text>
         <view class="article-area" wx:for="{{myThemeList}}" wx:key="id" for-index="{{index}}">
             <view class="article-title">
-                <text>LOL手游 | 有人一起开黑吗？有人一起开黑吗？有人一起开黑吗？</text>
-                <more-button prop-count="{{item.count}}" id="{{'moreBtn'+index}}"></more-button>
+                <text>{{item.theme}}</text>
+                <more-button prop-count="{{item.pointPraiseNumber}}" id="{{'moreBtn'+index}}"></more-button>
             </view>
-            <text class="article-content">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</text>
-            <!-- <view class="article-images">
-                <image class="" src=""></image>
-                <image class="" src=""></image>
-                <image class="" src=""></image>
-                <image class="" src=""></image>
-                <image class="" src=""></image>
-                <image class="" src=""></image>
-                <image class="" src=""></image>
-                <image class="" src=""></image>
-                <image class="" src=""></image>
-            </view> -->
+            <text class="article-content">{{item.supplementaryContent}}</text>
+            <view class="article-images">
+                <image src="{{obj}}" wx:key="index" wx:for-item="obj" wx:for="{{item.picture}}"></image>
+            </view>
             <view class="article-hot">
                 <view>
                     <image src="/imgs/icons/note_active.png"></image>
-                    <text>{{item.count}}</text>
+                    <text>{{item.pointPraiseNumber}}</text>
                 </view>
             </view>
         </view>

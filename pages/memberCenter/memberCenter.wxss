@@ -121,6 +121,13 @@ Page {
     margin-top: 30rpx;
 }
 
+.no-data {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 20%;
+}
+
 swiper-item {
     margin: 30rpx 0;
 }
@@ -164,7 +171,8 @@ more-button {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
+    /* justify-content: center; */
 }
 
 .article-images image {

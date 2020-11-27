@@ -9,21 +9,29 @@ Page({
     data: {
         avatar: '/imgs/forumList/avatar.jpg',
         avatarList: [],
+        studentId: '',
         showModal: false,
         showEditModal: false,
         currentTab: 0,
         nickname: '一天一天',
         showBtn: true,
+        themeCount: 0,
         themePage: 0,
+        themePageLimit: 5,
         floorstatus: false,
-        myThemeList: [{count:12},{count:22},{count:1}]
+        noteMsg: '',
+        myThemeList: [],//{count:12},{count:22},{count:1}
     },
     onReady: function(){
         this.getMoreBtns();
     },
     onLoad: function(option){
+        if(option.studentId){
+            this.setData({studentId: option.studentId});
+            this.getMyTheme(option.studentId);
+        }
         console.log(option,9999999)
-        this.getMyTheme();
+        
     },
     //获取"更多"按钮
     getMoreBtns: function(){
@@ -34,27 +42,41 @@ Page({
         }
     },
     //获取 我的起调 列表
-    getMyTheme: function(){
-        const { themePage } = this.data;
+    getMyTheme: function(studentId){
+        const { themePage, themePageLimit } = this.data;
         let cmd = "/auth/theme/myTheme";
         let data = {
-            studentId: 2,
-            limit: 5,
+            studentId: studentId,
+            limit: themePageLimit,
             page: themePage
         }
         http.get({
             cmd,
             data:data,
             success: res => {
-              if (_.get(res, 'data.code') === 200 && !_.isEmpty(_.get(res, 'data.data'))) {
-                console.log(1111111)
-              }
+                if (_.get(res, 'data.code') === 200 && !_.isEmpty(_.get(res, 'data.data'))) {
+                    let resData = _.get(res, 'data.data');
+                    let myThemeList = resData.list;
+                    let themeCount = resData.count;
+                    this.setData({ myThemeList, themeCount });
+                }else if(_.get(res, 'data.code') === 107){
+                    this.setData({ noteMsg: _.get(res, 'data.msg') || '暂无数据' })
+                }
             }
         })
     },
     //页面上拉触底事件
     onReachBottom: function(){
-        this.getMyTheme();
+        const { currentTab , themeCount, themePageLimit, themePage } = this.data;
+        if(currentTab==0){//起调页面
+            let pages = Math.cell(themeCount/themePageLimit)
+            if(pages > 1 && themePage < pages){
+                this.getMyTheme();
+            }
+        }else if(currentTab==1){//跟调页面
+            
+        }
+        
     },
     //跳转音符规则页面
     toInvite: function(){
