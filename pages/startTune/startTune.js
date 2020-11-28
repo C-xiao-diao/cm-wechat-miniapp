@@ -64,7 +64,7 @@ Page({
               console.log(file,'filefilefilefilefilefilefilefilefilefile');
               _this.setData({picture: pics});
             } else {
-
+              wx.showToast({title: _.get(resData, 'msg') })
             }
           },
           complete: function(){
