@@ -4,6 +4,7 @@ import _ from "./../../utils/lodash"
 import { http } from "./../../utils/util";
 import { multiArray, objectMultiArray } from './../../utils/pickerLinkCity'
 
+
 //获取应用实例
 const app = getApp()
 let pageX = 0;
@@ -360,6 +361,11 @@ Page({
   },
   //切换tab页（嗨C、即兴）
   changeTab: function (e) {
+    let step = _.get(app, 'globalData.step');
+    if(step !== 0){
+      this.navToRegister();
+      return;
+    }
     const { currentTab } = this.data;
     let item = e.currentTarget.dataset.item;
     if (item !== currentTab) {
@@ -440,6 +446,10 @@ Page({
   },
   //跳转至起个调界面
   navToStartTune: function () {
+    let step = _.get(app, 'globalData.step');
+    if(step !== 0){
+       this.navToRegister();
+    }
     //跳转至新页面
     wx.navigateTo({
       url: '/pages/startTune/startTune',
