@@ -26,7 +26,7 @@
   line-height: 68rpx;
   text-align: center;
 }
-input, .title{
+ .title{
   width: 100%;
   margin-top: 40rpx;
   border-top: 1rpx solid #ccc;

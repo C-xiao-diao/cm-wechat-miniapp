@@ -4,7 +4,7 @@
     <text class="button" bindtap="startTune">起个调吧</text>
   </view>
   <view>
-    <input class="title" type="text" placeholder="输入你想讨论的问题或话题" bindinput="addTheme" value="{{theme}}"/>
+    <input class="title" selection-start="20" selection-end="20" type="text" placeholder="输入你想讨论的问题或话题" bindinput="addTheme" value="{{theme}}"/>
     <textarea value="{{content}}" maxlength="160" class="addContent" bindinput="addContent" name="" id="" cols="30" rows="10" placeholder="对话题进行额外的补充（最多160个字）"></textarea>
   </view>
   <view class="photo-group">
