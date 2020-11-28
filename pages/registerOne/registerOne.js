@@ -9,10 +9,11 @@ const app = getApp()
 
 Page({
   data: {
-    headimgUrl: "",
-    nickname: ""
+    headimgUrl: app.globalData.headimgUrl || "",
+    nickname: app.globalData.nickName || ""
   },
   onLoad: function () {
+    
   },
   //昵称输入框方法
   bindinput: function (e) {
