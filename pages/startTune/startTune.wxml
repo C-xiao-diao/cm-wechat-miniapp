@@ -11,7 +11,7 @@
     <view class="add-photo" wx:for="{{picture}}" wx:key="index">
       <image class="photo" src="{{item}}" alt=""></image>
     </view>
-    <view class="add-photo" bindtap="addPhoto">
+    <view class="add-photo" bindtap="addPhoto" wx:if="{{picture.length >= 9}}">
       <image class="photo" src="/imgs/follow/add.jpg" alt=""></image>
     </view>
   </view>
