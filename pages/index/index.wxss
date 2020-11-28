@@ -133,6 +133,8 @@ page {
 }
 .userStatus text:last-child{
   margin-left: 20rpx;
+  color: blue;
+  border-bottom: 1rpx solid blue;
 }
 
 .content {
