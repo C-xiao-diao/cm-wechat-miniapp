@@ -54,7 +54,9 @@ Page({
               let file = fileName[0];
               _this.setData({ headimgUrl: file });
             } else {
-
+              wx.showToast({
+                title:_.get(resData, 'msg'),
+              })
             }
           },
           complete: function () {
