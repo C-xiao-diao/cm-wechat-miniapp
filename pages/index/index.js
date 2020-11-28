@@ -385,6 +385,11 @@ Page({
   },
   // 跳转详情
   navToDetail: function (e) {
+    let reviewStatus = _.get(app, 'globalData.reviewStatus');
+    if(reviewStatus !== 1){
+      this.navToRegister();
+      return;
+    }
     let index = e.currentTarget.dataset.index;
     let themeId = e.currentTarget.dataset.themeid;
     let theme = e.currentTarget.dataset.theme;
