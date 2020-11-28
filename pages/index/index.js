@@ -174,6 +174,32 @@ Page({
                 app.globalData.unionid = resData.data.unionid;
                 app.globalData.studentId = resData.data.studentId;
                 app.globalData.isVip = resData.data.isVip;
+                app.globalData.studentName = resData.data.studentName;
+                app.globalData.reviewStatus = resData.data.reviewStatus;
+                app.globalData.step = resData.data.step;
+                let userInfo ={};
+                if(resData.data.nickName){
+                  userInfo.nickName = resData.data.nickName;
+                }
+                if(resData.data.sex){
+                  userInfo.sex = resData.data.sex;
+                }
+                if(resData.data.city){
+                  userInfo.city = resData.data.city;
+                }
+                if(resData.data.schoolName){
+                  userInfo.schoolName = resData.data.schoolName;
+                }
+                if(resData.data.schoolId){
+                  userInfo.schoolId = resData.data.schoolId;
+                }
+                if(resData.data.noteNumber){
+                  userInfo.noteNumber = resData.data.noteNumber;
+                }
+                if(resData.data.headimgUrl){
+                  userInfo.headimgUrl = resData.data.headimgUrl;
+                }
+                app.globalData.userInfo = userInfo;
                 that.updateUserInfoTosServer(userInfo, iv, encryptedData)
               }
             }
