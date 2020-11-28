@@ -409,23 +409,19 @@ Page({
   },
   //滑动即兴卡片
   cardMoveHandle: function(e){
-    let x = e.detail.x;
-    if(moveX >= x){
-      // this.setData({isShowListItem: false})
-      return;
-    } else {
-      console.log(moveX, 'pageXpageXpageXpageXpageX',x)
-      // this.setData({x: 20})
-    }
-    moveX = x;
-    // console.log(e,'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',moveX)
+    // let x = e.detail.x;
+    // if(moveX >= x){
+    //   this.setData({isShowListItem: false})
+    //   return;
+    // } else {
+
+    // }
+    // moveX = x;
   },
   bindtouchstart: function(e){
     pageX = e.changedTouches[0].pageX;
-    console.log(e,'88888888888888888888888888888888888')
   },
   bindtouchend: function(e){
-    const _this = this;
     let endPageX = e.changedTouches[0].pageX;
     if(endPageX - pageX > 100){
       this.setData({isShowListItem: false},()=>{
@@ -434,7 +430,6 @@ Page({
     } else {
       this.setData({x: 20})
     }
-    console.log(e,'99999999999999999999999999999999')
   },
   // 不感兴趣
   noInterested: function(){
