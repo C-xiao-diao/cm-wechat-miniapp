@@ -16,7 +16,7 @@ Page({
         faceImageUrl: ''
     },
     onLoad: function (option) {
-        console.log(option,'optionoptionoptionoptionoptionoptionoptionoption')
+        console.log(option, 'optionoptionoptionoptionoptionoptionoptionoption')
         console.log(option)
         this.setData({
             idCardNumber: option.idCardNumber,
@@ -58,7 +58,7 @@ Page({
                         if (_.get(resData, 'code') === 200) {
                             let fileName = _.get(resData, 'data.fileName');
                             let file = fileName[0];
-                            _this.setData({ faceImageUrl: file }, () =>{
+                            _this.setData({ faceImageUrl: file }, () => {
                                 _this.checkUserInfo()
                             });
                         } else {
@@ -77,7 +77,7 @@ Page({
     },
 
     //验证用户信息，保存学校，身份证号码等
-    checkUserInfo: function(){
+    checkUserInfo: function () {
         const studentId = app.globalData.studentId;
         const { schoolId, schoolName, idCardNumber, name, faceImageUrl } = this.data;
         let cmd = "/auth/verifyMaterial/verify";
@@ -85,13 +85,36 @@ Page({
         http.get({
             cmd,
             data,
-            success: res =>{
-                if(_.get(res, 'data.code') ===200){
+            success: res => {
+                if (_.get(res, 'data.code') === 200) {
                     wx.redirectTo({
-                      url: '/pages/index/index',
+                        url: '/pages/index/index',
+                    })
+                } else if (_.get(res, 'data.code') === 103) {
+                    wx.showModal({
+                        title: '提示',
+                        content: _.get(res, 'data.msg') || '操作失败',
+                        success(res) {
+                            if (res.confirm) {
+
+                            } else if (res.cancel) {
+
+                            }
+                        }
+                    })
+                } else {
+                    wx.showModal({
+                        title: '提示',
+                        content: _.get(res, 'data.msg') || '操作失败',
+                        success(res) {
+                            if (res.confirm) {
+
+                            } else if (res.cancel) {
+
+                            }
+                        }
                     })
                 }
-                console.log(res, 'ffffffffffffggggggggggggggyyyyyyyyyyyy');
             }
         })
     }
