@@ -361,8 +361,8 @@ Page({
   },
   //切换tab页（嗨C、即兴）
   changeTab: function (e) {
-    let step = _.get(app, 'globalData.step');
-    if(step !== 0){
+    let reviewStatus = _.get(app, 'globalData.reviewStatus');
+    if(reviewStatus !== 1){
       this.navToRegister();
       return;
     }
@@ -446,8 +446,8 @@ Page({
   },
   //跳转至起个调界面
   navToStartTune: function () {
-    let step = _.get(app, 'globalData.step');
-    if(step !== 0){
+    let reviewStatus = _.get(app, 'globalData.reviewStatus');
+    if(reviewStatus !== 1){
        this.navToRegister();
     }
     //跳转至新页面
