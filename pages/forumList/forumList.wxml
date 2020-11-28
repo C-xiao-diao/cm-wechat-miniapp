@@ -31,7 +31,7 @@
             <text class="username">{{item.nickname}}</text>
             <view class="userinfo-bottom">
               <image class="gender" src="{{ item.sex === 1 ? '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}" alt=""></image>
-              <text>二进制中学</text>
+              <text>{{item.schoolName || '二进制中学'}}</text>
             </view>
           </view>
         </view>
