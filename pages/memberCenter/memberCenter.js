@@ -28,11 +28,7 @@ Page({
         noteMsg: '',
         
     },
-    onReady: function(){
-        
-        this.getMoreBtns();
-    },
-    onLoad: function(){
+    onShow: function(){
         let userInfo = app.globalData.userInfo;
         let studentId = app.globalData.studentId;
         if(userInfo){
@@ -44,9 +40,8 @@ Page({
         }
     },
     //获取"更多"按钮
-    getMoreBtns: function(){
-        const { myThemeList } =  this.data;
-        for( let i = 0 ;i < myThemeList.length; i++){
+    getMoreBtns: function(list){
+        for( let i = 0 ;i < list.length; i++){
             let str = 'moreBtn' + i;
             this[str] = this.selectComponent('#'+str);
         }
@@ -82,6 +77,7 @@ Page({
                     }
                     let themeCount = resData.count;
                     this.setData({ myThemeList: list, themeCount, themePage:page });
+                    this.getMoreBtns(list);
                 }else if(_.get(res, 'data.code') === 107){
                     this.setData({ noteMsg: _.get(res, 'data.msg') || '暂无数据' })
                 }
@@ -110,6 +106,7 @@ Page({
                     }
                     let followCount = resData.count;
                     this.setData({ myFollowList: list, followCount, followPage:page });
+                    this.getMoreBtns(list);
                 }else if(_.get(res, 'data.code') === 107){
                     this.setData({ noteMsg: _.get(res, 'data.msg') || '暂无数据' })
                 }

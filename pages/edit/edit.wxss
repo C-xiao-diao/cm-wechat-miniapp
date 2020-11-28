@@ -33,6 +33,22 @@
     padding: 20rpx;
     box-sizing: border-box;
 }
+.content  {
+    margin: 0 auto;
+    width: 90%;
+    box-sizing: border-box;
+    padding: 20rpx;
+    border: 2rpx solid #aaa;
+    border-radius: 25rpx;
+}
+.content text {
+    display: block;
+    width: 100%;
+    color: #666;
+    box-sizing: border-box;
+    padding: 20rpx;
+    font-size: 30rpx;
+}
 .addContent{
     width: 100%;
     padding: 30rpx;

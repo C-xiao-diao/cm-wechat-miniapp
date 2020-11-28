@@ -37,7 +37,8 @@ Component({
         //编辑
         editFn: function(){
             let articleId = this.properties.articleId;
-            wx.navigateTo({ url: '../edit/edit?articleId' + articleId });
+            let articleType = this.properties.articleType;
+            wx.navigateTo({ url: '../edit/edit?articleId=' + articleId + '&articleType=' + articleType});
         },
         //确认删除
         deleteConfirm: function(){

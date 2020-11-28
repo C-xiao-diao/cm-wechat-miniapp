@@ -31,7 +31,10 @@
                 <text>{{item.theme}}</text>
                 <more-button bind:refresh="refreshMyTheme" prop-count="{{item.pointPraiseNumber}}" article-id="{{item.id}}" article-type="theme" id="{{'moreBtn'+index}}"></more-button>
             </view>
-            <text class="article-content">{{item.supplementaryContent}}</text>
+            <text class="article-content">
+                <text style="border-bottom: {{ index != (item.supplementaryContent.length-1) ? '2rpx dashed #333': '' }}" 
+                for-index="{{index}}" wx:for="{{item.supplementaryContent}}" wx:key="id" wx:for-item="obj">{{obj}}</text>
+            </text>
             <view class="article-images">
                 <image src="{{obj}}" wx:key="index" wx:for-item="obj" wx:for="{{item.picture}}"></image>
             </view>
@@ -52,7 +55,10 @@
                 <text>{{item.theme.theme}}</text>
                 <more-button bind:refresh="refreshMyFollow" prop-count="{{item.pointPraiseNumber}}" article-id="{{item.id}}" article-type="essay" id="{{'moreBtn'+index}}"></more-button>
             </view>
-            <text class="article-content">{{item.content}}</text>
+            <text class="article-content">
+                <text style="border-bottom: {{ index != (item.content.length-1) ? '2rpx dashed #333': '' }}" 
+                for-index="{{index}}" wx:for="{{item.content}}" wx:key="id" wx:for-item="obj">{{obj}}</text>
+            </text>
             <view class="article-images">
                 <image src="{{obj}}" wx:key="index" wx:for-item="obj" wx:for="{{item.picture}}"></image>
             </view>

@@ -160,9 +160,16 @@ more-button {
 
 .article-content {
     width: 100%;
+}
+
+.article-content text {
+    display: block;
+    width: 100%;
     line-height: 40rpx;
     font-size: 30rpx;
     color: #333;
+    padding: 20rpx;
+    box-sizing: border-box;
 }
 
 .article-images {
