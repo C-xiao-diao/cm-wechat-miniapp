@@ -134,6 +134,7 @@ Page({
 
   //登录接口
   userInfoHandler: function (e) {
+    console.log(e,'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkk')
     if (!_.isEmpty(e.detail.userInfo)) {
       e.detail.userInfo.sex = e.detail.userInfo.gender;
       e.detail.userInfo.headimgUrl = e.detail.userInfo.avatarUrl;
@@ -141,7 +142,8 @@ Page({
       this.setData({
         userInfo: e.detail.userInfo,
         hasUserInfo: true,
-        isShowUserInfoBtn: false
+        isShowUserInfoBtn: false,
+        reviewStatus: 0
       })
       if (app.globalData.userId) {
         this.updateUserInfoTosServer(e.detail.userInfo, e.detail.iv, e.detail.encryptedData)
@@ -150,7 +152,7 @@ Page({
         this._login(e.detail.userInfo, e.detail.iv, e.detail.encryptedData);
       }
     } else {
-
+      this.setData({reviewStatus: 2})
     }
   },
   //登录
