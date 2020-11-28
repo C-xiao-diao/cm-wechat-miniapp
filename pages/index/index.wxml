@@ -198,12 +198,16 @@
   </view>
   <view class="school-group" catchtap="stopCancelModal">
     <view class="input-school-group">
-      <!-- <input class="address-input" bindtap="changeAddress" value="{{address}}" type="text" disabled="true"/> -->
-      <picker class="address-input" bindchange="bindPickerChange" mode="region">
+      <!-- <picker class="address-input" bindchange="bindPickerChange" mode="region">
         <view class="picker">
           {{address}}
         </view>
-      </picker>
+      </picker> -->
+      <picker class="address-input" mode="multiSelector" bindchange="bindCityChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+				<view class="picker">
+          {{address}}
+        </view>
+			</picker>
       <input class="school-input" value="{{schoolName}}" type="text" disabled="true" />
     </view>
     <view class="button-school-group">

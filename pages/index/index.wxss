@@ -486,7 +486,7 @@ page {
   overflow-x: hidden;
   z-index: 10;
   position: absolute;
-  top: 0rpx;
+  top: 100rpx;
   border-radius: 10rpx;
   background-color: white;
   padding: 20rpx 40rpx;

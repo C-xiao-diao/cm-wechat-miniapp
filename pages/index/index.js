@@ -2,14 +2,20 @@
 import "./../../utils/fix";
 import _ from "./../../utils/lodash"
 import { http } from "./../../utils/util";
+import { multiArray, objectMultiArray } from './../../utils/pickerLinkCity'
 
 //获取应用实例
 const app = getApp()
 let pageX = 0;
-let moveX = 0
+let moveX = 0;
+let list = [];
 
 Page({
   data: {
+    // 省市选择器数据
+    multiIndex: [0, 0],
+    multiArray: multiArray,
+    objectMultiArray: objectMultiArray,
     testList: [1,2,3],
     //骨架
     loading: true,
@@ -213,6 +219,37 @@ Page({
 
   },
   //-----------------start------------------
+  //省市选择器方法（切换城市）
+  bindCityChange: function (e) {
+    //获取学校列表
+    // this.setData({ address: value[2], isShowSchoolListModal: true });
+    this.getSchoolList(null, list[e.detail.value[1]]);
+    this.setData({
+      "multiIndex[0]": e.detail.value[0],
+      "multiIndex[1]": e.detail.value[1],
+      address: list[e.detail.value[1]],
+      isShowSchoolListModal: true
+    })
+  },
+  //省市选择器方法（切换城市）
+  bindMultiPickerColumnChange: function (e) {
+    console.log(e, 'e2222222222222222222222222222222222')
+    switch (e.detail.column) {
+      case 0:
+        list = []
+        for (var i = 0; i < this.data.objectMultiArray.length; i++) {
+          if (this.data.objectMultiArray[i].parid == this.data.objectMultiArray[e.detail.value].regid) {
+            list.push(this.data.objectMultiArray[i].regname)
+          }
+        }
+        this.setData({
+          "multiArray[1]": list,
+          "multiIndex[0]": e.detail.value,
+          "multiIndex[1]": 0
+        })
+      break; 
+    };
+  },
   //切换学校弹框显示
   changeSchool: function () {
     this.setData({ isShowSchoolChangeModal: true })
