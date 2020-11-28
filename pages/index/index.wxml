@@ -5,11 +5,6 @@
 <view class="hotlist-view">
   <view class="userInfo">
     <view class="userInfo-group">
-      <!-- <picker bindchange="bindPickerChange" mode="region">
-        <view class="picker">
-          当前选择：
-        </view>
-      </picker> -->
       <view class="userInfo-group-left" bindtap="changeSchool">
         <!-- <text class="school">长郡中学</text> -->
         <text class="school">{{schoolName}}</text>

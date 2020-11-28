@@ -255,20 +255,20 @@ Page({
     this.setData({ isShowSchoolChangeModal: true })
   },
   //选择地址底部框显示
-  bindPickerChange: function (e) {
-    const value = e.detail.value;
-    this.setData({ address: value[2], isShowSchoolListModal: true });
-    this.getSchoolList(null, value[2]);
-  },
+  // bindPickerChange: function (e) {
+  //   const value = e.detail.value;
+  //   this.setData({ address: value[2], isShowSchoolListModal: true });
+  //   this.getSchoolList(null, value[2]);
+  // },
   //获取学校列表
-  getSchoolList: function (schoolAlias, district) {
+  getSchoolList: function (schoolAlias, city) {
     let cmd = "/auth/school/listBy";
     let data = {};
     if (schoolAlias !== undefined && schoolAlias !== null) {
       data.schoolAlias = schoolAlias;
     }
-    if (district !== undefined && district !== null) {
-      data.district = district;
+    if (city !== undefined && city !== null) {
+      data.city = city;
     }
     http.get({
       cmd,
