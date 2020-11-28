@@ -127,11 +127,10 @@ Page({
 
   //登录接口
   userInfoHandler: function (e) {
-    console.log(e, 'ggggggggggggggggggggggggggggkkkkkkkkkkkkkkkkkkkkkkk')
     if (!_.isEmpty(e.detail.userInfo)) {
       e.detail.userInfo.sex = e.detail.userInfo.gender;
       e.detail.userInfo.headimgUrl = e.detail.userInfo.avatarUrl;
-      app.globalData.userInfo = e.detail.userInfo;
+      app.globalData.userInfo = _.assign(e.detail.userInfo,app.globalData.userInfo);
       this.setData({
         userInfo: e.detail.userInfo,
         hasUserInfo: true,
