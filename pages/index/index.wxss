@@ -11,7 +11,8 @@ page {
 }
 
 .userInfo {
-  padding: 50rpx 50rpx;
+  padding: 50rpx 30rpx;
+  box-sizing: border-box;
   background: #fff;
 }
 
@@ -135,7 +136,7 @@ page {
 }
 
 .content {
-  padding: 0 50rpx;
+  padding: 0 30rpx;
 }
 
 .top {
@@ -265,7 +266,7 @@ page {
   background: white;
   position: absolute;
   top: -80rpx;
-  left: -20rpx;
+  left: 0rpx;
   z-index: -1;
   border-radius: 10rpx;
   box-sizing: border-box;
@@ -278,7 +279,7 @@ page {
   background: white;
   position: absolute;
   top: -60rpx;
-  left: 0rpx;
+  left: 20rpx;
   z-index: 1;
   border-radius: 10rpx;
   padding: 50rpx;
@@ -306,7 +307,7 @@ page {
   height: 1000rpx;
   padding: 50rpx;
   margin-top: -20rpx;
-  margin-left: -20rpx;
+  margin-left: 0rpx;
   z-index: 999999;
   box-sizing: border-box;
   background: white;

@@ -58,15 +58,31 @@ App({
                 this.globalData.unionid = resData.data.unionid;
                 this.globalData.isVip = resData.data.isVip;
                 this.globalData.studentId = resData.data.studentId;
+                this.globalData.studentName = resData.data.studentName;
                 this.globalData.reviewStatus = resData.data.reviewStatus;
                 this.globalData.step = resData.data.step;
                 let userInfo ={};
-                userInfo.nickName = resData.data.nickName;
-                userInfo.sex = resData.data.sex;
-                userInfo.schoolName = resData.data.schoolName;
-                userInfo.schoolId = resData.data.schoolId;
-                userInfo.noteNumber = resData.data.noteNumber;
-                userInfo.headimgUrl = resData.data.headimgUrl;
+                if(resData.data.nickName){
+                  userInfo.nickName = resData.data.nickName;
+                }
+                if(resData.data.sex){
+                  userInfo.sex = resData.data.sex;
+                }
+                if(resData.data.city){
+                  userInfo.city = resData.data.city;
+                }
+                if(resData.data.schoolName){
+                  userInfo.schoolName = resData.data.schoolName;
+                }
+                if(resData.data.schoolId){
+                  userInfo.schoolId = resData.data.schoolId;
+                }
+                if(resData.data.noteNumber){
+                  userInfo.noteNumber = resData.data.noteNumber;
+                }
+                if(resData.data.headimgUrl){
+                  userInfo.headimgUrl = resData.data.headimgUrl;
+                }
                 this.globalData.userInfo = userInfo;
                 if (this.loginCallback) {
                   this.loginCallback(resData)

@@ -28,7 +28,7 @@ Page({
     //起个调的主题
     theme: "",
     address: "全国",
-    schoolName: "长郡中学",
+    schoolName: "默认学校",
     schoolId: '',
     //学校列表
     schoolList: [],
@@ -118,7 +118,6 @@ Page({
   },
 
   getUserInfo: function (e) {
-    console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
@@ -128,7 +127,10 @@ Page({
 
   //登录接口
   userInfoHandler: function (e) {
+    console.log(e, 'ggggggggggggggggggggggggggggkkkkkkkkkkkkkkkkkkkkkkk')
     if (!_.isEmpty(e.detail.userInfo)) {
+      e.detail.userInfo.sex = e.detail.userInfo.gender;
+      e.detail.userInfo.headimgUrl = e.detail.userInfo.avatarUrl;
       app.globalData.userInfo = e.detail.userInfo;
       this.setData({
         userInfo: e.detail.userInfo,
