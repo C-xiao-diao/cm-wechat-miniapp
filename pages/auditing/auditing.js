@@ -78,6 +78,7 @@ Page({
 
     //验证用户信息，保存学校，身份证号码等
     checkUserInfo: function () {
+        wx.showLoading({ title: '正在验证...' });
         const studentId = app.globalData.studentId;
         const { schoolId, schoolName, idCardNumber, name, faceImageUrl } = this.data;
         let cmd = "/auth/verifyMaterial/verify";
@@ -87,6 +88,13 @@ Page({
             data,
             success: res => {
                 if (_.get(res, 'data.code') === 200) {
+                    //注册成功后，需要更新globleData里的 userInfo 信息
+                    let userInfo = {};
+                    userInfo.nickName = name;
+                    userInfo.schoolName = schoolName;
+                    userInfo.schoolId = schoolId;
+                    userInfo.headimgUrl = faceImageUrl;
+                    app.globalData.userInfo = _.assign(app.globalData.userInfo,userInfo);
                     wx.redirectTo({
                         url: '/pages/index/index',
                     })

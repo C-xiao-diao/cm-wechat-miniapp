@@ -17,7 +17,7 @@ Page({
       headimgUrl: _.get(app, 'globalData.userInfo.headimgUrl'),
       nickname: _.get(app, 'globalData.userInfo.nickName')
     })
-    console.log(app,'appppppppppppppppppppppppppppppppp')
+    console.log(app, 'appppppppppppppppppppppppppppppppp')
   },
   //昵称输入框方法
   bindinput: function (e) {
@@ -59,7 +59,7 @@ Page({
               _this.setData({ headimgUrl: file });
             } else {
               wx.showToast({
-                title:_.get(resData, 'msg'),
+                title: _.get(resData, 'msg'),
               })
             }
           },
@@ -72,13 +72,13 @@ Page({
   },
   navToNextStep: function () {
     const { headimgUrl, nickname } = this.data;
-    if(!headimgUrl){
+    if (!headimgUrl) {
       wx.showToast({
         title: '请选择头像',
       })
       return;
     }
-    if(!nickname){
+    if (!nickname) {
       wx.showToast({
         title: '请输入昵称',
       })
@@ -101,6 +101,18 @@ Page({
           })
           wx.navigateTo({
             url: '/pages/registerTwo/registerTwo',
+          })
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: _.get(res, 'data.msg') || '操作失败',
+            success(res) {
+              if (res.confirm) {
+
+              } else if (res.cancel) {
+
+              }
+            }
           })
         }
       }

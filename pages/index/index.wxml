@@ -30,7 +30,7 @@
           <view class="userInfo-hot ">
             <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
             <!-- <text class="hot-num">999</text> -->
-            <text class="hot-num">{{userInfo.noteNumber}}</text>
+            <text class="hot-num">{{userInfo.noteNumber || 0}}</text>
           </view>
         </view>
         <view class="userStatus" wx:if="{{reviewStatus === 2}}">
@@ -48,7 +48,7 @@
     <view class="top">
       <view class="tabs">
         <text bindtap="changeTab" class="tab {{currentTab === 0 ? 'active' : ''}}" data-item="{{0}}">嗨C</text>
-        <text bindtap="changeTab" class="tab {{currentTab === 1 ? 'active' : ''}}" data-item="{{1}}">风流人物榜</text>
+        <text bindtap="changeTab" class="tab {{currentTab === 1 ? 'active' : ''}}" data-item="{{1}}">风云人物榜</text>
         <text bindtap="changeTab" class="tab {{currentTab === 2 ? 'active' : ''}}" data-item="{{2}}">即兴</text>
       </view>
       <!-- <view class="top-right" wx:if="{{currentTab === 2}}" bindtap="freestyleHandle">
@@ -69,7 +69,7 @@
           </view>
           <view class="userInfo-hot" wx:if="{{currentTab === 0}}">
             <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
-            <text class="hot-num">{{item.pointPraiseNumber}}</text>
+            <text class="hot-num">{{item.pointPraiseNumber || 0}}</text>
           </view>
         </view>
 
