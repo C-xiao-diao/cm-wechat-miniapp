@@ -58,28 +58,32 @@ Page {
 }
 
 .membership {
-    width: 30%;
+    /* width: 30%; */
     position: absolute;
     right: 0;
     bottom: 30rpx;
     font-size: 30rpx;
+    padding: 0 20rpx;
 }
 
 .membership .point {
     margin-bottom: 10rpx;
     padding-left: 10rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .membership .point text {
     float: left;
-    font-size: 28rpx;
+    font-size: 22rpx;
 }
 
 .membership image {
     float: left;
     margin: 5rpx 10rpx 0 10rpx;
-    width: 30rpx;
-    height: 30rpx;
+    width: 26rpx;
+    height: 26rpx;
 }
 
 .membership .my-tag {
@@ -89,7 +93,8 @@ Page {
     font-size: 28rpx;
     border-radius: 10rpx;
     padding: 0 10rpx;
-    margin: 10rpx 10rpx 0 0;
+    box-sizing: border-box;
+    /* margin: 10rpx 0rpx 0 0; */
 }
 
 /* 头部样式END */
