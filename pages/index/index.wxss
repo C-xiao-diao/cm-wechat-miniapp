@@ -50,11 +50,12 @@ page {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 }
 
-.userInfo-group-right .userInfo-detail {
+/* .userInfo-group-right .userInfo-detail {
   margin-left: 30rpx;
-}
+} */
 
 .userInfo-group-right .avatar {
   width: 120rpx;
