@@ -169,9 +169,9 @@ Page({
   },
   //前往跟调界面
   navToFollow: function () {
-    const { themeId } = this.data;
+    const { themeId, theme } = this.data;
     wx.navigateTo({
-      url: '/pages/follow/follow?themeId=' + themeId,
+      url: '/pages/follow/follow?themeId=' + themeId + '&theme=' + theme,
     })
   }
   // ----------------------  end --------------------------------

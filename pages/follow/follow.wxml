@@ -4,7 +4,7 @@
     <text class="button" bindtap="follow">跟调</text>
   </view>
   <view>
-    <input class="title" disabled="true" type="text" placeholder="LOL手游 | 有人一起开黑吗？" bindinput="addContent"/>
+    <input class="title" disabled="true" type="text" placeholder="{{theme}}" bindinput="addContent"/>
     <!-- <text class="title">
       LOL手游 | 有人一起开黑吗？
     </text> -->
@@ -14,7 +14,7 @@
     <view class="add-photo" wx:for="{{picture}}" wx:key="index">
       <image class="photo" src="{{item}}" alt=""></image>
     </view>
-    <view class="add-photo" bindtap="addPhoto" wx:if="{{picture.length >= 9}}">
+    <view class="add-photo" bindtap="addPhoto" wx:if="{{picture.length < 9}}">
       <image class="photo" src="/imgs/follow/add.jpg" alt=""></image>
     </view>
   </view>

@@ -15,6 +15,7 @@ Page({
     video: [],
   },
   onLoad(option) {
+    console.log(this.data.picture,'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
     this.setData({ themeId: option.themeId })
   },
   goBack: function () {

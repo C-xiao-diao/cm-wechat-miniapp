@@ -107,7 +107,7 @@
           <image class="impromptu-view3-top-avatar" src="{{list[0].studentInformation.headimgUrl ? list[0].studentInformation.headimgUrl : '/imgs/icons/no_avatar.png'}}" alt=""></image>
           <view>
             <view class="name-tags">
-              <text>一天天的</text>
+              <text>{{list[0].studentInformation.nickname}}</text>
               <text class="tags">吃货达人</text>
             </view>
             <view class="gender-school">
@@ -147,7 +147,7 @@
           <image class="impromptu-view3-top-avatar" src="{{list[0].studentInformation.headimgUrl ? list[0].studentInformation.headimgUrl : '/imgs/icons/no_avatar.png'}}" alt=""></image>
           <view>
             <view class="name-tags">
-              <text>一天天的</text>
+              <text>{{list[0].studentInformation.nickname}}</text>
               <text class="tags">吃货达人</text>
             </view>
             <view class="gender-school">

@@ -49,7 +49,8 @@ input, .title{
   width: 200rpx;
   height: 200rpx;
   background: #f7f7f7;
-  margin-top: 100rpx;
+  /* margin-top: 100rpx; */
+  margin-top: 30rpx;
   margin-left: 30rpx;
   display: flex;
   justify-content: center;

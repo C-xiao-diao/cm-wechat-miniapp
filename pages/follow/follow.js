@@ -9,12 +9,13 @@ const app = getApp()
 Page({
   data: {
     themeId: '',
+    theme:"",
     content: '',
     picture: [],
     video: [],
   },
   onLoad(option) {
-    this.setData({ themeId: option.themeId })
+    this.setData({ themeId: option.themeId,theme: option.theme })
   },
   goBack: function () {
     wx.navigateBack();
