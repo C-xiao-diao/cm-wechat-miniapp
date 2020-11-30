@@ -7,7 +7,7 @@
     <view class="userInfo-group">
       <view class="userInfo-group-left" bindtap="changeSchool">
         <!-- <text class="school">长郡中学</text> -->
-        <text class="school">{{userInfo.schoolName ? userInfo.schoolName :  (address ?  address : '全国')}}</text>
+        <text class="school">{{schoolName ? schoolName :  (address ?  address : '全国')}}</text>
         <image class="funnel" src="/imgs/icons/funnel.png" alt=""></image>
         <text class="city">{{'切换'}}</text>
       </view>
@@ -203,7 +203,7 @@
           {{address}}
         </view>
 			</picker>
-      <input class="school-input" value="{{userInfo ? userInfo.schoolName : ''}}" type="text" disabled="true" />
+      <input class="school-input" value="{{schoolName ? schoolName : ''}}" type="text" disabled="true" />
     </view>
     <view class="button-school-group">
       <button class="mini-btn" type="primary" size="mini" bindtap="comfirmSchool">确认</button>

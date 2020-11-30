@@ -252,7 +252,6 @@ Page({
   bindCityChange: function (e) {
     console.log(e,'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
     //获取学校列表
-    // this.setData({ address: value[2], isShowSchoolListModal: true });
     this.getSchoolList(null, list[e.detail.value[1]]);
     this.setData({
       "multiIndex[0]": e.detail.value[0],
@@ -281,11 +280,7 @@ Page({
   },
   //切换学校弹框显示
   changeSchool: function () {
-    let userInfo = {};
-    userInfo.schoolName = "";
-    userInfo.schoolId = "";
-    app.globalData.userInfo = userInfo;
-    this.setData({ isShowSchoolChangeModal: true, userInfo  })
+    this.setData({ isShowSchoolChangeModal: true, schoolName: "", schoolId: ""  })
   },
   //选择地址底部框显示
   // bindPickerChange: function (e) {
@@ -317,22 +312,17 @@ Page({
   },
   //选择学校
   selectSchool: function (e) {
-    let userInfo = this.data.userInfo;
     const id = e.currentTarget.dataset.id;
     const name = e.currentTarget.dataset.name;
-    userInfo.schoolName = name;
-    userInfo.schoolId = id;
-    this.setData({ userInfo: userInfo, schoolId: id, isShowSchoolListModal: false });
+    this.setData({ schoolName: name, schoolId: id, isShowSchoolListModal: false });
   },
   comfirmSchool: function (e) {
-    let userInfo = this.data.userInfo;
-    console.log(userInfo, 'nnnnnnnnnnnnnnnnnnnnnnnnnnnn');
-    if(!userInfo.schoolName){
-      userInfo.schoolName = "";
-      userInfo.schoolId = "";
+    let { schoolName, schoolId } = this.data;
+    if(!schoolName){
+      schoolName = "";
+      schoolId = "";
     }
-    // this.getIndexList(this.data.currentTab, false);
-    this.setData({ isShowSchoolChangeModal: false, userInfo },() =>{
+    this.setData({ isShowSchoolChangeModal: false, schoolName, schoolId },() =>{
       this.getIndexList(this.data.currentTab, false);
     });
   },
@@ -362,7 +352,7 @@ Page({
   getIndexList: function (tab, isRandom) {
     const { userInfo } = this.data;
     let address = this.data.address;
-    let schoolId = _.get(app, 'globalData.userInfo.schoolId');
+    let schoolId = this.data.schoolId;
     wx.showLoading({ title: '正在加载' })
     const timestamp = Date.parse(new Date());
     let currentTab = tab;
