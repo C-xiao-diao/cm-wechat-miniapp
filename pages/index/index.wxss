@@ -158,6 +158,7 @@ page {
   color: #666;
   padding: 30rpx 15rpx;
   box-sizing: border-box;
+  border-bottom: 5rpx solid #f2f2f2;
 }
 
 .tabs>text.active {
@@ -188,6 +189,7 @@ page {
   box-shadow: 0 0 13rpx rgba(0, 0, 0, 0.3);
   border-radius: 10rpx;
   background: white;
+  margin-bottom: 60rpx;
 }
 
 .hotlist-content-item {
@@ -197,13 +199,17 @@ page {
   box-sizing: border-box;
 }
 
+.hotlist-content-item:last-child {
+  border-bottom: 0;
+}
+
 .hotlist-item {
   display: flex;
   flex-direction: row;
 }
 
 .hotlist-item text {
-  font-size: 28rpx;
+  font-size: 32rpx;
   line-height: 78rpx;
 }
 
@@ -401,7 +407,7 @@ page {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 50rpx;
+  margin: 50rpx 0;
 }
 
 .add {
