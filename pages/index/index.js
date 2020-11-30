@@ -250,6 +250,7 @@ Page({
   //-----------------start------------------
   //省市选择器方法（切换城市）
   bindCityChange: function (e) {
+    console.log(e,'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
     //获取学校列表
     // this.setData({ address: value[2], isShowSchoolListModal: true });
     this.getSchoolList(null, list[e.detail.value[1]]);
@@ -262,7 +263,6 @@ Page({
   },
   //省市选择器方法（切换城市）
   bindMultiPickerColumnChange: function (e) {
-    console.log(e, 'e2222222222222222222222222222222222')
     switch (e.detail.column) {
       case 0:
         list = []
