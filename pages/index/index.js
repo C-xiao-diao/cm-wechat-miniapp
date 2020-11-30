@@ -281,7 +281,11 @@ Page({
   },
   //切换学校弹框显示
   changeSchool: function () {
-    this.setData({ isShowSchoolChangeModal: true })
+    let userInfo = {};
+    userInfo.schoolName = "";
+    userInfo.schoolId = "";
+    app.globalData.userInfo = userInfo;
+    this.setData({ isShowSchoolChangeModal: true, userInfo  })
   },
   //选择地址底部框显示
   // bindPickerChange: function (e) {
@@ -291,6 +295,7 @@ Page({
   // },
   //获取学校列表
   getSchoolList: function (schoolAlias, city) {
+    console.log(city,'[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[');
     let cmd = "/auth/school/listBy";
     let data = {};
     if (schoolAlias !== undefined && schoolAlias !== null) {
@@ -316,14 +321,20 @@ Page({
     const id = e.currentTarget.dataset.id;
     const name = e.currentTarget.dataset.name;
     userInfo.schoolName = name;
-    userInfo.id = id;
+    userInfo.schoolId = id;
     this.setData({ userInfo: userInfo, schoolId: id, isShowSchoolListModal: false });
   },
   comfirmSchool: function (e) {
     let userInfo = this.data.userInfo;
-    userInfo.schoolName = "";
-    this.getIndexList(this.data.currentTab, false);
-    this.setData({ isShowSchoolChangeModal: false, userInfo });
+    console.log(userInfo, 'nnnnnnnnnnnnnnnnnnnnnnnnnnnn');
+    if(!userInfo.schoolName){
+      userInfo.schoolName = "";
+      userInfo.schoolId = "";
+    }
+    // this.getIndexList(this.data.currentTab, false);
+    this.setData({ isShowSchoolChangeModal: false, userInfo },() =>{
+      this.getIndexList(this.data.currentTab, false);
+    });
   },
   cancelSchool: function () {
     this.setData({ isShowSchoolListModal: false, isShowSchoolChangeModal: false });
@@ -350,6 +361,7 @@ Page({
   // 获取首页列表数据
   getIndexList: function (tab, isRandom) {
     const { userInfo } = this.data;
+    let address = this.data.address;
     let schoolId = _.get(app, 'globalData.userInfo.schoolId');
     wx.showLoading({ title: '正在加载' })
     const timestamp = Date.parse(new Date());
@@ -359,8 +371,8 @@ Page({
     if (schoolId) {
       data.schoolId = schoolId;
     }
-    if(userInfo.city && !schoolId){
-      data.city = userInfo.city;
+    if(address && !schoolId){
+      data.city = address != "全国" ? address: '';
     }
     if (currentTab === 0) {
       cmd = "/auth/theme/listHot";
@@ -414,10 +426,11 @@ Page({
     this.getIndexList(1, true);
   },
   //跟调
-  navToFollow: function () {
-    const { themeId } = this.data;
+  navToFollow: function (e) {
+    let themeId = e.currentTarget.dataset.themeid;
+    let theme = e.currentTarget.dataset.theme;
     wx.navigateTo({
-      url: '/pages/follow/follow?themeId=' + themeId,
+      url: '/pages/follow/follow?themeId=' + themeId + '&theme=' + theme,
     })
   },
   // 跳转详情

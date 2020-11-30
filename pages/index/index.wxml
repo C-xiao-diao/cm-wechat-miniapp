@@ -7,7 +7,7 @@
     <view class="userInfo-group">
       <view class="userInfo-group-left" bindtap="changeSchool">
         <!-- <text class="school">长郡中学</text> -->
-        <text class="school">{{userInfo.schoolName ? userInfo.schoolName :  (userInfo.city ?  userInfo.city : '全国')}}</text>
+        <text class="school">{{userInfo.schoolName ? userInfo.schoolName :  (address ?  address : '全国')}}</text>
         <image class="funnel" src="/imgs/icons/funnel.png" alt=""></image>
         <text class="city">{{'切换'}}</text>
       </view>
@@ -174,7 +174,7 @@
             <image class="impromptu-view3-photo" src="./../../imgs/icons/no_like.png" alt=""></image>
             <text>不感兴趣</text>
           </view>
-          <view bindtap="navToFollow">
+          <view bindtap="navToFollow" data-themeId="{{list[0].id}}" data-theme="{{list[0].theme}}" >
             <image class="impromptu-view3-photo" src="./../../imgs/icons/edit.png" alt=""></image>
             <text>跟调</text>
           </view>

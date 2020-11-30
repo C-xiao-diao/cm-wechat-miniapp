@@ -36,7 +36,7 @@ Page({
     const _this = this;
     //获取图片
     wx.chooseImage({
-      count: 1,
+      // count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success(res) {
