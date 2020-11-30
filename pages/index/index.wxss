@@ -492,7 +492,7 @@ page {
   overflow-x: hidden;
   z-index: 10;
   position: absolute;
-  top: 100rpx;
+  top: 0rpx;
   border-radius: 10rpx;
   background-color: white;
   padding: 20rpx 40rpx;

@@ -35,7 +35,7 @@ Page({
     //起个调的主题
     theme: "",
     address: "全国",
-    schoolName: "默认学校",
+    schoolName: "",
     schoolId: '',
     //学校列表
     schoolList: [],
@@ -312,13 +312,18 @@ Page({
   },
   //选择学校
   selectSchool: function (e) {
+    let userInfo = this.data.userInfo;
     const id = e.currentTarget.dataset.id;
     const name = e.currentTarget.dataset.name;
-    this.setData({ schoolName: name, schoolId: id, isShowSchoolListModal: false });
+    userInfo.schoolName = name;
+    userInfo.id = id;
+    this.setData({ userInfo: userInfo, schoolId: id, isShowSchoolListModal: false });
   },
   comfirmSchool: function (e) {
+    let userInfo = this.data.userInfo;
+    userInfo.schoolName = "";
     this.getIndexList(this.data.currentTab, false);
-    this.setData({ isShowSchoolChangeModal: false });
+    this.setData({ isShowSchoolChangeModal: false, userInfo });
   },
   cancelSchool: function () {
     this.setData({ isShowSchoolListModal: false, isShowSchoolChangeModal: false });
@@ -344,7 +349,8 @@ Page({
   },
   // 获取首页列表数据
   getIndexList: function (tab, isRandom) {
-    const { schoolId } = this.data;
+    const { userInfo } = this.data;
+    let schoolId = _.get(app, 'globalData.userInfo.schoolId');
     wx.showLoading({ title: '正在加载' })
     const timestamp = Date.parse(new Date());
     let currentTab = tab;
@@ -353,13 +359,16 @@ Page({
     if (schoolId) {
       data.schoolId = schoolId;
     }
+    if(userInfo.city && !schoolId){
+      data.city = userInfo.city;
+    }
     if (currentTab === 0) {
       cmd = "/auth/theme/listHot";
     } else if (currentTab === 1) {
-      let schoolId = _.get(app, 'globalData.userInfo.schoolId');
-      if (schoolId) {
-        data.schoolId = schoolId;
-      }
+      // let schoolId = _.get(app, 'globalData.userInfo.schoolId');
+      // if (schoolId) {
+      //   data.schoolId = schoolId;
+      // }
       cmd = "/auth/student/characterList";
     } else {
       cmd = "/auth/theme/listRandom";

@@ -9,11 +9,15 @@ const app = getApp()
 
 Page({
   data: {
-    headimgUrl: app.globalData.headimgUrl || "",
-    nickname: app.globalData.nickName || ""
+    headimgUrl: "",
+    nickname: "",
   },
   onLoad: function () {
-    
+    this.setData({
+      headimgUrl: _.get(app, 'globalData.userInfo.headimgUrl'),
+      nickname: _.get(app, 'globalData.userInfo.nickName')
+    })
+    console.log(app,'appppppppppppppppppppppppppppppppp')
   },
   //昵称输入框方法
   bindinput: function (e) {
