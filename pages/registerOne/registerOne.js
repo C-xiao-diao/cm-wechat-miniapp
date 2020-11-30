@@ -96,6 +96,10 @@ Page({
       data,
       success: res => {
         if (_.get(res, 'data.code') === 200) {
+          let userInfo = {};
+          userInfo.nickName = nickname;
+          userInfo.headimgUrl = headimgUrl;
+          app.globalData.userInfo = _.assign(app.globalData.userInfo,userInfo);
           wx.showToast({
             title: '操作成功',
           })
