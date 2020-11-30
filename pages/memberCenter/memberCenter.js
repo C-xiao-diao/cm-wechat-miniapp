@@ -239,6 +239,10 @@ Page({
         }
         console.log(newNickname,999999)
     },
+    //点击外部关闭选项列表
+    cancelModal: function(){
+        this.setData({showList: false})
+    },
     //取消编辑昵称
     editCancel: function(){
         this.setData({showEditModal: false});

@@ -1,4 +1,4 @@
-<view class="container">
+<view class="container" bindtap="cancelModal">
     <view class="header">
         <view class="avatar-erea">
             <image class="avatar" bindtap="previewImage" src="{{userInfo.headimgUrl}}"></image>
@@ -19,8 +19,8 @@
     </view>
 
     <view class="swiper-tab">
-        <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">起个调吧</view>
-        <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">跟调</view>
+        <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" catchtap="swichNav">起个调吧</view>
+        <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" catchtap="swichNav">跟调</view>
     </view>
 
     <!-- 起个调 -->
@@ -29,7 +29,7 @@
         <view class="article-area" wx:for="{{myThemeList}}" wx:key="id" for-index="{{index}}">
             <view class="article-title">
                 <text>{{item.theme}}</text>
-                <more-button bind:refresh="refreshMyTheme" prop-count="{{item.pointPraiseNumber}}" article-id="{{item.id}}" article-type="theme" id="{{'moreBtn'+index}}"></more-button>
+                <more-button showList="{{showList}}" bind:refresh="refreshMyTheme" prop-count="{{item.pointPraiseNumber}}" article-id="{{item.id}}" article-type="theme" id="{{'moreBtn'+index}}"></more-button>
             </view>
             <text class="article-content">
                 <text style="border-bottom: {{ index != (item.supplementaryContent.length-1) ? '2rpx dashed #333': '' }}" 
@@ -53,7 +53,7 @@
         <view class="article-area" wx:for="{{myFollowList}}" wx:key="id" for-index="{{index}}">
             <view class="article-title">
                 <text>{{item.theme.theme}}</text>
-                <more-button bind:refresh="refreshMyFollow" prop-count="{{item.pointPraiseNumber}}" article-id="{{item.id}}" article-type="essay" id="{{'moreBtn'+index}}"></more-button>
+                <more-button bind:refresh="refreshMyFollow" showList="{{showList}}" prop-count="{{item.pointPraiseNumber}}" article-id="{{item.id}}" article-type="essay" id="{{'moreBtn'+index}}"></more-button>
             </view>
             <text class="article-content">
                 <text style="border-bottom: {{ index != (item.content.length-1) ? '2rpx dashed #333': '' }}" 
