@@ -2,7 +2,7 @@
     <view class="header">
         <view class="avatar-erea">
             <image class="avatar" bindtap="previewImage" src="{{userInfo.headimgUrl}}"></image>
-            <image class="camera" mode="aspecFill" src="/imgs/icons/camera.png" bindtap="headimage"></image>
+            <image class="camera" mode="aspecFill" src="/imgs/icons/camera.png" catchtap="headimage"></image>
         </view>
         <view class="nickname">
             <text>{{userInfo.nickName}}</text>
@@ -53,7 +53,7 @@
         <view class="article-area" wx:for="{{myFollowList}}" wx:key="id" for-index="{{index}}">
             <view class="article-title">
                 <text>{{item.theme.theme}}</text>
-                <more-button bind:refresh="refreshMyFollow" showList="{{showList}}" prop-count="{{item.pointPraiseNumber}}" article-id="{{item.id}}" article-type="essay" id="{{'moreBtn'+index}}"></more-button>
+                <more-button class="testBtn" bind:refresh="refreshMyFollow" showList="{{showList}}" prop-count="{{item.pointPraiseNumber}}" article-id="{{item.id}}" article-type="essay" id="{{'moreBtn'+index}}"></more-button>
             </view>
             <text class="article-content">
                 <text style="border-bottom: {{ index != (item.content.length-1) ? '2rpx dashed #333': '' }}" 

@@ -241,7 +241,10 @@ Page({
     },
     //点击外部关闭选项列表
     cancelModal: function(){
-        this.setData({showList: false})
+        let com = this.selectComponent('.testBtn');
+        com.setData({showList: false}, () =>{
+            com = null;
+        })
     },
     //取消编辑昵称
     editCancel: function(){
