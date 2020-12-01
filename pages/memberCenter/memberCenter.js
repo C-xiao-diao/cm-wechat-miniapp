@@ -36,13 +36,12 @@ Page({
         }
         if(studentId){
             this.getMyTheme(app.globalData.studentId, this.data.themePage);
-            this.getMyFollow(app.globalData.studentId, this.data.followPage);
         }
     },
     //获取"更多"按钮
-    getMoreBtns: function(list){
+    getMoreBtns: function(list, type){
         for( let i = 0 ;i < list.length; i++){
-            let str = 'moreBtn' + i;
+            let str = 'more' + type + 'Btn' + i;
             this[str] = this.selectComponent('#'+str);
         }
     },
@@ -77,7 +76,7 @@ Page({
                     }
                     let themeCount = resData.count;
                     this.setData({ myThemeList: list, themeCount, themePage:page });
-                    this.getMoreBtns(list);
+                    this.getMoreBtns(list,'Theme');
                 }else if(_.get(res, 'data.code') === 107){
                     this.setData({ noteMsg: _.get(res, 'data.msg') || '暂无数据' })
                 }
@@ -106,7 +105,7 @@ Page({
                     }
                     let followCount = resData.count;
                     this.setData({ myFollowList: list, followCount, followPage:page });
-                    this.getMoreBtns(list);
+                    this.getMoreBtns(list, 'Follow');
                 }else if(_.get(res, 'data.code') === 107){
                     this.setData({ noteMsg: _.get(res, 'data.msg') || '暂无数据' })
                 }
@@ -223,13 +222,16 @@ Page({
     },
     //tab切换
     swichNav: function( e ) {
-        var that = this;
         if( this.data.currentTab === e.target.dataset.current ) {
             return false;
         } else {
-            that.setData( {
-                currentTab: e.target.dataset.current
-            })
+            let currentTab = e.target.dataset.current;
+            if(currentTab==0){
+                this.getMyTheme(app.globalData.studentId, this.data.themePage);
+            }else{
+                this.getMyFollow(app.globalData.studentId, this.data.followPage);
+            }
+            this.setData({ currentTab })
         }
     },
     //打开编辑昵称
@@ -257,12 +259,12 @@ Page({
         const { currentTab, myThemeList, myFollowList } =  this.data;
         if(currentTab==0){//起调
             for( let i = 0 ;i < myThemeList.length; i++){
-                let str = 'moreBtn' + i;
+                let str = 'moreThemeBtn' + i;
                 this[str].showListFn(true);
             }
         }else{
             for( let i = 0 ;i < myFollowList.length; i++){
-                let str = 'moreBtn' + i;
+                let str = 'moreFollowBtn' + i;
                 this[str].showListFn(true);
             }
         }
