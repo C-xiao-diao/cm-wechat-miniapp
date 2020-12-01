@@ -69,7 +69,7 @@
           </view>
           <view class="userInfo-hot" wx:if="{{currentTab === 0}}">
             <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
-            <text class="hot-num">{{item.pointPraiseNumber || 0}}</text>
+            <text class="hot-num">{{ item.pointPraiseNumber || 0}}</text>
           </view>
         </view>
 

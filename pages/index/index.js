@@ -367,10 +367,6 @@ Page({
     if (currentTab === 0) {
       cmd = "/auth/theme/listHot";
     } else if (currentTab === 1) {
-      // let schoolId = _.get(app, 'globalData.userInfo.schoolId');
-      // if (schoolId) {
-      //   data.schoolId = schoolId;
-      // }
       cmd = "/auth/student/characterList";
     } else {
       cmd = "/auth/theme/listRandom";
@@ -389,6 +385,10 @@ Page({
       success: res => {
         if (_.get(res, 'data.code') === 200) {
           let list = _.get(res, 'data.data.list');
+          list = _.map(list, o=> {
+            o.pointPraiseNumber = _.round(o.pointPraiseNumber);
+            return o;
+          })
           this.setData({ list, currentTab, loading: false,isShowListItem: true })
         } else {
           wx.showToast({
