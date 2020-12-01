@@ -16,6 +16,7 @@ Page({
     content: '',
     number: 0,
     picture: [],
+    floorstatus: false,
     //是否显示顶部主题图片组
     isShowTopThemeImages: false,
     essayId: '',
@@ -188,6 +189,44 @@ Page({
     wx.navigateTo({
       url: '/pages/follow/follow?themeId=' + themeId + '&theme=' + theme,
     })
+  },
+  //预览图片
+  previewImage: function(e){
+      let index = e.currentTarget.dataset.index;
+      let src = e.currentTarget.dataset.src;
+      if(typeof src == 'string'){
+          wx.previewImage({
+              current: src, 
+              urls: [src], 
+              success: function(){}
+          })
+      }else{
+        console.log(111111)
+          wx.previewImage({
+              current: src[index], 
+              urls: src,
+              success: function(){}
+          })
+      }
+  },
+  //获取滚动条当前位置
+  onPageScroll: function (e) {
+      if (e.scrollTop > 100) {
+          this.setData({ floorstatus: true });
+      } else {
+          this.setData({ floorstatus: false });
+      }
+  },
+  //回到顶部
+  goTop: function (e) {  // 一键回到顶部
+      if (wx.pageScrollTo) {
+          wx.pageScrollTo({ scrollTop: 0 })
+      } else {
+          wx.showModal({
+              title: '提示',
+              content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
+          })
+      }
   }
   // ----------------------  end --------------------------------
 })

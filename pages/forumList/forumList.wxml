@@ -9,7 +9,7 @@
     <text class="theme-content-text">{{content || ""}}</text>
     <text class="showAllDetail" bindtap="showAllDetail">{{ isShowTopThemeImages ? '收起图片' :'展开'}}</text>
     <view class="theme-content-images" wx:if="{{isShowTopThemeImages}}">
-      <image wx:for="{{picture}}" wx:key="index" class="theme-content-image-photo" src="{{item}}" alt=""></image>
+      <image wx:for="{{picture}}" bindtap="previewImage" data-src="{{picture}}" data-index="{{index}}" wx:key="index" class="theme-content-image-photo" src="{{item}}" alt=""></image>
     </view>
     <view class="theme-content-options">
       <!-- <image bindtap="navToInvite" src="/imgs/icons/note_active.png" alt=""></image> -->
@@ -48,7 +48,7 @@
         <!-- <image class="bottom-photo" src="/imgs/forumList/game.jpg" alt=""></image>
         <image class="bottom-photo" src="/imgs/forumList/game.jpg" alt=""></image>
         <image class="bottom-photo" src="/imgs/forumList/game.jpg" alt=""></image> -->
-        <image class="bottom-photo" wx:for="{{item.picture}}" wx:for-item="newItem" wx:key="index" src="{{newItem}}" alt=""></image>
+        <image class="bottom-photo" bindtap="previewImage" data-src="{{item.picture}}" data-index="{{index}}" wx:for="{{item.picture}}" wx:for-item="newItem" wx:key="index" src="{{newItem}}" alt=""></image>
       </view>
     </view>
   </view>
@@ -62,4 +62,8 @@
     <input class="ensemble-picker" disabled="true" value="{{number}}" bindtap="showEnsembleModal" type="text" />
     <text class="ensemble-button" catchtap="ensembleHandle">合拍</text>
   </view>
+</view>
+
+<view class="toTop" hidden="{{!floorstatus}}" bindtap="goTop">
+    <image class="" src="/imgs/icons/top.png"></image>
 </view>

@@ -48,8 +48,9 @@ Component({
 
             if(this.properties.propCount > 20) {
                 wx.showToast({
-                    title: '此条'+ str + '不可以删除哦~',
+                    title: '此条'+ str + '不可以删除',
                     duration: 1500,
+                    icon: 'none'
                 });
                 return;
             }
