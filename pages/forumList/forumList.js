@@ -90,7 +90,7 @@ Page({
   // 点赞(现在改为合拍)
   like: function (e) {
     let essayId = e.currentTarget.dataset.id;
-    this.setData({ isShowEnsembleModal: true, essayId,ensembleType: 1 })
+    this.setData({ isShowEnsembleModal: true, essayId,ensembleType: 1,number: 0 })
     // let essayId = e.currentTarget.dataset.id;
     // let cmd = "/auth/essay/pointPraise";
     // let data ={
