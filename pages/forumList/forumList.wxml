@@ -59,7 +59,7 @@
     <text wx:for="{{pickerList}}" wx:key="index" data-value="{{item}}" bindtap="selectEnsembleNum">{{item}}</text>
   </view>
   <view class="ensemble-group" catchtap="stopCancelModal">
-    <input class="ensemble-picker" disabled="true" value="{{number}}" bindtap="showEnsembleModal" type="text" />
+    <input class="ensemble-picker" disabled="true" value="{{musicNumber}}" bindtap="showEnsembleModal" type="text" />
     <text class="ensemble-button" catchtap="ensembleHandle">合拍</text>
   </view>
 </view>

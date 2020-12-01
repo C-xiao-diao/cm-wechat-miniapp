@@ -30,7 +30,7 @@ Page({
     ensembleType: 0,               //合拍类型，0是合拍主题  1是合拍跟帖
     pickerList: [1000, 500, 200, 100, 50, 10, 5],
     //音符数量
-    number: 0
+    musicNumber: 0
   },
   onLoad: function (option) {
     this.setData({ themeId: option.themeId, theme: option.theme, content: option.content, number: option.number, picture: JSON.parse(option.picture) })
@@ -90,7 +90,7 @@ Page({
   // 点赞(现在改为合拍)
   like: function (e) {
     let essayId = e.currentTarget.dataset.id;
-    this.setData({ isShowEnsembleModal: true, essayId,ensembleType: 1,number: 0 })
+    this.setData({ isShowEnsembleModal: true, essayId,ensembleType: 1,musicNumber: 0 })
     // let essayId = e.currentTarget.dataset.id;
     // let cmd = "/auth/essay/pointPraise";
     // let data ={
@@ -123,21 +123,21 @@ Page({
   },
   //点击音符数量
   selectEnsembleNum: function (e) {
-    let number = e.currentTarget.dataset.value;
-    this.setData({ number, isShowEnsemblePicker: false })
+    let musicNumber = e.currentTarget.dataset.value;
+    this.setData({ musicNumber, isShowEnsemblePicker: false })
     console.log(e, ',,,,,,,,,,,,,,,,,,,,,,,,,,');
   },
   //点击合拍按钮提交
   ensembleHandle: function () {  // 0是合拍主题   1是合拍跟帖
     let studentId = app.globalData.studentId;
-    let { number, list, essayId, ensembleType, themeId } = this.data;
+    let { musicNumber, list, essayId, ensembleType, themeId } = this.data;
     let cmd = "/auth/essay/pointPraise";
     //ps 此接口 themeId, essayId 只用传一个
     let data = {};
     if(ensembleType ===1){
-      data = { studentId, essayId, number };
+      data = { studentId, essayId, number: musicNumber };
     } else {
-      data = { studentId, themeId, number };
+      data = { studentId, themeId, number:musicNumber };
     }
     http.get({
       cmd,
@@ -154,7 +154,7 @@ Page({
             list[idx].pointPraiseNumber = noteNumber;
             this.setData({ isShowEnsembleModal: false,list })
           } else {
-            
+            this.setData({ isShowEnsembleModal: false,number:  noteNumber})
           }        
         } else {
           wx.showToast({ title: _.get(res, 'data.msg')})
