@@ -63,3 +63,7 @@
     <text class="ensemble-button" catchtap="ensembleHandle">合拍</text>
   </view>
 </view>
+
+<view class="toTop" hidden="{{!floorstatus}}" bindtap="goTop">
+    <image class="" src="/imgs/icons/top.png"></image>
+</view>

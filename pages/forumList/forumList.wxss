@@ -212,3 +212,20 @@ page{
   box-sizing: border-box;
   text-align: center;
 }
+
+/* 回到顶部样式 */
+
+.toTop {
+  position: fixed;
+  bottom: 5%;
+  right: 10rpx;
+}
+
+.toTop image {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+
+
+/* 回到顶部样式END */
