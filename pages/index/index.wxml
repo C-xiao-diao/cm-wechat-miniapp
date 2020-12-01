@@ -81,7 +81,7 @@
             src="{{item.headimgUrl != 'undefined' ? item.headimgUrl : '/imgs/icons/no_avatar.png'}}" alt=""></image>
           <view>
             <view class="name-tags">
-              <text>{{item.studentName}}</text>
+              <text>{{item.studentName || item.nickname}}</text>
               <text class="tags">吃货达人</text>
             </view>
             <view class="gender-school">
