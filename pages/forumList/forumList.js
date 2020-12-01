@@ -13,6 +13,7 @@ Page({
     // 主题id
     themeId: "",
     theme:'',
+    themeInfo:{},
     content: '',
     number: 0,
     picture: [],
@@ -67,14 +68,26 @@ Page({
       data,
       success: res => {
         if (_.get(res, 'data.code') === 200) {
+          let themeInfo = _.get(res, 'data.data.theme');
+          if(themeInfo){
+            themeInfo.pointPraiseNumber = _.round(themeInfo.pointPraiseNumber);
+          }
           let newList = [];
           if (isLoadMore) {
             newList = _.uniqBy(_.concat(list, _.get(res, 'data.data.list')), 'id');
           } else {
             newList = _.get(res, 'data.data.list');
           }
-
-          this.setData({ list: newList, page: newPage });
+          newList = _.map(newList, o=> {
+            if(o.pointPraiseNumber){
+              o.pointPraiseNumber = _.round(o.pointPraiseNumber);
+            }
+            if(o.noteNumber){
+              o.noteNumber = _.round(o.noteNumber);
+            }
+            return o;
+          })
+          this.setData({ list: newList, page: newPage,themeInfo });
         }
       }
     })
@@ -154,7 +167,9 @@ Page({
             list[idx].pointPraiseNumber = noteNumber;
             this.setData({ isShowEnsembleModal: false,list })
           } else {
-            this.setData({ isShowEnsembleModal: false,number:  noteNumber})
+            let themeInfo = {};
+            themeInfo.pointPraiseNumber = _.round(noteNumber)
+            this.setData({ isShowEnsembleModal: false,themeInfo})
           }        
         } else {
           wx.showToast({ title: _.get(res, 'data.msg')})

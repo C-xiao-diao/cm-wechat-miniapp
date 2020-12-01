@@ -386,7 +386,12 @@ Page({
         if (_.get(res, 'data.code') === 200) {
           let list = _.get(res, 'data.data.list');
           list = _.map(list, o=> {
-            o.pointPraiseNumber = _.round(o.pointPraiseNumber);
+            if(o.pointPraiseNumber){
+              o.pointPraiseNumber = _.round(o.pointPraiseNumber);
+            }
+            if(o.noteNumber){
+              o.noteNumber = _.round(o.noteNumber);
+            }
             return o;
           })
           this.setData({ list, currentTab, loading: false,isShowListItem: true })
