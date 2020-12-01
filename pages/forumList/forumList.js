@@ -189,6 +189,25 @@ Page({
       url: '/pages/follow/follow?themeId=' + themeId + '&theme=' + theme,
     })
   },
+  //预览图片
+  previewImage: function(e){
+      let index = e.currentTarget.dataset.index;
+      let src = e.currentTarget.dataset.src;
+      if(typeof src == 'string'){
+          wx.previewImage({
+              current: src, 
+              urls: [src], 
+              success: function(){}
+          })
+      }else{
+        console.log(111111)
+          wx.previewImage({
+              current: src[index], 
+              urls: src,
+              success: function(){}
+          })
+      }
+  },
   //获取滚动条当前位置
   onPageScroll: function (e) {
       if (e.scrollTop > 100) {

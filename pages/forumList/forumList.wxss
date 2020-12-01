@@ -9,7 +9,7 @@ page{
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  padding: 0 50rpx;
+  padding: 30rpx 50rpx 0;
   box-sizing: border-box
 }
 .theme-content{
