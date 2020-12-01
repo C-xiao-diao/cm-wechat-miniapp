@@ -94,7 +94,12 @@ Page({
                     userInfo.schoolName = schoolName;
                     userInfo.schoolId = schoolId;
                     userInfo.headimgUrl = faceImageUrl;
-                    app.globalData.userInfo = _.assign(app.globalData.userInfo,userInfo);
+                    app.globalData.userInfo = _.assign(app.globalData.userInfo, userInfo);
+                    wx.showToast({
+                        title: '认证成功',
+                        icon: 'success',
+                        duration: 2000
+                    })
                     wx.redirectTo({
                         url: '/pages/index/index',
                     })
