@@ -89,11 +89,14 @@ Page({
             success: res => {
                 if (_.get(res, 'data.code') === 200) {
                     //注册成功后，需要更新globleData里的 userInfo 信息
-                    let userInfo = {};
+                    let userInfo = _.get(res, 'data.data.studentInformation');
                     userInfo.nickName = name;
                     userInfo.schoolName = schoolName;
                     userInfo.schoolId = schoolId;
                     userInfo.headimgUrl = faceImageUrl;
+                    app.globalData.studentName = userInfo.studentName;
+                    app.globalData.studentId = userInfo.id;
+                    app.globalData.reviewStatus = userInfo.reviewStatus;
                     app.globalData.userInfo = _.assign(app.globalData.userInfo, userInfo);
                     wx.showToast({
                         title: '认证成功',

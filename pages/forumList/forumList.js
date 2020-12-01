@@ -146,8 +146,9 @@ Page({
         if (_.get(res, 'data.code') === 200) {
           wx.showToast({ title: '合拍成功',})
           let noteNumber = _.get(res, 'data.data.noteNumber');
+          let studentNoteNumber = _.get(res, 'data.data.studentNoteNumber');
           // todo 更新首页用户的音符数量，依赖后端计算返回，涉及到钱一律服务端计算
-          // app.globalData.userInfo.noteNumber = app.globalData.userInfo.noteNumber - noteNumber;
+          app.globalData.userInfo.noteNumber = studentNoteNumber;
           if(ensembleType ===1){
             let idx = _.findIndex(list, o=>o.id === essayId);
             list[idx].pointPraiseNumber = noteNumber;
