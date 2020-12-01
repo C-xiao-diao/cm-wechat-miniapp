@@ -31,7 +31,6 @@ Page({
     number: 0
   },
   onLoad: function (option) {
-    console.log(option.picture, 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')
     this.setData({ themeId: option.themeId, theme: option.theme, content: option.content, number: option.number, picture: JSON.parse(option.picture) })
     //获取界面数据
     // this.getForumList(option)
@@ -129,7 +128,7 @@ Page({
   //点击合拍按钮提交
   ensembleHandle: function () {
     let studentId = app.globalData.studentId;
-    const { number, themeId, essayId, } = this.data;
+    let { number, list, essayId } = this.data;
     let cmd = "/auth/essay/pointPraise";
     //ps 此接口 themeId, essayId 只用传一个
     let data = { studentId, essayId, number };
@@ -138,12 +137,14 @@ Page({
       data,
       success: res => {
         if (_.get(res, 'data.code') === 200) {
-          wx.showToast({
-            title: '合拍成功',
-          })
-          this.setData({ isShowEnsembleModal: false })
+          wx.showToast({ title: '合拍成功',})
+          let noteNumber = _.get(res, 'data.data.noteNumber');
+          let idx = _.findIndex(list, o=>o.id === essayId);
+          list[idx].pointPraiseNumber = noteNumber;
+          this.setData({ isShowEnsembleModal: false,list })
+        } else {
+          wx.showToast({ title: _.get(res, 'data.msg')})
         }
-        console.log(res, 'ggggggggggggggggggggggggggggggg');
       }
     })
   },
