@@ -93,7 +93,7 @@ Page({
                     userInfo.nickName = name;
                     userInfo.schoolName = schoolName;
                     userInfo.schoolId = schoolId;
-                    userInfo.headimgUrl = faceImageUrl;
+                    // userInfo.headimgUrl = faceImageUrl;
                     app.globalData.studentName = userInfo.studentName;
                     app.globalData.studentId = userInfo.id;
                     app.globalData.reviewStatus = userInfo.reviewStatus;
