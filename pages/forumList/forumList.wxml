@@ -15,7 +15,7 @@
       <!-- <image bindtap="navToInvite" src="/imgs/icons/note_active.png" alt=""></image> -->
       <image bindtap="navToInvite" src="/imgs/icons/note_active.png" alt=""></image>
       <!-- <text bindtap="navToInvite">999</text> -->
-      <text bindtap="navToInvite">{{number}}</text>
+      <text bindtap="navToInvite">{{(number && number != 'undefined') ? number : 0}}</text>
       <image src="/imgs/icons/edit.png" alt="" bindtap="navToFollow"></image>
       <text bindtap="navToFollow">跟调</text>
     </view>
