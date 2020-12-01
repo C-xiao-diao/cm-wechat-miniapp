@@ -160,7 +160,6 @@ Page({
                         'theme': 'photo'
                     },
                     success(res) {
-                        console.log(res, 'fffffffffffffffffffffffffffffffffffffffffff')
                         let json = res.data;
                         let resData = JSON.parse(json)
                         if (_.get(resData, 'code') === 200) {
@@ -204,16 +203,23 @@ Page({
             }
         })
     },
-    //预览照片
+    //预览图片
     previewImage: function(e){
-        const { avatar } = this.data;
-        wx.previewImage({
-            current: avatar, // 当前显示图片的http链接
-            urls: [avatar], // 需要预览的图片http链接列表
-            success: function(){
-                // console.log('预览成功');
-            }
-        })
+        let index = e.currentTarget.dataset.index;
+        let src = e.currentTarget.dataset.src;
+        if(typeof src == 'string'){
+            wx.previewImage({
+                current: src, 
+                urls: [src], 
+                success: function(){}
+            })
+        }else{
+            wx.previewImage({
+                current: src[index], 
+                urls: src,
+                success: function(){}
+            })
+        }
     },
     //tab切换
     swichNav: function( e ) {
@@ -237,14 +243,6 @@ Page({
             wx.showToast({ title: '昵称修改不能为空！' });
             return;
         }
-        console.log(newNickname,999999)
-    },
-    //点击外部关闭选项列表
-    cancelModal: function(){
-        let com = this.selectComponent('.testBtn');
-        com.setData({showList: false}, () =>{
-            com = null;
-        })
     },
     //取消编辑昵称
     editCancel: function(){
@@ -256,10 +254,17 @@ Page({
     },
     //关闭选项列表
     closeList: function(){
-        const { myThemeList } =  this.data;
-        for( let i = 0 ;i < myThemeList.length; i++){
-            let str = 'moreBtn' + i;
-            this[str].showListFn(true);
+        const { currentTab, myThemeList, myFollowList } =  this.data;
+        if(currentTab==0){//起调
+            for( let i = 0 ;i < myThemeList.length; i++){
+                let str = 'moreBtn' + i;
+                this[str].showListFn(true);
+            }
+        }else{
+            for( let i = 0 ;i < myFollowList.length; i++){
+                let str = 'moreBtn' + i;
+                this[str].showListFn(true);
+            }
         }
     },
     //获取滚动条当前位置
