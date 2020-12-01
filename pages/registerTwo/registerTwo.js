@@ -41,8 +41,8 @@ Page({
     this.setData({ address: value[2] });
   },
   bindSchoolHandle: function (e) {
-    let schoolName = e.detail.value;
-    this.setData({ schoolName });
+    let schoolAlias = e.detail.value;
+    this.getSchoolList(schoolAlias);
   },
   showAllSchoolList: function () {
     this.setData({ isShowSchoolListModal: true })
@@ -54,7 +54,7 @@ Page({
   selectSchool: function (e) {
     const id = e.currentTarget.dataset.id;
     const name = e.currentTarget.dataset.name;
-    this.setData({ schoolName: name, schoolId: id });
+    this.setData({ schoolName: name, schoolId: id ,isShowSchoolListModal: false});
     console.log(e, 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
   },
   bindIdCardHandle: function (e) {
