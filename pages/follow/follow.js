@@ -78,6 +78,9 @@ Page({
       })
       return;
     }
+    wx.showLoading({
+      title: '提交中',
+    })
     // if(_.isEmpty(picture)){
     //   wx.showToast({
     //     title: '图片不能为空',

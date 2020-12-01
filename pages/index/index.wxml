@@ -86,7 +86,7 @@
             </view>
             <view class="gender-school">
               <image class="famous-people-gender"
-                src="{{item.sex == 1 ? '/imgs/forumList/female.png' : '/imgs/forumList/female.png'}}" alt=""></image>
+                src="{{item.sex == 1 ? '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}" alt=""></image>
               <text class="my-school">{{item.school ? item.school.schoolName : "暂无学校"}}</text>
               <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
               <text class="hot-num">{{item.noteNumber || 0}}</text>

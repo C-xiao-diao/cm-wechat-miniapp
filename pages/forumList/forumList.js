@@ -26,6 +26,7 @@ Page({
     page: 0,
     isShowEnsembleModal: false,
     isShowEnsemblePicker: false,
+    ensembleType: 0,               //合拍类型，0是合拍主题  1是合拍跟帖
     pickerList: [1000, 500, 200, 100, 50, 10, 5],
     //音符数量
     number: 0
@@ -88,7 +89,7 @@ Page({
   // 点赞(现在改为合拍)
   like: function (e) {
     let essayId = e.currentTarget.dataset.id;
-    this.setData({ isShowEnsembleModal: true, essayId })
+    this.setData({ isShowEnsembleModal: true, essayId,ensembleType: 1 })
     // let essayId = e.currentTarget.dataset.id;
     // let cmd = "/auth/essay/pointPraise";
     // let data ={
@@ -126,12 +127,17 @@ Page({
     console.log(e, ',,,,,,,,,,,,,,,,,,,,,,,,,,');
   },
   //点击合拍按钮提交
-  ensembleHandle: function () {
+  ensembleHandle: function () {  // 0是合拍主题   1是合拍跟帖
     let studentId = app.globalData.studentId;
-    let { number, list, essayId } = this.data;
+    let { number, list, essayId, ensembleType, themeId } = this.data;
     let cmd = "/auth/essay/pointPraise";
     //ps 此接口 themeId, essayId 只用传一个
-    let data = { studentId, essayId, number };
+    let data = {};
+    if(ensembleType ===1){
+      data = { studentId, essayId, number };
+    } else {
+      data = { studentId, themeId, number };
+    }
     http.get({
       cmd,
       data,
@@ -139,9 +145,15 @@ Page({
         if (_.get(res, 'data.code') === 200) {
           wx.showToast({ title: '合拍成功',})
           let noteNumber = _.get(res, 'data.data.noteNumber');
-          let idx = _.findIndex(list, o=>o.id === essayId);
-          list[idx].pointPraiseNumber = noteNumber;
-          this.setData({ isShowEnsembleModal: false,list })
+          // todo 更新首页用户的音符数量，依赖后端计算返回，涉及到钱一律服务端计算
+          // app.globalData.userInfo.noteNumber = app.globalData.userInfo.noteNumber - noteNumber;
+          if(ensembleType ===1){
+            let idx = _.findIndex(list, o=>o.id === essayId);
+            list[idx].pointPraiseNumber = noteNumber;
+            this.setData({ isShowEnsembleModal: false,list })
+          } else {
+            
+          }        
         } else {
           wx.showToast({ title: _.get(res, 'data.msg')})
         }
@@ -161,12 +173,13 @@ Page({
   stopCancelModal: function () {
 
   },
-  //前往邀请界面
+  //前往邀请界面(需求修改为合拍，而非跳转)
   navToInvite: function () {
     const { themeId } = this.data;
-    wx.navigateTo({
-      url: '/pages/invite/invite?themeId=' + themeId,
-    })
+    // wx.navigateTo({
+    //   url: '/pages/invite/invite?themeId=' + themeId,
+    // })
+    this.setData({ isShowEnsembleModal: true, ensembleType: 0 });
   },
   //前往跟调界面
   navToFollow: function () {
