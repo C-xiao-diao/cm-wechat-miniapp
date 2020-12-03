@@ -6,7 +6,6 @@
   <view class="userInfo">
     <view class="userInfo-group">
       <view class="userInfo-group-left" bindtap="changeSchool">
-        <!-- <text class="school">长郡中学</text> -->
         <text class="school">{{schoolName ? schoolName :  (address ?  address : '全国')}}</text>
         <image class="funnel" src="/imgs/icons/funnel.png" alt=""></image>
         <text class="city">{{'切换'}}</text>
@@ -17,19 +16,16 @@
           alt=""></image>
         <view class="userInfo-detail" wx:if="{{reviewStatus === 1}}" data-type="self" bindtap="navToMemberCenter">
           <view class="name-tags">
-            <!-- <text>一天天的</text> -->
             <text>{{userInfo.nickName}}</text>
             <text class="tags">吃货达人</text>
           </view>
           <view class="gender-school">
             <image class="gender"
               src="{{userInfo.sex ==1 ?  '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}" alt=""></image>
-            <!-- <text class="my-school">长沙市雅礼中学</text> -->
             <text class="my-school">{{userInfo.schoolName}}</text>
           </view>
           <view class="userInfo-hot ">
             <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
-            <!-- <text class="hot-num">999</text> -->
             <text class="hot-num">{{userInfo.noteNumber || 0}}</text>
           </view>
         </view>
@@ -51,10 +47,6 @@
         <text bindtap="changeTab" class="tab {{currentTab === 1 ? 'active' : ''}}" data-item="{{1}}">风云人物榜</text>
         <text bindtap="changeTab" class="tab {{currentTab === 2 ? 'active' : ''}}" data-item="{{2}}">即兴</text>
       </view>
-      <!-- <view class="top-right" wx:if="{{currentTab === 2}}" bindtap="freestyleHandle">
-        <image class="gender" src="/imgs/index/freestyle.png" alt=""></image>
-        <text>freestyle</text>
-      </view> -->
     </view>
     <view class="hotlist-content" wx:if="{{currentTab === 0 || currentTab === 1}}">
       <view class="hotlist-content-item" wx:for="{{ list }}" wx:key="index">
@@ -131,6 +123,10 @@
             <image class="impromptu-view3-photo" src="./../../imgs/icons/no_like.png" alt=""></image>
             <text>不感兴趣</text>
           </view>
+          <view catchtap="navToStartTune" wx:if="{{currentTab === 2}}">
+            <image class="impromptu-view3-photo" src="./../../imgs/icons/add.png" alt=""></image>
+            <text>起个调吧</text>
+          </view>
           <view bindtap="navToFollow">
             <image class="impromptu-view3-photo" src="./../../imgs/icons/edit.png" alt=""></image>
             <text>跟调</text>
@@ -138,8 +134,11 @@
         </view>
       </view>
 
-      <movable-view class="impromptu-view3" bindchange="cardMoveHandle" bindtouchstart="bindtouchstart"
-        bindtouchend="bindtouchend" x="{{x}}" direction="horizontal" out-of-bounds wx:if="{{isShowListItem}}">
+      <movable-view class="impromptu-view3" bindtouchstart="bindtouchstart" bindtap="bindViewHandle"
+        bindtouchend="bindtouchend" x="{{x}}" direction="horizontal" out-of-bounds wx:if="{{isShowListItem}}"
+        data-themeId="{{list[0].id}}" data-theme="{{list[0].theme}}"
+          data-number="{{list[0].pointPraiseNumber}}" data-picture="{{list[0].picture}}"
+          data-content="{{list[0].supplementaryContent}}">
         <view class="impromptu-view3-top">
           <image class="impromptu-view3-top-avatar" src="{{list[0].studentInformation.headimgUrl ? list[0].studentInformation.headimgUrl : '/imgs/icons/no_avatar.png'}}" alt=""></image>
           <view>

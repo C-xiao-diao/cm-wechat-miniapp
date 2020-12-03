@@ -475,17 +475,25 @@ Page({
   },
   //滑动即兴卡片
   cardMoveHandle: function(e){
-    // let x = e.detail.x;
-    // if(moveX >= x){
-    //   this.setData({isShowListItem: false})
-    //   return;
-    // } else {
-
-    // }
-    // moveX = x;
+    
   },
   bindtouchstart: function(e){
     pageX = e.changedTouches[0].pageX;
+  },
+  bindViewHandle: function(e){
+    let themeId = e.currentTarget.dataset.themeid;
+    let theme = e.currentTarget.dataset.theme;
+    let content = e.currentTarget.dataset.content;
+    let number = e.currentTarget.dataset.number;
+    let picture = e.currentTarget.dataset.picture;
+    app.globalData.currentThemeId = themeId;
+    wx.navigateTo({
+      url: '/pages/forumList/forumList?themeId=' + themeId
+        + '&theme=' + theme
+        + '&content=' + content
+        + '&number=' + number
+        + '&picture=' + JSON.stringify(picture),
+    })
   },
   bindtouchend: function(e){
     let endPageX = e.changedTouches[0].pageX;
