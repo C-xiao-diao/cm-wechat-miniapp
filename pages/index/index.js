@@ -499,6 +499,7 @@ Page({
     let reviewStatus = _.get(app, 'globalData.reviewStatus');
     if(reviewStatus !== 1){
        this.navToRegister();
+       return;
     }
     //跳转至新页面
     wx.navigateTo({
