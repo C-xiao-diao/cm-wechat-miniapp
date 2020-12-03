@@ -1,0 +1,28 @@
+.registerOne-top{
+  position: relative;
+  margin-top: 200rpx;
+}
+.registerOne-avatar{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+}
+.registerOne-camera{
+  width: 70rpx;
+  height: 70rpx;
+  position: absolute;
+  right: 0rpx;
+  bottom: 0rpx;
+  z-index: 99;
+}
+.nickname{
+  margin-top: 30rpx;
+  text-align: center;
+  border: 2rpx solid #f2f2f2;
+  height: 100rpx;
+  width:80%;
+  border-radius: 6rpx;
+}
+.registerOneSubmit{
+  margin-top: 100rpx;
+}

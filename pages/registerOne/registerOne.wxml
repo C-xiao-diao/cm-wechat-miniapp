@@ -1,0 +1,8 @@
+<view class="container">
+  <view  class="registerOne-top" bindtap="_chooseImage">
+    <image class="registerOne-avatar" src="{{ headimgUrl ? headimgUrl : '/imgs/icons/no_avatar.png'}}" alt=""></image>
+    <image class="registerOne-camera" src="/imgs/icons/camera.png" alt=""></image>
+  </view>
+  <input class="nickname" value="{{nickname}}" type="text" placeholder="请输入昵称" bindinput="bindinput" />
+  <button class="registerOneSubmit" type="primary" bindtap="navToNextStep">下一步</button>
+</view>

@@ -1,0 +1,10 @@
+<!--auditing.wxml-->
+
+<view class="container">
+    <camera mode="normal" device-position="front" flash="auto" binderror="error" style="width: 100%; height:400px;"></camera>
+    <button class="takePhoto" type="primary" bindtap="takePhoto">拍照</button>
+    <view>
+        <text>正在审核中...</text>
+        <text>请耐心等待...</text>
+    </view>
+</view>

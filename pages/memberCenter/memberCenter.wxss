@@ -1,0 +1,318 @@
+
+/* 头部样式 */
+Page {
+    background: #f9f9f9;
+}
+
+.header{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background: #fff;
+    padding-bottom: 50rpx;
+}
+
+.avatar-erea {
+    margin: 30rpx 0;
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 50%;
+    background: #eee;
+    position: relative;
+}
+
+.avatar-erea image.avatar {
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 50%;
+}
+
+.camera {
+    position: absolute;
+    right: -20rpx;
+    bottom: -5rpx;
+    width: 80rpx;
+    height: 80rpx;
+}
+
+.text {
+    line-height: 50rpx; 
+    color:  lightgray; 
+    font-size: 35rpx; 
+}
+
+.nickname {
+    display: flex;
+}
+
+.nickname text {
+    font-size: 36rpx;
+}
+
+.nickname image {
+    width: 40rpx;
+    height: 40rpx;
+    margin-left: 10rpx;
+}
+
+.membership {
+    /* width: 30%; */
+    position: absolute;
+    right: 0;
+    bottom: 30rpx;
+    font-size: 30rpx;
+    padding: 0 20rpx;
+}
+
+.membership .point {
+    margin-bottom: 10rpx;
+    padding-left: 10rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.membership .point text {
+    float: left;
+    font-size: 22rpx;
+}
+
+.membership image {
+    float: left;
+    margin: 5rpx 10rpx 0 10rpx;
+    width: 26rpx;
+    height: 26rpx;
+}
+
+.membership .my-tag {
+    float: right;
+    background: #fe0000;
+    color: #fff;
+    font-size: 28rpx;
+    border-radius: 10rpx;
+    padding: 0 10rpx;
+    box-sizing: border-box;
+    /* margin: 10rpx 0rpx 0 0; */
+}
+
+/* 头部样式END */
+
+/* tab切换 */
+.swiper-tab {
+    width: 100%;
+    display: flex;
+}
+
+.swiper-tab-list {
+    width: 50%;
+    background: #fff;
+    text-align: center;
+    line-height: 100rpx;
+    border-top: 2rpx solid #e5e5e5;
+}
+
+.swiper-tab-list.on {
+    background: #898989;
+    color: #fff;
+}
+/* tab切换END */
+
+
+/* acticle样式 */
+.swiper-box {
+    width: 100%;
+    margin-top: 30rpx;
+}
+
+.no-data {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 20%;
+}
+
+swiper-item {
+    margin: 30rpx 0;
+}
+
+.article-area {
+    width: 90%;
+    margin: 20rpx auto 50rpx;
+}
+
+.article-title {
+    display: flex;
+}
+
+.article-title text {
+    display: block;
+    flex: 1;
+    height: 50rpx;
+    font-size: 34rpx;
+    line-height: 50rpx;
+    margin-bottom: 10rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+more-button {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.article-content {
+    width: 100%;
+}
+
+.article-content text {
+    display: block;
+    width: 100%;
+    line-height: 40rpx;
+    font-size: 30rpx;
+    color: #333;
+    padding: 20rpx;
+    box-sizing: border-box;
+}
+
+.article-images {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    /* justify-content: center; */
+}
+
+.article-images image {
+    display: block;
+    width: 200rpx;
+    height: 160rpx;
+    margin: 13rpx;
+    background: #666;
+}
+
+.article-hot {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 20rpx;
+}
+
+.article-hot view {
+    display: flex;
+    /* width: 120rpx; */
+    background: #fff;
+    border-radius: 25rpx;
+    padding: 5rpx 20rpx 5rpx 10rpx;
+}
+
+.article-hot image {
+    float: left;
+    margin: 8rpx 10rpx 0 10rpx;
+    width: 36rpx;
+    height: 36rpx;
+    line-height: 50rpx;
+    vertical-align: middle;
+}
+
+.article-hot text {
+    font-size: 32rpx;
+    line-height: 50rpx;
+    color: #d81501;
+}
+/* acticle样式END */
+
+/* 回到顶部样式 */
+
+.toTop {
+    position: fixed;
+    bottom: 5%;
+    right: 10rpx;
+}
+
+.toTop image {
+    width: 80rpx;
+    height: 80rpx;
+}
+
+
+
+/* 回到顶部样式END */
+
+/* 编辑昵称对话框样式 */
+.editModal {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 25%;
+}
+
+.editModal .wrap {
+    width: 70%;
+    height: auto;
+    margin: 0 auto;
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 15rpx;
+    box-shadow: 0 0 10rpx rgba(0,0,0,0.2);
+}
+
+.editModal .title {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 32rpx;
+    padding: 30rpx 0 20rpx;
+    border-bottom: 2rpx solid #eee;
+}
+
+.editModal .title .span {
+    font-size: 28rpx;
+    color: #666;
+}
+
+.editModal .content {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    padding: 20rpx;
+    border-bottom: 2rpx solid #eee;
+}
+
+.editModal .content input {
+    width: 100%;
+    font-size: 34rpx;
+    line-height: 50rpx;
+    height: 50rpx;
+    box-sizing: border-box;
+    padding: 0 20rpx;
+}
+
+.editModal .btns {
+    display: flex;
+    width: 100%;
+}
+
+.editModal .btns text {
+    display: block;
+    width: 50%;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    font-size: 30rpx;
+}
+
+.cancel {
+    color: #666;
+    border-right: 2rpx solid #eee;
+}
+
+.confirm {
+    color: #000;
+}
+
+/* 编辑昵称对话框样式END */

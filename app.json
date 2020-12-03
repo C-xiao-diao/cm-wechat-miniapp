@@ -1,0 +1,25 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/registerTwo/registerTwo",
+    "pages/startTune/startTune",
+    "pages/follow/follow",
+    "pages/registerOne/registerOne",
+    "pages/forumList/forumList",
+    "pages/auditing/auditing",
+    "pages/memberCenter/memberCenter",
+    "pages/invite/invite",
+    "pages/rules/rules",
+    "pages/edit/edit",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundColor": "#000",
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "C小调",
+    "navigationBarTextStyle":"black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,19 @@
+page {
+    height: 100%;
+    background: #f2f2f2;
+}
+
+.container view {
+    position: relative;
+    top: 40%;
+}
+
+.container view text {
+    display: block;
+    width: 100%;
+    margin-bottom: 10rpx;
+}
+
+.takePhoto{
+    margin-top: 20rpx;
+}

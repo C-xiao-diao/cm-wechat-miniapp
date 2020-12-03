@@ -1,0 +1,18 @@
+
+<view class="container">
+    <view class="header">
+        <text>邀请好友抢音符上不封顶</text>    
+        <view class="rules" bind:tap="toRules">音符规则</view>
+    </view>
+    <view class="main">
+        <image class="avatar" src="{{userInfo.headimgUrl}}"></image>
+        <text class="description">每邀请一名好友注册成功</text>
+        <text class="description">双方各得200音符，上不封顶</text>
+        <button open-type='share'>邀请好友领音符</button>
+        <text class="description">已邀请：{{inviteCount}}人</text>
+        <text class="description">音符奖励：{{inviteReword}}</text>
+        <view class="avatar-list" wx:if="{{headimgUrlList!=0}}">
+            <image src="{{obj}}" wx:key="index" wx:for-item="obj" wx:for="{{headimgUrlList}}"></image>
+        </view>
+    </view>
+</view>

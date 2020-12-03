@@ -1,0 +1,44 @@
+
+.more-button {
+    position: relative;
+}
+
+.more-button .img {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.more-button .more-li {
+    text-align: center;
+    background: #fff;
+    border-radius: 10rpx;
+    padding: 20rpx 0;
+    line-height: 60rpx;
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    left: -130rpx;
+    box-shadow: 0 0 10rpx rgba(0,0,0,0.2);
+}
+
+.share {
+    background: transparent!important;
+    width: auto!important;
+    height: auto!important;
+    font-size: 32rpx!important;
+    padding: 0;
+    line-height: 60rpx!important;
+    border-radius: 0!important;
+    font-weight: normal!important;
+}
+
+.edit ,.delete, .share {
+    font-size: 32rpx!important;
+    padding: 0 20rpx;
+    overflow: visible!important;
+
+}
+
+.not-optional {
+    color: #999;
+}

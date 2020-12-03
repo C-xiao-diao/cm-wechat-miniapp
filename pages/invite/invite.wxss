@@ -1,0 +1,85 @@
+
+Page {
+    background: #f9f9f9;
+}
+
+/* 头部样式 */
+.header {
+    width: 100%;
+    height: 300rpx;
+    background: #fff;
+    box-shadow: 0 0 10rpx rgba(0,0,0,0.2);
+    position: relative;
+}
+
+.header text {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 100rpx;
+}
+
+.rules {
+    padding: 10rpx;
+    background: #a90303;
+    color: #fff;
+    border-radius: 10rpx;
+    font-size: 28rpx;
+    position: absolute;
+    right: 5%;
+    bottom: 10%;
+}
+
+/* 头部样式END */
+
+/* 内容主页样式 */
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.main .avatar {
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 50%;
+    margin: 60rpx auto;
+}
+
+.main .description {
+    color: #333;
+    font-size: 32rpx;
+    margin: 5rpx 0;
+}
+
+.main button {
+    width: 300rpx!important;
+    padding: 20rpx;
+    border-radius: 50rpx;
+    font-size: 30rpx;
+    color: #fff;
+    background: #0e8cc7;
+    margin: 30rpx 0;
+}
+
+.avatar-list {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 60rpx;
+}
+
+.avatar-list image {
+    width: 130rpx;
+    height: 130rpx;
+    border-radius: 50%;
+    margin: 20rpx;
+}
+
+/* 内容主页样式END */

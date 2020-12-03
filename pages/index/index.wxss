@@ -1,0 +1,506 @@
+/* @import "./index.skeleton.wxss"; */
+page {
+  background: #f2f2f2;
+}
+
+.hotlist-view {
+  /* padding: 0 50rpx; */
+  box-sizing: border-box;
+  width: 750rpx;
+  overflow: hidden;
+}
+
+.userInfo {
+  padding: 50rpx 30rpx;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.userInfo-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.userInfo-group-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.userInfo-group-left .school {
+  font-size: 34rpx;
+  font-weight: 500;
+  max-width: 200rpx;
+}
+
+.userInfo-group-left .funnel {
+  width: 28rpx;
+  height: 28rpx;
+  margin: 0 5rpx;
+}
+
+.userInfo-group-left .city {
+  font-size: 18rpx;
+}
+
+.userInfo-group-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userInfo-group-right .userInfo-detail {
+  /* margin-left: 30rpx; */
+  margin-left: 10rpx;
+}
+
+.userInfo-group-right .avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+
+.userInfo-group-right .gender {
+  width: 32rpx;
+  height: 30rpx;
+}
+
+.name-tags text:first-child {
+  font-size: 24rpx;
+}
+
+.name-tags text:last-child {
+  font-size: 22rpx;
+  color: #fff;
+  background: red;
+  border-radius: 10rpx;
+  padding: 2rpx 10rpx;
+  box-sizing: border-box;
+  margin-left: 20rpx;
+}
+
+.gender-school {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10rpx;
+}
+
+.gender-school .my-school {
+  font-size: 24rpx;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+.userInfo-detail >.userInfo-hot{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10rpx;
+}
+.userInfo-detail >.userInfo-hot>.note_active{
+  width: 28rpx;
+  height: 28rpx;
+}
+.userInfo-hot {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.note_active {
+  width: 35rpx;
+  height: 35rpx;
+}
+
+.hot-num {
+  font-size: 24rpx;
+  margin-left: 10rpx;
+}
+/* 未登录/未授权 */
+.userStatus{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.userStatus text{
+  font-size: 24rpx;
+}
+.userStatus text:first-child{
+  margin-left: 20rpx;
+}
+.userStatus text:last-child{
+  margin-left: 20rpx;
+  color: blue;
+  border-bottom: 1rpx solid blue;
+}
+
+.content {
+  padding: 0 30rpx;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.tab {
+  font-size: 34rpx;
+  color: #666;
+  padding: 30rpx 15rpx;
+  box-sizing: border-box;
+  border-bottom: 5rpx solid #f2f2f2;
+}
+
+.tabs>text.active {
+  color: #000;
+  border-bottom: 5rpx solid #000;
+}
+
+.top-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.top-right>image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.top-right>text {
+  margin-left: 12rpx;
+}
+
+/* 热榜内容 */
+.hotlist-content {
+  margin-top: 35rpx;
+  padding: 20rpx 20rpx;
+  box-sizing: border-box;
+  box-shadow: 0 0 13rpx rgba(0, 0, 0, 0.3);
+  border-radius: 10rpx;
+  background: white;
+  margin-bottom: 60rpx;
+}
+
+.hotlist-content-item {
+  border-bottom: 1rpx solid #ccc;
+  padding-bottom: 20rpx;
+  padding-top: 20rpx;
+  box-sizing: border-box;
+}
+
+.hotlist-content-item:last-child {
+  border-bottom: 0;
+}
+
+.hotlist-item {
+  display: flex;
+  flex-direction: row;
+}
+
+.hotlist-item text {
+  font-size: 32rpx;
+  line-height: 78rpx;
+}
+
+.hotlist-item-sortnum {
+  color: #666;
+}
+
+.sortnum0,.sortpeople0,.sortpeople1,.sortpeople2 {
+  color: #eb444d;
+}
+
+.sortnum1 {
+  color: #ee6f2d;
+}
+
+.sortnum2 {
+  color: #eeb14c;
+}
+
+.hotlist-item>text.hotlist-item-title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* 风云人物 */
+.famous-people {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.famous-people-num {
+  font-size: 48rpx;
+}
+.famous-people .famous-people-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin: 0 30rpx;
+}
+.gender-school .famous-people-gender {
+  width: 32rpx;
+  height: 30rpx;
+}
+/* 即兴 */
+.impromptu{
+  margin-top: 80rpx;
+  position: relative;
+  width: 150%;
+  height: 1030rpx;
+}
+.impromptu-view1,
+.impromptu-view2,
+.impromptu-view3 {
+  margin-top: 35rpx;
+}
+.impromptu-view1{
+  /* width: 100%; */
+  width: 650rpx;
+  height: 1000rpx;
+  background: white;
+  position: absolute;
+  top: -80rpx;
+  left: 0rpx;
+  z-index: -1;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  box-shadow: 0 0 13rpx rgba(0, 0, 0, 0.3);
+}
+.impromptu-view2{
+  /* width: 100%; */
+  width: 650rpx;
+  height: 1000rpx;
+  background: white;
+  position: absolute;
+  top: -60rpx;
+  left: 20rpx;
+  z-index: 1;
+  border-radius: 10rpx;
+  padding: 50rpx;
+  box-sizing: border-box;
+  box-shadow: 0 0 13rpx rgba(0, 0, 0, 0.3);
+}
+/* .impromptu-view3{
+  width: 100%;
+  height: 1000rpx;
+  padding: 50rpx;
+  box-sizing: border-box;
+  background: white;
+  position: absolute;
+  top: -40rpx;
+  left: 20rpx;
+  margin-left: 20rpx;
+  z-index: 2;
+  border-radius: 10rpx;
+  box-shadow: 0 0 13rpx rgba(0, 0, 0, 0.3);
+} */
+
+.impromptu-view3 {
+  /* width: 100%; */
+  width: 650rpx;
+  height: 1000rpx;
+  padding: 50rpx;
+  margin-top: -20rpx;
+  margin-left: 0rpx;
+  z-index: 999999;
+  box-sizing: border-box;
+  background: white;
+  border-radius: 10rpx;
+  box-shadow: 0 0 13rpx rgba(0, 0, 0, 0.3);
+}
+.impromptu-view3-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.impromptu-view3-top-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-right: 35rpx;
+}
+.impromptu-view3-title{
+  margin-top: 35rpx;
+}
+.impromptu-view3-title text{
+  font-weight: 500;
+}
+.impromptu-view3-content-view{
+  /* display: inline-flexbox; */
+  flex-direction: column;
+}
+.impromptu-view3-content {
+  min-height: 70rpx;
+  font-size: 24rpx;
+  color: #333;
+  line-height: 42rpx;
+  display: -webkit-inline-box;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  overflow: hidden;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2;
+}
+.see-details{
+  font-size: 24rpx;
+  color: blue;
+  display: flex;
+  
+}
+.impromptu-view3-images {
+  min-height: 420rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30rpx;
+  flex-wrap: wrap;
+}
+.impromptu-view3-photo {
+  width: 160rpx;
+  height: 115rpx;
+  margin-bottom: 20rpx;
+}
+.impromptu-view3-options{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30rpx;
+}
+.impromptu-view3-options > view:first-child{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.impromptu-view3-options > view:first-child image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.impromptu-view3-options > view:last-child{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.impromptu-view3-options > view:last-child image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.add-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 50rpx 0;
+}
+
+.add {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.rising-tone {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 80rpx 0;
+}
+
+.rising-tone text {
+  background: white;
+  font-size: 28rpx;
+  color: #666;
+  text-align: center;
+  padding: 10rpx 24rpx;
+  box-sizing: border-box;
+  border-radius: 5rpx;
+  box-shadow: 0 0 8rpx rgba(0, 0, 0, 0.3);
+}
+
+/* 切换学校弹框 */
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.school-group{
+  background: white;
+  width: 90%;
+  padding: 50rpx;
+  box-sizing: border-box;
+}
+.input-school-group{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.input-school-group input{
+  padding: 20rpx 0rpx;
+  /* box-sizing: border-box; */
+  width: 100%;
+  margin-top: 20rpx;
+}
+.button-school-group{
+  display: flex;
+  justify-content: center;
+  margin-top: 50rpx;
+}
+.address-input,.school-input{
+  border: 1rpx solid #ccc;
+}
+.address-input{
+  width: 100%;
+  /* width: 150rpx; */
+  /* margin-right: 30rpx; */
+}
+.picker{
+  padding: 20rpx 30rpx;
+  /* box-sizing: border-box; */
+  width: 100%;
+}
+/* 学校列表弹框 */
+.schoolList{
+  display: flex;
+  flex-direction: column;
+  width:82%;
+  height: 400rpx;
+  /* max-height: 400rpx; */
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  overflow-x: hidden;
+  z-index: 10;
+  position: absolute;
+  top: 0rpx;
+  border-radius: 10rpx;
+  background-color: white;
+  padding: 20rpx 40rpx;
+  box-sizing: border-box;
+}
+.schoolList>text{
+  line-height: 50rpx;
+  font-size: 36rpx;
+}
