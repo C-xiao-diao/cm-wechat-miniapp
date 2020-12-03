@@ -26,7 +26,17 @@ Page({
         myFollowList: [],
         floorstatus: false,
         noteMsg: '',
-        
+        ifSelf: true,
+    },
+    onLoad: function(option){
+        let studentId = option.studentId;
+        if(studentId){
+            if(app.globalData.studentId == studentId){//浏览他人主页
+                this.setData({ifSelf: true})
+            }else{//个人中心
+                this.setData({ifSelf: false})
+            }
+        }
     },
     onShow: function(){
         let userInfo = app.globalData.userInfo;
@@ -40,6 +50,8 @@ Page({
     },
     //获取"更多"按钮
     getMoreBtns: function(list, type){
+        const { ifSelf } = this.data;
+        if(!ifSelf){ return; }
         for( let i = 0 ;i < list.length; i++){
             let str = 'more' + type + 'Btn' + i;
             this[str] = this.selectComponent('#'+str);
@@ -256,7 +268,8 @@ Page({
     },
     //关闭选项列表
     closeList: function(){
-        const { currentTab, myThemeList, myFollowList } =  this.data;
+        const { ifSelf, currentTab, myThemeList, myFollowList } =  this.data;
+        if(!ifSelf){ return; }
         if(currentTab==0){//起调
             for( let i = 0 ;i < myThemeList.length; i++){
                 let str = 'moreThemeBtn' + i;
