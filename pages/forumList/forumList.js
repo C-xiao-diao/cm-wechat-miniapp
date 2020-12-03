@@ -29,7 +29,7 @@ Page({
     isShowEnsembleModal: false,
     isShowEnsemblePicker: false,
     ensembleType: 0,               //合拍类型，0是合拍主题  1是合拍跟帖
-    pickerList: [1000, 500, 200, 100, 50, 10, 5],
+    pickerList: [1000, 500, 200, 100, 50, 10, 5, 1],
     //音符数量
     musicNumber: 0
   },
@@ -103,42 +103,12 @@ Page({
   // 点赞(现在改为合拍)
   like: function (e) {
     let essayId = e.currentTarget.dataset.id;
-    this.setData({ isShowEnsembleModal: true, essayId,ensembleType: 1,musicNumber: 0 })
-    // let essayId = e.currentTarget.dataset.id;
-    // let cmd = "/auth/essay/pointPraise";
-    // let data ={
-    //   studentId: app.globalData.studentId,
-    //   themeId: this.data.themeId,
-    //   essayId,
-    // }
-    // http.get({
-    //   cmd,
-    //   data,
-    //   success: res=>{
-    //     if(_.get(res,'data.code') === 200){
-    //       wx.showToast({ title: '点赞成功' });
-    //       let list = this.data.list;
-    //       let newList = [];
-    //       for (let i=0;i<list.length;i++){
-    //         let item = {};
-    //         item = list[i];
-    //         if(list[i].id == essayId){
-    //           item.pointPraiseNumber = list[i].pointPraiseNumber  + 1; 
-    //         }
-    //         newList.push(list[i]);
-    //       }
-    //       this.setData({list: newList});
-    //     } else {
-
-    //     }
-    //   }
-    // })
+    this.setData({ isShowEnsembleModal: true, essayId,ensembleType: 1,musicNumber: 1 })
   },
   //点击音符数量
   selectEnsembleNum: function (e) {
     let musicNumber = e.currentTarget.dataset.value;
     this.setData({ musicNumber, isShowEnsemblePicker: false })
-    console.log(e, ',,,,,,,,,,,,,,,,,,,,,,,,,,');
   },
   //点击合拍按钮提交
   ensembleHandle: function () {  // 0是合拍主题   1是合拍跟帖

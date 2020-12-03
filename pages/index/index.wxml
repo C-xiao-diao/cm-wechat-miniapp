@@ -95,10 +95,6 @@
           </view>
         </view>
       </view>
-
-      <view class="add-view" bindtap="navToStartTune" wx:if="{{currentTab === 0}}">
-        <image class="add" src="/imgs/icons/add.png" alt=""></image>
-      </view>
     </view>
     <!-- 即兴 -->
     <movable-area class="impromptu" wx:if="{{currentTab === 2}}">
@@ -171,11 +167,15 @@
           <image class="impromptu-view3-photo" src="{{item}}" wx:for="{{list[0].picture}}" wx:key="index" alt=""></image>
         </view>
         <view class="impromptu-view3-options">
-          <view bindtap="noInterested">
+          <view catchtap="noInterested">
             <image class="impromptu-view3-photo" src="./../../imgs/icons/no_like.png" alt=""></image>
             <text>不感兴趣</text>
           </view>
-          <view bindtap="navToFollow" data-themeId="{{list[0].id}}" data-theme="{{list[0].theme}}" >
+          <view catchtap="navToStartTune" wx:if="{{currentTab === 2}}">
+            <image class="impromptu-view3-photo" src="./../../imgs/icons/add.png" alt=""></image>
+            <text>起个调吧</text>
+          </view>
+          <view catchtap="navToFollow" data-themeId="{{list[0].id}}" data-theme="{{list[0].theme}}" >
             <image class="impromptu-view3-photo" src="./../../imgs/icons/edit.png" alt=""></image>
             <text>跟调</text>
           </view>
