@@ -198,6 +198,13 @@ Page({
     // })
     this.setData({ isShowEnsembleModal: true, ensembleType: 0 });
   },
+  //前往个人中心界面
+  navToMemberCenter: function (e) {
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/memberCenter/memberCenter?userId=' + id
+    })
+  },
   //前往跟调界面
   navToFollow: function () {
     const { themeId, theme } = this.data;

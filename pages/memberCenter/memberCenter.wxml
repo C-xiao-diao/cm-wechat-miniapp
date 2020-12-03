@@ -1,4 +1,4 @@
-<view class="container">
+<view class="container" bind:tap="closeList">
     <view class="header">
         <view class="avatar-erea">
             <image class="avatar" bindtap="previewImage" data-src="{{userInfo.headimgUrl}}" src="{{userInfo.headimgUrl}}"></image>
@@ -24,7 +24,7 @@
     </view>
 
     <!-- 起个调 -->
-    <view class="swiper-box" wx:if="{{currentTab==0}}" bind:tap="closeList">
+    <view class="swiper-box" wx:if="{{currentTab==0}}">
         <text class="no-data" wx:if="{{myThemeList.length == 0}}">{{noteMsg}}</text>
         <view class="article-area" wx:for="{{myThemeList}}" wx:key="id" for-index="{{index}}">
             <view class="article-title">
@@ -48,7 +48,7 @@
     </view>
 
     <!-- 跟调 -->
-    <view class="swiper-box" wx:if="{{currentTab==1}}" bind:tap="closeList">
+    <view class="swiper-box" wx:if="{{currentTab==1}}">
         <text class="no-data" wx:if="{{myFollowList.length == 0}}">{{noteMsg}}</text>
         <view class="article-area" wx:for="{{myFollowList}}" wx:key="id" for-index="{{index}}">
             <view class="article-title">
