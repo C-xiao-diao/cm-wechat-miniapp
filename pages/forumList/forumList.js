@@ -202,7 +202,7 @@ Page({
   navToMemberCenter: function (e) {
     let id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/pages/memberCenter/memberCenter?userId=' + id
+      url: '/pages/memberCenter/memberCenter?studentId=' + id
     })
   },
   //前往跟调界面
