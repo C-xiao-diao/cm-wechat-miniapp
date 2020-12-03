@@ -3,6 +3,7 @@ import "./../../utils/fix";
 import _ from "./../../utils/lodash"
 import { http } from "./../../utils/util";
 import { multiArray, objectMultiArray } from './../../utils/pickerLinkCity'
+import moment from "./../../utils/moment"
 
 
 //获取应用实例
@@ -349,6 +350,9 @@ Page({
         if (_.get(res, 'data.code') === 200) {
           let list = _.get(res, 'data.data.list');
           list = _.map(list, o=> {
+            if(o.releaseTime){
+              o.isNewTheme = (moment(o.releaseTime).add(10, 'minute')).isAfter(moment())
+            }
             if(o.pointPraiseNumber){
               o.pointPraiseNumber = _.round(o.pointPraiseNumber);
             }

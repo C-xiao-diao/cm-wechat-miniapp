@@ -208,6 +208,7 @@ page {
 .hotlist-item {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .hotlist-item text {
@@ -235,6 +236,10 @@ page {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+.new-image{
+  width: 100rpx;
+  height: 100rpx;
 }
 
 /* 风云人物 */
