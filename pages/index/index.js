@@ -343,10 +343,18 @@ Page({
     }
   },
   //前往个人中心界面
-  navToMemberCenter: function () {
-    wx.navigateTo({
-      url: '/pages/memberCenter/memberCenter'
-    })
+  navToMemberCenter: function (e) {
+    let type = e.currentTarget.dataset.type;
+    let id = e.currentTarget.dataset.id;
+    if(type=="self") {
+      wx.navigateTo({
+        url: '/pages/memberCenter/memberCenter?userId=' + app.globalData.userId
+      })
+    }else {
+      wx.navigateTo({
+        url: '/pages/memberCenter/memberCenter?userId=' + id
+      })
+    }
   },
   // 获取首页列表数据
   getIndexList: function (tab, isRandom) {
