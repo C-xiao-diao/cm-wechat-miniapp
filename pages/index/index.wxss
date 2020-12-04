@@ -11,17 +11,14 @@ page {
 }
 
 .userInfo {
-  padding: 50rpx 30rpx;
+  padding: 30rpx 30rpx 50rpx 30rpx;
   box-sizing: border-box;
   background: #fff;
 }
 
 .userInfo-group {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  box-sizing: border-box;
+  flex-direction: column;
 }
 
 .userInfo-group-left {
@@ -33,13 +30,13 @@ page {
 .userInfo-group-left .school {
   font-size: 34rpx;
   font-weight: 500;
-  max-width: 200rpx;
+  /* max-width: 200rpx; */
 }
 
 .userInfo-group-left .funnel {
   width: 28rpx;
   height: 28rpx;
-  margin: 0 5rpx;
+  margin: 0 10rpx;
 }
 
 .userInfo-group-left .city {
@@ -50,12 +47,12 @@ page {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  margin-top: 30rpx;
+  /* justify-content: space-between; */
 }
 
 .userInfo-group-right .userInfo-detail {
-  /* margin-left: 30rpx; */
-  margin-left: 10rpx;
+  margin-left: 30rpx;
 }
 
 .userInfo-group-right .avatar {
@@ -168,21 +165,6 @@ page {
   border-bottom: 5rpx solid #000;
 }
 
-.top-right {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.top-right>image {
-  width: 50rpx;
-  height: 50rpx;
-}
-
-.top-right>text {
-  margin-left: 12rpx;
-}
-
 /* 热榜内容 */
 .hotlist-content {
   margin-top: 35rpx;
@@ -208,6 +190,7 @@ page {
 .hotlist-item {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .hotlist-item text {
@@ -235,6 +218,10 @@ page {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+.new-image{
+  width: 100rpx;
+  height: 100rpx;
 }
 
 /* 风云人物 */
@@ -391,9 +378,11 @@ page {
   justify-content: center;
   align-items: center;
 }
-.impromptu-view3-options > view:first-child image{
-  width: 50rpx;
-  height: 50rpx;
+.impromptu-view3-options > view:nth-child(2){
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .impromptu-view3-options > view:last-child{
   display: flex;
@@ -401,38 +390,9 @@ page {
   justify-content: center;
   align-items: center;
 }
-.impromptu-view3-options > view:last-child image{
+.impromptu-view3-options > view > image{
   width: 50rpx;
   height: 50rpx;
-}
-.add-view {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 50rpx 0;
-}
-
-.add {
-  width: 100rpx;
-  height: 100rpx;
-}
-
-.rising-tone {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin: 80rpx 0;
-}
-
-.rising-tone text {
-  background: white;
-  font-size: 28rpx;
-  color: #666;
-  text-align: center;
-  padding: 10rpx 24rpx;
-  box-sizing: border-box;
-  border-radius: 5rpx;
-  box-shadow: 0 0 8rpx rgba(0, 0, 0, 0.3);
 }
 
 /* 切换学校弹框 */

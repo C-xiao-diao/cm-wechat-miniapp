@@ -93,7 +93,6 @@ Page({
                     userInfo.nickName = name;
                     userInfo.schoolName = schoolName;
                     userInfo.schoolId = schoolId;
-                    // userInfo.headimgUrl = faceImageUrl;
                     app.globalData.studentName = userInfo.studentName;
                     app.globalData.studentId = userInfo.id;
                     app.globalData.reviewStatus = userInfo.reviewStatus;
@@ -101,10 +100,10 @@ Page({
                     wx.showToast({
                         title: '认证成功',
                         icon: 'success',
-                        duration: 2000
-                    })
-                    wx.redirectTo({
-                        url: '/pages/index/index',
+                        duration: 3000,
+                        success: function(){
+                            setTimeout(() =>{wx.redirectTo({ url: '/pages/index/index',})}, 3000)
+                        }
                     })
                 } else if (_.get(res, 'data.code') === 103) {
                     wx.showModal({
@@ -131,7 +130,8 @@ Page({
                         }
                     })
                 }
-            }
+            },
+            complete: res =>{}
         })
     }
 })

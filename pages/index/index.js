@@ -3,6 +3,7 @@ import "./../../utils/fix";
 import _ from "./../../utils/lodash"
 import { http } from "./../../utils/util";
 import { multiArray, objectMultiArray } from './../../utils/pickerLinkCity'
+import moment from "./../../utils/moment"
 
 
 //获取应用实例
@@ -49,48 +50,9 @@ Page({
     x: 20,
   },
   onLoad: function () {
-    // if (app.globalData.userInfo) {
-    //   this.setData({
-    //     userInfo: app.globalData.userInfo,
-    //     hasUserInfo: true
-    //   })
-    // } else if (this.data.canIUse) {
-    //   console.log('接到了app的回调1111111111111111111111111111111', app)
-    //   // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-    //   // 所以此处加入 callback 以防止这种情况
-    //   app.userInfoReadyCallback = res => {
-    //     console.log(res,'接到了app的回调222222222222222222222222222222')
-    //     this.setData({
-    //       userInfo: res.userInfo,
-    //       hasUserInfo: true
-    //     })
-    //   }
-    // } else {
-    //   // 在没有 open-type=getUserInfo 版本的兼容处理
-    //   wx.getUserInfo({
-    //     success: res => {
-    //       app.globalData.userInfo = res.userInfo
-    //       this.setData({
-    //         userInfo: res.userInfo,
-    //         hasUserInfo: true
-    //       })
-    //     }
-    //   })
-    // }
-
-    //app.js登录后需要执行的 callback 写在此处
-    // app.loginCallback = resData => {
-    //   console.log("执行了loginCallback回调",)
-    //   if (_.get(resData, 'code') === 200) {
-    //     this.setData({ reviewStatus: resData.data.reviewStatus, userInfo: app.globalData.userInfo })
-    //     this.getIndexList(this.data.currentTab, false);
-    //   } else {
-    //     //没有拿到wx.login的回调
-    //   }
-    // }
+    
   },
   onShow: function () {
-    console.log("执行了首页的onShow操作", app.globalData)
     //注意，主页 onLoad可能提前于 小程序 onLaunch 执行完， 
     // 用户id 在onLaunch 的login里获取，所以 首页加载数据，要么 写在 onShow里，要么写在onLoad的 callback回调里
     let _this = this;
@@ -105,7 +67,6 @@ Page({
 
     if (!app.globalData.userId) {
       app.loginCallback = resData => {
-        console.log("执行了loginCallback回调--------------------------",)
         if (_.get(resData, 'code') === 200) {
           this.setData({ reviewStatus: resData.data.reviewStatus, userInfo: app.globalData.userInfo })
           this.getIndexList(this.data.currentTab, false);
@@ -117,11 +78,6 @@ Page({
       this.setData({ reviewStatus: app.globalData.reviewStatus, userInfo: app.globalData.userInfo })
       this.getIndexList(this.data.currentTab, false);
     }
-
-    //每次进入界面，都需要刷新列表数据
-    // if(app.globalData.userId){
-    //   this.getIndexList(this.data.currentTab, false);
-    // }
   },
 
   getUserInfo: function (e) {
@@ -394,6 +350,9 @@ Page({
         if (_.get(res, 'data.code') === 200) {
           let list = _.get(res, 'data.data.list');
           list = _.map(list, o=> {
+            if(o.releaseTime){
+              o.isNewTheme = (moment(o.releaseTime).add(10, 'minute')).isAfter(moment())
+            }
             if(o.pointPraiseNumber){
               o.pointPraiseNumber = _.round(o.pointPraiseNumber);
             }
@@ -516,17 +475,25 @@ Page({
   },
   //滑动即兴卡片
   cardMoveHandle: function(e){
-    // let x = e.detail.x;
-    // if(moveX >= x){
-    //   this.setData({isShowListItem: false})
-    //   return;
-    // } else {
-
-    // }
-    // moveX = x;
+    
   },
   bindtouchstart: function(e){
     pageX = e.changedTouches[0].pageX;
+  },
+  bindViewHandle: function(e){
+    let themeId = e.currentTarget.dataset.themeid;
+    let theme = e.currentTarget.dataset.theme;
+    let content = e.currentTarget.dataset.content;
+    let number = e.currentTarget.dataset.number;
+    let picture = e.currentTarget.dataset.picture;
+    app.globalData.currentThemeId = themeId;
+    wx.navigateTo({
+      url: '/pages/forumList/forumList?themeId=' + themeId
+        + '&theme=' + theme
+        + '&content=' + content
+        + '&number=' + number
+        + '&picture=' + JSON.stringify(picture),
+    })
   },
   bindtouchend: function(e){
     let endPageX = e.changedTouches[0].pageX;
