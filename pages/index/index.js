@@ -372,12 +372,12 @@ Page({
   },
   //切换tab页（嗨C、即兴）
   changeTab: function (e) {
+    const { currentTab } = this.data;
     let reviewStatus = _.get(app, 'globalData.reviewStatus');
-    if(reviewStatus !== 1){
+    if(reviewStatus !== 1 && currentTab !== 2){
       this.navToRegister();
       return;
     }
-    const { currentTab } = this.data;
     let item = e.currentTarget.dataset.item;
     if (item !== currentTab) {
       this.getIndexList(item, false)
@@ -389,6 +389,11 @@ Page({
   },
   //跟调
   navToFollow: function (e) {
+    let reviewStatus = _.get(app, 'globalData.reviewStatus');
+    if(reviewStatus !== 1){
+      this.navToRegister();
+      return;
+    }
     let themeId = e.currentTarget.dataset.themeid;
     let theme = e.currentTarget.dataset.theme;
     wx.navigateTo({
@@ -481,6 +486,11 @@ Page({
     pageX = e.changedTouches[0].pageX;
   },
   bindViewHandle: function(e){
+    let reviewStatus = _.get(app, 'globalData.reviewStatus');
+    if(reviewStatus !== 1){
+      this.navToRegister();
+      return;
+    }
     let themeId = e.currentTarget.dataset.themeid;
     let theme = e.currentTarget.dataset.theme;
     let content = e.currentTarget.dataset.content;

@@ -1,5 +1,5 @@
 //registerOne.js
-import { http } from "./../../utils/util";
+import { http,isJson } from "./../../utils/util";
 import config from "./../../configs/config"
 import "./../../utils/fix";
 import _ from "./../../utils/lodash"
@@ -50,9 +50,13 @@ Page({
             'theme': 'photo'
           },
           success(res) {
-            console.log(res, 'fffffffffffffffffffffffffffffffffffffffffff')
             let json = res.data;
-            let resData = JSON.parse(json)
+            let resData;
+            if(isJson(json)){
+              resData = JSON.parse(json)
+            } else {
+              resData = json;
+            }
             if (_.get(resData, 'code') === 200) {
               let fileName = _.get(resData, 'data.fileName');
               let file = fileName[0];

@@ -76,8 +76,22 @@ const returnFloat = value => {
   return v;
 }
 
+const isJson = json => {
+  if (typeof str == 'string') {
+    try {
+      JSON.parse(str);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  } else {
+    return false;
+  }
+}
+
 module.exports = {
   formatTime: formatTime,
   http: http,
   returnFloat: returnFloat,
+  isJson: isJson
 }
