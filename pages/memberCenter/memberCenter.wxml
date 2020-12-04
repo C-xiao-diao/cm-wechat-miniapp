@@ -31,7 +31,7 @@
                 <text bindtap="navToForumList" data-themeId="{{item.id}}" data-index="{{index}}" data-theme="{{item.theme}}"
                 data-number="{{item.pointPraiseNumber}}" data-picture="{{item.picture}}"
                 data-content="{{item.supplementaryContent}}">{{item.theme}}</text>
-                <more-button wx:if="{{ifSelf}}" showList="{{showList}}" bind:refresh="refreshMyTheme" prop-count="{{item.pointPraiseNumber}}" article-id="{{item.id}}" article-type="theme" id="{{'moreThemeBtn'+index}}"></more-button>
+                <more-button wx:if="{{ifSelf}}" showList="{{showList}}" bind:closeAll="closeList" bind:refresh="refreshMyTheme" prop-count="{{item.pointPraiseNumber}}" article-id="{{item.id}}" article-type="theme" id="{{'moreThemeBtn'+index}}"></more-button>
             </view>
             <text class="article-content" bindtap="navToForumList" data-themeId="{{item.id}}" data-index="{{index}}" data-theme="{{item.theme}}"
                 data-number="{{item.pointPraiseNumber}}" data-picture="{{item.picture}}"

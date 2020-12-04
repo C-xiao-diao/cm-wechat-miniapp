@@ -32,6 +32,9 @@ Component({
         },
         showListFn: function(fromParent){
             let showList = fromParent ? false : !this.data.showList;
+            if(!fromParent){
+                this.triggerEvent('closeAll');
+            }
             this.setData({showList});
         },
         //编辑
