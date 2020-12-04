@@ -14,9 +14,9 @@
     </view>
     <view class="photo-group">
         <view class="add-photo" wx:for="{{oldPicture}}" wx:key="index">
-            <image class="photo" src="{{item}}" alt=""></image>
+            <image class="photo" src="{{item}}" bindtap="previewImage" data-src="{{oldPicture}}" data-index="{{index}}" alt=""></image>
         </view>
-        <view class="add-photo" bindtap="addPhoto">
+        <view class="add-photo" bindtap="addPhoto" wx:if="{{oldPicture.length < 9}}">
             <image class="photo" src="/imgs/follow/add.jpg" alt=""></image>
         </view>
     </view>

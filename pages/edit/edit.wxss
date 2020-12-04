@@ -70,6 +70,7 @@
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
+    margin-bottom: 100rpx;
 }
 .add-photo{
     width: 200rpx;

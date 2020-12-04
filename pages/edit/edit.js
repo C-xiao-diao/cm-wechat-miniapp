@@ -36,9 +36,9 @@ Page({
     // 选择图片
     addPhoto: function () {
         const _this = this;
-        let oldPicture = this.data.oldPicture;
+        const { oldPicture } = this.data;
         let num = (9 - oldPicture.length);
-        if(num<=0){
+        if(num <= 0){
             wx.showToast({
                 title: '最多只能添加9张图片',
                 icon: 'none',
@@ -54,18 +54,24 @@ Page({
             success(res) {
                 // tempFilePath可以作为img标签的src属性显示图片
                 const tempFilePaths = res.tempFilePaths;
-                console.log(res.tempFilePaths,8888888888)
                 //上传至服务器
                 wx.showLoading({ title: '正在上传...'});
-                _this.upLoadFile(tempFilePaths)
+                for(var i = 0; i < num; i++){
+                    _this.upLoadFile(tempFilePaths[i]);
+                    if(i == (num-1)){
+                        wx.hideLoading();
+                    }
+                }
             }
         })
     },
     //上传图片
     upLoadFile: function(tempFilePaths){
+        const _this = this;
+        const { oldPicture,picture } = this.data;
         wx.uploadFile({
             url: config.uploadUrl,
-            filePath: tempFilePaths[0],
+            filePath: tempFilePaths,
             header: {
                 'content-type': 'multipart/form-data'
             }, 
@@ -78,19 +84,23 @@ Page({
                 let resData = JSON.parse(json)
                 if(_.get(resData, 'code') ===200){
                     let fileName = _.get(resData, 'data.fileName');
-                    let picture = _this.data.picture;
                     let pics = _.uniq(_.concat(picture, fileName));
                     for(var i = 0; i < pics.length; i++){
                         oldPicture.push(pics[i]);
                     }
                     _this.setData({picture: pics, oldPicture});
-                    if(num<=0){
-                        wx.hideLoading();
-                    }else{
-
-                    }
                 }
             }
+        })
+    },
+    //预览图片
+    previewImage: function(e){
+        let index = e.currentTarget.dataset.index;
+        let src = e.currentTarget.dataset.src;
+        wx.previewImage({
+            current: src[index], 
+            urls: src,
+            success: function(){}
         })
     },
     //保存编辑
@@ -136,11 +146,19 @@ Page({
                     let title = '', oldContent = '', oldPicture = [];
                     if(articleType == "theme"){
                         title = resData.theme.theme;
-                        oldContent = resData.theme.supplementaryContent;
-                        oldPicture = resData.theme.picture;
+                        if(resData.theme.picture){
+                            oldPicture = resData.theme.picture;
+                        }
+                        if(resData.theme.supplementaryContent){
+                            oldContent = resData.theme.supplementaryContent;
+                        }
                     }else{
-                        oldContent = resData.essay.content;
-                        oldPicture = resData.essay.picture;
+                        if(resData.essay.content){
+                            oldContent = resData.essay.content;
+                        }
+                        if(resData.essay.picture){
+                            oldPicture = resData.essay.picture;
+                        }
                     }
                     this.setData({ title, oldContent, oldPicture, articleType, articleId });
                     this.getTextLength(oldContent,articleType);
