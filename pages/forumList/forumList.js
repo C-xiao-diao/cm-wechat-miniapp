@@ -2,6 +2,7 @@
 import { http } from "./../../utils/util";
 import "./../../utils/fix";
 import _ from "./../../utils/lodash"
+import moment from "./../../utils/moment"
 
 //获取应用实例
 const app = getApp()
@@ -79,6 +80,12 @@ Page({
             newList = _.get(res, 'data.data.list');
           }
           newList = _.map(newList, o=> {
+            if(o.releaseTime){
+              let isToday = moment(o.releaseTime).isSame(moment(),'day');
+              if(isToday){
+                o.releaseTime = moment(o.releaseTime).format("HH:mm");
+              }
+            }
             if(o.pointPraiseNumber){
               o.pointPraiseNumber = _.round(o.pointPraiseNumber);
             }
