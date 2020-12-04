@@ -26,3 +26,9 @@
 .registerOneSubmit{
   margin-top: 100rpx;
 }
+.description{
+  color: #ccc;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  text-align: center;
+}
