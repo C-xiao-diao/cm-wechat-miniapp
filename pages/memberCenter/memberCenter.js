@@ -28,26 +28,23 @@ Page({
         floorstatus: false,
         noteMsg: '',
         ifSelf: true,
+        option: {}
     },
     onLoad: function(option){
-        let studentId = option.studentId;
-        if(studentId){
-            if(app.globalData.studentId == studentId){//浏览他人主页
-                this.setData({ifSelf: true})
-            }else{//个人中心
-                this.setData({ifSelf: false})
+        let studentId = app.globalData.studentId;
+        if(option){
+            if(option.type == 'self' && option.studentId == studentId){//浏览个人主页
+                this.setData({option, ifSelf: true})
+                this.getStudentInfo(app.globalData.studentId);
+                this.getMyTheme(app.globalData.studentId, this.data.themePage);
+            }else{//他人主页
+                this.setData({option, ifSelf: false});
+                this.getStudentInfo(option.studentId);
+                this.getMyTheme(option.studentId, this.data.themePage);
             }
         }
     },
     onShow: function(){
-        let userInfo = app.globalData.userInfo;
-        let studentId = app.globalData.studentId;
-        if(userInfo){
-            this.setData({userInfo});
-        }
-        if(studentId){
-            this.getMyTheme(app.globalData.studentId, this.data.themePage);
-        }
         this.refreshMyTheme();
         this.refreshMyFollow();
     },
@@ -60,15 +57,39 @@ Page({
             this[str] = this.selectComponent('#'+str);
         }
     },
+    //获取学生信息
+    getStudentInfo: function(studentId){
+        let cmd = "/auth/student/getById";
+        let data = { studentId }
+        http.get({
+            cmd,
+            data:data,
+            success: res => {
+                if (_.get(res, 'data.code') === 200 && !_.isEmpty(_.get(res, 'data.data'))) {
+                    let resData = _.get(res, 'data.data');
+                    let userInfo = resData.studentInformation;
+                    this.setData({userInfo});
+                }
+            }
+        })
+    },
     //刷新我的起调列表
     refreshMyTheme: function(){
-        const { themePage } = this.data;
-        this.getMyTheme(app.globalData.studentId, themePage);
+        const { themePage, ifSelf, option } = this.data;
+        if(ifSelf){
+            this.getMyTheme(app.globalData.studentId, themePage);
+        }else {
+            this.getMyTheme(option.studentId, themePage);
+        }
     },
     //刷新我的跟调列表
     refreshMyFollow: function(){
-        const { followPage } = this.data;
-        this.getMyFollow(app.globalData.studentId, followPage);
+        const { followPage, ifSelf, option } = this.data;
+        if(ifSelf){
+            this.getMyFollow(app.globalData.studentId, followPage);
+        }else {
+            this.getMyFollow(option.studentId, followPage);
+        }
     },
     //获取 我的起调 列表
     getMyTheme: function(studentId, page){
@@ -249,14 +270,19 @@ Page({
     },
     //tab切换
     swichNav: function( e ) {
+        const { themePage, followPage, ifSelf, option } = this.data;
         if( this.data.currentTab === e.target.dataset.current ) {
             return false;
         } else {
             let currentTab = e.target.dataset.current;
-            if(currentTab==0){
-                this.getMyTheme(app.globalData.studentId, this.data.themePage);
-            }else{
-                this.getMyFollow(app.globalData.studentId, this.data.followPage);
+            if(currentTab==0 && ifSelf){
+                this.getMyTheme(app.globalData.studentId, themePage);
+            }else if(currentTab==1 && ifSelf){
+                this.getMyFollow(app.globalData.studentId, followPage);
+            }else if(currentTab==0 && !ifSelf){
+                this.getMyTheme(option.studentId, themePage);
+            }else if(currentTab==1 && !ifSelf){
+                this.getMyFollow(option.studentId, followPage);
             }
             this.setData({ currentTab })
         }

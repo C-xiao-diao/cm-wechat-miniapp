@@ -304,11 +304,11 @@ Page({
     let id = e.currentTarget.dataset.id;
     if(type=="self") {
       wx.navigateTo({
-        url: '/pages/memberCenter/memberCenter?userId=' + app.globalData.userId
+        url: '/pages/memberCenter/memberCenter?studentId=' + app.globalData.studentId + '&type=' + type
       })
     }else {
       wx.navigateTo({
-        url: '/pages/memberCenter/memberCenter?userId=' + id
+        url: '/pages/memberCenter/memberCenter?studentId=' + id + '&type=' + type
       })
     }
   },
