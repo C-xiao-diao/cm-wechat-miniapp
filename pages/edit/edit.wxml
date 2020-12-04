@@ -5,7 +5,8 @@
     </view>
     <view>
         <text class="title" wx:if="{{articleType=='theme'}}">{{title}}</text>
-        <textarea class="addContent" bindinput="addContent" maxlength="800" cols="30" rows="10" placeholder="填写补充"></textarea>
+        <text class="note">最多还可输入{{textLength}}个字</text>
+        <textarea class="addContent" bindinput="addContent" maxlength="{{textLength}}" cols="30" rows="10" placeholder="填写补充"></textarea>
         <view class="content">
             <text style="border-bottom: {{ index != (oldContent.length-1) ? '2rpx dashed #aaa': '' }}" 
             for-index="{{index}}" wx:for="{{oldContent}}" wx:key="id" wx:for-item="obj">{{obj}}</text>

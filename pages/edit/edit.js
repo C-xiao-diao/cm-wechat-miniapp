@@ -14,7 +14,8 @@ Page({
         oldPicture: [],
         picture: [],
         articleId: '',
-        articleType: ''
+        articleType: '',
+        textLength: 0
     },
     onLoad: function(option){
         if(option){
@@ -35,48 +36,60 @@ Page({
     // 选择图片
     addPhoto: function () {
         const _this = this;
+        let oldPicture = this.data.oldPicture;
+        let num = (9 - oldPicture.length);
+        if(num<=0){
+            wx.showToast({
+                title: '最多只能添加9张图片',
+                icon: 'none',
+                duration: 1500
+            });
+            return;
+        }
         //获取图片
         wx.chooseImage({
-            count: 1,
+            count: num,
             sizeType: ['original', 'compressed'],
             sourceType: ['album', 'camera'],
             success(res) {
                 // tempFilePath可以作为img标签的src属性显示图片
                 const tempFilePaths = res.tempFilePaths;
+                console.log(res.tempFilePaths,8888888888)
                 //上传至服务器
                 wx.showLoading({ title: '正在上传...'});
-                wx.uploadFile({
-                    url: config.uploadUrl,
-                    filePath: tempFilePaths[0],
-                    header: {
-                        'content-type': 'multipart/form-data'
-                    }, 
-                    name: 'files',
-                    formData: {
-                        'theme': 'photo'
-                    },
-                    success(res) {
-                        let json = res.data;
-                        let resData = JSON.parse(json)
-                        if(_.get(resData, 'code') ===200){
-                            let fileName = _.get(resData, 'data.fileName');
-                            let file = fileName[0];
-                            let picture = _this.data.picture;
-                            let pics = _.uniq(_.concat(picture, fileName));
-                            let oldPicture = _this.data.oldPicture;
-                            for(var i = 0; i < pics.length; i++){
-                                oldPicture.push(pics[i]);
-                            }
-                            console.log(pics, oldPicture)
-                            _this.setData({picture: pics, oldPicture});
-                        } else {
-
-                        }
-                    },
-                    complete: function(){
-                        wx.hideLoading();
+                _this.upLoadFile(tempFilePaths)
+            }
+        })
+    },
+    //上传图片
+    upLoadFile: function(tempFilePaths){
+        wx.uploadFile({
+            url: config.uploadUrl,
+            filePath: tempFilePaths[0],
+            header: {
+                'content-type': 'multipart/form-data'
+            }, 
+            name: 'files',
+            formData: {
+                'theme': 'photo'
+            },
+            success(res) {
+                let json = res.data;
+                let resData = JSON.parse(json)
+                if(_.get(resData, 'code') ===200){
+                    let fileName = _.get(resData, 'data.fileName');
+                    let picture = _this.data.picture;
+                    let pics = _.uniq(_.concat(picture, fileName));
+                    for(var i = 0; i < pics.length; i++){
+                        oldPicture.push(pics[i]);
                     }
-                })
+                    _this.setData({picture: pics, oldPicture});
+                    if(num<=0){
+                        wx.hideLoading();
+                    }else{
+
+                    }
+                }
             }
         })
     },
@@ -120,18 +133,26 @@ Page({
             success: res => {
                 if (_.get(res, 'data.code') === 200 && !_.isEmpty(_.get(res, 'data.data'))) {
                     let resData = _.get(res, 'data.data');
+                    let title = '', oldContent = '', oldPicture = [];
                     if(articleType == "theme"){
-                        let title = resData.theme.theme;
-                        let oldContent = resData.theme.supplementaryContent;
-                        let oldPicture = resData.theme.picture;
-                        this.setData({ title, oldContent, oldPicture, articleType, articleId });
+                        title = resData.theme.theme;
+                        oldContent = resData.theme.supplementaryContent;
+                        oldPicture = resData.theme.picture;
                     }else{
-                        let oldContent = resData.essay.content;
-                        let oldPicture = resData.essay.picture;
-                        this.setData({ oldContent, oldPicture, articleType, articleId });
+                        oldContent = resData.essay.content;
+                        oldPicture = resData.essay.picture;
                     }
+                    this.setData({ title, oldContent, oldPicture, articleType, articleId });
+                    this.getTextLength(oldContent,articleType);
                 }
             }
         })
+    },
+    //获取最多可输入字符长度
+    getTextLength: function(oldContent,articleType){
+        let length = oldContent.toString().length;
+        const allowLength = articleType == "theme" ? 160 : 800;
+        let textLength = (allowLength - length);
+        this.setData({textLength});
     }
 })

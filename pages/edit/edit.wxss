@@ -33,6 +33,16 @@
     padding: 20rpx;
     box-sizing: border-box;
 }
+.note {
+    display: block;
+    width: 100%;
+    font-size: 28rpx;
+    color: #666;
+    line-height: 45rpx;
+    text-align: right;
+    padding-right: 20rpx;
+    box-sizing: border-box;
+}
 .content  {
     margin: 0 auto;
     width: 90%;
