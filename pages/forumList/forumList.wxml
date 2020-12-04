@@ -39,7 +39,7 @@
             <view class="userinfo-bottom">
               <image class="gender"
                 src="{{ item.sex === 1 ? '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}" alt=""></image>
-              <text>{{item.schoolName || '二进制中学'}}</text>
+              <text catchtap="navToIndex" data-schoolName="{{item.schoolName}}" data-schoolId = "{{item.schoolId}}">{{item.schoolName || '二进制中学'}}</text>
             </view>
           </view>
         </view>

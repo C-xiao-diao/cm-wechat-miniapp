@@ -189,6 +189,14 @@ Page({
       url: '/pages/follow/follow?themeId=' + themeId + '&theme=' + theme,
     })
   },
+  //点击学校前往首页
+  navToIndex: function(e){
+    let schoolId = e.currentTarget.dataset.schoolid;
+    let schoolName = e.currentTarget.dataset.schoolname;
+    wx.redirectTo({
+      url: '/pages/index/index?schoolId=' + schoolId + '&schoolName=' + schoolName
+    })
+  },
   //预览图片
   previewImage: function(e){
       let index = e.currentTarget.dataset.index;

@@ -49,8 +49,10 @@ Page({
     //滑块的x坐标
     x: 20,
   },
-  onLoad: function () {
-    
+  onLoad: function (option) {
+    if(!_.isEmpty(option)){
+      this.setData({schoolId: option.schoolId, schoolName: option.schoolName })
+    }
   },
   onShow: function () {
     //注意，主页 onLoad可能提前于 小程序 onLaunch 执行完， 
@@ -413,7 +415,6 @@ Page({
     let content = e.currentTarget.dataset.content;
     let number = e.currentTarget.dataset.number;
     let picture = e.currentTarget.dataset.picture;
-    console.log(theme, content, number, picture, 'cccccccccccccccccccccccccc');
     //播放音频
     const innerAudioContext = wx.createInnerAudioContext();
     // innerAudioContext.autoplay = true;
