@@ -139,9 +139,13 @@ page{
   margin-top: 35rpx;
 }
 .middle text{
+  display: flex;
   font-size: 24rpx;
   color: #333;
   line-height: 42rpx;
+  border-bottom: 1rpx dashed#333;
+  padding: 20rpx 0;
+  box-sizing: border-box;
 }
 .bottom{
   display: flex;
