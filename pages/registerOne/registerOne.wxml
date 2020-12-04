@@ -6,8 +6,7 @@
   <input class="nickname" value="{{nickname}}" type="text" placeholder="请输入昵称" bindinput="bindinput" />
   <button class="registerOneSubmit" type="primary" bindtap="navToNextStep">下一步</button>
   <text class="description">
-    18岁以下在校学生的专属平台
-    所有用户完成认证方可进入
-    所填信息仅做认证审核，承诺绝不外泄
+    昵称无法修改
+    请慎重考虑后再提交
   </text>
 </view>
