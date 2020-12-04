@@ -28,10 +28,14 @@
         <text class="no-data" wx:if="{{myThemeList.length == 0}}">{{noteMsg}}</text>
         <view class="article-area" wx:for="{{myThemeList}}" wx:key="id" for-index="{{index}}">
             <view class="article-title">
-                <text>{{item.theme}}</text>
+                <text bindtap="navToForumList" data-themeId="{{item.id}}" data-index="{{index}}" data-theme="{{item.theme}}"
+                data-number="{{item.pointPraiseNumber}}" data-picture="{{item.picture}}"
+                data-content="{{item.supplementaryContent}}">{{item.theme}}</text>
                 <more-button wx:if="{{ifSelf}}" showList="{{showList}}" bind:refresh="refreshMyTheme" prop-count="{{item.pointPraiseNumber}}" article-id="{{item.id}}" article-type="theme" id="{{'moreThemeBtn'+index}}"></more-button>
             </view>
-            <text class="article-content">
+            <text class="article-content" bindtap="navToForumList" data-themeId="{{item.id}}" data-index="{{index}}" data-theme="{{item.theme}}"
+                data-number="{{item.pointPraiseNumber}}" data-picture="{{item.picture}}"
+                data-content="{{item.supplementaryContent}}">
                 <text style="border-bottom: {{ index != (item.supplementaryContent.length-1) ? '2rpx dashed #333': '' }}" 
                 for-index="{{index}}" wx:for="{{item.supplementaryContent}}" wx:key="id" wx:for-item="obj">{{obj}}</text>
             </text>
@@ -39,6 +43,7 @@
                 <image src="{{obj}}" bindtap="previewImage" data-src="{{item.picture}}" data-index="{{index}}" wx:key="index" wx:for-item="obj" wx:for="{{item.picture}}"></image>
             </view>
             <view class="article-hot">
+                <text class="article-time">{{item.releaseTime}}</text>
                 <view>
                     <image src="/imgs/icons/note_active.png"></image>
                     <text>{{item.pointPraiseNumber}}</text>
@@ -52,10 +57,14 @@
         <text class="no-data" wx:if="{{myFollowList.length == 0}}">{{noteMsg}}</text>
         <view class="article-area" wx:for="{{myFollowList}}" wx:key="id" for-index="{{index}}">
             <view class="article-title">
-                <text>{{item.theme.theme}}</text>
+                <text bindtap="navToForumList" data-themeId="{{item.themeId}}" data-index="{{}}" data-theme="{{item.theme.theme}}"
+                data-number="{{item.theme.pointPraiseNumber}}" data-picture="{{item.theme.picture}}"
+                data-content="{{item.theme.supplementaryContent}}">{{item.theme.theme}}</text>
                 <more-button wx:if="{{ifSelf}}" bind:refresh="refreshMyFollow" showList="{{showList}}" prop-count="{{item.pointPraiseNumber}}" article-id="{{item.id}}" article-type="essay" id="{{'moreFollowBtn'+index}}"></more-button>
             </view>
-            <text class="article-content">
+            <text class="article-content" bindtap="navToForumList" data-themeId="{{item.themeId}}" data-index="{{}}" data-theme="{{item.theme.theme}}"
+                data-number="{{item.theme.pointPraiseNumber}}" data-picture="{{item.theme.picture}}"
+                data-content="{{item.theme.supplementaryContent}}">
                 <text style="border-bottom: {{ index != (item.content.length-1) ? '2rpx dashed #333': '' }}" 
                 for-index="{{index}}" wx:for="{{item.content}}" wx:key="id" wx:for-item="obj">{{obj}}</text>
             </text>
@@ -63,6 +72,7 @@
                 <image src="{{obj}}" bindtap="previewImage" data-src="{{item.picture}}" data-index="{{index}}" wx:key="index" wx:for-item="obj" wx:for="{{item.picture}}"></image>
             </view>
             <view class="article-hot">
+                <text class="article-time">{{item.releaseTime}}</text>
                 <view>
                     <image src="/imgs/icons/note_active.png"></image>
                     <text>{{item.pointPraiseNumber}}</text>
