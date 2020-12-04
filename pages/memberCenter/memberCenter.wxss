@@ -197,9 +197,15 @@ more-button {
 
 .article-hot {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     width: 100%;
     margin-top: 20rpx;
+}
+
+.article-time {
+    font-size: 32rpx;
+    line-height: 50rpx;
+    color: #666;
 }
 
 .article-hot view {
@@ -219,7 +225,7 @@ more-button {
     vertical-align: middle;
 }
 
-.article-hot text {
+.article-hot view text {
     font-size: 32rpx;
     line-height: 50rpx;
     color: #d81501;

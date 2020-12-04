@@ -1,7 +1,8 @@
 import "./../../utils/fix";
 import _ from "./../../utils/lodash";
-import config from "./../../configs/config"
+import config from "./../../configs/config";
 import { http } from "./../../utils/util";
+import moment from "./../../utils/moment";
 
 //获取应用实例
 const app = getApp()
@@ -87,6 +88,12 @@ Page({
                     let list = page > followPage ? list = myThemeList : [];
                     for(var i = 0; i < resData.list.length; i++){
                         list.push(resData.list[i]);
+                        if(list[i].releaseTime){
+                            let isToday = moment(list[i].releaseTime).isSame(moment(),'day');
+                            if(isToday){
+                                list[i].releaseTime = moment(list[i].releaseTime).format("HH:mm");
+                            }
+                        }
                     }
                     let themeCount = resData.count;
                     this.setData({ myThemeList: list, themeCount, themePage:page });
@@ -116,6 +123,12 @@ Page({
                     let list = page > followPage ? list = myFollowList : [];
                     for(var i = 0; i < resData.list.length; i++){
                         list.push(resData.list[i]);
+                        if(list[i].releaseTime){
+                            let isToday = moment(list[i].releaseTime).isSame(moment(),'day');
+                            if(isToday){
+                                list[i].releaseTime = moment(list[i].releaseTime).format("HH:mm");
+                            }
+                        }
                     }
                     let followCount = resData.count;
                     this.setData({ myFollowList: list, followCount, followPage:page });
@@ -283,6 +296,23 @@ Page({
                 this[str].showListFn(true);
             }
         }
+    },
+    //跳转内容页面
+    navToForumList: function(e){
+        let themeId = e.currentTarget.dataset.themeid;
+        let index = e.currentTarget.dataset.index;
+        let theme = e.currentTarget.dataset.theme;
+        let number = e.currentTarget.dataset.number;
+        let picture = e.currentTarget.dataset.picture;
+        let content = e.currentTarget.dataset.content;
+        wx.navigateTo({ 
+            url: '../forumList/forumList?themeId=' + themeId +
+            '&index=' + index +
+            '&theme=' + theme +
+            '&number=' + number +
+            '&picture=' + JSON.stringify(picture) +
+            '&content=' + content 
+        });
     },
     //获取滚动条当前位置
     onPageScroll: function (e) {
