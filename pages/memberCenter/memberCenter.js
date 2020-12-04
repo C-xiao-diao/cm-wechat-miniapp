@@ -47,6 +47,8 @@ Page({
         if(studentId){
             this.getMyTheme(app.globalData.studentId, this.data.themePage);
         }
+        this.refreshMyTheme();
+        this.refreshMyFollow();
     },
     //获取"更多"按钮
     getMoreBtns: function(list, type){

@@ -55,23 +55,17 @@ Page({
                 // tempFilePath可以作为img标签的src属性显示图片
                 const tempFilePaths = res.tempFilePaths;
                 //上传至服务器
-                wx.showLoading({ title: '正在上传...'});
-                for(var i = 0; i < num; i++){
-                    _this.upLoadFile(tempFilePaths[i]);
-                    if(i == (num-1)){
-                        wx.hideLoading();
-                    }
-                }
+                _this.upLoadFile(tempFilePaths,0,num);
             }
         })
     },
     //上传图片
-    upLoadFile: function(tempFilePaths){
+    upLoadFile: function(tempFilePaths,i,num){
         const _this = this;
-        const { oldPicture,picture } = this.data;
+        const { oldPicture, picture } = this.data;
         wx.uploadFile({
             url: config.uploadUrl,
-            filePath: tempFilePaths,
+            filePath: tempFilePaths[i],
             header: {
                 'content-type': 'multipart/form-data'
             }, 
@@ -80,15 +74,33 @@ Page({
                 'theme': 'photo'
             },
             success(res) {
+                wx.showLoading({ title: '正在上传...'});
                 let json = res.data;
                 let resData = JSON.parse(json)
                 if(_.get(resData, 'code') ===200){
                     let fileName = _.get(resData, 'data.fileName');
                     let pics = _.uniq(_.concat(picture, fileName));
-                    for(var i = 0; i < pics.length; i++){
-                        oldPicture.push(pics[i]);
+                    _this.setData({picture:pics});
+                }
+            },
+            complete:function(){
+                i++;
+                if(i == num){ //当图片传完时，停止调用
+                    let picArr = _this.data.picture;
+                    let oldPics = oldPicture;
+                    for(var j = 0; j < picArr.length; j++){
+                        oldPics.push(picArr[j])
                     }
-                    _this.setData({picture: pics, oldPicture});
+                    _this.setData({oldPicture:oldPics});
+                    wx.showToast({
+                        title: '上传成功！',
+                        duration: 1500,
+                        success: function(){
+                            wx.hideLoading();
+                        }
+                    });
+                }else {
+                    _this.upLoadFile(tempFilePaths,i,num);
                 }
             }
         })
