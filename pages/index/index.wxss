@@ -223,7 +223,11 @@ page {
   width: 100rpx;
   height: 100rpx;
 }
-
+.fire-image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 20rpx;
+}
 /* 风云人物 */
 .famous-people {
   display: flex;
