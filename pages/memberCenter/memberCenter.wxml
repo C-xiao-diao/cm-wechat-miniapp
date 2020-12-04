@@ -14,7 +14,7 @@
                 <image src="/imgs/icons/note_active.png"></image>
                 <text>{{userInfo.noteNumber}}</text>
             </view>
-            <text class="my-tag">吃货达人</text>
+            <text class="my-tag">首席体验官</text>
         </view>
     </view>
 

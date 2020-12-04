@@ -62,6 +62,7 @@
         <image class="bottom-photo" bindtap="previewImage" data-src="{{item.picture}}" data-index="{{index}}"
           wx:for="{{item.picture}}" wx:for-item="newItem" wx:key="index" src="{{newItem}}" alt=""></image>
       </view>
+      <text class="releaseTime">{{item.releaseTime}}</text>
     </view>
   </view>
 </view>

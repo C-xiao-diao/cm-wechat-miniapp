@@ -171,6 +171,11 @@ page{
   height: 175rpx;
 }
 
+.releaseTime{
+  color: #aaa;
+  font-size: 24rpx;
+}
+
 /* 输入弹框 */
 .mask {
   position: fixed;

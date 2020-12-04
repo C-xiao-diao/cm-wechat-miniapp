@@ -17,7 +17,7 @@
         <view class="userInfo-detail" wx:if="{{reviewStatus === 1}}" data-type="self" bindtap="navToMemberCenter">
           <view class="name-tags">
             <text>{{userInfo.nickName}}</text>
-            <text class="tags">吃货达人</text>
+            <text class="tags">首席体验官</text>
           </view>
           <view class="gender-school">
             <image class="gender"
@@ -59,6 +59,7 @@
               class="hotlist-item-sortnum sortnum{{index}}">{{index === 0 ? '哆' :  index === 1 ?'来': index === 2 ?'咪' : index === 3 ?'发': index === 4 ? '唆': index === 5 ?'拉': '西'}}、</text>
             <text class="hotlist-item-title">{{item.theme}}</text>
             <image wx:if="{{item.isNewTheme}}" class="new-image" src="/imgs/icons/new.png" alt=""></image>
+            <image wx:if="{{item.whetherFire}}" class="new-image" src="/imgs/icons/fire.png" alt=""></image>
           </view>
           <view class="userInfo-hot" wx:if="{{currentTab === 0}}">
             <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
@@ -75,7 +76,7 @@
           <view>
             <view class="name-tags">
               <text>{{item.studentName || item.nickname}}</text>
-              <text class="tags">吃货达人</text>
+              <text class="tags">首席体验官</text>
             </view>
             <view class="gender-school">
               <image class="famous-people-gender"
@@ -97,7 +98,7 @@
           <view>
             <view class="name-tags">
               <text>{{list[0].studentInformation.nickname}}</text>
-              <text class="tags">吃货达人</text>
+              <text class="tags">首席体验官</text>
             </view>
             <view class="gender-school">
               <image class="famous-people-gender" src="{{list[0].studentInformation.sex == 1 ? '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}" alt=""></image>
@@ -144,7 +145,7 @@
           <view>
             <view class="name-tags">
               <text>{{list[0].studentInformation.nickname}}</text>
-              <text class="tags">吃货达人</text>
+              <text class="tags">首席体验官</text>
             </view>
             <view class="gender-school">
               <image class="famous-people-gender" src="{{list[0].studentInformation.sex == 1 ? '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}" alt=""></image>
