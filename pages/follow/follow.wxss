@@ -38,23 +38,32 @@ input, .title{
   padding-top: 30rpx;
   box-sizing: border-box;
 }
-.photo-group{
+/* .photo-group{
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
+} */
+.movable-photo-group{
+  width: 100%;
+  height:700rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 .add-photo{
+  /* float: left; */
   width: 200rpx;
   height: 200rpx;
   background: #f7f7f7;
-  /* margin-top: 100rpx; */
   margin-top: 30rpx;
   margin-left: 30rpx;
-  display: flex;
+  position: relative;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 image.photo{
   width: 200rpx;
