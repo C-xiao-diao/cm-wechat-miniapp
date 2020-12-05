@@ -106,6 +106,7 @@ Page({
                         }
                     })
                 } else if (_.get(res, 'data.code') === 103) {
+                    wx.hideLoading();
                     wx.showModal({
                         title: '提示',
                         content: _.get(res, 'data.msg') || '操作失败',
@@ -118,6 +119,7 @@ Page({
                         }
                     })
                 } else {
+                    wx.hideLoading();
                     wx.showModal({
                         title: '提示',
                         content: _.get(res, 'data.msg') || '操作失败',

@@ -302,6 +302,11 @@ Page({
   },
   //前往个人中心界面
   navToMemberCenter: function (e) {
+    let reviewStatus = _.get(app, 'globalData.reviewStatus');
+    if(reviewStatus !== 1){
+      this.navToRegister();
+      return;
+    }
     let type = e.currentTarget.dataset.type;
     let id = e.currentTarget.dataset.id;
     if(type=="self") {
@@ -375,11 +380,11 @@ Page({
   //切换tab页（嗨C、即兴）
   changeTab: function (e) {
     const { currentTab } = this.data;
-    let reviewStatus = _.get(app, 'globalData.reviewStatus');
-    if(reviewStatus !== 1 && currentTab !== 2){
-      this.navToRegister();
-      return;
-    }
+    // let reviewStatus = _.get(app, 'globalData.reviewStatus');
+    // if(reviewStatus !== 1 && currentTab !== 2){
+    //   this.navToRegister();
+    //   return;
+    // }
     let item = e.currentTarget.dataset.item;
     if (item !== currentTab) {
       this.getIndexList(item, false)

@@ -173,7 +173,7 @@ Page({
     // wx.navigateTo({
     //   url: '/pages/invite/invite?themeId=' + themeId,
     // })
-    this.setData({ isShowEnsembleModal: true, ensembleType: 0 });
+    this.setData({ isShowEnsembleModal: true, ensembleType: 0,musicNumber: 1 });
   },
   //前往个人中心界面
   navToMemberCenter: function (e) {

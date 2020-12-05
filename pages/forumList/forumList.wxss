@@ -35,6 +35,9 @@ page{
   padding: 20rpx 0;
   box-sizing: border-box;
 }
+.theme-content-text-item:last-child{
+  border-bottom: 0rpx dashed#333;
+}
 
 .showAllDetail{
   color: blue !important;
@@ -155,6 +158,9 @@ page{
   border-bottom: 1rpx dashed#333;
   padding: 20rpx 0;
   box-sizing: border-box;
+}
+.middle text:last-child{
+  border-bottom: 0rpx dashed#333;
 }
 .bottom{
   display: flex;

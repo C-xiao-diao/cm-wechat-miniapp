@@ -75,9 +75,9 @@ Page({
       })
       return;
     }
-    if(!idCardNumber){
+    if(!idCardNumber || idCardNumber.length != 18){
       wx.showToast({
-        title: '请输入身份证号',
+        title: '请输入正确的身份证号',
       })
       return;
     }

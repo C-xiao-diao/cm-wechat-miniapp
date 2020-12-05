@@ -10,10 +10,14 @@
   </view>
   <view class="photo-group">
     <movable-area class="movable-photo-group" out-of-bounds>
-      <movable-view x="{{activeMoveViewIndex == index ? activeMoveX :''}}" direction="all" class="add-photo"
+      <movable-view x="{{activeMoveViewIndex == index ? activeMoveX :''}}" y="{{activeMoveViewIndex == index ? activeMoveY :''}}" direction="all" class="add-photo"
         wx:for="{{picture}}" wx:key="index" bindchange="bindMovableChange" bindtouchstart="bindtouchstart"
         bindtouchend="bindtouchend" data-index="{{index}}">
-        <image class="photo" src="{{item}}" alt=""></image>
+        <view clas="movable-photo-item">
+          <icon catchtap="cancelSelectPhoto" data-index="{{index}}" class="icon-box-img" type="clear" size="20"></icon>
+          <image class="photo" src="{{item}}" alt=""></image>
+        </view>
+        <!-- <image class="photo" src="{{item}}" alt=""></image> -->
       </movable-view>
       <view class="add-photo" bindtap="addPhoto" wx:if="{{picture.length < 9}}">
         <image class="photo" src="/imgs/follow/add.jpg" alt=""></image>

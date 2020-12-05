@@ -75,13 +75,15 @@
             src="{{item.headimgUrl && item.headimgUrl != 'undefined' ? item.headimgUrl : '/imgs/icons/no_avatar.png'}}" alt=""></image>
           <view>
             <view class="name-tags">
-              <text>{{item.studentName || item.nickname}}</text>
+              <text>{{item.nickname}}</text>
               <text class="tags">首席体验官</text>
             </view>
             <view class="gender-school">
               <image class="famous-people-gender"
                 src="{{item.sex == 1 ? '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}" alt=""></image>
               <text class="my-school">{{item.school ? item.school.schoolName : "暂无学校"}}</text>
+            </view>
+            <view class="num-group">
               <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
               <text class="hot-num">{{item.noteNumber || 0}}</text>
             </view>
@@ -149,10 +151,11 @@
             </view>
             <view class="gender-school">
               <image class="famous-people-gender" src="{{list[0].studentInformation.sex == 1 ? '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}" alt=""></image>
-              <!-- <text class="my-school">长沙市雅礼中学</text> -->
               <text class="my-school">{{list[0].school.schoolName}}</text>
+            </view>
+            <view class="num-group">
               <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
-              <text class="hot-num">{{list[0].pointPraiseNumber}}</text>
+              <text class="hot-num">{{item.noteNumber || 0}}</text>
             </view>
           </view>
         </view>
@@ -161,7 +164,7 @@
         </view>
         <view style="impromptu-view3-content-view">
           <text class="impromptu-view3-content">{{list[0].supplementaryContent}}</text>
-          <text class="see-details" bindtap="navToDetail" data-themeId="{{list[0].id}}" data-index="{{index}}" data-theme="{{list[0].theme}}" data-number="{{list[0].studentInformation.noteNumber || 0}}" data-picture="{{list[0].picture}}" data-content="{{list[0].supplementaryContent}}">查看全文</text>
+          <!-- <text class="see-details" bindtap="navToDetail" data-themeId="{{list[0].id}}" data-index="{{index}}" data-theme="{{list[0].theme}}" data-number="{{list[0].studentInformation.noteNumber || 0}}" data-picture="{{list[0].picture}}" data-content="{{list[0].supplementaryContent}}">查看全文</text> -->
         </view>
         <view class="impromptu-view3-images">
           <image class="impromptu-view3-photo" src="{{item}}" wx:for="{{list[0].picture}}" wx:key="index" alt=""></image>
