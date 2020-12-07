@@ -31,7 +31,7 @@
       <view class="top">
         <view class="userinfo-left">
           <!-- <image class="avatar" src="/imgs/forumList/avatar.jpg" alt=""></image> -->
-          <image class="avatar" data-id="{{item.studentId}}" bindtap="navToMemberCenter"
+          <image class="avatar" data-id="{{item.publisher}}" bindtap="navToMemberCenter"
             src="{{item.headimgUrl ? item.headimgUrl : '/imgs/icons/no_avatar.png'}}" alt=""></image>
           <view class="userinfo">
             <!-- <text class="username">一天天的</text> -->

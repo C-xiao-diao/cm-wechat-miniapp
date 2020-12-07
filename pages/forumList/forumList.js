@@ -178,9 +178,15 @@ Page({
   //前往个人中心界面
   navToMemberCenter: function (e) {
     let id = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '/pages/memberCenter/memberCenter?studentId=' + id
-    })
+    if(id == app.globalData.studentId){
+      wx.navigateTo({
+        url: '/pages/memberCenter/memberCenter?studentId=' + id + '&type=self'
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/memberCenter/memberCenter?studentId=' + id + '&type=other'
+      })
+    }
   },
   //前往跟调界面
   navToFollow: function () {
