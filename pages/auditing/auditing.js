@@ -90,7 +90,7 @@ Page({
                 if (_.get(res, 'data.code') === 200) {
                     //注册成功后，需要更新globleData里的 userInfo 信息
                     let userInfo = _.get(res, 'data.data.studentInformation');
-                    userInfo.nickName = name;
+                    // userInfo.nickName = name;
                     userInfo.schoolName = schoolName;
                     userInfo.schoolId = schoolId;
                     app.globalData.studentName = userInfo.studentName;
