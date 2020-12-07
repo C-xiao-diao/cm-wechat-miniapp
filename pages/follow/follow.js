@@ -14,6 +14,7 @@ Page({
     themeId: '',
     theme: "",
     content: '',
+    routeFrom: '',
     picture: [],
     // picture: ["https://cminor.cc/media/cmionr/eb62fd7d5dd144ecb70c5d8c7f07358a.jpg", "https://cminor.cc/media/cmionr/b223b397e9c049e396c8c3c8334458bf.jpg", "https://cminor.cc/media/cmionr/685336d2c17a4ef59cca1dda1bd48b26.jpg", "https://cminor.cc/media/cmionr/96b9165dd52d4477a733acc36d14fdea.jpg", "https://cminor.cc/media/cmionr/f3199e6dd81f4fb89d63ee13e16cbf1d.jpg", "https://cminor.cc/media/cmionr/a4c8c10124b7428da73903e0dbedaa94.jpg", "https://cminor.cc/media/cmionr/51455a005ea44c55835671901a2b5701.jpg", "https://cminor.cc/media/cmionr/829e569071c54f91a1286577f1f01ab1.jpg", "https://cminor.cc/media/cmionr/a6993806cb5449c98e49555abba7de84.jpg"],
     video: [],
@@ -22,7 +23,8 @@ Page({
     activeMoveY: 0,
   },
   onLoad(option) {
-    this.setData({ themeId: option.themeId, theme: option.theme })
+    console.log(option, 'bbbbbbbbbbbbbbbb--------------------------------------');
+    this.setData({ themeId: option.themeId, theme: option.theme, routeFrom: option.routeFrom })
   },
   goBack: function () {
     wx.navigateBack();
@@ -75,7 +77,7 @@ Page({
           }
         },
         complete: function () {
-          if(i == tempFilePaths.length -1){
+          if (i == tempFilePaths.length - 1) {
             wx.hideLoading();
           }
         }
@@ -83,15 +85,15 @@ Page({
     }
   },
   //删除选择的某张图片
-  cancelSelectPhoto: function(e){
+  cancelSelectPhoto: function (e) {
     let index = e.currentTarget.dataset.index;
     let picture = this.data.picture;
     picture.splice(index, 1);
-    this.setData({picture});
+    this.setData({ picture });
   },
   // 拖动图片方法
   bindMovableChange: function (e) {
-    
+
   },
   bindtouchstart: function (e) {
     pageX = e.changedTouches[0].pageX;
@@ -136,11 +138,11 @@ Page({
     let itemTwo = picture[moveIndex];
     picture.splice(moveIndex, 1, itemOne);
     picture.splice(index, 1, itemTwo);
-    this.setData({ picture, activeMoveViewIndex: index, activeMoveX: 0,activeMoveY: 0 })
+    this.setData({ picture, activeMoveViewIndex: index, activeMoveX: 0, activeMoveY: 0 })
   },
   // 跟调（也就是提交）
   follow: function () {
-    const { themeId, content, picture } = this.data;
+    const { themeId, theme,content, picture, routeFrom } = this.data;
     let studentId = app.globalData.studentId;
     if (_.isEmpty(content)) {
       wx.showToast({
@@ -166,10 +168,16 @@ Page({
           wx.showToast({
             title: '跟调成功',
             success: res => {
-              wx.navigateBack({
-                delta: 0,
-              })
-
+              if (routeFrom == "forumList") {
+                wx.navigateBack({
+                  delta: 0,
+                })
+              } else {
+                wx.navigateTo({
+                  url: '/pages/forumList/forumList?themeId=' + themeId
+                    + '&theme=' + theme
+                })
+              }
             },
           })
         }

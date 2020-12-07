@@ -35,7 +35,7 @@ Page({
     musicNumber: 0
   },
   onLoad: function (option) {
-    this.setData({ themeId: option.themeId, theme: option.theme, content: option.content, number: option.number, picture: JSON.parse(option.picture) })
+    this.setData({ themeId: option.themeId, theme: option.theme, content: option.content, number: option.number, picture: JSON.parse(option.picture) || [] })
     //获取界面数据
     // this.getForumList(option)
   },
@@ -186,7 +186,7 @@ Page({
   navToFollow: function () {
     const { themeId, theme } = this.data;
     wx.navigateTo({
-      url: '/pages/follow/follow?themeId=' + themeId + '&theme=' + theme,
+      url: '/pages/follow/follow?themeId=' + themeId + '&theme=' + theme + '&routeFrom=forumList',
     })
   },
   //点击学校前往首页

@@ -404,7 +404,7 @@ Page({
     let themeId = e.currentTarget.dataset.themeid;
     let theme = e.currentTarget.dataset.theme;
     wx.navigateTo({
-      url: '/pages/follow/follow?themeId=' + themeId + '&theme=' + theme,
+      url: '/pages/follow/follow?themeId=' + themeId + '&theme=' + theme+ '&routeFrom=index',
     })
   },
   // 跳转详情
