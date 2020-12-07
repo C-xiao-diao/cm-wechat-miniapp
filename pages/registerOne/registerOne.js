@@ -17,7 +17,6 @@ Page({
       headimgUrl: _.get(app, 'globalData.userInfo.headimgUrl'),
       nickname: _.get(app, 'globalData.userInfo.nickName')
     })
-    console.log(app, 'appppppppppppppppppppppppppppppppp')
   },
   //昵称输入框方法
   bindinput: function (e) {
