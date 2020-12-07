@@ -307,15 +307,14 @@ Page({
       this.navToRegister();
       return;
     }
-    let type = e.currentTarget.dataset.type;
     let id = e.currentTarget.dataset.id;
-    if(type=="self") {
+    if(id==app.globalData.studentId) {
       wx.navigateTo({
-        url: '/pages/memberCenter/memberCenter?studentId=' + app.globalData.studentId + '&type=' + type
+        url: '/pages/memberCenter/memberCenter?studentId=' + app.globalData.studentId + '&type=self'
       })
     }else {
       wx.navigateTo({
-        url: '/pages/memberCenter/memberCenter?studentId=' + id + '&type=' + type
+        url: '/pages/memberCenter/memberCenter?studentId=' + id + '&type=other'
       })
     }
   },
