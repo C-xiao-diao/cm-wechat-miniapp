@@ -1,16 +1,26 @@
 <view class="registerTwo-view">
   <!-- <input class="input-normal" type="text" placeholder-class="input-placeholder" placeholder="请选择所在城市" /> -->
-  <picker class="input-normal" bindchange="bindPickerChange" placeholder-class="input-placeholder" mode="region">
+  <!-- <picker class="input-normal" bindchange="bindPickerChange" placeholder-class="input-placeholder" mode="region">
+    <view class="picker">
+      {{address}}
+    </view>
+  </picker> -->
+  <picker class="address-input" mode="multiSelector" bindchange="bindCityChange"
+    bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
     <view class="picker">
       {{address}}
     </view>
   </picker>
-  <input class="input-normal" bindblur="hideAllSchoolList" bindfocus="showAllSchoolList" value="{{schoolName}}" bindinput="bindSchoolHandle" type="text" placeholder-class="input-placeholder" placeholder="请填写在读学校" />
+  <input class="input-normal" bindblur="hideAllSchoolList" bindfocus="showAllSchoolList" value="{{schoolName}}"
+    bindinput="bindSchoolHandle" type="text" placeholder-class="input-placeholder" placeholder="请填写在读学校" />
   <view class="schoolList" wx:if="{{isShowSchoolListModal}}">
-    <text wx:for="{{schoolList}}" bindtap="selectSchool" wx:key="index" data-id="{{item.id}}" data-name="{{item.schoolName}}">{{item.schoolName}}</text>
+    <text wx:for="{{schoolList}}" bindtap="selectSchool" wx:key="index" data-id="{{item.id}}"
+      data-name="{{item.schoolName}}">{{item.schoolName}}</text>
   </view>
-  <input class="input-normal" bindinput="bindIdCardHandle" type="text" placeholder-class="input-placeholder" placeholder="填入本人身份证号" value="{{idCardNumber}}" />
-  <input class="input-normal" bindinput="bindRealNameHandle" type="text" placeholder-class="input-placeholder" placeholder="填入本人真实姓名" value="{{name}}"/>
+  <input class="input-normal" bindinput="bindIdCardHandle" type="text" placeholder-class="input-placeholder"
+    placeholder="填入本人身份证号" value="{{idCardNumber}}" />
+  <input class="input-normal" bindinput="bindRealNameHandle" type="text" placeholder-class="input-placeholder"
+    placeholder="填入本人真实姓名" value="{{name}}" />
   <button class="registerOneSubmit" type="primary" bindtap="registerTwoSubmit">下一步</button>
   <text class="description">
     18岁以下在校学生的专属平台

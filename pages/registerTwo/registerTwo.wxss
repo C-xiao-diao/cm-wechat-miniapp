@@ -1,7 +1,8 @@
-Page{
+Page {
   background: #f2f2f2;
 }
-.registerTwo-view{
+
+.registerTwo-view {
   height: 100%;
   width: 750rpx;
   display: flex;
@@ -11,27 +12,44 @@ Page{
   padding: 200rpx 0;
   box-sizing: border-box;
 }
-.registerOneSubmit{
+
+.registerOneSubmit {
   margin-top: 100rpx;
 }
-.description{
+
+.description {
   color: #ccc;
   line-height: 40rpx;
   font-size: 24rpx;
   text-align: center;
 }
-.picker{
+
+.address-input {
+  width: 100%;
+  border: 1rpx solid #ccc;
+  margin-top: 30rpx;
+  text-align: left;
+  border: 2rpx solid #ccc;
+  height: 100rpx;
+  width: 80%;
+  border-radius: 10rpx;
+  background-color: white;
+  padding-left: 20rpx;
+}
+
+.picker {
   margin-top: 30rpx;
   text-align: left;
   padding-left: 20rpx;
 }
-.schoolList{
+
+.schoolList {
   display: flex;
   flex-direction: column;
-  width:82%;
+  width: 82%;
   height: 400rpx;
   /* max-height: 400rpx; */
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   overflow-x: hidden;
   z-index: 10;
   /* overflow: hidden; */
@@ -42,7 +60,8 @@ Page{
   padding: 20rpx 40rpx;
   box-sizing: border-box;
 }
-.schoolList>text{
+
+.schoolList>text {
   line-height: 50rpx;
   font-size: 36rpx;
 }

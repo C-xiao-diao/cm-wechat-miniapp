@@ -52,18 +52,14 @@ Page({
           success(res) {
             let json = res.data;
             let resData;
-            if(isJson(json)){
-              resData = JSON.parse(json)
-            } else {
-              resData = json;
-            }
+            resData = JSON.parse(json)
             if (_.get(resData, 'code') === 200) {
               let fileName = _.get(resData, 'data.fileName');
               let file = fileName[0];
               _this.setData({ headimgUrl: file });
             } else {
               wx.showToast({
-                title: _.get(resData, 'msg'),
+                title: "操作失败",
               })
             }
           },
