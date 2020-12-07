@@ -14,7 +14,7 @@
         <image class="avatar"
           src="{{ (userInfo.headimgUrl &&  userInfo.headimgUrl != 'undefined') ? userInfo.headimgUrl : '/imgs/icons/no_avatar.png'}}"
           alt=""></image>
-        <view class="userInfo-detail" wx:if="{{reviewStatus === 1}}" bindtap="navToMemberCenter">
+        <view class="userInfo-detail" wx:if="{{reviewStatus === 1}}" data-id="{{studentId}}" bindtap="navToMemberCenter">
           <view class="name-tags">
             <text>{{userInfo.nickName}}</text>
             <text class="tags">首席体验官</text>
