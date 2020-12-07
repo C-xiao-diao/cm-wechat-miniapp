@@ -57,6 +57,9 @@ Page({
   getSchoolList: function (schoolAlias) {
     let address = this.data.address;
     let cmd = "/auth/school/listBy";
+    if(address == "全国"){
+      address = "";
+    }
     let data = { city: address };
     if (schoolAlias !== undefined && schoolAlias !== null) {
       data.schoolAlias = schoolAlias;

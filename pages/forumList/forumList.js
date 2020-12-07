@@ -35,7 +35,8 @@ Page({
     musicNumber: 0
   },
   onLoad: function (option) {
-    this.setData({ themeId: option.themeId, theme: option.theme, content: option.content, number: option.number, picture: JSON.parse(option.picture) || [] })
+    console.log(option, 'optionoptionoptionoptionoptionoptionoptionoptionoptionoption');
+    this.setData({ themeId: option.themeId, theme: option.theme, content: option.content, number: option.number, picture: (option.picture && option.picture != "undefined") ? JSON.parse(option.picture) : [] })
     //获取界面数据
     // this.getForumList(option)
   },
