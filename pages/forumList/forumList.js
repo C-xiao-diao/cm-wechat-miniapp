@@ -72,7 +72,7 @@ Page({
         if (_.get(res, 'data.code') === 200) {
           let themeInfo = _.get(res, 'data.data.theme');
           if(themeInfo){
-            themeInfo.pointPraiseNumber = _.round(themeInfo.pointPraiseNumber);
+            themeInfo.pointPraiseNumber = _.round(_.toNumber(themeInfo.pointPraiseNumber)/0.85);
           }
           let newList = [];
           if (isLoadMore) {
