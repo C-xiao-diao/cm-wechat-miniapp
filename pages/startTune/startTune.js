@@ -172,6 +172,10 @@ Page({
       })
       return;
     }
+    wx.showLoading({
+      title: '提交中',
+      mask: true
+    });
     // if (_.isEmpty(picture)) {
     //   wx.showToast({
     //     title: '图片不能为空',
@@ -189,6 +193,7 @@ Page({
       cmd,
       data,
       success: res => {
+        wx.hideLoading();
         if (_.get(res, 'data.code') === 200) {
           wx.showToast({
             title: '起调成功',

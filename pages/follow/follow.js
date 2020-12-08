@@ -152,6 +152,7 @@ Page({
     }
     wx.showLoading({
       title: '提交中',
+      mask: true
     })
     let cmd = "/auth/essay/addEssay";
     let data = {
@@ -164,6 +165,7 @@ Page({
       cmd,
       data,
       success: res => {
+        wx.hideLoading();
         if (_.get(res, 'data.code') === 200) {
           wx.showToast({
             title: '跟调成功',

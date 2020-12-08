@@ -122,6 +122,10 @@ Page({
             wx.showToast({ title: '编辑内容不能为空~',icon:none })
             return;
         }
+        wx.showLoading({
+            title: '提交中',
+            mask: true
+        });
         let cmd = articleType == "theme" ? "/auth/theme/edit" : "/auth/essay/edit";
         let data = {};
         if(articleType == "theme"){
@@ -135,6 +139,7 @@ Page({
             data,
             success: res => {
                 if(_.get(res, 'data.code')=== 200){
+                    wx.hideLoading();
                     wx.showToast({
                         title: '编辑成功',
                         success: res =>{
