@@ -24,6 +24,7 @@ Page({
     //0未注册，1已注册  2 未登录  （其中 0 1 状态后端返回，2状态是用户拒绝授权）
     reviewStatus: app.globalData.reviewStatus || 0,
     userInfo: {},
+    studentId: '',
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     currentTab: 0,
@@ -51,7 +52,7 @@ Page({
   },
   onLoad: function (option) {
     if(!_.isEmpty(option)){
-      this.setData({schoolId: option.schoolId, schoolName: option.schoolName })
+      this.setData({schoolId: option.schoolId, schoolName: option.schoolName, studentId: app.globalData.studentId })
     }
   },
   onShow: function () {
@@ -70,7 +71,11 @@ Page({
     if (!app.globalData.userId) {
       app.loginCallback = resData => {
         if (_.get(resData, 'code') === 200) {
-          this.setData({ reviewStatus: resData.data.reviewStatus, userInfo: app.globalData.userInfo })
+          this.setData({ 
+            reviewStatus: resData.data.reviewStatus, 
+            userInfo: app.globalData.userInfo,
+            studentId: app.globalData.studentId  
+          })
           this.getIndexList(this.data.currentTab, false);
         } else {
           //没有拿到wx.login的回调
@@ -308,6 +313,7 @@ Page({
       return;
     }
     let id = e.currentTarget.dataset.id;
+    console.log(e,999999999999)
     if(id==app.globalData.studentId) {
       wx.navigateTo({
         url: '/pages/memberCenter/memberCenter?studentId=' + app.globalData.studentId + '&type=self'
