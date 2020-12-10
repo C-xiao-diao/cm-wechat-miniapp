@@ -11,6 +11,13 @@
         <text class="city">{{'切换'}}</text>
       </view>
       <view class="userInfo-group-right">
+        <image class="avatar" wx:if="{{reviewStatus === 1}}"
+          src="{{ (userInfo.headimgUrl &&  userInfo.headimgUrl != 'undefined') ? userInfo.headimgUrl : '/imgs/index/normal_avatar.png'}}"
+          alt=""></image>
+        <image wx:if="{{reviewStatus === 0}}" class="avatar" src="/imgs/index/normal_avatar.png" alt="">
+        </image>
+      </view>
+      <!-- <view class="userInfo-group-right">
         <image class="avatar"
           src="{{ (userInfo.headimgUrl &&  userInfo.headimgUrl != 'undefined') ? userInfo.headimgUrl : '/imgs/icons/no_avatar.png'}}"
           alt=""></image>
@@ -37,7 +44,7 @@
           <text>{{ userInfo.nickName || '游客'}}</text>
           <text bindtap="navToRegister">未注册</text>
         </view>
-      </view>
+      </view> -->
     </view>
   </view>
   <view class="content">
