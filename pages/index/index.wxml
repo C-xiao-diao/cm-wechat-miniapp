@@ -116,6 +116,14 @@
     </view>
     <!-- 即兴 -->
     <movable-area class="impromptu" wx:if="{{currentTab === 2}}">
+      <!-- 模糊图 -->
+      <movable-view class="impromptu-view2" bindtouchstart="bindtouchstart" bindtap="bindViewHandle"
+        bindtouchend="bindtouchend" x="{{x}}" direction="horizontal" out-of-bounds wx:if="{{isShowListItem}}"
+        data-themeId="{{list[0].id}}" data-theme="{{list[0].theme}}" data-number="{{list[0].pointPraiseNumber}}"
+        data-picture="{{list[0].picture}}" data-content="{{list[0].supplementaryContent}}">
+        <image class="blurry" src="./../../imgs/index/blurry.jpg" alt=""></image>
+      </movable-view>
+      <!-- 真实卡片 -->
       <movable-view class="impromptu-view3" bindtouchstart="bindtouchstart" bindtap="bindViewHandle"
         bindtouchend="bindtouchend" x="{{x}}" direction="horizontal" out-of-bounds wx:if="{{isShowListItem}}"
         data-themeId="{{list[0].id}}" data-theme="{{list[0].theme}}" data-number="{{list[0].pointPraiseNumber}}"
@@ -207,7 +215,7 @@
 </view>
 
 <!-- 底部栏目模块 -->
-<!-- <view class="columns">
+<view class="columns">
   <view class="column-item  {{columnActiveIndex == 0 ? 'column-item-00': ''}}" data-index="{{0}}"
     bindtap="selectColumn">
     <text></text>
@@ -229,7 +237,7 @@
     <text></text>
     <image src="./../../imgs/index/game.png" alt=""></image>
   </view>
-</view> -->
+</view>
 
 <!-- 切换地址学校模态框 -->
 <view class="mask" wx:if="{{isShowSchoolChangeModal}}" bindtap="cancelModal">

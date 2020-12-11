@@ -525,7 +525,7 @@ Page({
         this.getIndexList(this.data.currentTab, true)
       })
     } else {
-      this.setData({x: 20})
+      this.setData({x: 0})
     }
   },
   // 不感兴趣
