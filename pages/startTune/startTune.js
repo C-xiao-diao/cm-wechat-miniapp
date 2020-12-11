@@ -15,6 +15,7 @@ Page({
     theme: "",
     content: '',
     picture: [],
+    columnActiveIndex: 0,
     // picture: ["https://cminor.cc/media/cmionr/eb62fd7d5dd144ecb70c5d8c7f07358a.jpg", "https://cminor.cc/media/cmionr/b223b397e9c049e396c8c3c8334458bf.jpg", "https://cminor.cc/media/cmionr/685336d2c17a4ef59cca1dda1bd48b26.jpg", "https://cminor.cc/media/cmionr/96b9165dd52d4477a733acc36d14fdea.jpg", "https://cminor.cc/media/cmionr/f3199e6dd81f4fb89d63ee13e16cbf1d.jpg", "https://cminor.cc/media/cmionr/a4c8c10124b7428da73903e0dbedaa94.jpg", "https://cminor.cc/media/cmionr/51455a005ea44c55835671901a2b5701.jpg", "https://cminor.cc/media/cmionr/829e569071c54f91a1286577f1f01ab1.jpg", "https://cminor.cc/media/cmionr/a6993806cb5449c98e49555abba7de84.jpg"],
     activeMoveViewIndex: 0,
     activeMoveX: 0,
@@ -37,6 +38,12 @@ Page({
   addContent: function (e) {
     let content = e.detail.value;
     this.setData({ content });
+  },
+  selectColumn: function(e){
+    let columnActiveIndex = e.currentTarget.dataset.index;
+    if(columnActiveIndex !== undefined && columnActiveIndex !== null){
+      this.setData({columnActiveIndex})
+    }
   },
   // 选择图片
   addPhoto: function () {
