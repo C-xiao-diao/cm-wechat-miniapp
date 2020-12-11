@@ -202,6 +202,29 @@
   </view>
 </view>
 
+<!-- 底部栏目模块 -->
+<view class="columns">
+  <view class="column-item  {{columnActiveIndex == 0 ? 'column-item-00': ''}}" data-index="{{0}}" bindtap="selectColumn">
+    <text></text>
+    <image src="./../../imgs/index/square.png" alt=""></image>
+  </view>
+  <view class="column-item {{columnActiveIndex == 1 ? 'column-item-01': ''}}" data-index="{{1}}" bindtap="selectColumn">
+    <text></text>
+    <image src="./../../imgs/index/attention.png" alt=""></image>
+  </view>
+  <view class="column-item {{columnActiveIndex == 2 ? 'column-item-02': ''}}" data-index="{{2}}" bindtap="selectColumn">
+    <text></text>
+    <image src="./../../imgs/index/makeups.png" alt=""></image>
+  </view>
+  <view class="column-item {{columnActiveIndex== 3 ? 'column-item-03': ''}}" data-index="{{3}}" bindtap="selectColumn">
+    <text></text>
+    <image src="./../../imgs/index/basketball.png" alt=""></image>
+  </view>
+  <view class="column-item {{columnActiveIndex== 4 ? 'column-item-04': ''}}" data-index="{{4}}" bindtap="selectColumn">
+    <text></text>
+    <image src="./../../imgs/index/game.png" alt=""></image>
+  </view>
+</view>
 
 <!-- 切换地址学校模态框 -->
 <view class="mask" wx:if="{{isShowSchoolChangeModal}}" bindtap="cancelModal">

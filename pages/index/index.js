@@ -49,6 +49,8 @@ Page({
     pageX: 0,
     //滑块的x坐标
     x: 20,
+    //栏目的选择索引
+    columnActiveIndex: 0,
   },
   onLoad: function (option) {
     if(!_.isEmpty(option)){
@@ -529,6 +531,11 @@ Page({
   // 不感兴趣
   noInterested: function(){
     this.getIndexList(this.data.currentTab, true)
+  },
+  //选择栏目
+  selectColumn: function(e){
+    let idx = e.currentTarget.dataset.index;
+    this.setData({columnActiveIndex: idx});
   }
   //-----------------end -------------------
 })  

@@ -491,3 +491,50 @@
   line-height: 50rpx;
   font-size: 36rpx;
 }
+
+/* 底部的栏目 */
+.columns{
+  width: 100%;
+  padding: 20rpx 30rpx; 
+  background-color: white;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0rpx 0rpx 20rpx 0rpx rgba(0, 0, 0, 0.18);
+}
+.column-item{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.column-item>text{
+  height: 10rpx;
+  width: 10rpx;
+  border-radius: 50%;
+}
+.column-item image{
+  width: 115rpx;
+  height: 150rpx;
+  margin-top: 5rpx;
+}
+.column-item-00>text{
+  background-color: #AE86F9;
+}
+.column-item-01>text{
+  background-color: #E3194E;
+}
+.column-item-02>text{
+  background-color: #EC3D8D;
+}
+.column-item-03>text{
+  background-color: #F9A825;
+}
+.column-item-04>text{
+  background-color: #A1ACE5;
+}
