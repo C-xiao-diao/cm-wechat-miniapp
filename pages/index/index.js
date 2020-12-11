@@ -496,6 +496,7 @@ Page({
     
   },
   bindtouchstart: function(e){
+    console.log(e,'666666666666666666666666666666666666666666')
     pageX = e.changedTouches[0].pageX;
   },
   bindViewHandle: function(e){
@@ -519,8 +520,14 @@ Page({
     })
   },
   bindtouchend: function(e){
+    console.log(e,'gggggggggggggggggggggggggggggggggg')
     let endPageX = e.changedTouches[0].pageX;
-    if(endPageX - pageX > 100){
+    console.log(endPageX - pageX, '1111111111',endPageX, 66666666, pageX)
+    if(endPageX - pageX > 100){ //右滑超过 100（随意定的，可以改）
+      this.setData({isShowListItem: false},()=>{
+        this.getIndexList(this.data.currentTab, true)
+      })
+    } else if(endPageX - pageX < -100){ //左滑超过100
       this.setData({isShowListItem: false},()=>{
         this.getIndexList(this.data.currentTab, true)
       })
