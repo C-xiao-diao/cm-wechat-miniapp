@@ -7,7 +7,7 @@
     <view class="userInfo-group">
       <view class="userInfo-group-left" bindtap="changeSchool">
         <text class="school">{{schoolName ? schoolName :  (address ?  address : '全国')}}</text>
-        <image class="funnel" src="/imgs/icons/funnel.png" alt=""></image>
+        <image class="funnel" src="/imgs/index/point.png" alt=""></image>
         <text class="city">{{'切换'}}</text>
       </view>
       <view class="userInfo-group-right">
@@ -46,15 +46,22 @@
         </view>
       </view> -->
     </view>
+    <view class="top">
+      <view class="tabs">
+        <text bindtap="changeTab" class="tab {{currentTab === 0 ? 'active active-01' : ''}} " data-item="{{0}}">嗨C</text>
+        <text bindtap="changeTab" class="tab {{currentTab === 1 ? 'active active-02' : ''}}" data-item="{{1}}">风云人物榜</text>
+        <text bindtap="changeTab" class="tab {{currentTab === 2 ? 'active active-03' : ''}}" data-item="{{2}}">即兴</text>
+      </view>
+    </view>
   </view>
   <view class="content">
-    <view class="top">
+    <!-- <view class="top">
       <view class="tabs">
         <text bindtap="changeTab" class="tab {{currentTab === 0 ? 'active' : ''}}" data-item="{{0}}">嗨C</text>
         <text bindtap="changeTab" class="tab {{currentTab === 1 ? 'active' : ''}}" data-item="{{1}}">风云人物榜</text>
         <text bindtap="changeTab" class="tab {{currentTab === 2 ? 'active' : ''}}" data-item="{{2}}">即兴</text>
       </view>
-    </view>
+    </view> -->
     <view class="hotlist-content" wx:if="{{currentTab === 0 || currentTab === 1}}">
       <view class="hotlist-content-item" wx:for="{{ list }}" wx:key="index">
         <!-- 嗨C -->
