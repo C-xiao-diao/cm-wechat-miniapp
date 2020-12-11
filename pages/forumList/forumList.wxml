@@ -1,15 +1,51 @@
 <!--index.wxml-->
 <!-- 真实界面 -->
 <view class="container">
-  <!-- <text class="title">LOL手游 丨 有人一起开黑吗?</text> -->
-  <text class="title">{{theme || themeInfo.theme}}</text>
   <!-- 主题内容 -->
-  <view class="theme-content">
-    <!-- <text>君泽：不瞒你说，昨天我直接啥疯了[doge]昨天我像个神一样[赞]昨天我们去玩密室，小虎GALA小龙堡三个人打不过我一个，直接被我杀疯[doge]\n 墨子：你还挺骄傲的？这有啥可骄傲的[疑问]在密室里面不敢出去，就杀自己队友[二哈]</text> -->
+  <view class="theme">
+    <view class="theme-userInfo">
+      <view class="left">
+        <image class="userAvatar" src="/imgs/icons/no_avatar.png"></image>
+        <view class="username">
+            <image class="sex" src="{{ 2 === 1 ? '/imgs/icons/male_gray.png' : '/imgs/icons/female_gray.png'}}"></image>
+            <text class="name">一天一天</text>
+            <text class="school">湖南长郡中学</text>
+        </view>
+      </view>
+      <view class="right">
+          <text>关注</text>
+      </view>
+    </view>
+    <view class="theme-content">
+      <text class="title">{{theme || themeInfo.theme}}</text>
+      <view class="content">
+        <text wx:for="{{themeInfo.supplementaryContent}}" wx:key="index">{{item}} </text>
+        <text class="showAllDetail" bindtap="showAllDetail">{{ isShowTopThemeImages ? '收起图片' :'展开'}}<text wx:if="{{!isShowTopThemeImages}}" class="top"></text><text wx:if="{{isShowTopThemeImages}}" class="bottom"></text>
+        </text>
+        <view class="theme-content-images" wx:if="{{isShowTopThemeImages}}">
+          <image wx:for="{{picture || themeInfo.picture}}" bindtap="previewImage" data-src="{{picture || themeInfo.picture}}" data-index="{{index}}" wx:key="index"
+            class="theme-content-image-photo" src="{{item}}" alt=""></image>
+        </view>
+      </view>
+      <view class="theme-content-options">
+        <text class="time">时间</text>
+        <view class="number-follow">
+          <view class="note">
+            <text bindtap="navToInvite">{{(themeInfo.pointPraiseNumber && themeInfo.pointPraiseNumber != 'undefined') ? themeInfo.pointPraiseNumber : 0}}</text>
+            <image bindtap="navToInvite" src="/imgs/icons/note_white.png" alt=""></image>
+          </view>
+          <view class="comment">
+            <text bindtap="navToFollow">跟调</text>
+            <image src="/imgs/icons/comment_white.png" alt="" bindtap="navToFollow"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- <view class="theme-content">
     <text class="theme-content-text">
       <text class="theme-content-text-item" wx:for="{{themeInfo.supplementaryContent}}" wx:key="index"> 
         {{item}} </text>
-      <!-- {{content || ""}} -->
     </text>
     <text class="showAllDetail" bindtap="showAllDetail">{{ isShowTopThemeImages ? '收起图片' :'展开'}}</text>
     <view class="theme-content-images" wx:if="{{isShowTopThemeImages}}">
@@ -17,55 +53,47 @@
         class="theme-content-image-photo" src="{{item}}" alt=""></image>
     </view>
     <view class="theme-content-options">
-      <!-- <image bindtap="navToInvite" src="/imgs/icons/note_active.png" alt=""></image> -->
       <image bindtap="navToInvite" src="/imgs/icons/note_active.png" alt=""></image>
-      <!-- <text bindtap="navToInvite">999</text> -->
       <text
         bindtap="navToInvite">{{(themeInfo.pointPraiseNumber && themeInfo.pointPraiseNumber != 'undefined') ? themeInfo.pointPraiseNumber : 0}}</text>
       <image src="/imgs/icons/edit.png" alt="" bindtap="navToFollow"></image>
       <text bindtap="navToFollow">跟调</text>
     </view>
-  </view>
+  </view> -->
   <view class="list">
     <view class="list-item" wx:for="{{list}}" wx:key="index">
       <view class="top">
         <view class="userinfo-left">
-          <!-- <image class="avatar" src="/imgs/forumList/avatar.jpg" alt=""></image> -->
           <image class="avatar" data-id="{{item.publisher}}" bindtap="navToMemberCenter"
             src="{{item.headimgUrl ? item.headimgUrl : '/imgs/icons/no_avatar.png'}}" alt=""></image>
           <view class="userinfo">
-            <!-- <text class="username">一天天的</text> -->
-            <text class="username">{{item.nickname}}</text>
+            <view class="username">
+                <image class="gender" src="{{ item.sex === 1 ? '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}" alt=""></image>
+                <text>{{item.nickname}}</text>
+            </view>
             <view class="userinfo-bottom">
-              <image class="gender"
-                src="{{ item.sex === 1 ? '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}" alt=""></image>
               <text catchtap="navToIndex" data-schoolName="{{item.schoolName}}" data-schoolId = "{{item.schoolId}}">{{item.schoolName || '二进制中学'}}</text>
             </view>
           </view>
         </view>
         <view class="like-group" bindtap="like" data-id="{{item.id}}" data-themeId="{{item.themeId}}">
-          <image class="like"
-            src="{{ item.pointPraiseNumber > 0 ? '/imgs/icons/note_active.png' : '/imgs/icons/note.png'}}" alt="">
-          </image>
+          <image class="like" src="/imgs/icons/note_white.png" alt=""></image>
           <text
             class="like-num {{item.pointPraiseNumber > 0 ? 'like-num-active' : ''}}">{{item.pointPraiseNumber || 0}}</text>
         </view>
       </view>
       <view class="middle">
-        <!-- <text>君泽：不瞒你说，昨天我直接啥疯了[doge]昨天我像个神一样[赞]昨天我们去玩密室，小虎GALA小龙堡三个人打不过我一个，直接被我杀疯[doge]\n 墨子：你还挺骄傲的？这有啥可骄傲的[疑问]在密室里面不敢出去，就杀自己队友[二哈]</text> -->
-        <!-- <text>{{item.content}}</text> -->
         <text wx:for="{{item.content}}" wx:key="index">{{item}}</text>
       </view>
       <view class="bottom">
-        <!-- <image class="bottom-photo" src="/imgs/forumList/game.jpg" alt=""></image>
-        <image class="bottom-photo" src="/imgs/forumList/game.jpg" alt=""></image>
-        <image class="bottom-photo" src="/imgs/forumList/game.jpg" alt=""></image> -->
         <image class="bottom-photo" bindtap="previewImage" data-src="{{item.picture}}" data-index="{{index}}"
           wx:for="{{item.picture}}" wx:for-item="newItem" wx:key="index" src="{{newItem}}" alt=""></image>
       </view>
       <text class="releaseTime">{{item.releaseTime}}</text>
     </view>
   </view>
+
+  <text class="bottom-text">已经到底啦~</text>
 </view>
 <!-- 合拍弹框 -->
 <view class="mask" wx:if="{{isShowEnsembleModal}}" bindtap="cancelModal">

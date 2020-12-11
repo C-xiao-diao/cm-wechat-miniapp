@@ -2,48 +2,120 @@
 page{
   background: #f2f2f2;
 }
-.title{
+
+.theme {
   width: 100%;
-  font-weight: 500;
-  text-align: left;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  padding: 30rpx 50rpx 0;
-  box-sizing: border-box
-}
-.theme-content{
-  width: 100%;
-  padding: 0 50rpx;
-  box-sizing: border-box;
-  margin-top: 30rpx;
-}
-.theme-content>text:first-child{
-  display: -webkit-inline-box;
-  text-overflow: ellipsis;
-  word-break: break-all;
-  overflow: hidden;
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp:3;
-}
-.theme-content-text-item{
-  display: flex;
-  color: #333;
-  line-height: 42rpx;
-  border-bottom: 1rpx dashed#333;
-  padding: 20rpx 0;
-  box-sizing: border-box;
-}
-.theme-content-text-item:last-child{
-  border-bottom: 0rpx dashed#333;
+  background: #667AE7;
+  padding: 50rpx 0;
 }
 
-.showAllDetail{
-  color: blue !important;
-  width: 100%;
+.theme-userInfo {
+  width: calc(100% - 80rpx);
+  margin: 0 auto 60rpx;
   display: flex;
 }
+
+.theme-userInfo .left {
+  flex: 1;
+}
+
+.theme-userInfo .left {
+  display: flex;
+}
+
+.theme-userInfo .left .userAvatar {
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 50%;
+  border: 6rpx solid #fff;
+}
+
+.theme-userInfo .left .username {
+  flex: 1;
+  padding-top: 30rpx;
+}
+
+.theme-userInfo .left .username .sex {
+  float: left;
+  width: 36rpx;
+  height: 36rpx;
+  margin-left: 30rpx;
+}
+
+.theme-userInfo .left .username .name {
+  float: left;
+  line-height: 30rpx;
+  font-size: 30rpx;
+  color: #fff;
+  margin-left: 10rpx;
+}
+
+.theme-userInfo .left .username .school {
+  display: block;
+  width: 100%;
+  float: left;
+  box-sizing: border-box;
+  padding: 10rpx 0 0 30rpx;
+  color: #fff;
+  font-size: 32rpx;
+}
+
+.theme-userInfo .right text {
+  width: 140rpx;
+  padding: 18rpx 0;
+  background: #fff;
+  text-align: center;
+  color: #667AE7;
+  border-radius: 50rpx;
+  font-size: 24rpx;
+  float: right;
+  margin-top: 28rpx;
+}
+
+.theme-content {
+  width: calc(100% - 80rpx);
+  margin: 0 auto 60rpx;
+}
+
+.theme-content .title {
+  display: contents;
+  width: 100%;
+  font-size: 34rpx;
+  color: #FFFFFF;
+  line-height: 32rpx;
+}
+
+.theme-content .content text {
+  color: #fff;
+  font-size: 30rpx;
+  line-height: 40rpx;
+}
+
+.theme-content .content .showAllDetail {
+  display: inline;
+  text-decoration: underline;
+}
+
+.theme-content .content .top {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 10rpx;
+  border-left: 15rpx solid transparent;
+  border-right: 15rpx solid transparent;
+  border-top: 20rpx solid #fff;
+}
+
+.theme-content .content .bottom {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 10rpx;
+  border-left: 15rpx solid transparent;
+  border-right: 15rpx solid transparent;
+  border-bottom: 20rpx solid #fff;
+}
+
 .theme-content-images{
   display: flex;
   flex-direction: row;
@@ -51,43 +123,94 @@ page{
   justify-content: space-between;
   align-items: center;
   margin-top: 30rpx;
+  margin-bottom: 60rpx;
 }
+
 .theme-content-images>image{
   width: 200rpx;
   height: 175rpx;
   margin-bottom: 20rpx;
 }
+
 .theme-content-options{
   width: 100%;
+  margin-top: 60rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
-.theme-content-options>image{
+
+.theme-content-options .number-follow {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.theme-content-options .comment, .theme-content-options .note {
+  margin-right: 20rpx;
+}
+
+.theme-content-options image{
+  float: right;
   width: 30rpx;
   height: 30rpx;
-  margin: 0 20rpx;
 }
-.theme-content text{
-  font-size: 24rpx;
-  color: #333;
-  line-height: 42rpx;
+
+.theme-content-options .note image {
+  width: 36rpx;
+  height: 36rpx;
 }
+
+.theme-content-options .comment text, .theme-content-options .note text {
+  float: right;
+}
+
+.theme-content-options text {
+  color: #fff;
+  font-size: 30rpx;
+  line-height: 32rpx;
+  margin-left: 5rpx;
+}
+
+.theme-content-options .time  {
+  float: left;
+  min-width: 50%;
+  opacity: 0.6;
+}
+
 .list{
-  margin-top: 68rpx;
   width: 100%;
+  background: #fff;
+  box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.2);
+  border-radius: 50rpx;
+  margin-top: -60rpx;
+  margin-bottom: 60rpx;
 }
-.list-item{
+
+.bottom-text {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 30rpx;
+  color: #999;
+  margin-bottom: 60rpx;
+}
+
+.list-item {
   margin-top: 35rpx;
   width: 100%;
   padding-left: 50rpx;
   padding-right: 50rpx;
   padding-bottom: 35rpx;
   box-sizing: border-box;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #c9c9c9;
 }
-.top{
+
+.list-item:last-child {
+  border-bottom: 0;
+}
+.list-item .top{
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -95,8 +218,8 @@ page{
   width: 100%;
 }
 .avatar{
-  width: 120rpx;
-  height: 120rpx;
+  width: 100rpx;
+  height: 100rpx;
   border-radius: 50%;
 }
 .userinfo-left{
@@ -106,46 +229,55 @@ page{
 .userinfo{
   margin-left: 20rpx;
 }
-.username{
-  font-size: 30rpx;
-}
+
 .userinfo-bottom{
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-top: 10rpx;
 }
+
 .userinfo-bottom text{
-  font-size: 24rpx;
+  font-size: 28rpx;
   color: #666;
   margin-left: 5rpx;
 }
+.userinfo .username {
+  display: flex;
+}
+.userinfo .username text {
+  float: left;
+  font-size: 32rpx;
+  padding-left: 5rpx;
+}
 
-.gender{
+.userinfo .username .gender{
+  float: left;
   width: 32rpx;
   height: 32rpx;
+  margin-top: 8rpx;
 }
 .like-group{
   padding: 10rpx 16rpx;
-  background-color: white;
+  background-color: #667AE7;
+  color: #fff;
   display: flex;
   align-items: center;
   border-radius: 26rpx;
 }
 .like{
-  width: 32rpx;
-  height: 30rpx;
+  width: 34rpx;
+  height: 34rpx;
 }
+
 .like-num{
+  color: #fff;
+  font-size: 24rpx;
   margin-left: 10rpx;
 }
-.like-num{
-  color: #666;
-  font-size: 24rpx;
-}
-.like-num-active{
+/* .like-num-active{
   color: #d81e06;
-}
+} */
 
 .middle{
   margin-top: 35rpx;
@@ -155,12 +287,12 @@ page{
   font-size: 24rpx;
   color: #333;
   line-height: 42rpx;
-  border-bottom: 1rpx dashed#333;
+  border-bottom: 1rpx dashed #b5b5b5;
   padding: 20rpx 0;
   box-sizing: border-box;
 }
 .middle text:last-child{
-  border-bottom: 0rpx dashed#333;
+  border-bottom: 0rpx;
 }
 .bottom{
   display: flex;
