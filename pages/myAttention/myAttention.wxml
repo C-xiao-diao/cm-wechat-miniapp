@@ -1,0 +1,11 @@
+<view class="hisAttention">
+  <view class="hisAttention-item" wx:for="[1,1,1,1,]">
+    <view class="userInfo">
+      <image class="avatar" src="/imgs/icons/no_avatar.png" alt=""></image>
+      <text>中一天</text>
+    </view>
+    <view class="attention-group">
+      <text>关注</text>
+    </view>
+  </view>
+</view>
