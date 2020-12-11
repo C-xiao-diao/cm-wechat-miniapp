@@ -93,17 +93,14 @@
               alt=""></image>
             <view>
               <view class="name-tags">
+                <image class="famous-people-gender"
+                  src="{{item.sex == 1 ? '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}" alt=""></image>
                 <text>{{item.nickname}}</text>
                 <text class="tags">首席体验官</text>
               </view>
               <view class="gender-school">
-                <image class="famous-people-gender"
-                  src="{{item.sex == 1 ? '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}" alt=""></image>
                 <text class="my-school">{{item.school ? item.school.schoolName : "暂无学校"}}</text>
-              </view>
-              <view class="num-group">
-                <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
-                <text class="hot-num">{{item.noteNumber || 0}}</text>
+                <text class="hot-num">音符：{{item.noteNumber || 0}}</text>
               </view>
             </view>
           </view>
@@ -200,16 +197,16 @@
   </view>
   <view class="impromptu-options" wx:if="{{currentTab === 2}}">
     <view catchtap="noInterested">
-      <image class="impromptu-photo" src="./../../imgs/index/not_interested.png" alt=""></image>
-      <text>不感兴趣</text>
+      <image class="impromptu-photo1" src="./../../imgs/index/not_interested.png" alt=""></image>
+      <text class="impromptu-txt">不感兴趣</text>
     </view>
     <view catchtap="navToStartTune">
-      <image class="impromptu-photo" src="./../../imgs/index/add.png" alt=""></image>
-      <text>起个调吧</text>
+      <image class="impromptu-photo2" src="./../../imgs/index/add.png" alt=""></image>
+      <text class="impromptu-txt">起个调吧</text>
     </view>
     <view catchtap="navToFollow" data-themeId="{{list[0].id}}" data-theme="{{list[0].theme}}">
-      <image class="impromptu-photo" src="./../../imgs/index/comment.png" alt=""></image>
-      <text>跟调</text>
+      <image class="impromptu-photo3" src="./../../imgs/index/comment.png" alt=""></image>
+      <text class="impromptu-txt">跟调</text>
     </view>
   </view>
 </view>
