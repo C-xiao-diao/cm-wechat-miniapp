@@ -48,8 +48,10 @@
     </view>
     <view class="top">
       <view class="tabs">
-        <text bindtap="changeTab" class="tab {{currentTab === 0 ? 'active active-01' : ''}} " data-item="{{0}}">嗨C</text>
-        <text bindtap="changeTab" class="tab {{currentTab === 1 ? 'active active-02' : ''}}" data-item="{{1}}">风云人物榜</text>
+        <text bindtap="changeTab" class="tab {{currentTab === 0 ? 'active active-01' : ''}} "
+          data-item="{{0}}">嗨C</text>
+        <text bindtap="changeTab" class="tab {{currentTab === 1 ? 'active active-02' : ''}}"
+          data-item="{{1}}">风云人物榜</text>
         <text bindtap="changeTab" class="tab {{currentTab === 2 ? 'active active-03' : ''}}" data-item="{{2}}">即兴</text>
       </view>
     </view>
@@ -82,27 +84,34 @@
         </view>
 
         <!-- 风云人物榜 -->
-        <view class="famous-people" wx:if="{{currentTab === 1}}" data-id="{{item.id}}" bindtap="navToMemberCenter">
-          <text
-            class="famous-people-num sortpeople{{index}}">{{index === 0 ? '1' : index === 1 ?'2': index === 2 ?'3' : index === 3 ?'4': index === 4 ? '5': index === 5 ?'6': '7'}}</text>
-          <image class="famous-people-avatar"
-            src="{{item.headimgUrl && item.headimgUrl != 'undefined' ? item.headimgUrl : '/imgs/icons/no_avatar.png'}}" alt=""></image>
-          <view>
-            <view class="name-tags">
-              <text>{{item.nickname}}</text>
-              <text class="tags">首席体验官</text>
-            </view>
-            <view class="gender-school">
-              <image class="famous-people-gender"
-                src="{{item.sex == 1 ? '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}" alt=""></image>
-              <text class="my-school">{{item.school ? item.school.schoolName : "暂无学校"}}</text>
-            </view>
-            <view class="num-group">
-              <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
-              <text class="hot-num">{{item.noteNumber || 0}}</text>
+        <view class="famous-people-group">
+          <view class="famous-people" wx:if="{{currentTab === 1}}" data-id="{{item.id}}" bindtap="navToMemberCenter">
+            <text
+              class="famous-people-num sortpeople{{index}}">{{index === 0 ? '1' : index === 1 ?'2': index === 2 ?'3' : index === 3 ?'4': index === 4 ? '5': index === 5 ?'6': '7'}}</text>
+            <image class="famous-people-avatar"
+              src="{{item.headimgUrl && item.headimgUrl != 'undefined' ? item.headimgUrl : '/imgs/icons/no_avatar.png'}}"
+              alt=""></image>
+            <view>
+              <view class="name-tags">
+                <text>{{item.nickname}}</text>
+                <text class="tags">首席体验官</text>
+              </view>
+              <view class="gender-school">
+                <image class="famous-people-gender"
+                  src="{{item.sex == 1 ? '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}" alt=""></image>
+                <text class="my-school">{{item.school ? item.school.schoolName : "暂无学校"}}</text>
+              </view>
+              <view class="num-group">
+                <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
+                <text class="hot-num">{{item.noteNumber || 0}}</text>
+              </view>
             </view>
           </view>
+          <view class="attention-group" wx:if="{{currentTab === 1}}">
+            <text>关注</text>
+          </view>
         </view>
+
       </view>
     </view>
     <!-- 即兴 -->
@@ -110,14 +119,18 @@
       <view class="impromptu-view1"></view>
       <view class="impromptu-view2">
         <view class="impromptu-view3-top">
-          <image class="impromptu-view3-top-avatar" src="{{list[0].studentInformation.headimgUrl ? list[0].studentInformation.headimgUrl : '/imgs/icons/no_avatar.png'}}" alt=""></image>
+          <image class="impromptu-view3-top-avatar"
+            src="{{list[0].studentInformation.headimgUrl ? list[0].studentInformation.headimgUrl : '/imgs/icons/no_avatar.png'}}"
+            alt=""></image>
           <view>
             <view class="name-tags">
               <text>{{list[0].studentInformation.nickname}}</text>
               <text class="tags">首席体验官</text>
             </view>
             <view class="gender-school">
-              <image class="famous-people-gender" src="{{list[0].studentInformation.sex == 1 ? '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}" alt=""></image>
+              <image class="famous-people-gender"
+                src="{{list[0].studentInformation.sex == 1 ? '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}"
+                alt=""></image>
               <!-- <text class="my-school">长沙市雅礼中学</text> -->
               <text class="my-school">{{list[0].school.schoolName}}</text>
               <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
@@ -133,7 +146,8 @@
           <text class="see-details" bindtap="navToDetail">查看全文</text>
         </view>
         <view class="impromptu-view3-images">
-          <image class="impromptu-view3-photo" src="{{item}}" wx:for="{{list[0].picture}}" wx:key="index" alt=""></image>
+          <image class="impromptu-view3-photo" src="{{item}}" wx:for="{{list[0].picture}}" wx:key="index" alt="">
+          </image>
         </view>
         <view class="impromptu-view3-options">
           <view>
@@ -153,18 +167,21 @@
 
       <movable-view class="impromptu-view3" bindtouchstart="bindtouchstart" bindtap="bindViewHandle"
         bindtouchend="bindtouchend" x="{{x}}" direction="horizontal" out-of-bounds wx:if="{{isShowListItem}}"
-        data-themeId="{{list[0].id}}" data-theme="{{list[0].theme}}"
-          data-number="{{list[0].pointPraiseNumber}}" data-picture="{{list[0].picture}}"
-          data-content="{{list[0].supplementaryContent}}">
+        data-themeId="{{list[0].id}}" data-theme="{{list[0].theme}}" data-number="{{list[0].pointPraiseNumber}}"
+        data-picture="{{list[0].picture}}" data-content="{{list[0].supplementaryContent}}">
         <view class="impromptu-view3-top">
-          <image class="impromptu-view3-top-avatar" src="{{list[0].studentInformation.headimgUrl ? list[0].studentInformation.headimgUrl : '/imgs/icons/no_avatar.png'}}" alt=""></image>
+          <image class="impromptu-view3-top-avatar"
+            src="{{list[0].studentInformation.headimgUrl ? list[0].studentInformation.headimgUrl : '/imgs/icons/no_avatar.png'}}"
+            alt=""></image>
           <view>
             <view class="name-tags">
               <text>{{list[0].studentInformation.nickname}}</text>
               <text class="tags">首席体验官</text>
             </view>
             <view class="gender-school">
-              <image class="famous-people-gender" src="{{list[0].studentInformation.sex == 1 ? '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}" alt=""></image>
+              <image class="famous-people-gender"
+                src="{{list[0].studentInformation.sex == 1 ? '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}"
+                alt=""></image>
               <text class="my-school">{{list[0].school.schoolName}}</text>
             </view>
             <view class="num-group">
@@ -181,7 +198,8 @@
           <!-- <text class="see-details" bindtap="navToDetail" data-themeId="{{list[0].id}}" data-index="{{index}}" data-theme="{{list[0].theme}}" data-number="{{list[0].studentInformation.noteNumber || 0}}" data-picture="{{list[0].picture}}" data-content="{{list[0].supplementaryContent}}">查看全文</text> -->
         </view>
         <view class="impromptu-view3-images">
-          <image class="impromptu-view3-photo" src="{{item}}" wx:for="{{list[0].picture}}" wx:key="index" alt=""></image>
+          <image class="impromptu-view3-photo" src="{{item}}" wx:for="{{list[0].picture}}" wx:key="index" alt="">
+          </image>
         </view>
         <view class="impromptu-view3-options">
           <view catchtap="noInterested">
@@ -192,7 +210,7 @@
             <image class="impromptu-view3-photo" src="./../../imgs/icons/add.png" alt=""></image>
             <text>起个调吧</text>
           </view>
-          <view catchtap="navToFollow" data-themeId="{{list[0].id}}" data-theme="{{list[0].theme}}" >
+          <view catchtap="navToFollow" data-themeId="{{list[0].id}}" data-theme="{{list[0].theme}}">
             <image class="impromptu-view3-photo" src="./../../imgs/icons/edit.png" alt=""></image>
             <text>跟调</text>
           </view>
@@ -204,7 +222,8 @@
 
 <!-- 底部栏目模块 -->
 <view class="columns">
-  <view class="column-item  {{columnActiveIndex == 0 ? 'column-item-00': ''}}" data-index="{{0}}" bindtap="selectColumn">
+  <view class="column-item  {{columnActiveIndex == 0 ? 'column-item-00': ''}}" data-index="{{0}}"
+    bindtap="selectColumn">
     <text></text>
     <image src="./../../imgs/index/square.png" alt=""></image>
   </view>
@@ -239,11 +258,12 @@
           {{address}}
         </view>
       </picker> -->
-      <picker class="address-input" mode="multiSelector" bindchange="bindCityChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
-				<view class="picker">
+      <picker class="address-input" mode="multiSelector" bindchange="bindCityChange"
+        bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+        <view class="picker">
           {{address}}
         </view>
-			</picker>
+      </picker>
       <input class="school-input" value="{{schoolName ? schoolName : ''}}" type="text" disabled="true" />
     </view>
     <view class="button-school-group">

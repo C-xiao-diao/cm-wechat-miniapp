@@ -69,15 +69,19 @@
   width: 32rpx;
   height: 30rpx;
 }
-
+.name-tags{
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
 .name-tags text:first-child {
   font-size: 24rpx;
 }
 
 .name-tags text:last-child {
-  font-size: 22rpx;
-  color: #fff;
-  background: red;
+  font-size: 16rpx;
+  color: #D61616;
+  background: rgba(214,22,22,0.2);
   border-radius: 10rpx;
   padding: 2rpx 10rpx;
   box-sizing: border-box;
@@ -251,6 +255,12 @@
   margin-left: 20rpx;
 }
 /* 风云人物 */
+.famous-people-group{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
 .famous-people {
   display: flex;
   flex-direction: row;
@@ -269,6 +279,29 @@
 .gender-school .famous-people-gender {
   width: 32rpx;
   height: 30rpx;
+}
+.attention-group{
+  border: 1rpx solid #666;
+  width: 97rpx;
+  height: 44rpx;
+  border-radius: 22rpx;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.back-fans{
+  border: 1rpx solid #E00842;
+}
+.attention-active{
+  background-color: #E00842;
+}
+.attention-group>text{
+  font-size: 18rpx;
+  color: #666;
+}
+.attention-active>text{
+  color: white;
 }
 /* 即兴 */
 .impromptu{
