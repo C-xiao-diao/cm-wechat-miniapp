@@ -48,7 +48,7 @@ Page({
     //滑动的x坐标
     pageX: 0,
     //滑块的x坐标
-    x: 20,
+    x: 0,
     //栏目的选择索引
     columnActiveIndex: 0,
   },
@@ -525,7 +525,7 @@ Page({
         this.getIndexList(this.data.currentTab, true)
       })
     } else {
-      this.setData({x: 20})
+      this.setData({x: 0})
     }
   },
   // 不感兴趣

@@ -4,20 +4,24 @@
     <text class="button" bindtap="startTune">起个调吧</text>
   </view>
   <view>
-    <input class="title" selection-start="20" selection-end="20" type="text" placeholder="输入你想讨论的问题或话题" bindinput="addTheme" value="{{theme}}"/>
-    <textarea value="{{content}}" maxlength="160" class="addContent" bindinput="addContent" name="" id="" cols="30" rows="10" placeholder="对话题进行额外的补充（最多160个字）"></textarea>
+    <input class="title" selection-start="20" selection-end="20" type="text" placeholder="输入你想讨论的问题或话题"
+      bindinput="addTheme" value="{{theme}}" />
+    <textarea value="{{content}}" maxlength="160" class="addContent" bindinput="addContent" name="" id="" cols="30"
+      rows="10" placeholder="对话题进行额外的补充（最多160个字）"></textarea>
+  </view>
+  <view class="columns">
+    <text bindtap="selectColumn" class="column-item {{columnActiveIndex == 0 ? 'active' : ''}}" data-index="{{0}}">广场</text>
+    <text bindtap="selectColumn" class="column-item {{columnActiveIndex == 1 ? 'active' : ''}}" data-index="{{1}}">美妆</text>
+    <text bindtap="selectColumn" class="column-item {{columnActiveIndex == 2 ? 'active' : ''}}" data-index="{{2}}">颜值</text>
+    <text bindtap="selectColumn" class="column-item {{columnActiveIndex == 3 ? 'active' : ''}}" data-index="{{3}}">篮球</text>
+    <text bindtap="selectColumn" class="column-item {{columnActiveIndex == 4 ? 'active' : ''}}" data-index="{{4}}">游戏</text>
   </view>
   <view class="photo-group">
-    <!-- <view class="add-photo" wx:for="{{picture}}" wx:key="index">
-      <image class="photo" src="{{item}}" alt=""></image>
-    </view>
-    <view class="add-photo" bindtap="addPhoto" wx:if="{{picture.length < 9}}">
-      <image class="photo" src="/imgs/follow/add.jpg" alt=""></image>
-    </view> -->
     <movable-area class="movable-photo-group" out-of-bounds>
-      <movable-view x="{{activeMoveViewIndex == index ? activeMoveX :''}}" y="{{activeMoveViewIndex == index ? activeMoveY :''}}" direction="all" class="add-photo"
-        wx:for="{{picture}}" wx:key="index" bindchange="bindMovableChange" bindtouchstart="bindtouchstart"
-        bindtouchend="bindtouchend" data-index="{{index}}">
+      <movable-view x="{{activeMoveViewIndex == index ? activeMoveX :''}}"
+        y="{{activeMoveViewIndex == index ? activeMoveY :''}}" direction="all" class="add-photo" wx:for="{{picture}}"
+        wx:key="index" bindchange="bindMovableChange" bindtouchstart="bindtouchstart" bindtouchend="bindtouchend"
+        data-index="{{index}}">
         <view clas="movable-photo-item">
           <icon catchtap="cancelSelectPhoto" data-index="{{index}}" class="icon-box-img" type="clear" size="20"></icon>
           <image class="photo" src="{{item}}" alt=""></image>
@@ -30,6 +34,6 @@
     </movable-area>
   </view>
   <view class="tips">
-    <text >小贴士：当提问超过20音符的赞同之后，将无法个人删除</text>
+    <text>小贴士：当提问超过20音符的赞同之后，将无法个人删除</text>
   </view>
 </view>

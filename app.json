@@ -1,8 +1,8 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/startTune/startTune",
     "pages/follow/follow",
+    "pages/startTune/startTune",
     "pages/registerTwo/registerTwo",
     "pages/registerOne/registerOne",
     "pages/forumList/forumList",

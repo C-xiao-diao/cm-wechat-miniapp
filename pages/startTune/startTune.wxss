@@ -40,6 +40,26 @@
   padding-top: 30rpx;
   box-sizing: border-box;
 }
+.columns{
+  border-top: 1rpx solid #ccc;
+  border-bottom: 1rpx solid #ccc;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  height: 120rpx;
+  line-height: 120rpx;
+}
+.column-item{
+  font-size: 22rpx;
+  color: white;
+  background-color: #C9C9C9;
+  border-radius: 25rpx;
+  padding: 14rpx 27rpx;
+  box-sizing: border-box;
+  margin-right: 18rpx;
+}
+.columns>text.active{
+  background-color: #AD86F9 !important;
+}
 /* .photo-group{
   display: flex;
   flex-direction: row;

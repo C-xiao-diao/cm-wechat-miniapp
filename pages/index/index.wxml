@@ -116,60 +116,41 @@
     </view>
     <!-- 即兴 -->
     <movable-area class="impromptu" wx:if="{{currentTab === 2}}">
-      <view class="impromptu-view1"></view>
-      <view class="impromptu-view2">
-        <view class="impromptu-view3-top">
-          <image class="impromptu-view3-top-avatar"
-            src="{{list[0].studentInformation.headimgUrl ? list[0].studentInformation.headimgUrl : '/imgs/icons/no_avatar.png'}}"
-            alt=""></image>
-          <view>
-            <view class="name-tags">
-              <text>{{list[0].studentInformation.nickname}}</text>
-              <text class="tags">首席体验官</text>
-            </view>
-            <view class="gender-school">
-              <image class="famous-people-gender"
-                src="{{list[0].studentInformation.sex == 1 ? '/imgs/forumList/male.png' : '/imgs/forumList/female.png'}}"
-                alt=""></image>
-              <!-- <text class="my-school">长沙市雅礼中学</text> -->
-              <text class="my-school">{{list[0].school.schoolName}}</text>
-              <image class="note_active" src="/imgs/icons/note_active.png" alt=""></image>
-              <text class="hot-num">{{list[0].pointPraiseNumber}}</text>
-            </view>
-          </view>
-        </view>
-        <view class="impromptu-view3-title">
-          <text>{{list[0].theme}}</text>
-        </view>
-        <view style="impromptu-view3-content-view">
-          <text class="impromptu-view3-content">{{list[0].supplementaryContent}}</text>
-          <text class="see-details" bindtap="navToDetail">查看全文</text>
-        </view>
-        <view class="impromptu-view3-images">
-          <image class="impromptu-view3-photo" src="{{item}}" wx:for="{{list[0].picture}}" wx:key="index" alt="">
-          </image>
-        </view>
-        <view class="impromptu-view3-options">
-          <view>
-            <image class="impromptu-view3-photo" src="./../../imgs/icons/no_like.png" alt=""></image>
-            <text>不感兴趣</text>
-          </view>
-          <view catchtap="navToStartTune" wx:if="{{currentTab === 2}}">
-            <image class="impromptu-view3-photo" src="./../../imgs/icons/add.png" alt=""></image>
-            <text>起个调吧</text>
-          </view>
-          <view bindtap="navToFollow">
-            <image class="impromptu-view3-photo" src="./../../imgs/icons/edit.png" alt=""></image>
-            <text>跟调</text>
-          </view>
-        </view>
-      </view>
-
+      <!-- 模糊图 -->
+      <movable-view class="impromptu-view2" bindtouchstart="bindtouchstart" bindtap="bindViewHandle"
+        bindtouchend="bindtouchend" x="{{x}}" direction="horizontal" out-of-bounds wx:if="{{isShowListItem}}"
+        data-themeId="{{list[0].id}}" data-theme="{{list[0].theme}}" data-number="{{list[0].pointPraiseNumber}}"
+        data-picture="{{list[0].picture}}" data-content="{{list[0].supplementaryContent}}">
+        <image class="blurry" src="./../../imgs/index/blurry.jpg" alt=""></image>
+      </movable-view>
+      <!-- 真实卡片 -->
       <movable-view class="impromptu-view3" bindtouchstart="bindtouchstart" bindtap="bindViewHandle"
         bindtouchend="bindtouchend" x="{{x}}" direction="horizontal" out-of-bounds wx:if="{{isShowListItem}}"
         data-themeId="{{list[0].id}}" data-theme="{{list[0].theme}}" data-number="{{list[0].pointPraiseNumber}}"
         data-picture="{{list[0].picture}}" data-content="{{list[0].supplementaryContent}}">
         <view class="impromptu-view3-top">
+          <image class="impromptu-view3-top-question" src="./../../imgs/index/question.png" alt=""></image>
+          <text class="impromptu-view3-top-text">你可能感兴趣的</text>
+        </view>
+        <view>
+          <image class="impromptu-view3-comma-up" src="./../../imgs/index/comma.png" alt=""></image>
+        </view>
+        <view class="impromptu-view3-content-view">
+          <text class="impromptu-view3-title">{{list[0].theme}}</text>
+          <!-- <text class="impromptu-view3-content">{{list[0].supplementaryContent}}</text> -->
+          <text
+            class="impromptu-view3-content">君泽：不瞒你们说，昨天我直接杀疯了[doge]昨天我像个神一样[赞]昨天我们去玩密室，小虎GALA小龙堡三个人打不过我一个，直接被我杀....君泽：不瞒你们说，昨天我直接杀疯了[doge]昨天我像个神一样[赞]昨天我们去玩密室，小虎GALA小龙堡三个人打不过我一个，直接被我杀</text>
+        </view>
+        <view class="impromptu-view3-comma-two">
+          <image class="impromptu-view3-comma-down" src="./../../imgs/index/comma.png" alt=""></image>
+        </view>
+        <view class="impromptu-view3-bottom">
+          <image class="impromptu-view3-bottom-avatar"
+            src="{{list[0].studentInformation.headimgUrl ? list[0].studentInformation.headimgUrl : '/imgs/icons/no_avatar.png'}}"
+            alt=""></image>
+          <text>{{list[0].studentInformation.nickname}}</text>
+        </view>
+        <!-- <view class="impromptu-view3-top">
           <image class="impromptu-view3-top-avatar"
             src="{{list[0].studentInformation.headimgUrl ? list[0].studentInformation.headimgUrl : '/imgs/icons/no_avatar.png'}}"
             alt=""></image>
@@ -195,7 +176,6 @@
         </view>
         <view style="impromptu-view3-content-view">
           <text class="impromptu-view3-content">{{list[0].supplementaryContent}}</text>
-          <!-- <text class="see-details" bindtap="navToDetail" data-themeId="{{list[0].id}}" data-index="{{index}}" data-theme="{{list[0].theme}}" data-number="{{list[0].studentInformation.noteNumber || 0}}" data-picture="{{list[0].picture}}" data-content="{{list[0].supplementaryContent}}">查看全文</text> -->
         </view>
         <view class="impromptu-view3-images">
           <image class="impromptu-view3-photo" src="{{item}}" wx:for="{{list[0].picture}}" wx:key="index" alt="">
@@ -213,10 +193,24 @@
           <view catchtap="navToFollow" data-themeId="{{list[0].id}}" data-theme="{{list[0].theme}}">
             <image class="impromptu-view3-photo" src="./../../imgs/icons/edit.png" alt=""></image>
             <text>跟调</text>
-          </view>
-        </view>
+          </view> -->
+        <!-- </view> -->
       </movable-view>
     </movable-area>
+  </view>
+  <view class="impromptu-options" wx:if="{{currentTab === 2}}">
+    <view catchtap="noInterested">
+      <image class="impromptu-photo" src="./../../imgs/index/not_interested.png" alt=""></image>
+      <text>不感兴趣</text>
+    </view>
+    <view catchtap="navToStartTune">
+      <image class="impromptu-photo" src="./../../imgs/index/add.png" alt=""></image>
+      <text>起个调吧</text>
+    </view>
+    <view catchtap="navToFollow" data-themeId="{{list[0].id}}" data-theme="{{list[0].theme}}">
+      <image class="impromptu-photo" src="./../../imgs/index/comment.png" alt=""></image>
+      <text>跟调</text>
+    </view>
   </view>
 </view>
 

@@ -14,7 +14,7 @@
   padding: 30rpx 30rpx 50rpx 30rpx;
   box-sizing: border-box;
   background: #fff;
-  box-shadow: 0px 0px 20rpx 0rpx rgba(0, 0, 0, 0.18); 
+  box-shadow: 0px 0px 20rpx 0rpx rgba(0, 0, 0, 0.18);
   border-radius: 0px 0px 40rpx 40rpx;
 }
 
@@ -69,11 +69,13 @@
   width: 32rpx;
   height: 30rpx;
 }
-.name-tags{
+
+.name-tags {
   display: inline-flex;
   align-items: center;
   vertical-align: middle;
 }
+
 .name-tags text:first-child {
   font-size: 24rpx;
 }
@@ -81,7 +83,7 @@
 .name-tags text:last-child {
   font-size: 16rpx;
   color: #D61616;
-  background: rgba(214,22,22,0.2);
+  background: rgba(214, 22, 22, 0.2);
   border-radius: 10rpx;
   padding: 2rpx 10rpx;
   box-sizing: border-box;
@@ -100,26 +102,31 @@
   margin-left: 10rpx;
   margin-right: 10rpx;
 }
-.userInfo-detail >.userInfo-hot{
+
+.userInfo-detail>.userInfo-hot {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   margin-top: 10rpx;
 }
-.userInfo-detail >.userInfo-hot>.note_active{
+
+.userInfo-detail>.userInfo-hot>.note_active {
   width: 28rpx;
   height: 28rpx;
 }
+
 .userInfo-hot {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
 }
-.num-group{
+
+.num-group {
   display: flex;
   align-items: center;
 }
+
 .note_active {
   width: 28rpx;
   height: 28rpx;
@@ -129,19 +136,23 @@
   font-size: 24rpx;
   margin-left: 14rpx;
 }
+
 /* 未登录/未授权 */
-.userStatus{
+.userStatus {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
 }
-.userStatus text{
+
+.userStatus text {
   font-size: 24rpx;
 }
-.userStatus text:first-child{
+
+.userStatus text:first-child {
   margin-left: 20rpx;
 }
-.userStatus text:last-child{
+
+.userStatus text:last-child {
   margin-left: 20rpx;
   color: blue;
   border-bottom: 1rpx solid blue;
@@ -181,12 +192,15 @@
   color: #000;
   color: white;
 }
+
 .tabs>text.active-01 {
   background-color: #F19D8E;
 }
+
 .tabs>text.active-02 {
   background-color: #4998F7;
 }
+
 .tabs>text.active-03 {
   background-color: #77B7CB;
 }
@@ -199,7 +213,7 @@
   box-shadow: 0 0 13rpx rgba(0, 0, 0, 0.3);
   border-radius: 10rpx;
   background: white;
-  margin-bottom: 60rpx;
+  margin-bottom: 260rpx;
 }
 
 .hotlist-content-item {
@@ -228,7 +242,10 @@
   color: #666;
 }
 
-.sortnum0,.sortpeople0,.sortpeople1,.sortpeople2 {
+.sortnum0,
+.sortpeople0,
+.sortpeople1,
+.sortpeople2 {
   color: #eb444d;
 }
 
@@ -245,22 +262,26 @@
   white-space: nowrap;
   overflow: hidden;
 }
-.new-image{
+
+.new-image {
   width: 100rpx;
   height: 100rpx;
 }
-.fire-image{
+
+.fire-image {
   width: 40rpx;
   height: 40rpx;
   margin-left: 20rpx;
 }
+
 /* 风云人物 */
-.famous-people-group{
+.famous-people-group {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
+
 .famous-people {
   display: flex;
   flex-direction: row;
@@ -270,17 +291,20 @@
 .famous-people-num {
   font-size: 48rpx;
 }
+
 .famous-people .famous-people-avatar {
   width: 120rpx;
   height: 120rpx;
   border-radius: 50%;
   margin: 0 30rpx;
 }
+
 .gender-school .famous-people-gender {
   width: 32rpx;
   height: 30rpx;
 }
-.attention-group{
+
+.attention-group {
   border: 1rpx solid #666;
   width: 97rpx;
   height: 44rpx;
@@ -290,58 +314,52 @@
   align-items: center;
   justify-content: center;
 }
-.back-fans{
+
+.back-fans {
   border: 1rpx solid #E00842;
 }
-.attention-active{
+
+.attention-active {
   background-color: #E00842;
 }
-.attention-group>text{
+
+.attention-group>text {
   font-size: 18rpx;
   color: #666;
 }
-.attention-active>text{
+
+.attention-active>text {
   color: white;
 }
+
 /* 即兴 */
-.impromptu{
-  margin-top: 80rpx;
+.impromptu {
+  margin-top: 40rpx;
   position: relative;
   width: 150%;
-  height: 1030rpx;
+  height: 750rpx;
 }
-.impromptu-view1,
+
 .impromptu-view2,
 .impromptu-view3 {
   margin-top: 35rpx;
 }
-.impromptu-view1{
-  /* width: 100%; */
+
+.impromptu-view2 {
   width: 650rpx;
-  height: 1000rpx;
-  background: white;
-  position: absolute;
-  top: -80rpx;
-  left: 0rpx;
-  z-index: -1;
-  border-radius: 10rpx;
-  box-sizing: border-box;
-  box-shadow: 0 0 13rpx rgba(0, 0, 0, 0.3);
-}
-.impromptu-view2{
-  /* width: 100%; */
-  width: 650rpx;
-  height: 1000rpx;
+  height: 700rpx;
   background: white;
   position: absolute;
   top: -60rpx;
   left: 20rpx;
-  z-index: 1;
+  /* z-index: 1; */
   border-radius: 10rpx;
-  padding: 50rpx;
-  box-sizing: border-box;
-  box-shadow: 0 0 13rpx rgba(0, 0, 0, 0.3);
 }
+.blurry{
+  width: 100%;
+  height: 100%;
+}
+
 /* .impromptu-view3{
   width: 100%;
   height: 1000rpx;
@@ -358,44 +376,50 @@
 } */
 
 .impromptu-view3 {
-  /* width: 100%; */
-  width: 650rpx;
-  height: 1000rpx;
+  width: 690rpx;
+  height: 700rpx;
   padding: 50rpx;
-  margin-top: -20rpx;
-  margin-left: 0rpx;
-  z-index: 999999;
+  /* z-index: 999999; */
   box-sizing: border-box;
   background: white;
   border-radius: 10rpx;
   box-shadow: 0 0 13rpx rgba(0, 0, 0, 0.3);
 }
+
 .impromptu-view3-top {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: flex-end;
 }
-.impromptu-view3-top-avatar {
-  width: 120rpx;
-  height: 120rpx;
-  border-radius: 50%;
-  margin-right: 35rpx;
+
+.impromptu-view3-top-question {
+  width: 20rpx;
+  height: 25rpx;
 }
-.impromptu-view3-title{
-  margin-top: 35rpx;
+
+.impromptu-view3-top-text {
+  font-size: 20rpx;
+  color: #666;
+  margin-left: 9rpx;
 }
-.impromptu-view3-title text{
-  font-weight: 500;
+
+.impromptu-view3-comma-up {
+  width: 109rpx;
+  height: 105rpx;
+  margin-top: 69rpx;
 }
-.impromptu-view3-content-view{
-  /* display: inline-flexbox; */
+
+.impromptu-view3-content-view {
+  display: flex;
   flex-direction: column;
 }
-.impromptu-view3-content {
-  min-height: 70rpx;
-  font-size: 24rpx;
-  color: #333;
-  line-height: 42rpx;
+
+.impromptu-view3-title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #000;
+  line-height: 84rpx;
   display: -webkit-inline-box;
   text-overflow: ellipsis;
   word-break: break-all;
@@ -404,57 +428,70 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp:2;
 }
-.see-details{
-  font-size: 24rpx;
-  color: blue;
+
+.impromptu-view3-content {
+  font-size: 18rpx;
+  color: #666;
+  line-height: 31rpx;
+  display: -webkit-inline-box;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  overflow: hidden;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:3;
+}
+
+.impromptu-view3-comma-two {
   display: flex;
-  
+  justify-content: flex-end;
+  margin-top: 14rpx;
 }
-.impromptu-view3-images {
-  min-height: 420rpx;
-  /* display: flex; */
-  /* flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start; */
-  margin-top: 30rpx;
-  flex-wrap: wrap;
+
+.impromptu-view3-comma-down {
+  width: 109rpx;
+  height: 105rpx;
+  transform: rotate(180deg);
+  text-align: right;
 }
-.impromptu-view3-photo {
-  width: 160rpx;
-  height: 115rpx;
-  margin-bottom: 20rpx;
-  margin-right: 20rpx;
+
+.impromptu-view3-bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 46rpx;
 }
-.impromptu-view3-options{
+
+.impromptu-view3-bottom-avatar {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+}
+
+.impromptu-view3-bottom>text {
+  font-size: 24rpx;
+  margin-left: 25rpx;
+}
+/* 操作选项组合 */
+.impromptu-options{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-top: 30rpx;
+  padding: 46rpx 88rpx;
+  box-sizing: border-box;
+  margin-bottom: 200rpx;
 }
-.impromptu-view3-options > view:first-child{
+.impromptu-options> view{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.impromptu-view3-options > view:nth-child(2){
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.impromptu-view3-options > view:last-child{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.impromptu-view3-options > view > image{
+.impromptu-photo{
   width: 50rpx;
   height: 50rpx;
 }
-
 /* 切换学校弹框 */
 .mask {
   position: fixed;
@@ -468,49 +505,57 @@
   align-items: center;
 }
 
-.school-group{
+.school-group {
   background: white;
   width: 90%;
   padding: 50rpx;
   box-sizing: border-box;
 }
-.input-school-group{
+
+.input-school-group {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.input-school-group input{
+
+.input-school-group input {
   padding: 20rpx 0rpx;
   /* box-sizing: border-box; */
   width: 100%;
   margin-top: 20rpx;
 }
-.button-school-group{
+
+.button-school-group {
   display: flex;
   justify-content: center;
   margin-top: 50rpx;
 }
-.address-input,.school-input{
+
+.address-input,
+.school-input {
   border: 1rpx solid #ccc;
 }
-.address-input{
+
+.address-input {
   width: 100%;
   /* width: 150rpx; */
   /* margin-right: 30rpx; */
 }
-.picker{
+
+.picker {
   padding: 20rpx 30rpx;
   /* box-sizing: border-box; */
   width: 100%;
 }
+
 /* 学校列表弹框 */
-.schoolList{
+.schoolList {
   display: flex;
   flex-direction: column;
-  width:82%;
+  width: 82%;
   height: 400rpx;
   /* max-height: 400rpx; */
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   overflow-x: hidden;
   z-index: 10;
   position: absolute;
@@ -520,15 +565,16 @@
   padding: 20rpx 40rpx;
   box-sizing: border-box;
 }
-.schoolList>text{
+
+.schoolList>text {
   line-height: 50rpx;
   font-size: 36rpx;
 }
 
 /* 底部的栏目 */
-.columns{
+.columns {
   width: 100%;
-  padding: 20rpx 30rpx; 
+  padding: 20rpx 30rpx;
   background-color: white;
   box-sizing: border-box;
   position: fixed;
@@ -540,34 +586,42 @@
   justify-content: space-between;
   box-shadow: 0rpx 0rpx 20rpx 0rpx rgba(0, 0, 0, 0.18);
 }
-.column-item{
+
+.column-item {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.column-item>text{
+
+.column-item>text {
   height: 10rpx;
   width: 10rpx;
   border-radius: 50%;
 }
-.column-item image{
+
+.column-item image {
   width: 115rpx;
   height: 150rpx;
   margin-top: 5rpx;
 }
-.column-item-00>text{
+
+.column-item-00>text {
   background-color: #AE86F9;
 }
-.column-item-01>text{
+
+.column-item-01>text {
   background-color: #E3194E;
 }
-.column-item-02>text{
+
+.column-item-02>text {
   background-color: #EC3D8D;
 }
-.column-item-03>text{
+
+.column-item-03>text {
   background-color: #F9A825;
 }
-.column-item-04>text{
+
+.column-item-04>text {
   background-color: #A1ACE5;
 }
