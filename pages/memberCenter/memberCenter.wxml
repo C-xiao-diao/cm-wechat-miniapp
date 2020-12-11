@@ -1,26 +1,44 @@
 <view class="container" bind:tap="closeList">
     <view class="header">
-        <view class="avatar-erea">
-            <image class="avatar" bindtap="previewImage" data-src="{{userInfo.headimgUrl}}" src="{{userInfo.headimgUrl}}"></image>
-            <image class="camera" mode="aspecFill" src="/imgs/icons/camera.png" catchtap="headimage"></image>
-        </view>
-        <view class="nickname">
-            <text>{{userInfo.nickname}}</text>
-            <!-- <image class="edit-nickname" bind:tap="editNickname" src="/imgs/icons/pen.png"></image> -->
-        </view>
-        <view class="membership">
-            <view class="point" bind:tap="toInvite">
-                <text wx:if="{{ifSelf}}">我的音符</text>
-                <image src="/imgs/icons/note_active.png"></image>
-                <text>{{userInfo.noteNumber}}</text>
+        <view class="userInfo">
+            <view class="avatar-erea">
+                <image class="avatar" bindtap="previewImage" data-src="{{userInfo.headimgUrl}}" src="{{userInfo.headimgUrl}}"></image>
+                <image class="camera" wx:if="{{ifSelf}}" mode="aspecFill" src="/imgs/icons/camera.png" catchtap="headimage"></image>
             </view>
-            <text class="my-tag">首席体验官</text>
+            <view class="name-tag">
+                <text class="username">{{userInfo.nickname}}</text>
+                <view class="note">
+                    <image class="sex" src="{{ userInfo.sex === 1 ? '/imgs/icons/male_gray.png' : '/imgs/icons/female_gray.png'}}"></image>
+                    <text class="tag">首席体验官</text>
+                </view>
+            </view>
+            <view class="focus" wx:if="{{!ifSelf}}">
+                <text>关注</text>
+            </view>
+        </view>
+        <view class="user-num-list">
+            <view>
+                <text class="num">11</text>
+                <text class="tit">关注</text>
+            </view>
+            <view>
+                <text class="num">11</text>
+                <text class="tit">粉丝</text>
+            </view>
+            <view>
+                <text class="num">{{userInfo.noteNumber}}</text>
+                <text class="tit">音符</text>
+            </view>
         </view>
     </view>
 
     <view class="swiper-tab">
-        <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" catchtap="swichNav">起个调吧</view>
-        <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" catchtap="swichNav">跟调</view>
+        <view class="list-left swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="{{0}}" catchtap="swichNav">
+            <text>起个调吧</text>
+        </view>
+        <view class="list-right swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="{{1}}" catchtap="swichNav">
+            <text>跟调</text>
+        </view>
     </view>
 
     <!-- 起个调 -->
@@ -36,7 +54,7 @@
             <text class="article-content" bindtap="navToForumList" data-themeId="{{item.id}}" data-index="{{index}}" data-theme="{{item.theme}}"
                 data-number="{{item.pointPraiseNumber}}" data-picture="{{item.picture}}"
                 data-content="{{item.supplementaryContent}}">
-                <text style="border-bottom: {{ index != (item.supplementaryContent.length-1) ? '2rpx dashed #333': '' }}" 
+                <text style="border-bottom: {{ index != (item.supplementaryContent.length-1) ? '2rpx dashed #b5b5b5': '' }}" 
                 for-index="{{index}}" wx:for="{{item.supplementaryContent}}" wx:key="id" wx:for-item="obj">{{obj}}</text>
             </text>
             <view class="article-images">
@@ -45,7 +63,7 @@
             <view class="article-hot">
                 <text class="article-time">{{item.releaseTime}}</text>
                 <view>
-                    <image src="/imgs/icons/note_active.png"></image>
+                    <image src="/imgs/icons/note_blue.png"></image>
                     <text>{{item.pointPraiseNumber}}</text>
                 </view>
             </view>
@@ -65,7 +83,7 @@
             <text class="article-content" bindtap="navToForumList" data-themeId="{{item.themeId}}" data-index="{{}}" data-theme="{{item.theme.theme}}"
                 data-number="{{item.theme.pointPraiseNumber}}" data-picture="{{item.theme.picture}}"
                 data-content="{{item.theme.supplementaryContent}}">
-                <text style="border-bottom: {{ index != (item.content.length-1) ? '2rpx dashed #333': '' }}" 
+                <text style="border-bottom: {{ index != (item.content.length-1) ? '2rpx dashed #b5b5b5': '' }}" 
                 for-index="{{index}}" wx:for="{{item.content}}" wx:key="id" wx:for-item="obj">{{obj}}</text>
             </text>
             <view class="article-images">
@@ -74,12 +92,14 @@
             <view class="article-hot">
                 <text class="article-time">{{item.releaseTime}}</text>
                 <view>
-                    <image src="/imgs/icons/note_active.png"></image>
+                    <image src="/imgs/icons/note_blue.png"></image>
                     <text>{{item.pointPraiseNumber}}</text>
                 </view>
             </view>
         </view>
     </view>
+
+    <text class="bottom-text">已经到底啦~</text>
 
     <!-- 编辑昵称对话框 -->
     <view class="editModal" wx:if="{{showEditModal}}">

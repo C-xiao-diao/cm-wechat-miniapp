@@ -1,121 +1,155 @@
 
 /* 头部样式 */
 Page {
-    background: #f9f9f9;
+    background: #F4F6F8;
     overflow-X: hidden;
 }
 
-.header{
+.header {
     width: 100%;
+    box-sizing: border-box;
+    background: #667AE7;
+    padding: 50rpx 0;
+}
+
+.userInfo {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    background: #fff;
-    padding-bottom: 50rpx;
+    width: calc(100% - 80rpx);
+    margin: 0 auto 30rpx;
 }
 
 .avatar-erea {
-    margin: 30rpx 0;
-    width: 150rpx;
-    height: 150rpx;
+    width: 120rpx;
+    height: 120rpx;
     border-radius: 50%;
     background: #eee;
     position: relative;
+    border: 6rpx solid #fff;
+    margin-right: 30rpx;
 }
 
 .avatar-erea image.avatar {
-    width: 150rpx;
-    height: 150rpx;
+    width: 120rpx;
+    height: 120rpx;
     border-radius: 50%;
 }
 
 .camera {
     position: absolute;
-    right: -20rpx;
-    bottom: -5rpx;
+    right: -28rpx;
+    bottom: -10rpx;
     width: 80rpx;
     height: 80rpx;
 }
 
-.text {
-    line-height: 50rpx; 
-    color:  lightgray; 
-    font-size: 35rpx; 
+.name-tag {
+    flex: 1;
+    flex-direction: row;
 }
 
-.nickname {
-    display: flex;
+.name-tag .username {
+    display: block;
+    width: 100%;
+    color: #fff;
+    font-size: 32rpx;
+    margin: 10rpx 0 10rpx 10rpx;
 }
 
-.nickname text {
-    font-size: 36rpx;
+.name-tag .note .sex {
+    float: left;
+    width: 38rpx;
+    height: 38rpx;
+    margin-top: 10rpx;
 }
 
-.nickname image {
-    width: 40rpx;
-    height: 40rpx;
+.name-tag .note .tag {
+    float: left;
+    color: #fff;
+    font-size: 30rpx;
+    padding: 5rpx 15rpx;
+    background: rgba(255,255,255,0.3);
+    border-radius: 25rpx;
     margin-left: 10rpx;
 }
 
-.membership {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    flex-direction: column;
-    font-size: 30rpx;
-    padding: 0 20rpx;
-    box-sizing: border-box;
+.focus text {
+    display: block;
+    width: 140rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    color: #667AE7;
+    background: #fff;
+    text-align: center;
+    border-radius: 50rpx;
+    margin-top: 30rpx;
+    font-size: 24rpx;
 }
 
-.membership .point {
-    margin: 0 30rpx 10rpx 0;
-    padding-left: 10rpx;
+.user-num-list {
+    float: left;
+    width: 50%;
+    padding-bottom: 60rpx;
+    margin: 0 0 0 40rpx;
     display: flex;
     flex-direction: row;
-    align-items: center;
-}
-
-.membership .point text {
-    font-size: 22rpx;
-}
-
-.membership image {
-    margin: 5rpx 10rpx 0 10rpx;
-    width: 26rpx;
-    height: 26rpx;
-}
-
-.membership .my-tag {
-    background: #fe0000;
     color: #fff;
-    font-size: 28rpx;
-    border-radius: 10rpx;
-    padding: 0 10rpx;
-    box-sizing: border-box;
+    font-size: 30rpx;
+}
+
+.user-num-list > view {
     margin-right: 30rpx;
 }
 
+.user-num-list > view text {
+    display: block;
+    width: 100%;
+    text-align: center;
+    line-height: 40rpx;
+}
 /* 头部样式END */
 
 /* tab切换 */
 .swiper-tab {
     width: 100%;
     display: flex;
+    background: #fff;
+    border-radius: 50rpx 50rpx 0 0;
+    box-shadow: 0 -5rpx 10rpx rgba(0,0,0,0.2);
+    border-bottom: 2rpx solid #e5e5e5;
+    margin-top: -60rpx;
+    overflow: hidden;
+    font-size: 32rpx;
 }
 
 .swiper-tab-list {
-    width: 50%;
-    background: #fff;
+    flex: 1;
     text-align: center;
     line-height: 100rpx;
     border-top: 2rpx solid #e5e5e5;
+    box-sizing: border-box;
+    color: #666;
+}
+
+.swiper-tab-list text {
+    border-bottom: 8rpx solid #fff;
+}
+
+.list-left {
+    text-align: right;
+    padding-right: 50rpx;
+}
+
+.list-right {
+    text-align: left;
+    padding-left: 50rpx;
 }
 
 .swiper-tab-list.on {
-    background: #898989;
-    color: #fff;
+    color: #000;
+}
+
+.swiper-tab-list.on text {
+    border-bottom: 8rpx solid #667AE7;
 }
 /* tab切换END */
 
@@ -123,6 +157,7 @@ Page {
 /* acticle样式 */
 .swiper-box {
     width: 100%;
+    box-sizing: border-box;
     margin-top: 30rpx;
 }
 
@@ -138,8 +173,13 @@ swiper-item {
 }
 
 .article-area {
-    width: 90%;
-    margin: 20rpx auto 50rpx;
+    width: calc(100% - 80rpx);
+    margin: 0 auto;
+    padding: 36rpx;
+    background: #fff;
+    box-sizing: border-box;
+    margin-bottom: 30rpx;
+    /* margin: 20rpx auto 50rpx; */
 }
 
 .article-title {
@@ -150,7 +190,8 @@ swiper-item {
     display: block;
     flex: 1;
     height: 50rpx;
-    font-size: 34rpx;
+    font-size: 32rpx;
+    color: #000;
     line-height: 50rpx;
     margin-bottom: 10rpx;
     overflow: hidden;
@@ -171,8 +212,8 @@ more-button {
     display: block;
     width: 100%;
     line-height: 40rpx;
-    font-size: 30rpx;
-    color: #333;
+    font-size: 28rpx;
+    color: #999;
     padding: 20rpx;
     box-sizing: border-box;
 }
@@ -203,17 +244,16 @@ more-button {
 }
 
 .article-time {
-    font-size: 32rpx;
+    font-size: 28rpx;
     line-height: 50rpx;
     color: #666;
 }
 
 .article-hot view {
     display: flex;
-    /* width: 120rpx; */
     background: #fff;
     border-radius: 25rpx;
-    padding: 5rpx 20rpx 5rpx 10rpx;
+    padding: 5rpx 0 5rpx 10rpx;
 }
 
 .article-hot image {
@@ -228,7 +268,16 @@ more-button {
 .article-hot view text {
     font-size: 32rpx;
     line-height: 50rpx;
-    color: #d81501;
+    color: #667AE7;
+}
+
+.bottom-text {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 30rpx;
+    color: #999;
+    margin: 20rpx 0 60rpx;
 }
 /* acticle样式END */
 

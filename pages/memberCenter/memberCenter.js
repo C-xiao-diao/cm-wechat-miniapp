@@ -271,10 +271,10 @@ Page({
     //tab切换
     swichNav: function( e ) {
         const { themePage, followPage, ifSelf, option } = this.data;
-        if( this.data.currentTab === e.target.dataset.current ) {
+        if( this.data.currentTab === e.currentTarget.dataset.current ) {
             return false;
         } else {
-            let currentTab = e.target.dataset.current;
+            let currentTab = e.currentTarget.dataset.current;
             if(currentTab==0 && ifSelf){
                 this.getMyTheme(app.globalData.studentId, themePage);
             }else if(currentTab==1 && ifSelf){
