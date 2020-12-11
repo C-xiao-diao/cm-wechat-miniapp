@@ -24,7 +24,7 @@ Page {
     border-radius: 50%;
     background: #eee;
     position: relative;
-    border: 6rpx solid #fff;
+    border: 3rpx solid #fff;
     margin-right: 30rpx;
 }
 
@@ -51,21 +51,21 @@ Page {
     display: block;
     width: 100%;
     color: #fff;
-    font-size: 32rpx;
+    font-size: 24rpx;
     margin: 10rpx 0 10rpx 10rpx;
 }
 
 .name-tag .note .sex {
     float: left;
-    width: 38rpx;
-    height: 38rpx;
+    width: 26rpx;
+    height: 26rpx;
     margin-top: 10rpx;
 }
 
 .name-tag .note .tag {
     float: left;
     color: #fff;
-    font-size: 30rpx;
+    font-size: 16rpx;
     padding: 5rpx 15rpx;
     background: rgba(255,255,255,0.3);
     border-radius: 25rpx;
@@ -106,6 +106,14 @@ Page {
     text-align: center;
     line-height: 40rpx;
 }
+
+.user-num-list > view .num {
+    font-size: 24rpx;
+}
+
+.user-num-list > view .tit {
+    font-size: 16rpx;
+}
 /* 头部样式END */
 
 /* tab切换 */
@@ -131,7 +139,8 @@ Page {
 }
 
 .swiper-tab-list text {
-    border-bottom: 8rpx solid #fff;
+    font-size: 24rpx;
+    border-bottom: 4rpx solid #fff;
 }
 
 .list-left {
@@ -190,7 +199,7 @@ swiper-item {
     display: block;
     flex: 1;
     height: 50rpx;
-    font-size: 32rpx;
+    font-size: 24rpx;
     color: #000;
     line-height: 50rpx;
     margin-bottom: 10rpx;
@@ -212,8 +221,8 @@ more-button {
     display: block;
     width: 100%;
     line-height: 40rpx;
-    font-size: 28rpx;
-    color: #999;
+    font-size: 18rpx;
+    color: #666;
     padding: 20rpx;
     box-sizing: border-box;
 }
@@ -244,7 +253,7 @@ more-button {
 }
 
 .article-time {
-    font-size: 28rpx;
+    font-size: 18rpx;
     line-height: 50rpx;
     color: #666;
 }
@@ -258,15 +267,15 @@ more-button {
 
 .article-hot image {
     float: left;
-    margin: 8rpx 10rpx 0 10rpx;
-    width: 36rpx;
-    height: 36rpx;
+    margin: 18rpx 10rpx 0 10rpx;
+    width: 20rpx;
+    height: 20rpx;
     line-height: 50rpx;
     vertical-align: middle;
 }
 
 .article-hot view text {
-    font-size: 32rpx;
+    font-size: 18rpx;
     line-height: 50rpx;
     color: #667AE7;
 }
@@ -275,8 +284,8 @@ more-button {
     display: block;
     width: 100%;
     text-align: center;
-    font-size: 30rpx;
-    color: #999;
+    font-size: 18rpx;
+    color: #666;
     margin: 20rpx 0 60rpx;
 }
 /* acticle样式END */

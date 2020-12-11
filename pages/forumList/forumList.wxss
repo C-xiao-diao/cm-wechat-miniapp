@@ -27,7 +27,7 @@ page{
   width: 110rpx;
   height: 110rpx;
   border-radius: 50%;
-  border: 6rpx solid #fff;
+  border: 3rpx solid #fff;
 }
 
 .theme-userInfo .left .username {
@@ -37,8 +37,9 @@ page{
 
 .theme-userInfo .left .username .sex {
   float: left;
-  width: 36rpx;
-  height: 36rpx;
+  width: 32rpx;
+  height: 32rpx;
+  opacity: 0.6;
   margin-left: 30rpx;
 }
 
@@ -57,12 +58,13 @@ page{
   box-sizing: border-box;
   padding: 10rpx 0 0 30rpx;
   color: #fff;
-  font-size: 32rpx;
+  font-size: 22rpx;
 }
 
 .theme-userInfo .right text {
   width: 140rpx;
-  padding: 18rpx 0;
+  height: 60rpx;
+  line-height: 60rpx;
   background: #fff;
   text-align: center;
   color: #667AE7;
@@ -80,14 +82,14 @@ page{
 .theme-content .title {
   display: contents;
   width: 100%;
-  font-size: 34rpx;
+  font-size: 30rpx;
   color: #FFFFFF;
   line-height: 32rpx;
 }
 
 .theme-content .content text {
   color: #fff;
-  font-size: 30rpx;
+  font-size: 22rpx;
   line-height: 40rpx;
 }
 
@@ -158,8 +160,13 @@ page{
 }
 
 .theme-content-options .note image {
-  width: 36rpx;
-  height: 36rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.theme-content-options .comment image {
+  width: 27rpx;
+  height: 28rpx;
 }
 
 .theme-content-options .comment text, .theme-content-options .note text {
@@ -168,7 +175,7 @@ page{
 
 .theme-content-options text {
   color: #fff;
-  font-size: 30rpx;
+  font-size: 20rpx;
   line-height: 32rpx;
   margin-left: 5rpx;
 }
@@ -176,6 +183,7 @@ page{
 .theme-content-options .time  {
   float: left;
   min-width: 50%;
+  font-size: 20rpx;
   opacity: 0.6;
 }
 
@@ -192,7 +200,7 @@ page{
   display: block;
   width: 100%;
   text-align: center;
-  font-size: 30rpx;
+  font-size: 24rpx;
   color: #999;
   margin-bottom: 60rpx;
 }
@@ -238,7 +246,7 @@ page{
 }
 
 .userinfo-bottom text{
-  font-size: 28rpx;
+  font-size: 22rpx;
   color: #666;
   margin-left: 5rpx;
 }
@@ -247,7 +255,7 @@ page{
 }
 .userinfo .username text {
   float: left;
-  font-size: 32rpx;
+  font-size: 30rpx;
   padding-left: 5rpx;
 }
 
@@ -266,8 +274,8 @@ page{
   border-radius: 26rpx;
 }
 .like{
-  width: 34rpx;
-  height: 34rpx;
+  width: 30rpx;
+  height: 30rpx;
 }
 
 .like-num{
@@ -284,7 +292,7 @@ page{
 }
 .middle text{
   display: flex;
-  font-size: 24rpx;
+  font-size: 22rpx;
   color: #333;
   line-height: 42rpx;
   border-bottom: 1rpx dashed #b5b5b5;
@@ -311,7 +319,7 @@ page{
 
 .releaseTime{
   color: #aaa;
-  font-size: 24rpx;
+  font-size: 22rpx;
 }
 
 /* 输入弹框 */
