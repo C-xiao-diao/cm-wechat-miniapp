@@ -27,7 +27,7 @@ Page({
     studentId: '',
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    currentTab: 0,
+    currentTab: 2,
     // listHot: ['哆', '来', '咪', '发', '唆', '拉', '西'],
     list: [],
     // 是否显示用户信息授权按钮
@@ -48,7 +48,7 @@ Page({
     //滑动的x坐标
     pageX: 0,
     //滑块的x坐标
-    x: 20,
+    x: 0,
     //栏目的选择索引
     columnActiveIndex: 0,
   },
