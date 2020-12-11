@@ -1,6 +1,9 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/myFans/myFans",
+    "pages/myAttention/myAttention",
+    "pages/hisAttention/hisAttention",
     "pages/follow/follow",
     "pages/startTune/startTune",
     "pages/registerTwo/registerTwo",
