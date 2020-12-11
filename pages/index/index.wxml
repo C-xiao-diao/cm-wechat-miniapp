@@ -198,12 +198,12 @@
       </movable-view>
     </movable-area>
   </view>
-  <view class="impromptu-options">
+  <view class="impromptu-options" wx:if="{{currentTab === 2}}">
     <view catchtap="noInterested">
       <image class="impromptu-photo" src="./../../imgs/index/not_interested.png" alt=""></image>
       <text>不感兴趣</text>
     </view>
-    <view catchtap="navToStartTune" wx:if="{{currentTab === 2}}">
+    <view catchtap="navToStartTune">
       <image class="impromptu-photo" src="./../../imgs/index/add.png" alt=""></image>
       <text>起个调吧</text>
     </view>

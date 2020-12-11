@@ -213,7 +213,7 @@
   box-shadow: 0 0 13rpx rgba(0, 0, 0, 0.3);
   border-radius: 10rpx;
   background: white;
-  margin-bottom: 60rpx;
+  margin-bottom: 260rpx;
 }
 
 .hotlist-content-item {
