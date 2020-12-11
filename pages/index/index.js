@@ -99,7 +99,6 @@ Page({
 
   //登录接口
   userInfoHandler: function (e) {
-    console.log(e,'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkk')
     if (!_.isEmpty(e.detail.userInfo)) {
       e.detail.userInfo.sex = e.detail.userInfo.gender;
       e.detail.userInfo.headimgUrl = e.detail.userInfo.avatarUrl;
@@ -170,7 +169,6 @@ Page({
             }
           })
         } else {
-          // console.log('登录失败'+res.errMsg);
           wx.showToast({ title: '登录失败!' });
         }
       }
@@ -215,7 +213,6 @@ Page({
   //-----------------start------------------
   //省市选择器方法（切换城市）
   bindCityChange: function (e) {
-    console.log(e,'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
     //获取学校列表
     this.getSchoolList(null, list[e.detail.value[1]]);
     this.setData({
@@ -255,7 +252,6 @@ Page({
   // },
   //获取学校列表
   getSchoolList: function (schoolAlias, city) {
-    console.log(city,'[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[');
     let cmd = "/auth/school/listBy";
     let data = {};
     if (schoolAlias !== undefined && schoolAlias !== null) {
@@ -271,7 +267,6 @@ Page({
         if (_.get(res, 'data.code') === 200) {
           this.setData({ schoolList: _.get(res, 'data.data.list') })
         }
-        console.log(res, 1111111111112222222222222222222222222222222222);
       }
     })
   },
@@ -315,7 +310,6 @@ Page({
       return;
     }
     let id = e.currentTarget.dataset.id;
-    console.log(e,999999999999)
     if(id==app.globalData.studentId) {
       wx.navigateTo({
         url: '/pages/memberCenter/memberCenter?studentId=' + app.globalData.studentId + '&type=self'
@@ -496,7 +490,6 @@ Page({
     
   },
   bindtouchstart: function(e){
-    console.log(e,'666666666666666666666666666666666666666666')
     pageX = e.changedTouches[0].pageX;
   },
   bindViewHandle: function(e){
@@ -520,9 +513,7 @@ Page({
     })
   },
   bindtouchend: function(e){
-    console.log(e,'gggggggggggggggggggggggggggggggggg')
     let endPageX = e.changedTouches[0].pageX;
-    console.log(endPageX - pageX, '1111111111',endPageX, 66666666, pageX)
     if(endPageX - pageX > 100){ //右滑超过 100（随意定的，可以改）
       this.setData({isShowListItem: false},()=>{
         this.getIndexList(this.data.currentTab, true)
