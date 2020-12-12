@@ -11,38 +11,42 @@
   padding: 0 30rpx;
 }
 .options .cancel{
-  font-size: 30rpx;
+  font-size: 26rpx;
   color: #333;
   font-weight: 500;
 }
 .options .button{
-  background: #49c266;
+  width: 150rpx;
+  height: 64rpx;
+  background: #F17991;
   border-radius: 10rpx;
-  color: white;
-  /* width: 100rpx; */
   padding: 0 20rpx;
+  font-size: 26rpx;
+  color: white;
   box-sizing: border-box;
-  height: 68rpx;
-  line-height: 68rpx;
+  line-height: 64rpx;
   text-align: center;
 }
  .title{
   width: 100%;
   margin-top: 40rpx;
-  border-top: 1rpx solid #ccc;
-  border-bottom: 1rpx solid #ccc;
+  font-size: 24rpx;
+  color: #666;
+  border-top: 1rpx solid #959595;
+  border-bottom: 1rpx solid #959595;
   height: 100rpx;
-  padding-left: 20rpx;
+  padding: 0 20rpx;
   box-sizing: border-box;
 }
 .addContent{
-  padding-left: 20rpx;
-  padding-top: 30rpx;
+  font-size: 24rpx;
+  color: #666;
+  padding: 30rpx 40rpx;
   box-sizing: border-box;
 }
 .columns{
-  border-top: 1rpx solid #ccc;
-  border-bottom: 1rpx solid #ccc;
+  border-top: 1rpx solid #959595;
+  border-bottom: 1rpx solid #959595;
   padding: 0 20rpx;
   box-sizing: border-box;
   height: 120rpx;
