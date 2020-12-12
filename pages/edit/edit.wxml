@@ -11,6 +11,13 @@
             <text style="border-bottom: {{ index != (oldContent.length-1) ? '2rpx dashed #aaa': '' }}" 
             for-index="{{index}}" wx:for="{{oldContent}}" wx:key="id" wx:for-item="obj">{{obj}}</text>
         </view>
+        <view class="columns" wx:if="{{articleType=='theme'}}">
+            <text bindtap="selectColumn" class="column-item0 {{columnActiveIndex == 0 ? 'active' : ''}}" data-index="{{0}}">广场</text>
+            <text bindtap="selectColumn" class="column-item1 {{columnActiveIndex == 1 ? 'active' : ''}}" data-index="{{1}}">美妆</text>
+            <text bindtap="selectColumn" class="column-item2 {{columnActiveIndex == 2 ? 'active' : ''}}" data-index="{{2}}">颜值</text>
+            <text bindtap="selectColumn" class="column-item3 {{columnActiveIndex == 3 ? 'active' : ''}}" data-index="{{3}}">篮球</text>
+            <text bindtap="selectColumn" class="column-item4 {{columnActiveIndex == 4 ? 'active' : ''}}" data-index="{{4}}">游戏</text>
+        </view>
     </view>
     <view class="photo-group">
         <view class="add-photo" wx:for="{{oldPicture}}" wx:key="index">

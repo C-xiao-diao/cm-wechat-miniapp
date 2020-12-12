@@ -15,7 +15,8 @@ Page({
         picture: [],
         articleId: '',
         articleType: '',
-        textLength: 0
+        textLength: 0,
+        columnActiveIndex: 0,
     },
     onLoad: function(option){
         if(option){
@@ -114,6 +115,12 @@ Page({
             urls: src,
             success: function(){}
         })
+    },
+    selectColumn: function(e){
+        let columnActiveIndex = e.currentTarget.dataset.index;
+        if(columnActiveIndex !== undefined && columnActiveIndex !== null){
+        this.setData({columnActiveIndex})
+        }
     },
     //保存编辑
     saveEdit: function(){

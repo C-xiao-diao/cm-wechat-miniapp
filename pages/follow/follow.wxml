@@ -8,13 +8,6 @@
     <textarea class="addContent" bindinput="addContent" name="" id="" maxlength="800" cols="30" rows="10"
       placeholder="填写评论（最多800个字）"></textarea>
   </view>
-  <view class="columns">
-    <text bindtap="selectColumn" class="column-item {{columnActiveIndex == 0 ? 'active' : ''}}" data-index="{{0}}">广场</text>
-    <text bindtap="selectColumn" class="column-item {{columnActiveIndex == 1 ? 'active' : ''}}" data-index="{{1}}">美妆</text>
-    <text bindtap="selectColumn" class="column-item {{columnActiveIndex == 2 ? 'active' : ''}}" data-index="{{2}}">颜值</text>
-    <text bindtap="selectColumn" class="column-item {{columnActiveIndex == 3 ? 'active' : ''}}" data-index="{{3}}">篮球</text>
-    <text bindtap="selectColumn" class="column-item {{columnActiveIndex == 4 ? 'active' : ''}}" data-index="{{4}}">游戏</text>
-  </view>
   <view class="photo-group">
     <movable-area class="movable-photo-group" out-of-bounds>
       <movable-view x="{{activeMoveViewIndex == index ? activeMoveX :''}}" y="{{activeMoveViewIndex == index ? activeMoveY :''}}" direction="all" class="add-photo"

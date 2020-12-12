@@ -12,25 +12,33 @@
     padding: 0 30rpx;
 }
 .options .cancel{
-    font-size: 30rpx;
+    font-size: 26rpx;
     color: #333;
     font-weight: 500;
-}
+  }
 .options .button{
-    background: #49c266;
+    width: 150rpx;
+    height: 64rpx;
+    background: #F17991;
     border-radius: 10rpx;
+    padding: 0 20rpx;
+    font-size: 26rpx;
     color: white;
-    width: 100rpx;
-    height: 68rpx;
-    line-height: 68rpx;
+    box-sizing: border-box;
+    line-height: 64rpx;
     text-align: center;
 }
 .title{
     display: block;
     width: 100%;
-    border-top: 1rpx solid #ccc;
-    border-bottom: 1rpx solid #ccc;
-    padding: 20rpx;
+    margin-top: 40rpx;
+    font-size: 24rpx;
+    color: #666;
+    border-top: 1rpx solid #959595;
+    border-bottom: 1rpx solid #959595;
+    height: 100rpx;
+    line-height: 100rpx;
+    padding-left: 20rpx;
     box-sizing: border-box;
 }
 .note {
@@ -60,10 +68,11 @@
     font-size: 30rpx;
 }
 .addContent{
-    width: 100%;
-    padding: 30rpx;
+    font-size: 24rpx;
+    color: #666;
+    padding: 30rpx 40rpx;
     box-sizing: border-box;
-}
+  }
 .photo-group{
     display: flex;
     flex-direction: row;
@@ -86,3 +95,43 @@ image.photo{
     width: 200rpx;
     height: 200rpx;
 }
+
+
+.columns{
+    border-top: 1rpx solid #959595;
+    border-bottom: 1rpx solid #959595;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    height: 120rpx;
+    line-height: 120rpx;
+    margin-top: 30rpx;
+  }
+  .column-item0,
+  .column-item1,
+  .column-item2,
+  .column-item3,
+  .column-item4
+  {
+    font-size: 22rpx;
+    color: white;
+    background-color: #C9C9C9;
+    border-radius: 25rpx;
+    padding: 14rpx 27rpx;
+    box-sizing: border-box;
+    margin-right: 18rpx;
+  }
+  .column-item0.active{
+    background-color: #AD86F9 !important;
+  }
+  .column-item1.active{
+    background-color: #E2184D !important;
+  }
+  .column-item2.active{
+    background-color: #EC3C8D !important;
+  }
+  .column-item3.active{
+    background-color: #F9A825 !important;
+  }
+  .column-item4.active{
+    background-color: #A1ACE5 !important;
+  }
