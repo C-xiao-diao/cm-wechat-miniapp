@@ -73,9 +73,14 @@
 }
 
 .name-tags {
-  display: inline-flex;
+  display: flex;
+  flex-direction: row;
   align-items: center;
   vertical-align: middle;
+}
+
+.name-tags>text{
+  display: flex;
 }
 
 .name-tags text:first-child {
@@ -339,7 +344,8 @@
 .impromptu {
   margin-top: 40rpx;
   position: relative;
-  width: 150%;
+  left: -375rpx;
+  width: 1500rpx;
   height: 750rpx;
 }
 
@@ -354,8 +360,7 @@
   background: white;
   position: absolute;
   top: -60rpx;
-  left: 20rpx;
-  /* z-index: 1; */
+  left: 375rpx;
   border-radius: 10rpx;
 }
 .blurry{
@@ -382,8 +387,8 @@
   width: 690rpx;
   height: 700rpx;
   padding: 50rpx;
-  /* z-index: 999999; */
   box-sizing: border-box;
+  margin-left: 375rpx;
   background: white;
   border-radius: 10rpx;
   box-shadow: 0 0 13rpx rgba(0, 0, 0, 0.3);
