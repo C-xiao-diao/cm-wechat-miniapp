@@ -2,15 +2,44 @@ Page {
   background: #f2f2f2;
 }
 
+.wrap {
+  width: calc(100% - 80rpx);
+  margin: 0 auto;
+  box-sizing: border-box;
+  background: #80B5F9;
+  border-radius: 25rpx;
+  padding: 50rpx 0;
+  margin-top: 180rpx;
+  position: relative;
+}
+
+.register2_top_left {
+  width: 489rpx;
+  height: 178rpx;
+  position: absolute;
+  left: -40rpx;
+  top: -178rpx;
+}
+
+.register2_top {
+  width: 281rpx;
+  height: 305rpx;
+  position: absolute;
+  top: -180rpx;
+  right: 0;
+}
+
+.register2_bottom {
+  width: 290rpx;
+  height: 431rpx;
+  position: absolute;
+  left: -40rpx;
+  bottom: -40rpx;
+}
+
 .registerTwo-view {
   height: 100%;
-  width: 750rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
+  width: 100%;
 }
 
 .registerOneSubmit {
@@ -18,23 +47,77 @@ Page {
 }
 
 .description {
-  color: #ccc;
+  display: block;
+  width: 100%;
+  color: #fff;
   line-height: 40rpx;
-  font-size: 24rpx;
+  font-size: 18rpx;
   text-align: center;
 }
 
-.address-input {
-  width: 100%;
-  border: 1rpx solid #ccc;
-  margin-top: 30rpx;
-  text-align: left;
-  border: 2rpx solid #ccc;
+
+.input-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border: 2rpx solid #E5E5E5;
   height: 100rpx;
   width: 80%;
+  margin: 0 auto;
   border-radius: 10rpx;
-  background-color: white;
-  padding-left: 20rpx;
+  margin-top: 30rpx;
+  background: #fff;
+}
+
+.input-wrap image {
+  margin-left: 20rpx;
+}
+
+.input-wrap .icon1 {
+  width: 36rpx;
+  height: 38rpx;
+}
+
+.input-wrap .icon2 {
+  width: 45rpx;
+  height: 37rpx;
+}
+
+.input-wrap .icon3 {
+  width: 45rpx;
+  height: 32rpx;
+}
+
+.input-wrap .icon4 {
+  width: 42rpx;
+  height: 46rpx;
+}
+
+.input-placeholder {
+  font-size: 24rpx;
+  color: #999;
+  padding-left: 0;
+}
+
+.address-input {
+  flex: 1;
+  text-align: left;
+  height: 100rpx;
+  line-height: 50rpx;
+  font-size: 24rpx;
+  color: #999;
+  margin-left: 26rpx;
+}
+
+.registerOneSubmit {
+  width: 300rpx!important;
+  height: 84rpx!important;
+  line-height: 45rpx!important;
+  background: #fff!important;
+  color: #80B5F9!important;
+  font-size: 32rpx!important;
+  border-radius: 50rpx!important;
 }
 
 .picker {
@@ -64,4 +147,13 @@ Page {
 .schoolList>text {
   line-height: 50rpx;
   font-size: 36rpx;
+}
+
+.input-normal {
+  flex: 1;
+  width: 100%;
+  margin: 0;
+  border: 0;
+  padding-left: 0;
+  margin-left: 20rpx;
 }

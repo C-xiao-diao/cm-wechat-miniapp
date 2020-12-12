@@ -5,26 +5,49 @@
       {{address}}
     </view>
   </picker> -->
-  <picker class="address-input" mode="multiSelector" bindchange="bindCityChange"
-    bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
-    <view class="picker">
-      {{address}}
+  <view class="wrap">
+    <image class="register2_top_left" src="/imgs/icons/register2_3.png"></image>
+    <image class="register2_top" src="/imgs/icons/register2_1.png"></image>
+
+    <view class="input-wrap">
+      <image class="icon1" src="/imgs/icons/register_address.png"></image>
+      <picker class="address-input" mode="multiSelector" bindchange="bindCityChange"
+        bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+        <view class="picker">
+          {{address}}
+        </view>
+      </picker>
     </view>
-  </picker>
-  <input class="input-normal" bindblur="hideAllSchoolList" bindfocus="showAllSchoolList" value="{{schoolName}}"
-    bindinput="bindSchoolHandle" type="text" placeholder-class="input-placeholder" placeholder="请填写在读学校" />
-  <view class="schoolList" wx:if="{{isShowSchoolListModal}}">
-    <text wx:for="{{schoolList}}" bindtap="selectSchool" wx:key="index" data-id="{{item.id}}"
-      data-name="{{item.schoolName}}">{{item.schoolName}}</text>
+
+    <view class="input-wrap">
+      <image class="icon2" src="/imgs/icons/register_school.png"></image>
+      <input class="input-normal" bindblur="hideAllSchoolList" bindfocus="showAllSchoolList" value="{{schoolName}}"
+      bindinput="bindSchoolHandle" type="text" placeholder-class="input-placeholder" placeholder="请填写在读学校" />
+      <view class="schoolList" wx:if="{{isShowSchoolListModal}}">
+        <text wx:for="{{schoolList}}" bindtap="selectSchool" wx:key="index" data-id="{{item.id}}"
+          data-name="{{item.schoolName}}">{{item.schoolName}}</text>
+      </view>
+    </view>
+    
+    <view class="input-wrap">
+      <image class="icon3" src="/imgs/icons/register_idcard.png"></image>
+      <input class="input-normal" bindinput="bindIdCardHandle" type="text" placeholder-class="input-placeholder"
+        placeholder="填入本人身份证号" value="{{idCardNumber}}" />
+    </view>
+    
+    <view class="input-wrap">
+      <image class="icon4" src="/imgs/icons/register_people.png"></image>
+      <input class="input-normal" bindinput="bindRealNameHandle" type="text" placeholder-class="input-placeholder"
+        placeholder="填入本人真实姓名" value="{{name}}" />
+    </view>
+    
+    <button class="registerOneSubmit" type="primary" bindtap="registerTwoSubmit">下一步</button>
+    <text class="description">
+      18岁以下在校学生的专属平台
+      所有用户完成认证方可进入
+      所填信息仅做认证审核，承诺绝不外泄
+    </text>
+    <image class="register2_bottom" src="/imgs/icons/register2_2.png"></image>
   </view>
-  <input class="input-normal" bindinput="bindIdCardHandle" type="text" placeholder-class="input-placeholder"
-    placeholder="填入本人身份证号" value="{{idCardNumber}}" />
-  <input class="input-normal" bindinput="bindRealNameHandle" type="text" placeholder-class="input-placeholder"
-    placeholder="填入本人真实姓名" value="{{name}}" />
-  <button class="registerOneSubmit" type="primary" bindtap="registerTwoSubmit">下一步</button>
-  <text class="description">
-    18岁以下在校学生的专属平台
-    所有用户完成认证方可进入
-    所填信息仅做认证审核，承诺绝不外泄
-  </text>
+  
 </view>
