@@ -30,8 +30,11 @@
  .title{
   width: 100%;
   margin-top: 40rpx;
-  font-size: 24rpx;
-  color: #666;
+  font-size: 30rpx;
+  color: #000;
+  overflow: hidden;    
+ 	text-overflow: ellipsis;     
+ 	white-space: nowrap;
   border-top: 1rpx solid #959595;
   border-bottom: 1rpx solid #959595;
   height: 100rpx;
