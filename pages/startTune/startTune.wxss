@@ -52,7 +52,12 @@
   height: 120rpx;
   line-height: 120rpx;
 }
-.column-item{
+.column-item0,
+.column-item1,
+.column-item2,
+.column-item3,
+.column-item4
+{
   font-size: 22rpx;
   color: white;
   background-color: #C9C9C9;
@@ -61,8 +66,20 @@
   box-sizing: border-box;
   margin-right: 18rpx;
 }
-.columns>text.active{
+.column-item0.active{
   background-color: #AD86F9 !important;
+}
+.column-item1.active{
+  background-color: #E2184D !important;
+}
+.column-item2.active{
+  background-color: #EC3C8D !important;
+}
+.column-item3.active{
+  background-color: #F9A825 !important;
+}
+.column-item4.active{
+  background-color: #A1ACE5 !important;
 }
 /* .photo-group{
   display: flex;
