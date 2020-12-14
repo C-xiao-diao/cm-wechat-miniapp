@@ -104,8 +104,8 @@
               </view>
             </view>
           </view>
-          <view class="attention-group" wx:if="{{currentTab === 1}}">
-            <text>关注</text>
+          <view class="attention-group followState-{{item.followState}} mutualPowderState-{{item.mutualPowderState}}" wx:if="{{currentTab === 1}}" data-studentId="{{item.id}}" bindtap="attention">
+            <text>{{item.followState == -1 ? '关注' : item.followState == 0 ? '已关注' : '互相关注'}}</text>
           </view>
         </view>
 
@@ -212,27 +212,12 @@
 </view>
 
 <!-- 底部栏目模块 -->
+
 <view class="columns">
-  <view class="column-item  {{columnActiveIndex == 0 ? 'column-item-00': ''}}" data-index="{{0}}"
+  <view wx:for="{{columnList}}" wx:key="index" class="column-item  {{columnActiveId == item.id ? 'column-item-0' + index : ''}}" data-index="{{index}}" data-id="{{item.id}}"
     bindtap="selectColumn">
     <text></text>
-    <image src="./../../imgs/index/square.png" alt=""></image>
-  </view>
-  <view class="column-item {{columnActiveIndex == 1 ? 'column-item-01': ''}}" data-index="{{1}}" bindtap="selectColumn">
-    <text></text>
-    <image src="./../../imgs/index/attention.png" alt=""></image>
-  </view>
-  <view class="column-item {{columnActiveIndex == 2 ? 'column-item-02': ''}}" data-index="{{2}}" bindtap="selectColumn">
-    <text></text>
-    <image src="./../../imgs/index/makeups.png" alt=""></image>
-  </view>
-  <view class="column-item {{columnActiveIndex== 3 ? 'column-item-03': ''}}" data-index="{{3}}" bindtap="selectColumn">
-    <text></text>
-    <image src="./../../imgs/index/basketball.png" alt=""></image>
-  </view>
-  <view class="column-item {{columnActiveIndex== 4 ? 'column-item-04': ''}}" data-index="{{4}}" bindtap="selectColumn">
-    <text></text>
-    <image src="./../../imgs/index/game.png" alt=""></image>
+    <image src="{{index == 0 ? './../../imgs/index/square.png'  :  index == 1 ? './../../imgs/index/attention.png' : index == 2 ? './../../imgs/index/makeups.png' : index == 3 ? './../../imgs/index/basketball.png' :  './../../imgs/index/game.png' }}" alt=""></image>
   </view>
 </view>
 

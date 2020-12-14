@@ -50,12 +50,31 @@ Page({
     //滑块的x坐标
     x: 0,
     //栏目的选择索引
+    columnList: [],
     columnActiveIndex: 0,
+    columnActiveId: -2,
   },
   onLoad: function (option) {
     if(!_.isEmpty(option)){
       this.setData({schoolId: option.schoolId, schoolName: option.schoolName, studentId: app.globalData.studentId })
     }
+  },
+  //获取栏目列表
+  getColumnList:function(){
+    let cmd = "/auth/column/list";
+    http.get({
+      cmd,
+      success: res=>{
+        if(_.get(res, 'data.code') == 200){
+          let columnList = _.get(res, 'data.data.list');
+          let obj1 =  {id: "-2", dataFlag: true, columnName: "广场", useStatus: 1};
+          let obj2 =  {id: "-1", dataFlag: true, columnName: "关注", useStatus: 1};
+          columnList.unshift(obj1, obj2);
+          let list = _.filter(columnList, o =>o.columnName != "游戏");
+          this.setData({ columnList : list});
+        }
+      }
+    })
   },
   onShow: function () {
     //注意，主页 onLoad可能提前于 小程序 onLaunch 执行完， 
@@ -79,6 +98,7 @@ Page({
             studentId: app.globalData.studentId  
           })
           this.getIndexList(this.data.currentTab, false);
+          this.getColumnList();
         } else {
           //没有拿到wx.login的回调
         }
@@ -86,6 +106,7 @@ Page({
     } else {
       this.setData({ reviewStatus: app.globalData.reviewStatus, userInfo: app.globalData.userInfo })
       this.getIndexList(this.data.currentTab, false);
+      this.getColumnList();
     }
   },
 
@@ -322,7 +343,7 @@ Page({
   },
   // 获取首页列表数据
   getIndexList: function (tab, isRandom) {
-    const { userInfo } = this.data;
+    const { userInfo, columnActiveId } = this.data;
     let address = this.data.address;
     let schoolId = this.data.schoolId;
     wx.showLoading({ title: '正在加载' })
@@ -330,6 +351,14 @@ Page({
     let currentTab = tab;
     let cmd = "";
     let data = { timestamp };
+    let studentId = app.globalData.studentId;
+    if(columnActiveId != undefined && columnActiveId != null && columnActiveId != -2){
+      //-2代表广场，则不需要传
+      data.columnId = columnActiveId;
+    }
+    if(studentId != undefined && studentId != null){
+      data.studentId = studentId;
+    }
     if (schoolId) {
       data.schoolId = schoolId;
     }
@@ -533,7 +562,35 @@ Page({
   //选择栏目
   selectColumn: function(e){
     let idx = e.currentTarget.dataset.index;
-    this.setData({columnActiveIndex: idx});
+    let id = e.currentTarget.dataset.id;
+    this.setData({columnActiveIndex: idx, columnActiveId: id},()=>{
+      this.getIndexList(this.data.currentTab, false);
+    });
+  },
+  //添加关注
+  attention: function(e){
+    let toStudentId = e.currentTarget.dataset.studentid;
+    let fromStudentId = app.globalData.studentId;
+    let list = this.data.list;
+    let cmd = "/auth/relation/addRelation";
+    let data = {toStudentId, fromStudentId};
+    http.get({
+      cmd,data,
+      success: res =>{
+        if(_.get(res, 'data.code') === 200){
+          let { followState, mutualPowderState } = _.get(res, 'data.data');
+          wx.showToast({title: '关注成功'})
+          let hashList = _.map(list, o=>{
+            if(o.id === toStudentId){
+              o.followState = followState;
+              o.mutualPowderState = mutualPowderState;
+            }
+            return o;
+          }) 
+          this.setData({list: hashList})
+        }
+      }
+    })
   }
   //-----------------end -------------------
 })  
