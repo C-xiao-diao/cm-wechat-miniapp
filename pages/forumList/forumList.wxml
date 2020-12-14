@@ -5,11 +5,11 @@
   <view class="theme">
     <view class="theme-userInfo">
       <view class="left">
-        <image class="userAvatar" src="/imgs/icons/no_avatar.png"></image>
+        <image class="userAvatar" src="{{studentInformation.headimgUrl}}"></image>
         <view class="username">
-            <image class="sex" src="{{ 2 === 1 ? '/imgs/icons/male_gray.png' : '/imgs/icons/female_gray.png'}}"></image>
-            <text class="name">一天一天</text>
-            <text class="school">湖南长郡中学</text>
+            <image class="sex" src="{{ studentInformation.sex === 1 ? '/imgs/icons/male_gray.png' : '/imgs/icons/female_gray.png'}}"></image>
+            <text class="name">{{studentInformation.nickname}}</text>
+            <text class="school">{{studentInformation.noteNumber}}</text>
         </view>
       </view>
       <view class="right">
