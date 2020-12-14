@@ -29,7 +29,7 @@ Page({
       success: res => {
         if (_.get(res, 'data.code') == 200) {
           let list = _.get(res, 'data.data.list');
-          this.setData({ list });
+          this.setData({ list,page: page + 1 });
         } else if (_.get(res, 'data.code') == 107) {
           wx.showModal({
             title: '提示',
@@ -45,5 +45,8 @@ Page({
         }
       }
     })
+  },
+  onReachBottom: function(){
+    this.getMyFansList(true)
   }
 }) 

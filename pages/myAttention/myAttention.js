@@ -29,10 +29,13 @@ Page({
       success: res =>{
         if(_.get(res, 'data.code') == 200){
           let list = _.get(res, 'data.data.list');
-          this.setData({ list });
+          this.setData({ list,page: page + 1 });
         }
         console.log(res,'==================================')
       }
     })
+  },
+  onReachBottom: function(){
+    this.getMyFansList(true)
   }
 }) 
