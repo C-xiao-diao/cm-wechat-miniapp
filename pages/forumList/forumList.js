@@ -32,7 +32,8 @@ Page({
     ensembleType: 0,               //合拍类型，0是合拍主题  1是合拍跟帖
     pickerList: [1000, 500, 200, 100, 50, 10, 5, 1],
     //音符数量
-    musicNumber: 0
+    musicNumber: 0,
+    studentInformation: null
   },
   onLoad: function (option) {
     console.log(option, 'optionoptionoptionoptionoptionoptionoptionoptionoptionoption');
@@ -71,8 +72,10 @@ Page({
       success: res => {
         if (_.get(res, 'data.code') === 200) {
           let themeInfo = _.get(res, 'data.data.theme');
+          let studentInformation = null;
           if(themeInfo){
             themeInfo.pointPraiseNumber = _.round(_.toNumber(themeInfo.pointPraiseNumber)/0.85);
+            studentInformation = themeInfo.studentInformation;
           }
           let newList = [];
           if (isLoadMore) {
@@ -95,7 +98,7 @@ Page({
             }
             return o;
           })
-          this.setData({ list: newList, page: newPage,themeInfo });
+          this.setData({ list: newList, page: newPage,themeInfo,studentInformation });
         }
       }
     })
