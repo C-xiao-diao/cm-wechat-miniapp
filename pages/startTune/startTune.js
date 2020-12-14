@@ -21,10 +21,36 @@ Page({
     activeMoveX: 0,
     activeMoveY: 0,
     video: [],
+    columnList: [],
   },
   onLoad(option) {
-    console.log(this.data.picture, 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-    this.setData({ themeId: option.themeId })
+    let columnList = app.globalData.columnList;
+    if(!_.isEmpty(columnList)){
+      // todo 注意： 起调部分去除广场和 关注2个栏目，UI样式未改
+      let list = _.filter(columnList, o => (o.columnName != "广场" && o.columnName != "关注"));
+      this.setData({ themeId: option.themeId,columnList: list })
+    } else {
+      this.setData({ themeId: option.themeId})
+      this.getColumnList();
+    }
+  },
+   //获取栏目列表
+   getColumnList:function(){
+    let cmd = "/auth/column/list";
+    http.get({
+      cmd,
+      success: res=>{
+        if(_.get(res, 'data.code') == 200){
+          let columnList = _.get(res, 'data.data.list');
+          // let obj1 =  {id: "-2", dataFlag: true, columnName: "广场", useStatus: 1};
+          // let obj2 =  {id: "-1", dataFlag: true, columnName: "关注", useStatus: 1};
+          columnList.unshift(obj1, obj2);
+          let list = _.filter(columnList, o =>o.columnName != "游戏");
+          this.setData({ columnList : list});
+          app.globalData.columnList = list;
+        }
+      }
+    })
   },
   goBack: function () {
     wx.navigateBack();
@@ -40,10 +66,17 @@ Page({
     this.setData({ content });
   },
   selectColumn: function(e){
+    let columnList = this.data.columnList;
     let columnActiveIndex = e.currentTarget.dataset.index;
-    if(columnActiveIndex !== undefined && columnActiveIndex !== null){
-      this.setData({columnActiveIndex})
+    let id = columnActiveIndex = e.currentTarget.dataset.id;
+    let item = _.find(columnList, (o) => o.id == id)
+    let isActive = item.isActive;
+    if(!isActive){
+      item.isActive = true;
+    } else {
+      item.isActive = false;
     }
+    this.setData({columnList});
   },
   // 选择图片
   addPhoto: function () {
@@ -164,9 +197,15 @@ Page({
   },
   // 起个调（也就是提交）
   startTune: function () {
-    const { theme, content, picture } = this.data;
-    console.log(picture, 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')
+    const { theme, content, picture,columnList } = this.data;
     let studentId = app.globalData.studentId;
+    let columnIdList = [];
+    for(let i=0;i< columnList.length;i++){
+      if(columnList[i].isActive){
+        columnIdList.push(columnList[i].id)
+      } 
+    }
+    let columnId = _.uniq(columnIdList);
     if (_.isEmpty(theme)) {
       wx.showToast({
         title: '起调标题不能为空',
@@ -179,22 +218,23 @@ Page({
       })
       return;
     }
+    if(_.isEmpty(columnId)){
+      wx.showToast({
+        title: '请选择栏目',
+      })
+      return;
+    }
     wx.showLoading({
       title: '提交中',
       mask: true
     });
-    // if (_.isEmpty(picture)) {
-    //   wx.showToast({
-    //     title: '图片不能为空',
-    //   })
-    //   return;
-    // }
     let cmd = "/auth/theme/addTheme";
     let data = {
       publisher: studentId,
       theme,
       supplementaryContent: content,
-      picture
+      picture,
+      columnId
     }
     http.post({
       cmd,

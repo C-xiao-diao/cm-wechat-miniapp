@@ -108,5 +108,6 @@ App({
     isConnected: true,
     pixelRatio: 1,
     currentThemeId: '',
+    columnList: [],   //栏目列表
   }
 })

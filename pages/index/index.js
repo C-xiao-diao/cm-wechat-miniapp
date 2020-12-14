@@ -72,6 +72,7 @@ Page({
           columnList.unshift(obj1, obj2);
           let list = _.filter(columnList, o =>o.columnName != "游戏");
           this.setData({ columnList : list});
+          app.globalData.columnList = list;
         }
       }
     })
