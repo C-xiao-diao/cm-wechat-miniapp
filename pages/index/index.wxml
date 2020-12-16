@@ -104,8 +104,8 @@
               </view>
             </view>
           </view>
-          <view class="attention-group followState-{{item.followState}} mutualPowderState-{{item.mutualPowderState}}" wx:if="{{currentTab === 1}}" data-studentId="{{item.id}}" bindtap="attention">
-            <text>{{item.followState == -1 ? '关注' : item.followState == 0 ? '已关注' : '互相关注'}}</text>
+          <view class="attention-group {{item.followStateClass}}" wx:if="{{currentTab === 1}}" data-studentId="{{item.id}}" data-type="{{item.followStateTxt}}" bindtap="attentionOrNot">
+            <text>{{item.followStateTxt}}</text>
           </view>
         </view>
 

@@ -388,6 +388,21 @@ Page({
         if (_.get(res, 'data.code') === 200) {
           let list = _.get(res, 'data.data.list');
           list = _.map(list, o=> {
+            if(currentTab === 1){
+              if(o.followState == -1 && o.mutualPowderState == -1){
+                o.followStateTxt = "关注";
+                o.followStateClass = "guanzhu";
+              }else if(o.followState == 0 && o.mutualPowderState == -1){
+                o.followStateTxt = "已关注";
+                o.followStateClass = "yiguanzhu";
+              }else if(o.followState == 0 && o.mutualPowderState == 0){
+                o.followStateTxt = "互相关注";
+                o.followStateClass = "huxiangguanzhu";
+              }else if(o.followState == -1 && o.mutualPowderState == 0){
+                o.followStateTxt = "回粉";
+                o.followStateClass = "huifen";
+              }
+            }
             if(o.releaseTime){
               o.isNewTheme = (moment(o.releaseTime).add(10, 'minute')).isAfter(moment())
             }
@@ -568,10 +583,18 @@ Page({
       this.getIndexList(this.data.currentTab, false);
     });
   },
-  //添加关注
-  attention: function(e){
+  attentionOrNot: function(e){
+    let type = e.currentTarget.dataset.type;
     let toStudentId = e.currentTarget.dataset.studentid;
     let fromStudentId = app.globalData.studentId;
+    if(type == '关注' || type == '回粉'){
+      this.attetion(toStudentId, fromStudentId);
+    }else if(type == '已关注' || type == '互相关注'){
+      this.ifCancelAttention(toStudentId, fromStudentId)
+    }
+  },
+  //添加关注
+  attetion: function(toStudentId, fromStudentId){
     let list = this.data.list;
     let cmd = "/auth/relation/addRelation";
     let data = {toStudentId, fromStudentId};
@@ -583,8 +606,71 @@ Page({
           wx.showToast({title: '关注成功'})
           let hashList = _.map(list, o=>{
             if(o.id === toStudentId){
-              o.followState = followState;
-              o.mutualPowderState = mutualPowderState;
+              if(followState == -1 && mutualPowderState == -1){
+                o.followStateTxt = "关注";
+                o.followStateClass = "guanzhu";
+              }else if(followState == 0 && mutualPowderState == -1){
+                o.followStateTxt = "已关注";
+                o.followStateClass = "yiguanzhu";
+              }else if(followState == 0 && mutualPowderState == 0){
+                o.followStateTxt = "互相关注";
+                o.followStateClass = "huxiangguanzhu";
+              }else if(followState == -1 && mutualPowderState == 0){
+                o.followStateTxt = "回粉";
+                o.followStateClass = "huifen";
+              }
+            }
+            return o;
+          }) 
+          this.setData({list: hashList})
+        }
+      }
+    })
+  },
+  //是否取消关注
+  ifCancelAttention: function(toStudentId, fromStudentId){
+    let that = this;
+    wx.showModal({
+      title: '提示',
+      content: '是否取消关注该用户？',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#000000',
+      confirmText: '确定',
+      confirmColor: '#3CC51F',
+      success: (result) => {
+        if(result.confirm){
+          that.cancelAttention(toStudentId, fromStudentId)
+        }
+      }
+    });
+  },
+  //取消关注
+  cancelAttention: function(toStudentId, fromStudentId){
+    let list = this.data.list;
+    let cmd = "/auth/relation/unfollow";
+    let data = {toStudentId, fromStudentId};
+    http.get({
+      cmd,data,
+      success: res =>{
+        if(_.get(res, 'data.code') === 200){
+          let { followState, mutualPowderState } = _.get(res, 'data.data');
+          wx.showToast({title: '取消关注成功'})
+          let hashList = _.map(list, o=>{
+            if(o.id === toStudentId){
+              if(followState == -1 && mutualPowderState == -1){
+                o.followStateTxt = "关注";
+                o.followStateClass = "guanzhu";
+              }else if(followState == 0 && mutualPowderState == -1){
+                o.followStateTxt = "已关注";
+                o.followStateClass = "yiguanzhu";
+              }else if(followState == 0 && mutualPowderState == 0){
+                o.followStateTxt = "互相关注";
+                o.followStateClass = "huxiangguanzhu";
+              }else if(followState == -1 && mutualPowderState == 0){
+                o.followStateTxt = "回粉";
+                o.followStateClass = "huifen";
+              }
             }
             return o;
           }) 

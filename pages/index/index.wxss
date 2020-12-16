@@ -322,33 +322,33 @@
   align-items: center;
   justify-content: center;
 }
-
-.followState--1{
-  background-color: #E00842;
-  border: 1rpx solid #fff;
-}
-.mutualPowderState-0{
-  border: 1rpx solid #E00842;
-}
-.back-fans {
-  border: 1rpx solid #E00842;
-}
-.attention-active {
-  background-color: #E00842;
-}
 .attention-group>text {
   font-size: 18rpx;
   color: #666;
 }
-.attention-active>text {
-  color: white;
+
+.guanzhu{
+  background-color: #E00842;
+  border: 1rpx solid #E00842;
 }
-.followState--1>text {
-  color: white;
+.guanzhu text {
+  color: #fff;
 }
-.mutualPowderState-0>text {
+.yiguanzhu{
+  color:#666666;
+  border: 1rpx solid #666666;
+}
+.huxiangguanzhu {
+  color:#666666;
+  border: 1rpx solid #666666;
+}
+.huifen {
+  background-color: #E00842;
+}
+.huifen text{
   color: #E00842;
 }
+
 
 /* 即兴 */
 .impromptu {
