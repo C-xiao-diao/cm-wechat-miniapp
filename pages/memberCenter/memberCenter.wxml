@@ -99,7 +99,8 @@
         </view>
     </view>
 
-    <text class="bottom-text">已经到底啦~</text>
+    <text class="bottom-text" wx:if="{{currentTab==0 && myThemeList.length > 0}}">已经到底啦~</text>
+    <text class="bottom-text" wx:if="{{currentTab==1 && myFollowList.length > 0}}">已经到底啦~</text>
 
     <!-- 编辑昵称对话框 -->
     <view class="editModal" wx:if="{{showEditModal}}">

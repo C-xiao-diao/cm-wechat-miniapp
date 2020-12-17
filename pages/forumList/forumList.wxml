@@ -93,7 +93,7 @@
     </view>
   </view>
 
-  <text class="bottom-text">已经到底啦~</text>
+  <text wx:if="{{list.length>0}}" class="bottom-text">已经到底啦~</text>
 </view>
 <!-- 合拍弹框 -->
 <view class="mask" wx:if="{{isShowEnsembleModal}}" bindtap="cancelModal">
