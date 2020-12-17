@@ -18,11 +18,11 @@
         </view>
         <view class="user-num-list">
             <view bindtap="navToMyAttention">
-                <text class="num">11</text>
+                <text class="num">{{followCount}}</text>
                 <text class="tit">关注</text>
             </view>
             <view bindtap="navToMyFans">
-                <text class="num">11</text>
+                <text class="num">{{mutualPowderCount}}</text>
                 <text class="tit">粉丝</text>
             </view>
             <view>

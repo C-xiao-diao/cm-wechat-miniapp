@@ -95,12 +95,14 @@ Page {
     color: #fff;
   }
   .yiguanzhu{
-    color:#666666;
-    border: 1rpx solid #666666;
+    border: 1rpx solid #fff;
+  }
+  .yiguanzhu text, .huxiangguanzhu text {
+    color:#fff;
   }
   .huxiangguanzhu {
-    color:#666666;
-    border: 1rpx solid #666666;
+    color:#fff;
+    border: 1rpx solid #fff;
   }
   .huifen {
     background-color: #E00842;

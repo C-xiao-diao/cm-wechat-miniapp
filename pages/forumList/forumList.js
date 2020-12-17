@@ -40,7 +40,7 @@ Page({
     isSelf: false
   },
   onLoad: function (option) {
-    console.log(option, 'optionoptionoptionoptionoptionoptionoptionoptionoptionoption');
+    // console.log(option, 'optionoptionoptionoptionoptionoptionoptionoptionoptionoption');
     this.setData({ themeId: option.themeId, theme: option.theme, content: option.content, number: option.number, picture: (option.picture && option.picture != "undefined") ? JSON.parse(option.picture) : [] })
     //获取界面数据
     // this.getForumList(option)

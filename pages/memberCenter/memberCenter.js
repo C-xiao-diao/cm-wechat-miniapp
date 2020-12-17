@@ -30,18 +30,20 @@ Page({
         ifSelf: true,
         option: {},
         followStateTxt: "",
-        followStateClass: ""
+        followStateClass: "",
+        followCount: 0,
+        mutualPowderCount: 0
     },
     onLoad: function (option) {
         let studentId = app.globalData.studentId;
         if (option) {
             if (option.type == 'self' && option.studentId == studentId) {//浏览个人主页
                 this.setData({ option, ifSelf: true })
-                this.getStudentInfo(app.globalData.studentId, app.globalData.studentId);
-                this.getMyTheme(app.globalData.studentId, this.data.themePage);
+                this.getStudentInfo(studentId, "");
+                this.getMyTheme(studentId, this.data.themePage);
             } else {//他人主页
                 this.setData({ option, ifSelf: false });
-                this.getStudentInfo(app.globalData.studentId, option.studentId);
+                this.getStudentInfo(studentId, option.studentId);
                 this.getMyTheme(option.studentId, this.data.themePage);
             }
         }
@@ -62,7 +64,10 @@ Page({
     //获取学生信息
     getStudentInfo: function (selfId, otherId) {
         let cmd = "/auth/student/getById";
-        let data = { studentId: otherId, currentLoginStudentId:selfId }
+        let data = { currentLoginStudentId:selfId }
+        if(otherId != ""){
+            data.studentId = otherId;
+        }
         http.get({
             cmd,
             data: data,
@@ -70,6 +75,9 @@ Page({
                 if (_.get(res, 'data.code') === 200 && !_.isEmpty(_.get(res, 'data.data'))) {
                     let resData = _.get(res, 'data.data');
                     let userInfo = resData.studentInformation;
+                    let followCount = resData.followCount;
+                    let mutualPowderCount = resData.mutualPowderCount;
+                    console.log(followCount, mutualPowderCount,99999999)
                     let followState = resData.followStatus;
                     if(followState == 1){ followState = 0 };
                     let mutualPowderState = resData.mutualPowderState;
@@ -88,7 +96,7 @@ Page({
                         followStateTxt = "回粉";
                         followStateClass = "huifen";
                     }
-                    this.setData({ followStateTxt, followStateClass, userInfo });
+                    this.setData({ followStateTxt, followStateClass, userInfo,followCount,mutualPowderCount });
                 }
             }
         })
