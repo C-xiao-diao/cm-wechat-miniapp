@@ -389,6 +389,12 @@ Page({
           let list = _.get(res, 'data.data.list');
           list = _.map(list, o=> {
             if(currentTab === 1){
+              if(o.followState == 1){
+                o.followState = 0;
+              }
+              if(o.mutualPowderState == 1){
+                o.mutualPowderState = 0;
+              }
               if(o.followState == -1 && o.mutualPowderState == -1){
                 o.followStateTxt = "关注";
                 o.followStateClass = "guanzhu";
