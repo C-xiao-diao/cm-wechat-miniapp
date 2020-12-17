@@ -1,6 +1,5 @@
 //registerOne.js
-import { http,isJson } from "./../../utils/util";
-import config from "./../../configs/config"
+import { http } from "./../../utils/util";
 import "./../../utils/fix";
 import _ from "./../../utils/lodash"
 
@@ -14,14 +13,15 @@ Page({
     list: [],
   },
   onLoad: function(option){
-    this.getMyAttentionList();
+    let studentId = option.studentId;
+    this.setData({studentId});
+    this.getMyAttentionList(studentId);
   },
   //加载我的关注列表
   //params {boolean} isMore  是否加载更多
-  getMyAttentionList: function(isMore){
+  getMyAttentionList: function(studentId){
     let cmd = "/auth/relation/myRelationList";
     let { limit, page } = this.data;
-    let studentId = app.globalData.studentId;
     let data ={ limit, page, studentId };
     http.get({
       cmd,
@@ -31,11 +31,11 @@ Page({
           let list = _.get(res, 'data.data.list');
           this.setData({ list,page: page + 1 });
         }
-        console.log(res,'==================================')
       }
     })
   },
   onReachBottom: function(){
-    this.getMyFansList(true)
+    const { studentId } = this.data;
+    this.getMyAttentionList(studentId);
   }
 }) 

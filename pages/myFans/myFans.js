@@ -1,6 +1,5 @@
 //registerOne.js
-import { http, isJson } from "./../../utils/util";
-import config from "./../../configs/config"
+import { http } from "./../../utils/util";
 import "./../../utils/fix";
 import _ from "./../../utils/lodash"
 
@@ -12,16 +11,18 @@ Page({
     limit: 10,
     page: 0,
     list: [],
+    studentId:""
   },
   onLoad: function (option) {
-    this.getMyFansList();
+    let studentId = option.studentId;
+    this.setData({studentId});
+    this.getMyFansList(studentId);
   },
   //加载我的粉丝列表
   //params {boolean} isMore  是否加载更多
-  getMyFansList: function (isMore) {
+  getMyFansList: function (studentId) {
     let cmd = "/auth/relation/myFansList";
     let { limit, page } = this.data;
-    let studentId = app.globalData.studentId;
     let data = { limit, page, studentId };
     http.get({
       cmd,
@@ -29,7 +30,7 @@ Page({
       success: res => {
         if (_.get(res, 'data.code') == 200) {
           let list = _.get(res, 'data.data.list');
-          this.setData({ list,page: page + 1 });
+          this.setData({ list, page: page + 1 });
         } else if (_.get(res, 'data.code') == 107) {
           wx.showModal({
             title: '提示',
@@ -47,6 +48,7 @@ Page({
     })
   },
   onReachBottom: function(){
-    this.getMyFansList(true)
+    const { studentId } = this.data;
+    this.getMyFansList(studentId)
   }
 }) 

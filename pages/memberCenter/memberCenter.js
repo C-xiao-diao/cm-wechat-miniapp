@@ -295,14 +295,16 @@ Page({
     },
     //跳转我的关注界面
     navToMyAttention: function () {
+        const { option } = this.data;
         wx.navigateTo({
-            url: '/pages/myAttention/myAttention',
+            url: '/pages/myAttention/myAttention?studentId='+ option.studentId,
         })
     },
     //跳转我的粉丝界面
     navToMyFans: function () {
+        const { option } = this.data;
         wx.navigateTo({
-            url: '/pages/myFans/myFans',
+            url: '/pages/myFans/myFans?studentId='+ option.studentId,
         })
     },
     //跳转音符规则页面
