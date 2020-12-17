@@ -36,6 +36,7 @@ Page({
     studentInformation: null,
     followStateClass: "",
     followStateTxt: "",
+    publisher: "",
     isSelf: false
   },
   onLoad: function (option) {
@@ -75,6 +76,7 @@ Page({
       success: res => {
         if (_.get(res, 'data.code') === 200) {
           let themeInfo = _.get(res, 'data.data.theme');
+          
           let studentInformation = null;
           let followState = _.get(res, 'data.data.followStatus');
           if(followState == 1){ followState = 0 }
@@ -96,10 +98,12 @@ Page({
               followStateClass = "huifen";
           }
           let isSelf = false;
+          let publisher = "";
           if(themeInfo){
             themeInfo.pointPraiseNumber = _.round(_.toNumber(themeInfo.pointPraiseNumber)/0.85);
             studentInformation = themeInfo.studentInformation;
-            if(studentInformation.id == app.globalData.studentId) {
+            publisher = themeInfo.publisher
+            if(publisher == app.globalData.studentId) {
               isSelf = true;
             }else{
               isSelf = false;
@@ -126,7 +130,7 @@ Page({
             }
             return o;
           })
-          this.setData({ list: newList, page: newPage,themeInfo,isSelf,studentInformation,followStateTxt, followStateClass });
+          this.setData({ list: newList, page: newPage,themeInfo,isSelf,publisher,studentInformation,followStateTxt, followStateClass });
         }
       }
     })
