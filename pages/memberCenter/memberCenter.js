@@ -37,7 +37,7 @@ Page({
         if (option) {
             if (option.type == 'self' && option.studentId == studentId) {//浏览个人主页
                 this.setData({ option, ifSelf: true })
-                this.getStudentInfo(app.globalData.studentId, '');
+                this.getStudentInfo(app.globalData.studentId, app.globalData.studentId);
                 this.getMyTheme(app.globalData.studentId, this.data.themePage);
             } else {//他人主页
                 this.setData({ option, ifSelf: false });
@@ -62,10 +62,7 @@ Page({
     //获取学生信息
     getStudentInfo: function (selfId, otherId) {
         let cmd = "/auth/student/getById";
-        let data = { currentLoginStudentId:selfId }
-        if(otherId){
-            data.studentId = otherId
-        }
+        let data = { studentId: otherId, currentLoginStudentId:selfId }
         http.get({
             cmd,
             data: data,
