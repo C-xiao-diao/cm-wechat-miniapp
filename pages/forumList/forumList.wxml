@@ -12,8 +12,8 @@
             <text class="school">{{studentInformation.noteNumber}}</text>
         </view>
       </view>
-      <view class="right">
-          <text>关注</text>
+      <view wx:if="{{!isSelf}}" class="right attention-group {{followStateClass}}" data-studentId="{{studentInformation.id}}" data-type="{{followStateTxt}}" bindtap="attentionOrNot">
+          <text>{{followStateTxt}}</text>
       </view>
     </view>
     <view class="theme-content">

@@ -12,8 +12,8 @@
                     <text class="tag">首席体验官</text>
                 </view>
             </view>
-            <view class="focus" wx:if="{{!ifSelf}}">
-                <text>关注</text>
+            <view class="attention-group {{followStateClass}}" data-studentId="{{option.studentId}}" data-type="{{followStateTxt}}" bindtap="attentionOrNot" wx:if="{{!ifSelf}}">
+                <text>{{followStateTxt}}</text>
             </view>
         </view>
         <view class="user-num-list">

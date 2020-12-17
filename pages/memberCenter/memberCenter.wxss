@@ -72,18 +72,42 @@ Page {
     margin-left: 10rpx;
 }
 
-.focus text {
-    display: block;
-    width: 140rpx;
-    height: 60rpx;
-    line-height: 60rpx;
-    color: #667AE7;
-    background: #fff;
+.attention-group {
+    border: 1rpx solid #666;
+    width: 97rpx;
+    height: 44rpx;
+    border-radius: 22rpx;
     text-align: center;
-    border-radius: 50rpx;
-    margin-top: 30rpx;
-    font-size: 24rpx;
-}
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .attention-group>text {
+    font-size: 18rpx;
+    color: #666;
+  }
+  
+  .guanzhu{
+    background-color: #E00842;
+    border: 1rpx solid #E00842;
+  }
+  .guanzhu text {
+    color: #fff;
+  }
+  .yiguanzhu{
+    color:#666666;
+    border: 1rpx solid #666666;
+  }
+  .huxiangguanzhu {
+    color:#666666;
+    border: 1rpx solid #666666;
+  }
+  .huifen {
+    background-color: #E00842;
+  }
+  .huifen text{
+    color: #E00842;
+  }
 
 .user-num-list {
     float: left;

@@ -33,7 +33,10 @@ Page({
     pickerList: [1000, 500, 200, 100, 50, 10, 5, 1],
     //音符数量
     musicNumber: 0,
-    studentInformation: null
+    studentInformation: null,
+    followStateClass: "",
+    followStateTxt: "",
+    isSelf: false
   },
   onLoad: function (option) {
     console.log(option, 'optionoptionoptionoptionoptionoptionoptionoptionoptionoption');
@@ -73,9 +76,34 @@ Page({
         if (_.get(res, 'data.code') === 200) {
           let themeInfo = _.get(res, 'data.data.theme');
           let studentInformation = null;
+          let followState = _.get(res, 'data.data.followStatus');
+          if(followState == 1){ followState = 0 }
+          let mutualPowderState = _.get(res, 'data.data.mutualPowderState');
+          if(mutualPowderState == 1){ mutualPowderState = 0 }
+
+          let followStateTxt = "", followStateClass = "";
+          if(followState == -1 && mutualPowderState == -1){
+              followStateTxt = "关注";
+              followStateClass = "guanzhu";
+          }else if(followState == 0 && mutualPowderState == -1){
+              followStateTxt = "已关注";
+              followStateClass = "yiguanzhu";
+          }else if(followState == 0 && mutualPowderState == 0){
+              followStateTxt = "互相关注";
+              followStateClass = "huxiangguanzhu";
+          }else if(followState == -1 && mutualPowderState == 0){
+              followStateTxt = "回粉";
+              followStateClass = "huifen";
+          }
+          let isSelf = false;
           if(themeInfo){
             themeInfo.pointPraiseNumber = _.round(_.toNumber(themeInfo.pointPraiseNumber)/0.85);
             studentInformation = themeInfo.studentInformation;
+            if(studentInformation.id == app.globalData.studentId) {
+              isSelf = true;
+            }else{
+              isSelf = false;
+            }
           }
           let newList = [];
           if (isLoadMore) {
@@ -98,10 +126,96 @@ Page({
             }
             return o;
           })
-          this.setData({ list: newList, page: newPage,themeInfo,studentInformation });
+          this.setData({ list: newList, page: newPage,themeInfo,isSelf,studentInformation,followStateTxt, followStateClass });
         }
       }
     })
+  },
+  attentionOrNot: function(e){
+      let type = e.currentTarget.dataset.type;
+      let toStudentId = e.currentTarget.dataset.studentid;
+      let fromStudentId = app.globalData.studentId;
+      if(type == '关注' || type == '回粉'){
+        this.attetion(toStudentId, fromStudentId, type);
+      }else if(type == '已关注' || type == '互相关注'){
+        this.ifCancelAttention(toStudentId, fromStudentId, type)
+      }
+  },
+  //添加关注
+  attetion: function(toStudentId, fromStudentId, type){
+      let cmd = "/auth/relation/addRelation";
+      let data = {toStudentId, fromStudentId};
+      http.get({
+        cmd,data,
+        success: res =>{
+          if(_.get(res, 'data.code') === 200){
+              wx.showToast({title: '关注成功'})
+              let followStateTxt = "", followStateClass = "";
+              if(type == "关注"){
+                  followStateTxt = "已关注";
+                  followStateClass = "yiguanzhu";
+              }else if(type == "回粉"){
+                  followStateTxt = "互相关注";
+                  followStateClass = "huxiangguanzhu";
+              }
+              this.setData({ followStateTxt, followStateClass })
+          }else{
+              wx.showToast({
+                  title: _.get(res, 'data.msg'),
+                  icon: 'none',
+                  duration: 1500,
+                  mask: true
+              });
+          }
+        }
+      })
+  },
+  //是否取消关注
+  ifCancelAttention: function(toStudentId, fromStudentId, type){
+      let that = this;
+      wx.showModal({
+        title: '提示',
+        content: '是否取消关注该用户？',
+        showCancel: true,
+        cancelText: '取消',
+        cancelColor: '#000000',
+        confirmText: '确定',
+        confirmColor: '#3CC51F',
+        success: (result) => {
+          if(result.confirm){
+            that.cancelAttention(toStudentId, fromStudentId, type)
+          }
+        }
+      });
+  },
+  //取消关注
+  cancelAttention: function(toStudentId, fromStudentId, type){
+      let cmd = "/auth/relation/unfollow";
+      let data = {toStudentId, fromStudentId};
+      http.get({
+        cmd,data,
+        success: res =>{
+          if(_.get(res, 'data.code') === 200){
+              let followStateTxt = "", followStateClass = "";
+              wx.showToast({title: '取消关注成功'})
+              if(type == "已关注"){
+                  followStateTxt = "关注";
+                  followStateClass = "guanzhu";
+              }else if(type == "互相关注"){
+                  followStateTxt = "回粉";
+                  followStateClass = "huifen";
+              } 
+              this.setData({ followStateTxt, followStateClass })
+          }else{
+              wx.showToast({
+                  title: _.get(res, 'data.msg'),
+                  icon: 'none',
+                  duration: 1500,
+                  mask: true
+              });
+          }
+        }
+      })
   },
   onShareAppMessage: function (e) {
 
